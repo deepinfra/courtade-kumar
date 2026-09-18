@@ -1,0 +1,290 @@
+{
+  "mode": "partial",
+  "status": "PARTIAL_MODULE_BUILD_AND_AXIOM_AUDIT_PASSED",
+  "lean_executed": true,
+  "compiled_declarations": [
+    "CK.Algebra.variance_restriction",
+    "CK.Algebra.variance_range",
+    "CK.Algebra.mixture_left",
+    "CK.Algebra.mixture_right",
+    "CK.Algebra.small_gap_pair",
+    "CK.Algebra.induction_step",
+    "CK.Algebra.deficit_identity",
+    "CK.Algebra.bias_payment",
+    "CK.Algebra.complete_square",
+    "CK.Algebra.product_transfer_direct",
+    "CK.Algebra.gain_factorization",
+    "CK.Algebra.centering_remainder",
+    "CK.Algebra.centering_sign",
+    "CK.Algebra.curvature_integrand",
+    "CK.Algebra.endpoint_polynomial_identity",
+    "CK.Algebra.endpoint_polynomial_margin",
+    "CK.Algebra.antipodal_pointwise",
+    "CK.Algebra.section_bound",
+    "CK.Algebra.majorant_factorization",
+    "CK.Algebra.majorant_even",
+    "CK.Algebra.majorant_halfline",
+    "CK.Algebra.majorant_absolute",
+    "CK.Algebra.linear_margin_dominates",
+    "CK.Algebra.weighted_coefficient",
+    "CK.Algebra.weighted_step",
+    "CK.assemble_conditional",
+    "CK.indicator_square",
+    "CK.sign_square",
+    "CK.entropy_zero",
+    "CK.entropy_one",
+    "CK.abstract_profile_induction",
+    "CKF2.Spec.matches_f1_target"
+  ],
+  "full_ck_target_accepted": false,
+  "independent_kernel_replay": "NOT_RUN",
+  "manuscript_changed": false,
+  "note": "This result describes the actual run, not source-draft intentions.",
+  "static_hygiene_only": [
+    "CK.lean",
+    "CKF2.lean",
+    "CK/Algebra.lean",
+    "CK/AnalyticTargets.lean",
+    "CK/Anchor.lean",
+    "CK/AvgLemmas.lean",
+    "CK/Bridge.lean",
+    "CK/Comparison.lean",
+    "CK/Constants.lean",
+    "CK/Curvature.lean",
+    "CK/Deficit.lean",
+    "CK/Definitions.lean",
+    "CK/EndpointCommon.lean",
+    "CK/EndpointLarge.lean",
+    "CK/EndpointSmall.lean",
+    "CK/EntropyBounds.lean",
+    "CK/EtaDeriv.lean",
+    "CK/Fourier.lean",
+    "CK/FourierCap.lean",
+    "CK/GainBounds.lean",
+    "CK/Induction.lean",
+    "CK/InfoContraction.lean",
+    "CK/InteriorEstimate.lean",
+    "CK/KappaSeries.lean",
+    "CK/LargeCoordScalar.lean",
+    "CK/LogEnclosure.lean",
+    "CK/NoiseOperator.lean",
+    "CK/Pinsker.lean",
+    "CK/ProductCentering.lean",
+    "CK/ProfileInduction.lean",
+    "CK/Relabel.lean",
+    "CK/ScalarMixing.lean",
+    "CK/Sections.lean",
+    "CK/Semantics.lean",
+    "CK/SignSum.lean",
+    "CK/SmallGap.lean",
+    "CK/Transfer.lean",
+    "CKF2/Spec.lean"
+  ],
+  "source_hashes": {
+    "F2AxiomAudit.lean": "7c953c32c84283711eff3341ea425ca2e6e3c59148c40cc7e37d738791e9f716",
+    "CK.lean": "c5641b3ce39f063f804595154b27c051aa0071611cbd66adbd5012fdf3df2f00",
+    "Audit.lean": "2659f2ae831291b3f694b06f5e098043753231b4f6d53d426f14592d31c91e1e",
+    "lakefile.lean": "98c05f2248bb262f7e8e6494db2c5d4d089639254e0a524a478e2433ff0719d8",
+    "CKF2.lean": "98f6387ce6c22089cfe7bb6d98e33f98674b276ff3412cfe10588a1bfe8a0207",
+    "ExtendedAxiomAudit.lean": "49edbee858e9d3a7691e04e65f2a1fb37a61f44e550cf4fe71841870ab1a4ca8",
+    "CKF2/Spec.lean": "3ec07e6b6c4b058e7118c108efef55c29458ea4d7cf60a5dd6ccc34f2dd0df98",
+    "CK/ScalarMixing.lean": "2125d2f1d1f2672a2c5fbdc9c667e559282e0cdceb2dba8a298609f40dee9433",
+    "CK/InteriorEstimate.lean": "806dc923b85cecb6e55e73707e95dfa1a2c4ebd312ce9f32a140f45d14a255b3",
+    "CK/SmallGap.lean": "5c17d1b23c2af12241b5d8a6aa4c98e90bdf3e9405bc30b5c566467dd1a81c35",
+    "CK/EndpointLarge.lean": "f499048062d6cb94ec47f5f327ab2b5464d4c59ad886cd8bdce63b22d3416c0c",
+    "CK/EntropyBounds.lean": "23ca6123646dae99444c7ff604d7528196662cc6140ca85dd412863733fc8141",
+    "CK/Fourier.lean": "06371ef2d8c9ac131b2cfc83ce6054fa81574f13dadd2272c05604bba19b3c6e",
+    "CK/Deficit.lean": "57570878224793cd62aa15b152aaec90b0f7e1ad31b50b3cc5dce0c4c635dfe4",
+    "CK/Sections.lean": "975b180388ff755851296ec7a22f70417e393ce9dcf188d9be048ecf90b917f7",
+    "CK/EndpointSmall.lean": "f29d709d8a002db62943746fec991c629843a8352d4c89a6c4d970576c5ad64a",
+    "CK/Definitions.lean": "fd9f1dd9da7a66b7c4555d1f7c8dfba7f3e650cf37ed7dbeebbe95610e565d27",
+    "CK/Semantics.lean": "6e53d39169eb59530b74cb07bf98726253d478c859abf5e375c516ee043453a1",
+    "CK/Curvature.lean": "73526f5abad67ad1f0fa9260e2bcc23f9f87a45fdde6acd907f746cc53fe92ab",
+    "CK/EndpointCommon.lean": "9c316d617dd5b77e12b166ec14744f7c6ec32a49c72f9ea5b8ce0e3c3b8aa560",
+    "CK/LogEnclosure.lean": "ca417c26915fe46ea1f6d2f6297a23bc27bbbc4cf0ce6e0d99f5261aa31ba43d",
+    "CK/LargeCoordScalar.lean": "6b3dd6c55aa0747ec8691abb17ca35889cfc88b8637b118820f23021cfe1fd48",
+    "CK/GainBounds.lean": "02bd49339cc7cc26915d29b713bbb9c389310f2c8d21098d47c43c2e6db54d89",
+    "CK/SignSum.lean": "797e22552ba765c00766fe1d25dbba54a10d8f08c55a75734160a7ec05856084",
+    "CK/Relabel.lean": "5daf742e27c2213ff75c6e1ec2b81ef8d758d6cfa7aca302bb1cf51c706855db",
+    "CK/AvgLemmas.lean": "fb4733548f7dbe226bf97d3059efcb03596dda89bc43d0c9665c5240a5037d4d",
+    "CK/Anchor.lean": "805ce3d9cfc884ba1c53cd07076ff1bff2a28f5fd6f5481118d0099cf0cbd0e4",
+    "CK/Constants.lean": "ec6951d8ea1955f783637dbfbca84182d6c2e576432871d3df05f6a4a2b6fb69",
+    "CK/Bridge.lean": "7f35a35b3e74f3b9109aa01084b2964982338999b8d87d5bcf47b5e5240b04aa",
+    "CK/ProfileInduction.lean": "f2def7023f51ffe992dbc1662cf291fe2042da972412eaea34c49fd044497867",
+    "CK/KappaSeries.lean": "aa2812a9fc83c9a04c1f8477a4079901b076ee4bccf6b3c0276764f0a9e934a6",
+    "CK/FourierCap.lean": "48c5540a8e4609c70af7bd6a422ff6340dfadb95a09dd20a4f30dbcd80a98b2d",
+    "CK/Pinsker.lean": "81b53135eb5bba3d6906789bfb67bd4c0d6813f1ad516c127e63452f87111980",
+    "CK/Transfer.lean": "c728cddb472bfa22ff684717723e92b5f92602c26c48276e4f086a2e1481274f",
+    "CK/EtaDeriv.lean": "0d9812395027f93b7ef64e9fb453ee8468c867c2003d6bb1ab46f7684689e96c",
+    "CK/ProductCentering.lean": "630b86156912560cd53ce13b69aa8d4f7d9d398a52e8ae733c69274e43cd0755",
+    "CK/NoiseOperator.lean": "f5da88eab4cca9f8a19c579434933ad2d361f8ffa889fd26d5f2d8734cff1a68",
+    "CK/Induction.lean": "0ec89fbd50762f19d448a9e49fbfc025d9cf795b30493acd2c077c15564356eb",
+    "CK/Algebra.lean": "5f764c42c8a8df7b5351e99e2fa613bd38609d439c49aadf8732f94696a793c1",
+    "CK/AnalyticTargets.lean": "037f3072756d1e2afc602ecd4683f46756c80e9dbae101ae6455d2d85bf36f19",
+    "CK/Comparison.lean": "810cc188228b610e62295314c61bb417951df8d67d60bd18636ba719e2093039",
+    "CK/InfoContraction.lean": "0d43a0c109dad1e08b8b861054899fa00d9b8b5e94dfd4d0d68116483d8e4da9"
+  },
+  "axioms": {
+    "CK.Algebra.variance_restriction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.variance_range": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.mixture_left": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.mixture_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.small_gap_pair": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.induction_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.deficit_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.bias_payment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.complete_square": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.product_transfer_direct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.gain_factorization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.centering_remainder": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.centering_sign": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.curvature_integrand": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.endpoint_polynomial_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.endpoint_polynomial_margin": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.antipodal_pointwise": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.section_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.majorant_factorization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.majorant_even": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.majorant_halfline": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.majorant_absolute": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.linear_margin_dominates": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.weighted_coefficient": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.Algebra.weighted_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.assemble_conditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.indicator_square": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.sign_square": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.entropy_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.entropy_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CK.abstract_profile_induction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CKF2.Spec.matches_f1_target": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "lake_manifest_sha256": "5e29f71040e0eb467dfed8b2f9b8d3d732211ac9787e9de28a764c4335e49644"
+}

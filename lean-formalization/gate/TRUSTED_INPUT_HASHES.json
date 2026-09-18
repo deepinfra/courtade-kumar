@@ -1,0 +1,7 @@
+{
+  "lean/CK/Definitions.lean": "fd9f1dd9da7a66b7c4555d1f7c8dfba7f3e650cf37ed7dbeebbe95610e565d27",
+  "lean/CKF2/Spec.lean": "3ec07e6b6c4b058e7118c108efef55c29458ea4d7cf60a5dd6ccc34f2dd0df98",
+  "CompletionGate.lean.template": "d13bb57a0bb46ce74e65438894cafa9a6b75a378adbeac6e2adc1bf8994451e6",
+  "DECLARATIONS.json": "731cf74b4c68a10ab424d6fb37a016de8055fc8b519922f0e11d0be3dd832a77",
+  "lean/lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+}

@@ -1,0 +1,93 @@
+\section{The problem, the results, and the mechanisms}\label{sec:question}
+Let $X=(X_1,\ldots,X_n)$ be uniform on $\{-1,1\}^n$, and obtain $Y$ by independently reversing each sign with probability $p\in[0,1/2]$; put $\rho=1-2p$. A deterministic Boolean function $f:\{-1,1\}^n\to\{0,1\}$ retains one bit of $X$. The question is whether combining coordinates can retain more information about $Y$ than simply keeping one coordinate.
+
+All logarithms are natural. Write
+\[
+ h(s)=-s\ln s-(1-s)\ln(1-s),\qquad 0\ln0:=0,
+\]
+and let $\mu=\E f(X)$. Then
+\begin{equation}\label{eq:information}
+\II(f(X);Y)=h(\mu)-\HH(f(X)\mid Y).
+\end{equation}
+For $f(x)=\one\{x_i=1\}$, the right side is $\ln2-h(p)$. Courtade and Kumar conjectured that this is the optimum over all Boolean functions~\cite{CK}.
+
+\begin{theorem}[Courtade--Kumar inequality]\label{thm:main}
+For every finite $n$, every Boolean $f$, and every $p\in[0,1/2]$,
+\begin{equation}\label{eq:target}
+\II(f(X);Y)\le\ln2-h(p).
+\end{equation}
+\end{theorem}
+The statement uses uniform independent input bits and independent binary symmetric noise. It does not concern a general input distribution or a general channel. Expressing every entropy in bits divides both sides by $\ln2$.
+
+\subsection{Quantitative content}
+The proof gives more than an extremal value. At low noise it establishes the mean-dependent profile
+\begin{equation}\label{eq:profile}
+\HH(f(X)\mid Y)\ge V(\mu)h(p),\qquad V(\mu)=4\mu(1-\mu).
+\end{equation}
+This holds for $0\le p\le1/20$. The factor $V(\mu)$ is four times the output variance. It is the quantity that makes restriction into smaller Boolean functions compatible with induction.
+
+For $n\ge1$, define the distance to a coordinate, allowing complementation, by
+\begin{equation}\label{eq:delta-intro}
+ \delta(f)=\min_{i,\,\sigma\in\{-1,1\}}\Pp\{2f(X)-1\ne\sigma X_i\}.
+\end{equation}
+The quantitative conclusion is
+\begin{equation}\label{eq:stability-overview}
+\ln2-h(p)-\II(f(X);Y)
+\ge \frac{p(1-2p)^2}{2000}\,\delta(f),
+\qquad 0\le p\le\frac12.
+\end{equation}
+Thus, at a fixed $0<p<1/2$, near-optimal information forces closeness to a coordinate, independently of $n$. The explicit constants are sufficient, not sharp. Section~\ref{sec:use} gives a stronger piecewise coefficient, a matching qualitative converse, and worked examples. The stability results are consequences of the argument, not premises of Theorem~\ref{thm:main}.
+
+\subsection{Three ideas that can be used separately}
+\paragraph{Restriction needs a compensating quantity.}
+If the two coordinate sections have means $\mu_0,\mu_1$ and $d=|\mu_1-\mu_0|$, then
+\[
+ \frac{V(\mu_0)+V(\mu_1)}2=V(\mu)-d^2.
+\]
+A local entropy inequality must pay for this precise loss. Proposition~\ref{prop:induction} formulates the resulting scalar-to-cube implication with a free profile coefficient $c$; it is not tied to the numerical cutoff used in the application.
+
+\paragraph{The useful symmetric quantity is a product.}
+For two posterior probabilities, let $J$ be the average entropy before mixing, $M$ the average entropy after mixing, and $K=M-J$ the gain. The scalar problem has the form
+\[
+ K+Md^2-2\ell d
+ =M\left(d-\frac{\ell}{M}\right)^2+\frac{KM-\ell^2}{M}.
+\]
+This is why the product $KM$ is compared with its symmetric value. Lemma~\ref{lem:product} proves that both $K$ and $KM$ are smallest at symmetry for a fixed separation. Its noise range is the entire open interval $0<p<1/2$, although the stronger two-point estimate needed for CK is used only at low noise.
+
+\paragraph{A scalar envelope turns spectral information into entropy.}
+Away from low noise, a bound on constant and linear Fourier mass controls a quadratic statistic of the posterior. The quadratic is dictated by a spectral cancellation, not guessed. Proposition~\ref{prop:certificate} states the resulting information certificate with a free Fourier cap and a free entropy envelope. It separates what is special to the application from what can be reused.
+
+\subsection{Proof organization}
+Sections~\ref{sec:induction}--\ref{sec:product} establish the low-noise branch. Sections~\ref{sec:threeclasses}--\ref{sec:energy} establish the complementary branch, and Section~\ref{sec:completion} joins them at $p=1/20$. Section~\ref{app:linear} quantifies the slack. Section~\ref{sec:use} explains how to apply the conclusions and what their constants do not say. Appendices~\ref{app:centered}--\ref{app:constants} contain every deferred scalar and finite-constant argument.
+
+For the main theorem, the task is therefore finite and explicit: prove one all-posterior mixing statement at low noise, and one Fourier-to-entropy estimate for the complementary class. No finite truth-table experiment is used to infer a statement in arbitrary dimension.
+
+\subsection{Relation to earlier work}
+Samorodnitsky proved the Courtade--Kumar inequality in a dimension-independent high-noise interval~\cite{Sam}. Yu's extended paper proves local optimality among balanced functions and a computer-assisted balanced result for $0\le\rho\le0.914$~\cite{YuLocal}. Javanmard and Woodruff prove an arbitrary-bias coordinate-wise information inequality and sharpen high-noise entropy estimates~\cite{JW}. Their coordinate-wise sum is a different quantity from information about the full noisy vector.
+
+The present proposed argument addresses all output means, all finite dimensions, and all noise levels, with the explicit stability estimate above. The ordinary variance identity, antipodal projection, and uniform-reference contraction are not claimed as new. First-level stability is classical~\cite{FKN}. The mathematical content to examine here is the compatibility of the local mixing inequality with restriction, the entropy-product comparison, and their combination with the Fourier certificate. None of the cited specialized results is a premise of the proof.
+
+\subsection{Notation and normalization}
+\begin{equation}\label{eq:eta}
+\rho=1-2p,\qquad
+\eta(u)=h\!\left(\frac{1+u}{2}\right),\qquad
+\kappa(u)=\ln2-\eta(u),\quad -1\le u\le1.
+\end{equation}
+Thus $\eta(\rho)=h(p)$ and $\kappa(\rho)=\ln2-h(p)$. The indicator $f$ and the sign function $F=2f-1$ encode the same output bit; write $m=\E F=2\mu-1$. A signed coordinate means $F(x)=\sigma x_i$, or equivalently $f(x)=\one\{\sigma x_i=1\}$. Fourier weights are introduced in Section~\ref{sec:geometric}.
+
+On $(-1,1)$,
+\[
+ \eta'(u)=-\atanh u,\qquad \eta''(u)=-\frac1{1-u^2}.
+\]
+Integrating the power series for $\atanh$ gives
+\begin{equation}\label{eq:series}
+\kappa(u)=\sum_{j\ge1}\frac{u^{2j}}{(2j)(2j-1)}.
+\end{equation}
+The coefficients are positive, and hence
+\begin{equation}\label{eq:entropyfacts}
+\kappa(u)\ge\frac{u^2}{2},\qquad
+\kappa(\theta u)\le\theta^2\kappa(u)\quad(0\le\theta\le1).
+\end{equation}
+Endpoint values follow by continuity. The numerical comparisons used below are proved by rational enclosures in Appendix~\ref{app:constants}.
+
+Two parameters must remain distinct: $d$ is the fixed difference of section means; $t=|a-b|$ is the separation of a posterior pair. In an application $|A-B|$ varies with the noisy observation while $d$ remains fixed. No independence between $A$ and $B$ is required.

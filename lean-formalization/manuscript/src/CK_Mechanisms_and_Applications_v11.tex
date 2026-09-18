@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,booktabs,tabularx,array}
+\usepackage{xr-hyper}
+\usepackage[hidelinks]{hyperref}
+\externaldocument[main-]{CK_Manuscript_v11}[CK_Manuscript_v11.pdf]
+\usepackage{fancyhdr}
+\hypersetup{pdftitle={Three mechanisms and their uses: companion to the CK manuscript v11},pdfauthor={Dimiter Kramer}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Three mechanisms and their uses}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}\raggedbottom
+\newcommand{\E}{\mathbb E}\newcommand{\Pp}{\mathbb P}\newcommand{\HH}{\mathsf H}\newcommand{\II}{\mathsf I}
+\begin{document}
+{\LARGE Three mechanisms and their uses}\par
+{\large A mathematical companion to the Courtade--Kumar manuscript}\par
+Dimiter Kramer \hfill 17 September 2026\par
+\smallskip
+\textit{Companion to edition v11. The full manuscript supplies every proof. The claims below are those of the proposed argument, not a report of journal acceptance or completed formal verification.}
+
+\section*{1. What the result would let a reader conclude}
+Take independent fair signs $X=(X_1,\ldots,X_n)$. Reverse each sign independently with probability $p$ to obtain $Y$. Before the noise is drawn, choose a deterministic one-bit compression $f(X)$. The proposed bound is
+\[
+ \II(f(X);Y)\le\ln2-h(p),\qquad
+ h(p)=-p\ln p-(1-p)\ln(1-p).
+\]
+A coordinate indicator attains this value. The quantifiers are all finite $n$, every output mean, and $0\le p\le1/2$. Uniform inputs and independent symmetric noise are hypotheses, not conveniences that may be dropped.
+
+There is also an explicit structural conclusion. Write $F=2f-1$, $\rho=1-2p$, and
+\[
+ \delta(f)=\min_{i,\sigma}\Pp\{F(X)\ne\sigma X_i\}.
+\]
+The stability theorem gives
+\[
+ \ln2-h(p)-\II(f(X);Y)\ge\frac{p\rho^2}{2000}\,\delta(f).
+\]
+At fixed nontrivial noise, nearly optimal information therefore implies closeness to a coordinate, independently of the number of inputs. The proof gives better piecewise coefficients; page 4 makes one use concrete. The constants are conservative.
+
+\subsection*{Why the methods are worth examining separately}
+The first mechanism converts a scalar inequality into a bound on every Boolean cube. The second tells us which entropy quantity has a useful symmetry. The third converts a spectral cap and a scalar entropy envelope into information. Each is stated with its own inputs and conclusion, so a reader need not reuse the entire CK argument to use one part.
+
+\begin{tabularx}{\textwidth}{@{}p{0.38\textwidth}X@{}}
+\toprule
+Reusable statement & Location in the full manuscript\\\midrule
+Restriction--mixing criterion & Proposition~\ref{main-prop:induction}, p.~\pageref{main-prop:induction}\\
+Entropy-product centering & Lemma~\ref{main-lem:product}, p.~\pageref{main-lem:product}\\
+Spectral-cap / entropy-envelope certificate & Proposition~\ref{main-prop:certificate}, p.~\pageref{main-prop:certificate}\\
+Information-to-coordinate recovery & Corollary~\ref{main-cor:recovery}, p.~\pageref{main-cor:recovery}\\\bottomrule
+\end{tabularx}
+
+\newpage
+\section*{2. Low noise: identify the exact loss, then recover it}
+Put $\mu=\E f$ and $V(\mu)=4\mu(1-\mu)$. Fixing one coordinate produces two smaller Boolean functions $f_0,f_1$, with means $\mu_0,\mu_1$. Their fixed mean gap is $d=|\mu_1-\mu_0|$. The law of total variance gives
+\[
+ \frac{V(\mu_0)+V(\mu_1)}2=V(\mu)-d^2.
+\]
+Thus an induction with coefficient $c$ loses exactly $cd^2$. Restricting to balanced functions would not work: the two-bit AND function has a constant child and a coordinate child.
+
+After observing the other noisy coordinates, let $A,B$ be the two section posteriors. Bayes' formula gives
+\[
+ \HH(f\mid Y)=\E M_p(A,B),\qquad
+ M_p(a,b)=\frac{h((1-p)a+pb)+h(pa+(1-p)b)}2,
+\]
+while $\E|A-B|\ge d$. The two posteriors use the \emph{same} observation; they are not assumed independent.
+
+\textbf{The reusable implication.} If $0\le c\le h(p)$ and
+\[
+ (1+d^2)M_p(a,b)\ge\frac{h(a)+h(b)}2+2cd|a-b|
+\]
+for every pair $a,b$ and every independent $d\in[0,1/2]$, then
+\[
+ \begin{aligned}
+ (1+d^2)\HH(f\mid Y)
+ &\ge c[V(\mu)-d^2]+2cd\E|A-B|\\
+ &\ge c[V(\mu)+d^2]\ge(1+d^2)cV(\mu).
+ \end{aligned}
+\]
+Constants and coordinates supply the base cases. A coordinate with $d\le1/2$ always exists when $n\ge2$, because any two coordinate correlations have absolute values summing to at most one.
+
+\subsection*{Why the scalar problem centers a product}
+Set $J=[h(a)+h(b)]/2$, $M=M_p(a,b)$, $K=M-J$, and $\ell=c|a-b|$. The required gap is
+\[
+ K+Md^2-2\ell d
+ =M\left(d-\frac\ell M\right)^2+\frac{KM-\ell^2}{M}.
+\]
+This identifies $KM$, not $M$ alone, as the useful object. At fixed $t=|a-b|$, the manuscript proves $K\ge K_0$ and $KM\ge K_0M_0$, where the subscript denotes the symmetric pair $((1-t)/2,(1+t)/2)$. The proof passes through an exact nonnegative curvature integral. It does \emph{not} assert that every fixed-$d$ gap is minimized at symmetry.
+
+\textbf{Where to slow down.} Product centering and the three centered scalar regimes are the analytic work, not the induction arithmetic. For $p\le1/20$, they establish $c=h(p)$ and an additional surplus $(p/500)(a-b)^2$. The main manuscript's Section~\ref{main-sec:product} and Appendix~\ref{main-app:centered} prove those obligations, including deterministic boundaries.
+
+\newpage
+\section*{3. Complementary noise: choose the statistic from its spectrum}
+For $F=2f-1$, let $m=\E F$ and $W_k(F)$ be its squared degree-$k$ Fourier mass. Large $|m|$ or a large coordinate correlation admits a direct bound. In the remaining class, the manuscript proves
+\[
+ m^2+W_1(F)\le\frac{31}{40}.
+\]
+This uses an antipodal identity, an explicit polynomial moment estimate, and a balancing lift. It does not import a specialized Fourier theorem or assume that the output is balanced.
+
+Put $G=T_\rho F$ and $R=|G|$. The channel gives
+$\HH(f\mid Y)=\E\eta(R)$, where $\eta(t)=h((1+t)/2)$. Now subtract two spectral quantities:
+\[
+ \E G^2-\rho^2\E(FG)
+ =\sum_{k\ge0}(\rho^{2k}-\rho^{k+2})W_k(F).
+\]
+Degree two cancels. All higher degrees have a favorable sign. The product $FG$ is evaluated at the \emph{same uniform cube point}, not at opposite channel endpoints.
+
+Rearranging dictates
+\[
+ \psi_\rho(t)=(1-t)(1+t-\rho^2).
+\]
+For a general cap $m^2+W_1(F)\le\Omega\le1$, put
+$\Lambda_\Omega=1+\rho-\Omega\rho^2$ and $\Gamma=1+\rho-\rho^2$.
+The exact energy identity gives
+\[
+ \E\psi_\rho(R)\ge(1-\rho)(\Lambda_\Omega-\Gamma m^2).
+\]
+
+\textbf{The reusable certificate.} Suppose $\lambda,\zeta\ge0$ and
+$\eta(t)\ge\lambda\psi_\rho(t)+\zeta(1-t)$ for every $t\in[0,1]$. Then
+\[
+\begin{aligned}
+ \ln2-\eta(\rho)-\II(f;Y)\ge{}&
+ \lambda(1-\rho)\Lambda_\Omega-\eta(\rho)\\
+ &+m^2\left[\frac12-\lambda(1-\rho)\Gamma\right]
+ +\zeta\E(1-R).
+\end{aligned}
+\]
+The first term pays for the balanced target, the second accounts for output bias, and the third retains strictness. Improving the cap or the envelope is a well-defined independent task.
+
+\textbf{Where to slow down.} A scalar envelope must hold on the entire interval, not at sample points. Appendix~\ref{main-app:comparisons} uses convexity, logarithmic concavity, and positive Bernstein coefficients. For still higher noise, a strict anchor is required: merely contracting the coordinate bound at an intermediate correlation would give an upper bound larger than the target.
+
+\newpage
+\section*{4. How to apply the stability conclusion}
+For $0<p<1/2$, the proof actually gives
+\[
+ \mathcal D_p(f):=\ln2-h(p)-\II(f;Y)\ge c_p\delta(f),\qquad
+ c_p=\begin{cases}
+ 9p(1-2p)^2/10000,&0<p<1/20,\\
+ (1-2p)^2/2000,&1/20\le p<1/2.
+ \end{cases}
+\]
+If a valid estimate gives $\mathcal D_p(f)\le\epsilon$, choose the coordinate maximizing $|\E(FX_i)|$ and choose its orientation accordingly. Its disagreement probability is
+\[
+ \delta(f)=\frac{1-\max_i|\E(FX_i)|}{2}
+ \le\min\{1/2,\epsilon/c_p\}.
+\]
+At $p=1/4$, $c_p=1/8000$: a gap at most $10^{-6}$ nats gives disagreement at most $1/125$, in any finite dimension. This is a mathematical recovery statement, not an efficient learning algorithm or a method for estimating mutual information from data.
+
+The converse is elementary. For a nearest coordinate indicator $g$, the chain rule and the error bit $f\oplus g$ give
+\[
+ \II(g;Y)-\II(f;Y)\le\HH(g\mid f)\le h(\delta(f)).
+\]
+Hence $c_p\delta(f)\le\mathcal D_p(f)\le h(\delta(f))$. The rates do not match, but near optimality and closeness are equivalent qualitatively at fixed nontrivial noise.
+
+\subsection*{Examples that prevent common misreadings}
+\textbf{Parity.} For $F=\prod_{i=1}^kX_i$, the exact conditional entropy is $\eta(\rho^k)$. Two-bit parity has $d=0$ but nonzero posterior separation. Its deficit comes entirely from scalar mixing, not from the triangle gap.
+
+\textbf{AND.} Its two child means are $0$ and $1/2$. The general-mean induction is essential even for this elementary function. The four posterior probabilities are $p^2,p(1-p),p(1-p),(1-p)^2$.
+
+\textbf{The scalar limit.} Any uniform coefficient in
+$S_{p,d}(a,b)\ge\gamma(p)(a-b)^2$ obeys $\gamma(p)\le2p(1-p)$: take centered posteriors with separation tending to zero and $d=0$. A logarithmic small-noise deficit for a fixed Boolean function therefore cannot simply be inserted as a uniform coefficient for every posterior pair.
+
+\subsection*{What is supplied for reuse}
+The full manuscript contains the proofs and rational constant bounds. The source package includes an equation-level change map, separately scoped regression checks, and \texttt{tools/finite\_instance.py}, which computes exact finite-channel and Fourier quantities and rational entropy enclosures. It is a finite-example tool, not a substitute for the analytic proof. All manuscript locations above refer to v11; the earlier reviewed versions are preserved separately.
+\end{document}

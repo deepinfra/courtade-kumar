@@ -1,0 +1,3 @@
+theorem CKF2.exactTargetAccepted : CKF2.Spec.Target :=
+id CK.courtadeKumar_proved
+'CKF2.exactTargetAccepted' depends on axioms: [propext, Classical.choice, Quot.sound]

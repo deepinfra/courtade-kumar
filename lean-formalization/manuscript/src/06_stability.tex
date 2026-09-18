@@ -1,0 +1,173 @@
+\section{Spectral deficit and stability}\label{app:linear}
+The core CK inequality is complete. We now keep the scalar surplus instead of discarding it. The point is not a larger numerical margin alone: it can be propagated without losing a factor depending on dimension.
+
+The induction below uses only a bound $S_{p,d}(a,b)\ge\lambda(a-b)^2$. Consequently its proof also yields the reusable implication
+\begin{equation}\label{eq:generic-spectral}
+ S_{p,d}\ge\lambda(a-b)^2\ \text{on the full posterior domain}
+ \quad\Longrightarrow\quad
+ \Delta_p(f)\ge\lambda\rho^2\sum_{k\ge2}W_k(F),
+\end{equation}
+for $0<p<1/2$ and $\lambda\ge0$, provided the scalar bound is valid for independently all $0\le d\le1/2$. The displayed theorem specializes this implication to the coefficient established above.
+
+\subsection{A second induction: only the lost spectral mass matters}
+Let $F=2f-1$, $m=\E F$, and put
+\[
+\mathcal E(F)=\sum_{k\ge2}W_k(F)=1-m^2-W_1(F).
+\]
+This is the squared Fourier mass above degree one. A bound based on the smallest eigenvalue of the $(n-1)$-coordinate noise operator would contain $\rho^{2(n-1)}$. Instead, the induction tracks only the degree-two mass lost by the chosen restriction. The posterior difference restores exactly that loss.
+
+\begin{theorem}[Dimension-free spectral deficit]\label{thm:spectral-deficit}
+For every finite dimension and $0<p\le1/20$,
+\begin{equation}\label{eq:spectral-deficit}
+\Delta_p(f):=\HH(f(X)\mid Y)-4\mu(1-\mu)h(p)
+\ge\frac{p\rho^2}{500}\,\mathcal E(F),\qquad \rho=1-2p.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Set $\lambda=p/500$. Induct on dimension, with the same small-gap coordinate as in Proposition~\ref{prop:induction}. The zero-bit and one-bit cases have $\mathcal E(F)=0$ and satisfy the bound directly. Let $i$ be the selected coordinate, $d=|\widehat F(\{i\})|\le1/2$, and define
+\[
+T_i=\sum_{j\ne i}\widehat F(\{i,j\})^2.
+\]
+For the two sign-valued sections $F_0,F_1$, their coefficients give the exact identity
+\begin{equation}\label{eq:spectral-child-loss}
+\frac{\mathcal E(F_0)+\mathcal E(F_1)}2=\mathcal E(F)-T_i.
+\end{equation}
+Indeed, the averaged squared mean is $m^2+d^2$, and the averaged first-level mass is $W_1(F)-d^2+T_i$.
+
+For the common-observation posteriors, $B-A=T_\rho(f_1-f_0)$. The Fourier coefficients of $f_1-f_0$ are exactly $\widehat F(S)$ for $S\ni i$, with $i$ removed from the index. Orthogonality yields
+\begin{equation}\label{eq:spectral-posterior}
+\E(A-B)^2
+=\sum_{S\ni i}\rho^{2(|S|-1)}\widehat F(S)^2
+\ge d^2+\rho^2T_i.
+\end{equation}
+Use the exact deficit identity~\eqref{eq:deficit}, the strengthened scalar bound, and the induction hypothesis for the sections. Its other terms are nonnegative, so
+\begin{align*}
+(1+d^2)\Delta_p(f)
+&\ge\lambda\rho^2[\mathcal E(F)-T_i]+\lambda[d^2+\rho^2T_i]\\
+&=\lambda\rho^2\mathcal E(F)+\lambda d^2\\
+&\ge(1+d^2)\lambda\rho^2\mathcal E(F).
+\end{align*}
+The last inequality is $\rho^2\mathcal E(F)\le1$. Divide by $1+d^2$. No lower bound on the smallest eigenvalue in dimension $n$ is used.
+\end{proof}
+
+The same scalar improvement also gives the one-coordinate estimate
+\begin{equation}\label{eq:linear-coordinate-deficit}
+\Delta_p(f)\ge\frac{p}{500(1+d^2)}\E(A-B)^2
+\ge\frac p{625}\rho^{2(n-1)}\Pp(f_0\ne f_1).
+\end{equation}
+That coordinate estimate still depends on $n$; Theorem~\ref{thm:spectral-deficit} does not. The two statements measure different aspects of the function and are not identified with each other.
+
+\subsection{From spectral mass to distance from a coordinate}
+For $n\ge1$, let
+\[
+b=\max_i|\E(FX_i)|,\qquad
+\delta(f)=\min_{i,\sigma\in\{-1,1\}}\Pp(F(X)\ne\sigma X_i)
+=\frac{1-b}{2}.
+\]
+To turn a spectral deficit into a statement about functions, we need a bound on distance to a coordinate. The following nonsharp estimate follows from Section~\ref{sec:threeclasses}. Its role is the same as a first-level stability theorem~\cite{FKN}, but the constants needed here follow directly from the estimates already proved.
+
+\begin{lemma}[An explicit distance bound]\label{lem:distance}
+For every Boolean $f$ on at least one input,
+\begin{equation}\label{eq:distance-spectral}
+\delta(f)\le\frac{20}{9}\,[m^2+\mathcal E(F)]
+=\frac{20}{9}\,[1-W_1(F)].
+\end{equation}
+\end{lemma}
+\begin{proof}
+If $|m|,b\le13/20$, Proposition~\ref{prop:cap} gives $\mathcal E(F)\ge9/40$, and $\delta(f)\le1/2$ proves the claim. If $|m|\ge13/20$, use $\delta(f)\le1/2<(20/9)(13/20)^2\le(20/9)m^2$.
+
+It remains that $b\ge13/20$. Apply the balancing lift $F^\sharp(x,z)=zF(zx)$, so $W_1(F^\sharp)=m^2+W_1(F)$. For a balanced sign function with a coordinate coefficient $b$, restriction into sections and Lemma~\ref{lem:antipodal} give
+\[
+W_1(F^\sharp)\le b^2+1-b.
+\]
+To check the factors, the corresponding indicator has coefficient $\beta=b/2$ and section means $1/2\pm\beta$. The same section-vector argument as in~\eqref{eq:sectioncap}, before imposing its interval cutoff, gives
+$W_1((1+F^\sharp)/2)\le\beta^2+(1/2-\beta)/2$ for all $0\le\beta\le1/2$. Multiplication by four is the displayed sign-output bound. Hence
+\[
+\mathcal E(F)\ge b(1-b)\ge\frac{13}{10}\delta(f),
+\]
+which is stronger than~\eqref{eq:distance-spectral}.
+\end{proof}
+
+Combining Theorem~\ref{thm:spectral-deficit} with the explicit output-bias adjustment gives the useful low-noise conclusion
+\begin{equation}\label{eq:low-stability}
+\kappa(\rho)-\II(f(X);Y)
+\ge\frac{9p\rho^2}{10000}\,\delta(f),
+\qquad 0<p\le1/20.
+\end{equation}
+Indeed,
+\[
+\kappa(\rho)-\II(f;Y)
+\ge\Delta_p(f)+m^2[1/2-h(p)]
+\ge\frac{p\rho^2}{500}\,[\mathcal E(F)+m^2],
+\]
+because $h(p)<1/5$ and $p\rho^2/500\le1/10000<3/10$. Now use Lemma~\ref{lem:distance}.
+
+\subsection{A stability bound throughout the nontrivial noise range}
+\begin{theorem}[Full-range quantitative consequence]\label{thm:global-stability}
+For every $n\ge1$, every Boolean $f$, and every $0\le p\le1/2$,
+\begin{equation}\label{eq:global-stability}
+\ln2-h(p)-\II(f(X);Y)
+\ge\frac{p(1-2p)^2}{2000}\,\delta(f).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Equation~\eqref{eq:low-stability} proves the result for $0<p\le1/20$. For the complementary range we establish the stronger bound
+\begin{equation}\label{eq:complement-stability}
+\kappa(\rho)-\II(f;Y)\ge\frac{\rho^2}{2000}\delta(f),
+\qquad 0\le\rho\le9/10,
+\end{equation}
+using the complementary estimates with cutoff $13/20$.
+
+\emph{Large bias.} Lemma~\ref{lem:bias} gives $\HH(f)<391/800$, so uniform-reference contraction yields a gap at least $9\rho^2/800$, which exceeds the right side of~\eqref{eq:complement-stability}.
+
+\emph{Large coordinate.} Write $b=\max_i|\E(FX_i)|\ge13/20$. The argument of Lemma~\ref{lem:largecoordinate} bounds the gap below by
+\[
+G_\rho(b)=(1-\rho^2)\eta(\rho b)-(1-b\rho^2)\eta(\rho).
+\]
+Concavity in $b$ and $G_\rho(1)=0$ give
+\[
+G_\rho(b)\ge\frac{40}{7}\delta(f)G_\rho(13/20).
+\]
+Appendix~\ref{app:local} proves that $A(x)=G_{\sqrt{x}}(13/20)/[x(1-x)]$ extends continuously to zero and is concave on $[0,81/100]$. Its endpoint estimates are
+\[
+A(0)=\frac7{20}\left(\frac{33}{40}-\ln2\right)>\frac7{160},
+\qquad A(81/100)>\frac{3/10000}{(81/100)(19/100)}=\frac1{513}.
+\]
+Therefore $G_\rho(13/20)\ge\rho^2(1-\rho^2)/513\ge\rho^2/2700$. This gives a gap at least $2\rho^2\delta(f)/945$, stronger than~\eqref{eq:complement-stability}.
+
+\emph{Remainder class, $3/5\le\rho\le9/10$.} Every Bernstein coefficient in Appendix~\ref{app:comparisons} is at least $s_*=273/25000$. Retaining this minimum in its proof gives
+\begin{equation}\label{eq:strict-comparison}
+\eta(t)\ge\frac{\eta(\rho)}{(1-\rho)\Lambda_\rho}\psi_\rho(t)
++\frac{s_*}{2}(1-t).
+\end{equation}
+Specifically, that proof gives $\eta(t)-\lambda\psi_\rho(t)\ge yP_j(z)$ with $y=(1-t)/2$, $P_j\ge s_*$, and $\lambda$ no smaller than the required coefficient. Since $\psi_\rho\ge0$, decreasing $\lambda$ preserves the estimate.
+
+On this correlation interval, $\Lambda_\rho\ge5/4$ by concavity and its endpoint values, whereas $\Gamma_\rho\le5/4$. In the remainder class $m^2\le169/400$, so $\Lambda_\rho-\Gamma_\rho m^2>2/3$. Put $R=|T_\rho F|$. The energy bound and $\psi_\rho(R)\le(2-\rho^2)(1-R)$ imply
+\[
+\E(1-R)\ge\frac{(1-\rho)(\Lambda_\rho-\Gamma_\rho m^2)}{2-\rho^2}
+\ge\frac5{123}>\frac1{25}.
+\]
+Subtract the average of~\eqref{eq:strict-comparison} from $\HH(f)\le\ln2-m^2/2$. The bias term is nonnegative in the information gap by Proposition~\ref{prop:middle}. Consequently the gap is at least
+\[
+\frac{273}{1250000}>\frac{81}{400000}\ge\frac{\rho^2\delta(f)}{2000}.
+\]
+
+\emph{Remainder class, $0<\rho\le3/5$.} The strict anchor in Proposition~\ref{prop:high} satisfies
+\[
+U_0=\ln2-\frac{39}{40}\frac25\frac{1321}{1000}<\frac{179}{1000}.
+\]
+This slightly sharper finite comparison is certified by the same Appendix~\ref{app:constants} enclosure. Degradation gives a gap at least
+\[
+\rho^2\left[\frac12-\frac{U_0}{(3/5)^2}\right]
+\ge\frac{\rho^2}{360}\ge\frac{\rho^2\delta(f)}{2000}.
+\]
+These cases prove~\eqref{eq:complement-stability}. It implies~\eqref{eq:global-stability} because $p\le1$. At $p=0$, the right side vanishes and $\HH(f)\le\ln2$; at $p=1/2$, both sides vanish by independence.
+\end{proof}
+
+For any fixed $0<p<1/2$, Theorem~\ref{thm:global-stability} says that an information gap at most $\varepsilon$ forces
+\[
+\delta(f)\le\min\left\{\frac12,\frac{2000\varepsilon}{p(1-2p)^2}\right\}.
+\]
+The coefficient is independent of input dimension and is not asserted optimal. Equality in the CK bound at nontrivial noise therefore forces a coordinate indicator or its complement. The factor vanishes at both trivial endpoints, where additional equality cases are unavoidable.
+
+\paragraph{Scope of the stability statement.} The coefficient is uniform in the number of inputs but tends to zero as $p$ approaches either trivial endpoint. The results quantify the same inequality; they do not require an additional noise restriction, an external stability theorem, or a numerical certificate.

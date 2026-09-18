@@ -1,0 +1,188 @@
+\section{Complementary noise: direct bounds and Fourier structure}\label{sec:threeclasses}
+We now consider $1/20\le p\le1/2$, or equivalently $0\le\rho\le9/10$. This branch does not use the induction or extend Theorem~\ref{lem:mixing} beyond its range. It uses the output mean, individual coordinate correlations, and the remaining Fourier mass. The first two quantities lead to direct information estimates; only the third class needs the energy argument of Section~\ref{sec:energy}.
+
+Write
+\begin{equation}\label{eq:signnotation}
+F=2f-1,\qquad m=\E F=2\mu-1,\qquad b_i=\E(FX_i).
+\end{equation}
+The number $m$ measures output bias, and $b_i$ measures correlation with coordinate $i$. We divide functions into the following exhaustive classes:
+\[
+\begin{array}{ll}
+|m|\ge13/20: & \text{the output itself has sufficiently little entropy};\\[2pt]
+\max_i|b_i|\ge13/20: & \text{a coordinate comparison gives the bound};\\[2pt]
+|m|\le13/20,\ \max_i|b_i|\le13/20: & \text{a Fourier bound handles the remainder}.
+\end{array}
+\]
+The overlap at the boundaries is harmless. The constants $13/20$ and $9/10$ are used to make all three estimates fit; no optimality is asserted for this partition.
+
+Why $13/20$? The balanced lift below has coordinate coefficients at most $13/40$. The interval $[7/40,13/40]$ is symmetric about $1/4$, so the elementary section bound is at most $309/1600$, below the unchanged cap $31/160$. Meanwhile the direct coordinate estimate still has a positive endpoint margin at $b=13/20$; Appendix~\ref{app:local} calculates it as more than $3/10000$. Thus the same cutoff is compatible with the direct estimate and the elementary Fourier estimate. It leaves no gap between the classes.
+
+\subsection{Contraction under further noise}
+The elementary inequality $\kappa(\theta u)\le\theta^2\kappa(u)$ tensorizes relative to the uniform reference measure. We state the exact form, since it will be used both conditionally and after adding further noise.
+
+\begin{lemma}[Uniform-reference contraction]\label{lem:contraction}
+Let $U$ be uniform on $\{-1,1\}^k$, let $Z$ be any finite random variable jointly distributed with $U$, and obtain $U_\theta$ by independent sign noise of correlation $\theta\in[0,1]$, independent of $(Z,U)$. Then
+\begin{equation}\label{eq:contraction}
+\II(Z;U_\theta)\le\theta^2\II(Z;U).
+\end{equation}
+\end{lemma}
+\begin{proof}
+First allow an arbitrary law for $U$, and write $W=U_\theta$. Conditional on $W_{<i}$, the mean of the noisy sign $W_i$ is $\theta$ times the mean of $U_i$. The second inequality in~\eqref{eq:entropyfacts}, followed by the chain rule, gives
+\begin{align*}
+k\ln2-\HH(W)
+&=\sum_i\bigl[\ln2-\HH(W_i\mid W_{<i})\bigr]\\
+&\le\theta^2\sum_i\bigl[\ln2-\HH(U_i\mid W_{<i})\bigr]\\
+&\le\theta^2[k\ln2-\HH(U)].
+\end{align*}
+For the last inequality, $W_{<i}$ is a degraded observation of $U_{<i}$, so $\HH(U_i\mid W_{<i})\ge\HH(U_i\mid U_{<i})$.
+
+Apply this entropy-deficit inequality to the conditional law given each value of $Z$, and average. If the unconditional $U$ is uniform, so is $W$. Thus the averaged deficits are exactly $\II(Z;U)$ and $\II(Z;W)$, proving~\eqref{eq:contraction}.
+\end{proof}
+Uniformity is required for this final identification with mutual information. The lemma is not a claim of the same contraction coefficient for arbitrary unconditional input distributions on the product channel.
+
+\subsection{The two direct classes}\paragraph{Large output bias.}
+\begin{lemma}\label{lem:bias}
+If $|m|\ge13/20$, then $\II(f(X);Y)\le\kappa(\rho)$ for all $0\le\rho\le1$.
+\end{lemma}
+\begin{proof}
+By~\eqref{eq:entropyfacts} and $\ln2<7/10$, the output entropy satisfies
+\[
+\eta(m)\le\ln2-\frac{m^2}{2}<\frac7{10}-\frac{169}{800}=\frac{391}{800}<\frac12.
+\] Lemma~\ref{lem:contraction}, with $Z=f(X)$ and $U=X$, therefore gives, for $\rho>0$,
+\[
+\II(f(X);Y)\le\rho^2\HH(f(X))<\frac{\rho^2}{2}\le\kappa(\rho).
+\]
+At $\rho=0$, the observation is independent of the output.
+\end{proof}
+
+\paragraph{Large coordinate correlation.}
+A large positive coefficient $b=\E(FX_i)$ means that $F$ agrees with $X_i$ with probability $(1+b)/2$. We exploit that coordinate directly, rather than treating its mass as part of an undifferentiated Fourier bound.
+
+\begin{lemma}\label{lem:largecoordinate}
+If some $|b_i|\ge13/20$ and $0\le\rho\le9/10$, then $\II(f(X);Y)\le\kappa(\rho)$.
+\end{lemma}
+\begin{proof}
+Reverse the orientation of the coordinate if needed, so its coefficient is $b\ge13/20$. Its section means are $(1+m-b)/2$ and $(1+m+b)/2$; in particular, $|m|+b\le1$.
+
+Let $Y_i$ be the noisy value of this coordinate and let $X'$ denote all the other original coordinates. Given $Y_i$, the vector $X'$ is still uniform, because the selected coordinate and its noise are independent of the remaining coordinates. Conditional on $Y_i=y_i$, the remaining noise is independent of $(f(X),X')$. Hence $f(X)\to X'\to Y'$ is a Markov chain in that conditional experiment, even though $f(X)$ may be randomized given $X'$. Apply Lemma~\ref{lem:contraction} for each $y_i$ and average. Rearranging the resulting conditional mutual-information inequality yields
+\begin{equation}\label{eq:conditionalcontraction}
+\HH(f\mid Y)\ge(1-\rho^2)\HH(f\mid Y_i)+\rho^2\HH(f\mid X',Y_i).
+\end{equation}
+The first entropy on the right is $Q(m,\rho b)$, with the even extension of~\eqref{eq:Q} in its first variable. For the second, put $\sigma=\Pp(f_0(X')\ne f_1(X'))$. If the sections agree, the value of $f$ is determined by $X'$. If they disagree, its residual entropy given $Y_i$ is $h(p)=\eta(\rho)$. Therefore
+\[
+\HH(f\mid X',Y_i)=\sigma\eta(\rho),\qquad
+\sigma\ge|\E f_1-\E f_0|=b.
+\]
+Substitution in~\eqref{eq:conditionalcontraction} gives
+\begin{equation}\label{eq:localentropy}
+\HH(f\mid Y)\ge(1-\rho^2)Q(m,\rho b)+\rho^2b\eta(\rho).
+\end{equation}
+Consequently the information is at most
+\begin{equation}\label{eq:U}
+U_\rho(m,b)=\eta(m)-(1-\rho^2)Q(m,\rho b)-\rho^2b\eta(\rho).
+\end{equation}
+Two scalar facts finish the argument. On $|m|+b\le1$, the function $U_\rho(m,b)$ is even and concave in $m$, hence $U_\rho(m,b)\le U_\rho(0,b)$. Also,
+\begin{equation}\label{eq:largecoordscalar}
+(1-\rho^2)\eta(\rho b)-(1-b\rho^2)\eta(\rho)\ge0
+\quad\left(\frac{13}{20}\le b\le1,\ 0\le\rho\le\frac9{10}\right).
+\end{equation}
+Appendix~\ref{app:local} proves both facts. The last inequality is exactly $U_\rho(0,b)\le\kappa(\rho)$.
+\end{proof}
+The first reduction centers the \emph{upper bound on information}, not the function itself. No assumption of balanced output was made in~\eqref{eq:localentropy}.
+
+\subsection{Fourier mass when no coordinate dominates}\label{sec:geometric}
+It remains to treat $|m|,\max_i|b_i|\le13/20$. For $S\subseteq\{1,\ldots,n\}$, let
+\[
+\chi_S(x)=\prod_{i\in S}x_i,\qquad
+\widehat F(S)=\E[F(X)\chi_S(X)],\qquad
+W_k(F)=\sum_{|S|=k}\widehat F(S)^2.
+\]
+The characters are an orthonormal basis. Parseval gives $\sum_kW_k(F)=1$, while $W_0(F)=m^2$ and $W_1(F)=\sum_i b_i^2$. For an indicator $g$, all nonconstant Fourier coefficients of $2g-1$ are twice those of $g$. Their squared weights therefore differ by a factor of four.
+
+Two elementary estimates control this class. Antipodal pairing bounds the first-level mass of a section in terms of its mean. A polynomial estimate treats linear combinations whose coefficients are all small. The mean-dependent inequality $W_1(g)\le a/2$ is standard in substance~\cite{YT,FWY}; its short proof is included to fix normalization.
+
+\begin{lemma}[Antipodal pairing]\label{lem:antipodal}
+For any indicator $g$ on a finite sign cube, with $a=\E g$, one has
+\begin{equation}\label{eq:antipodal}
+\frac a2-W_1(g)
+=\frac12\E[g(X)g(-X)]+\sum_{\substack{k\ge3\\ k\text{ odd}}}W_k(g)\ge0.
+\end{equation}
+Consequently $W_1(g)\le\min(a,1-a)/2$.
+\end{lemma}
+\begin{proof}
+Set $g_{\rm odd}(x)=[g(x)-g(-x)]/2$. Since $\chi_S(-x)=(-1)^{|S|}\chi_S(x)$, orthogonality gives
+\[
+\E g_{\rm odd}^2=\sum_{k\text{ odd}}W_k(g).
+\]
+On the other hand, $g^2=g$ and the uniform law is invariant under $x\mapsto-x$, so
+\[
+\E g_{\rm odd}^2=\frac14\E[g(X)-g(-X)]^2
+=\frac a2-\frac12\E[g(X)g(-X)].
+\]
+Separating degree one proves~\eqref{eq:antipodal}. Applying the bound to $1-g$ gives the complementary mean bound, because nonconstant squared coefficients are unchanged.
+\end{proof}
+For balanced functions, this elementary bound becomes useful after splitting at a coordinate with a moderately large coefficient.
+
+For the remaining small-coefficient case, we need the following bound on a sum of independent signs. Its constant is sufficient for the Fourier cap below.
+\begin{lemma}[A capped sign-sum estimate]\label{lem:rademacher}
+Let $R=\sum_j a_jX_j$ for independent uniform signs, with $\sum_j a_j^2=1$ and $\max_j|a_j|\le2/5$. Then
+\begin{equation}\label{eq:cappedR}
+\E|R|\le\frac78.
+\end{equation}
+\end{lemma}
+Appendix~\ref{app:fourierconstants} gives a fixed even polynomial $P\ge|\cdot|$ by a factored identity, computes its moments, and reduces $\E P(R)\le7/8$ to two rational endpoint comparisons. The polynomial degree is not a restriction on the Fourier degree of $g$ or on the number of inputs.
+
+\begin{lemma}[A balanced first-level estimate]\label{lem:balancedcap}
+If $g$ is balanced and $\max_i|\E(gX_i)|\le13/40$, then $W_1(g)\le31/160$.
+\end{lemma}
+\begin{proof}
+Put $c_i=\E(gX_i)$, $\beta=\max_i|c_i|$, $w=\sum_i c_i^2$, and $L_1=\sum_i c_iX_i$. Since $0\le g\le1$ and $L_1$ is symmetric,
+\begin{equation}\label{eq:linearprojection}
+w=\E(gL_1)\le\E(L_1)_+=\tfrac12\E|L_1|.
+\end{equation}
+First suppose $\beta\le7/40$. If $w\ge31/160$, the coefficients of $L_1/\sqrt w$ have squared maximum at most
+\[
+\frac{(7/40)^2}{31/160}=\frac{49}{310}<\frac4{25}.
+\]
+Lemma~\ref{lem:rademacher} gives $\E|L_1|\le(7/8)\sqrt w$. Equation~\eqref{eq:linearprojection} then implies
+\[
+w\le\frac7{16}\sqrt w,\qquad w\le\frac{49}{256}<\frac{31}{160},
+\]
+a contradiction. Thus $w<31/160$ in this case.
+
+For $7/40\le\beta\le13/40$, split at a positively oriented coordinate attaining $\beta$. The section means are $1/2-\beta$ and $1/2+\beta$. Apply Lemma~\ref{lem:antipodal} to the sections, complementing the second. Complementation preserves coefficient norms, so each original section vector has squared norm at most $(1/2-\beta)/2$. Their average is the parent vector; the triangle inequality gives
+\begin{equation}\label{eq:sectioncap}
+w\le\beta^2+\frac{1/2-\beta}{2}
+=\left(\beta-\frac14\right)^2+\frac3{16}
+\le\left(\frac3{40}\right)^2+\frac3{16}
+=\frac{309}{1600}<\frac{31}{160}.
+\end{equation}
+Here $|\beta-1/4|\le3/40$ is exactly $\beta\in[7/40,13/40]$. Together with the small-$\beta$ case it covers every permitted coefficient.
+
+\end{proof}
+\paragraph{Including the output mean.} The estimate just proved assumes balance. We need an estimate for $m^2+W_1(F)$ with no balance assumption. The following lift puts $m$ into one extra linear coefficient and therefore preserves exactly the quantity needed, not mutual information.
+
+\begin{proposition}[Bias-inclusive Fourier estimate]\label{prop:cap}
+If $|m|,\max_i|b_i|\le13/20$, then
+\begin{equation}\label{eq:cap}
+m^2+W_1(F)\le\wn,\qquad \wn:=\frac{31}{40}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Add an independent uniform sign $z$ and set
+\[
+F^\sharp(x,z)=zF(zx).
+\]
+With the change of variables $u=zx$, the pair $(u,z)$ is independent and uniform. It follows that
+\[
+\E F^\sharp=0,\qquad
+\E(F^\sharp z)=\E F(u)=m,\qquad
+\E(F^\sharp x_i)=\E(F(u)u_i)=b_i.
+\]
+Thus the indicator $(1+F^\sharp)/2$ is balanced and its coordinate coefficients have magnitude at most $13/40$. Lemma~\ref{lem:balancedcap} gives
+\[
+\frac{m^2+\sum_i b_i^2}{4}\le\frac{31}{160},
+\]
+which is~\eqref{eq:cap}.
+\end{proof}
+The lift is used only for the coefficient estimate. We do not identify the mutual information of $F^\sharp$ with that of $F$.

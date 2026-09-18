@@ -1,0 +1,490 @@
+{
+ "schema": "obligation table for the CK v9.1 Lean formalization; statuses: proved | compiled_conditional | draft_uncompiled | not_started | blocked | mathematical_defect",
+ "generated": "2026-09-17 (session 8): every layer closed; full gate PASSED; lean4checker replay of all project modules PASSED",
+ "global_blocker": "NONE. Full mathlib olean cache; all 42 project source files compile; full gate EXACT_CK_TARGET_ACCEPTED_BY_LEAN_AXIOMS_AUDITED.",
+ "kernel_checked_declarations": {
+  "F2_gate_partial_32": "PASSED (PARTIAL_MODULE_BUILD_AND_AXIOM_AUDIT_PASSED); all 32 declarations in DECLARATIONS.json compiled, each depends on exactly [propext, Classical.choice, Quot.sound]; see gate_run/RESULT.json",
+  "CK.Semantics (9)": [
+   "CK.bool_sum_kernel_factor",
+   "CK.kernel_row_sum",
+   "CK.kernel_symm",
+   "CK.kernel_nonneg",
+   "CK.indicator_nonneg",
+   "CK.indicator_le_one",
+   "CK.posterior_nonneg",
+   "CK.posterior_le_one",
+   "CK.posterior_mean"
+  ],
+  "CK.Sections (5 + def sectionLast)": [
+   "CK.kernel_snoc",
+   "CK.posterior_snoc",
+   "CK.avg_snoc",
+   "CK.mean_snoc",
+   "CK.conditionalEntropy_snoc"
+  ],
+  "axioms": "[propext, Classical.choice, Quot.sound] for every listed declaration (logs/semantics_axioms.txt, logs/sections_axioms.txt, gate_run/axioms.log)",
+  "CK.Relabel (9)": [
+   "CK.relabel (def)",
+   "CK.permCube (def)",
+   "CK.sum_cube_comp",
+   "CK.kernel_comp",
+   "CK.posterior_relabel",
+   "CK.avg_comp",
+   "CK.mean_relabel",
+   "CK.conditionalEntropy_relabel",
+   "CK.information_relabel"
+  ],
+  "CK.SmallGap (9)": [
+   "CK.swapLast (def)",
+   "CK.snoc_snoc_swap",
+   "CK.sectionLast_relabel_swap",
+   "CK.mean_nonneg",
+   "CK.mean_le_one",
+   "CK.gapLast (def)",
+   "CK.mean_sectionLast_relabel_swap",
+   "CK.gap_sum_le_one",
+   "CK.relabel_one",
+   "CK.exists_small_gap"
+  ],
+  "CK.AvgLemmas (11)": [
+   "CK.avg_add",
+   "CK.avg_const_mul",
+   "CK.avg_sub",
+   "CK.avg_le_avg",
+   "CK.abs_avg_le_avg_abs",
+   "CK.avg_of_unique",
+   "CK.binaryEntropy_nonneg'",
+   "CK.binaryEntropy_symm",
+   "CK.conditionalEntropy_nonneg",
+   "CK.posterior_zero",
+   "CK.mean_zero"
+  ],
+  "CK.ProfileInduction (7)": [
+   "CK.avg_linear3",
+   "CK.profile_zero",
+   "CK.binaryEntropy_one",
+   "CK.binaryEntropy_zero",
+   "CK.profile_one",
+   "CK.profile_step_of_scalar",
+   "CK.lowNoiseProfile_of_scalar : ScalarMixingClaim -> LowNoiseProfileClaim"
+  ],
+  "gate_run4": "verify_kernel.py --mode partial re-run with CK.lean importing all 10 CK modules: PASSED, 13 source files pass hygiene, 0 build warnings, 32 audited declarations unchanged",
+  "CK.EntropyBounds (5)": [
+   "CK.log_five_le_two",
+   "CK.log_twenty_le",
+   "CK.binaryEntropy_le_half_of_small (h(p) <= 1/2 for 0<p<=1/20, unconditional)",
+   "CK.lowNoiseCK_of_profile : LowNoiseProfileClaim -> Pinsker -> lowNoiseCK",
+   "CK.lowNoiseCK_of_scalar_and_pinsker : ScalarMixingClaim -> Pinsker -> lowNoiseCK"
+  ],
+  "gate_run5": "PASSED with 14 source files, 0 warnings",
+  "CK.Pinsker (7, session 7)": [
+   "CK.binaryEntropy_eq_binEntropy",
+   "CK.two_mul_le_log_sub_log",
+   "CK.binEntropy_half",
+   "CK.hasDerivAt_F",
+   "CK.pinsker_upper",
+   "CK.pinsker : forall mu, 0 <= mu -> mu <= 1 -> binaryEntropy mu <= Real.log 2 - (2*mu-1)^2/2",
+   "CK.lowNoiseCK_of_scalar : ScalarMixingClaim -> lowNoiseCK"
+  ],
+  "CK.LogEnclosure (1, session 7)": [
+   "CK.logEnclosure_proved : LogEnclosureGoal"
+  ],
+  "extended_audit_session7": "266 declarations across all 20 CK modules + CKF2.Spec audited; every one on exactly [propext, Classical.choice, Quot.sound]",
+  "gate_run7": "PASSED with 22 source files, 0 warnings, 32 pinned declarations unchanged",
+  "CK.AppF (62, session 7)": "CK/Constants.lean: all Appendix E/F rational comparisons discharged from logEnclosure_proved (N=12): 27 two-sided log brackets, 15 manuscript log rows (18 one-sided bounds), 4 lambda-bar knot inequalities, 7 binary-entropy rows, 2 combined comparisons, 3 rational comparisons",
+  "CK.EtaDeriv (23, session 7)": "B1/B2: hasDerivAt_eta (eta' = -atanhLog), hasDerivAt_atanhLog (atanhLog' = curvature), hasDerivAt_curvature, hasDerivAt_binaryEntropy, parity (eta_even, atanhLog_neg, curvature_even), signs and monotonicity (le_atanhLog, atanhLog_mono, eta_antitoneOn, eta_pos, curvature_mono), continuity, kappa_ge_half_sq (eq:entropyfacts, from CK.pinsker)",
+  "CK.Curvature (11, session 7)": "B3: CK.curvature_identity : CurvatureGoal (manuscript eq:curvaturepositive). Integral-free: the primitive psiCurv is monotone on [x,y] by monotoneOn_of_deriv_nonneg; derivative sign from atanhLog u >= u and concavity of wAux = 2u*eta - (1-u^2)*atanhLog (wAux_nonneg). x=0 boundary via an exact removable-singularity rewrite (psiCurv_zero_eq), no limits.",
+  "CK.ProductCentering (14, session 7)": "B4: CK.product_centering : ProductCenteringGoal (Lemma lem:product, K>=K0 and KM>=K0M0). z-derivative of Q*L equals curvatureGap|nu-z|(nu+z)/4 >= 0 by B3; nu-monotonicity of K and K*M; boundary nu+t=1 needs no limit argument (only eta, continuous everywhere, appears in the nu-space functions).",
+  "CK.Transfer (8, session 7)": "B5: CK.transfer_product and CK.transfer_gain (Lemma lem:transfer, eq:transferproduct / eq:transfergain) in centered coordinates, plus abstract algebraic cores and CK.pairEntropy_le_eta (the M <= M0 concavity comparison behind eq:relative-transfer).",
+  "CK.Transfer (10, session 7)": "B5: CK.transfer_product, CK.transfer_gain, CK.transfer_relative (eq:transferproduct / eq:transfergain / eq:relative-transfer) in centered coordinates, abstract algebraic cores, CK.pairEntropy_le_eta (M <= M0), pairEntropy_le_log_two.",
+  "CK.GainBounds (7, session 7)": "C-layer part 1: CK.gain_integral (eq:gainintegral, integral-free via Lpair_le as midpoint Jensen), atanhLog_le_mul_curvature and atanhLog_div_le (atanh u/u monotone), neg_log_one_sub_ge / neg_log_one_sub_le / the s^3 refinement (eq:Bbounds as log inequalities), binaryEntropy_le_mul (h(p) <= p(ln(1/p)+1)).",
+  "F2_gate_full_session8": "PASSED (EXACT_CK_TARGET_ACCEPTED_BY_LEAN_AXIOMS_AUDITED): CKF2.exactTargetAccepted : CKF2.Spec.Target compiled from CK.courtadeKumar_proved; axioms [propext, Classical.choice, Quot.sound]; see gate_full/RESULT.json",
+  "extended_audit_session8": "605 declarations across all 40 CK modules + CKF2.Spec: every one depends only on a subset of [propext, Classical.choice, Quot.sound] (extended_audit/extended_axioms.log)",
+  "lean4checker_session8": "independent kernel replay of all 41 project modules (39 CK modules, CKF2.Spec, F2CompletionGate) with lean4checker v4.19.0: 0 failures (mathlib not replayed)",
+  "CK.KappaSeries (7)": "hasSum_kappa (eq:series), kappa_ge_partial, kappa_even, kappa_one, kappa_nonneg, continuous_kappa, kappa_scaling (eq:entropyfacts)",
+  "CK.Bridge (9)": "binaryEntropy_eq_eta, half_sum_entropy_eq, mixedEntropy_eq, scalarSlack_eq, nu_add_t_le_one, abs_sub_eq_one_cases, scalarSlack_nonneg_of_eq, scalarSlack_endpoints, le_binaryEntropy_of_small'",
+  "CK.InteriorEstimate": "interior_product (eq:interiorproduct) + table_bound, psi_mono, cInt lemmas",
+  "CK.EndpointCommon (10)": "eta_eq_binaryEntropy_eps, log_inv_ge, binaryEntropy_mono_half, le_binaryEntropy_of_small, binaryEntropy_ge_eps, K0_ge_alpha, J0_ge_rbeta, M0_ge, ell_le, q0_ge_Q (eq:alphabeta, eq:endquad)",
+  "CK.EndpointSmall (2)": "endpoint_interval (eq:endpointinterval), gain_dominance (eq:gaindominance)",
+  "CK.EndpointLarge": "endpoint_normalized (app:normalized / eq:relative-positive) + core_psi, gfun_monotone, alpha_ge, endpoint_assemble",
+  "CK.ScalarMixing (3)": "linear_scalar_mixing : LinearScalarMixingClaim (thm:linear-mixing), scalar_mixing : ScalarMixingClaim (Lemma 2.1), lowNoise_proved : lowNoiseCK (cor:low)",
+  "CK.Anchor": "strict_anchor : StrictAnchorGoal (eq:anchorcomparison)",
+  "CK.Comparison": "entropy_comparison : EntropyComparisonGoal (eq:comparison) + envelope_of_criterion, lambdaReq_le_lambdaBar, lambdaBar_convexOn",
+  "CK.Fourier (27)": "chi, fourierCoeff, weight, signOf, negCube; orthonormality, sum_chi_mul_chi, fourier_expansion, plancherel, parseval, sum_weight, weight_zero/one, fourierCoeff_indicator, negation and section lemmas",
+  "CK.SignSum (7)": "avg_signSum_sq/pow4/pow6/pow8/pow10 (moment formulas, all n), avg_signSum, capped_sign_sum (lem:rademacher)",
+  "CK.NoiseOperator (12)": "noiseOp_chi, noiseOp_eq_sum, fourierCoeff_noiseOp, posterior_eq_noiseOp, abs_noiseOp_le_one, binaryEntropy_mean_eq, conditionalEntropy_eq_avg_eta(_abs), cancellation (eq:cancellation), energy_lower_bound (lem:energy with free cap)",
+  "CK.FourierCap (6)": "fourierCoeff_comp_perm_singleton, weight_one_comp_perm, weight_one_indicator_le (lem:antipodal), balanced_first_level (lem:balancedcap), lift, bias_inclusive_cap (prop:cap)",
+  "CK.Deficit (7)": "ent, IsDist, noisy, deficit; noisy_isDist, noisy_add, noisy_smul, ent_nonneg, ent_mixture_ge, deficit_bool, deficit_noisy_le (deficit contraction)",
+  "CK.InfoContraction (8)": "infoP, avg_noisy, infoP_noisy_le (lem:contraction), posterior_eq_noisy, information_le_contraction, kernel_compose, noisy_noisy, information_degrade, conditionalEntropy_ge_conditional (eq:conditionalcontraction)",
+  "CK.LargeCoordScalar (3)": "large_coord_scalar (eq:largecoordscalar), U_le_U_zero (App B.1), concaveOn_eta",
+  "CK.LargeBias": "large_bias (lem:bias)",
+  "CK.LargeCoordinate (3)": "information_compl, mean_compl, large_coordinate_last (lem:largecoordinate)",
+  "CK.MiddleHigh (2)": "middle_range (prop:middle), high_noise (prop:high)",
+  "CK.Complementary (3)": "large_coordinate (any coordinate), complementary_proved : complementaryCK, courtadeKumar_proved : CourtadeKumar (thm:main)"
+ },
+ "layers": [
+  {
+   "layer": "0",
+   "name": "F2 partial gate (32 inherited draft declarations)",
+   "items": [
+    {
+     "id": "F2.gate.partial",
+     "lean": "verify_kernel.py --mode partial",
+     "manuscript": "n/a",
+     "status": "proved"
+    },
+    {
+     "id": "F2.Definitions",
+     "lean": "CK.Definitions (CourtadeKumar, information, posterior, kernel, binaryEntropy, ...)",
+     "manuscript": "Sec 1 (1.1), (1.2), Thm 1.1",
+     "status": "proved",
+     "note": "imports narrowed from `import Mathlib` to 8 targeted modules; statements unchanged; static audit found the target matches the manuscript"
+    },
+    {
+     "id": "F2.Algebra.25",
+     "lean": "CK.Algebra.* (25 declarations)",
+     "manuscript": "algebraic sub-steps of Secs 2-6, App B/D",
+     "status": "proved"
+    },
+    {
+     "id": "F2.assemble_conditional",
+     "lean": "CK.assemble_conditional",
+     "manuscript": "Sec 7 proof of Thm 1.1 (case split at p=1/20)",
+     "status": "proved (conditional by statement: both branches are hypotheses)"
+    },
+    {
+     "id": "F2.abstract_profile_induction",
+     "lean": "CK.abstract_profile_induction",
+     "manuscript": "Prop 2.4 (arithmetic skeleton only)",
+     "status": "proved (arithmetic skeleton only)"
+    },
+    {
+     "id": "F2.Spec.matches_f1_target",
+     "lean": "CKF2.Spec.matches_f1_target (rfl)",
+     "manuscript": "Thm 1.1",
+     "status": "proved"
+    }
+   ]
+  },
+  {
+   "layer": "A",
+   "name": "Finite model and probability semantics",
+   "items": [
+    {
+     "id": "A1",
+     "lean": "CK.kernel_row_sum (ProbabilityKernelGoal)",
+     "manuscript": "Lemma 2.3 proof: rows of K_{p,k} sum to one",
+     "status": "proved",
+     "note": "CK.kernel_row_sum"
+    },
+    {
+     "id": "A2",
+     "lean": "CK.kernel_symm, CK.output_uniform, CK.bayes_uniform",
+     "manuscript": "Lemma 2.3: P(X'=x|W=w)=K(w,x)",
+     "status": "proved",
+     "note": "CK.kernel_symm, CK.kernel_nonneg, CK.posterior_nonneg, CK.posterior_le_one"
+    },
+    {
+     "id": "A3",
+     "lean": "CK.posterior_mixture",
+     "manuscript": "(2.4) conditional mixtures",
+     "status": "proved",
+     "note": "CK.posterior_snoc (last-coordinate split via Fin.snoc)"
+    },
+    {
+     "id": "A4",
+     "lean": "CK.condEntropy_split",
+     "manuscript": "(2.5) H(f|Y)=E M_p(A,B)",
+     "status": "proved",
+     "note": "CK.conditionalEntropy_snoc"
+    },
+    {
+     "id": "A5",
+     "lean": "CK.section_means, CK.posterior_mean",
+     "manuscript": "(2.6) E A=mu_0, E B=mu_1",
+     "status": "proved",
+     "note": "CK.mean_snoc, CK.posterior_mean"
+    },
+    {
+     "id": "A6",
+     "lean": "CK.small_gap_coordinate",
+     "manuscript": "Lemma 2.2",
+     "status": "proved",
+     "note": "CK.exists_small_gap (two-coordinate form CK.gap_sum_le_one; relabelling invariance CK.information_relabel)"
+    },
+    {
+     "id": "A7",
+     "lean": "CK.variance_identity (instantiation of Algebra.variance_restriction)",
+     "manuscript": "(2.1)",
+     "status": "proved",
+     "note": "CK.Algebra.variance_restriction instantiated inside CK.profile_step_of_scalar"
+    },
+    {
+     "id": "A8",
+     "lean": "CK.lowNoiseProfile_of_scalar CK.scalar_mixing",
+     "manuscript": "Prop 2.4 (actual Boolean instantiation)",
+     "status": "proved",
+     "note": "Prop 2.4 now unconditional: scalar_mixing is kernel-checked (session 8)."
+    },
+    {
+     "id": "A9",
+     "lean": "CK.deficit_noisy_le, CK.infoP_noisy_le, CK.information_le_contraction, CK.information_degrade, CK.conditionalEntropy_ge_conditional",
+     "manuscript": "Lemma 5.1 (chain rule + kappa(theta u) <= theta^2 kappa(u))",
+     "status": "proved",
+     "note": "Lemma 5.1 (uniform-reference contraction) via the deficit induction on the cube (chain rule + concavity + kappa_scaling); three applied forms (session 8)."
+    }
+   ]
+  },
+  {
+   "layer": "B",
+   "name": "Entropy and real analysis",
+   "items": [
+    {
+     "id": "B1",
+     "lean": "CK.eta_deriv, CK.eta_deriv2",
+     "manuscript": "Sec 1.3 eta'=-atanh, eta''=-1/(1-u^2)",
+     "status": "proved",
+     "note": "CK.hasDerivAt_eta, CK.hasDerivAt_atanhLog, CK.hasDerivAt_curvature (CK/EtaDeriv.lean); eta'' = -curvature is carried as atanhLog' = curvature."
+    },
+    {
+     "id": "B2",
+     "lean": "CK.hasSum_kappa, CK.kappa_ge_half_sq, CK.kappa_scaling",
+     "manuscript": "(1.5), (1.6)",
+     "status": "proved",
+     "note": "eq:series and kappa_scaling now formalized (CK/KappaSeries.lean, session 8)."
+    },
+    {
+     "id": "B3",
+     "lean": "CK.curvature_identity (CurvatureGoal)",
+     "manuscript": "(3.8), App A",
+     "status": "proved",
+     "note": "CK.curvature_identity : CurvatureGoal (CK/Curvature.lean), session 7. Integral-free proof via the explicit primitive psiCurv."
+    },
+    {
+     "id": "B4",
+     "lean": "CK.product_centering (ProductCenteringGoal)",
+     "manuscript": "Lemma 3.1 incl. endpoint/continuity cases",
+     "status": "proved",
+     "depends": [
+      "B3"
+     ],
+     "note": "CK.product_centering : ProductCenteringGoal (CK/ProductCentering.lean), session 7."
+    },
+    {
+     "id": "B5",
+     "lean": "CK.transfer_product, CK.transfer_gain",
+     "manuscript": "Lemma 3.2",
+     "status": "proved",
+     "note": "CK.transfer_product, CK.transfer_gain, CK.transfer_relative (CK/Transfer.lean), session 7; plus CK.pairEntropy_le_eta (M <= M0). The relative transfer (eq:relative-transfer) was added after adversarial review flagged it as consumed by centered-estimate regime 3."
+    }
+   ]
+  },
+  {
+   "layer": "C",
+   "name": "Scalar lemma with actual logarithms",
+   "items": [
+    {
+     "id": "C1",
+     "lean": "CK.gain_integral",
+     "manuscript": "(4.1)",
+     "status": "proved",
+     "note": "CK.gain_integral (CK/GainBounds.lean): K0 >= 2pt*atanhLog((1-p)t) = eq:gainintegral, integral-free via Lpair_le as midpoint Jensen. Supporting: atanhLog_div_le (c(t)/t monotone), eq:Bbounds, binaryEntropy_le_mul."
+    },
+    {
+     "id": "C2",
+     "lean": "CK.interior_product",
+     "manuscript": "(4.2), App B.1 (table of five intervals)",
+     "status": "proved",
+     "note": "eq:interiorproduct (session 8)."
+    },
+    {
+     "id": "C3",
+     "lean": "CK.endpoint_interval",
+     "manuscript": "(4.4), App B.3",
+     "status": "proved",
+     "note": "eq:endpointinterval (session 8)."
+    },
+    {
+     "id": "C4",
+     "lean": "CK.gain_dominance",
+     "manuscript": "(4.5)",
+     "status": "proved",
+     "note": "eq:gaindominance K0 ≥ M0/3 (session 8)."
+    },
+    {
+     "id": "C5",
+     "lean": "CK.endpoint_normalized",
+     "manuscript": "(4.6), App B.4",
+     "status": "proved",
+     "note": "eq:endpointproduct/app:normalized: nonnegative numerator and K0 − ℓ²/M0 ≥ (453/40000)pt (session 8)."
+    },
+    {
+     "id": "C-final",
+     "lean": "CK.linear_scalar_mixing, CK.scalar_mixing",
+     "manuscript": "Lemma 2.1 with t=0 and t=1 endpoints",
+     "status": "proved",
+     "note": "Theorem thm:linear-mixing (p/500) and Lemma 2.1 (p²/25), all a,b ∈ [0,1], d ∈ [0,1/2], 0 < p ≤ 1/20 (session 8)."
+    }
+   ]
+  },
+  {
+   "layer": "D",
+   "name": "Boolean Fourier layer",
+   "items": [
+    {
+     "id": "D1",
+     "lean": "CK.chi_orthonormal, CK.parseval, CK.plancherel",
+     "manuscript": "Sec 5.4",
+     "status": "proved",
+     "note": "CK/Fourier.lean (session 8)."
+    },
+    {
+     "id": "D2",
+     "lean": "CK.noiseOp_chi, CK.fourierCoeff_noiseOp",
+     "manuscript": "Sec 6.1 T_rho chi_S = rho^|S| chi_S",
+     "status": "proved",
+     "note": "CK/NoiseOperator.lean (session 8)."
+    },
+    {
+     "id": "D3",
+     "lean": "CK.weight_one_indicator_le",
+     "manuscript": "Lemma 5.4",
+     "status": "proved",
+     "note": "Lemma 5.4 consequence W1(g) ≤ min(a,1−a)/2 (session 8)."
+    },
+    {
+     "id": "D4",
+     "lean": "CK.capped_sign_sum, CK.avg_signSum_pow10",
+     "manuscript": "Lemma 5.5, App D (moment recursion in every dimension)",
+     "status": "proved",
+     "note": "Lemma 5.5 with the moment recursion in every dimension (session 8)."
+    },
+    {
+     "id": "D5",
+     "lean": "CK.balanced_first_level",
+     "manuscript": "Lemma 5.6",
+     "status": "proved",
+     "note": "Lemma 5.6 (session 8)."
+    },
+    {
+     "id": "D6",
+     "lean": "CK.bias_inclusive_cap",
+     "manuscript": "Prop 5.7 (balancing lift)",
+     "status": "proved",
+     "note": "Prop 5.7 via the balancing lift (session 8)."
+    },
+    {
+     "id": "D7",
+     "lean": "CK.cancellation, CK.energy_lower_bound",
+     "manuscript": "Lemma 6.1 (6.3)",
+     "status": "proved",
+     "note": "Lemma 6.1 in inequality form with a free cap (session 8)."
+    }
+   ]
+  },
+  {
+   "layer": "E",
+   "name": "Complementary entropy branch",
+   "items": [
+    {
+     "id": "E1",
+     "lean": "CK.large_bias",
+     "manuscript": "Lemma 5.2",
+     "status": "proved",
+     "note": "Lemma 5.2 (session 8)."
+    },
+    {
+     "id": "E2",
+     "lean": "CK.large_coordinate_last, CK.large_coordinate",
+     "manuscript": "Lemma 5.3, App C",
+     "status": "proved",
+     "note": "Lemma 5.3 incl. App B facts (session 8)."
+    },
+    {
+     "id": "E3",
+     "lean": "CK.entropy_comparison",
+     "manuscript": "(6.5), App E.2-E.3",
+     "status": "proved",
+     "note": "EntropyComparisonGoal (session 8)."
+    },
+    {
+     "id": "E4",
+     "lean": "CK.strict_anchor",
+     "manuscript": "(6.6), App E.1",
+     "status": "proved",
+     "note": "StrictAnchorGoal (session 8)."
+    },
+    {
+     "id": "E5",
+     "lean": "CK.middle_range",
+     "manuscript": "Prop 6.3",
+     "status": "proved",
+     "note": "Prop 6.3 (session 8)."
+    },
+    {
+     "id": "E6",
+     "lean": "CK.high_noise",
+     "manuscript": "Prop 6.4",
+     "status": "proved",
+     "note": "Prop 6.4 (session 8)."
+    }
+   ]
+  },
+  {
+   "layer": "F",
+   "name": "Finite constants",
+   "items": [
+    {
+     "id": "F1",
+     "lean": "CK.log_enclosure (LogEnclosureGoal) + 38 rational comparisons",
+     "manuscript": "App F",
+     "status": "proved",
+     "note": "CK.logEnclosure_proved : LogEnclosureGoal (session 7), plus CK/Constants.lean instantiating every rational comparison of the constants appendix as a kernel-checked theorem (namespace CK.AppF, 62 declarations). Layer F is closed."
+    }
+   ]
+  },
+  {
+   "layer": "G",
+   "name": "Final assembly",
+   "items": [
+    {
+     "id": "G1",
+     "lean": "CK.lowNoise_proved : CK.lowNoiseCK",
+     "manuscript": "Cor 2.5",
+     "status": "proved",
+     "note": "Unconditional (session 8)."
+    },
+    {
+     "id": "G2",
+     "lean": "CK.complementary_proved : CK.complementaryCK",
+     "manuscript": "Sec 7",
+     "status": "proved",
+     "note": "Session 8."
+    },
+    {
+     "id": "G3",
+     "lean": "CK.courtadeKumar_proved : CK.CourtadeKumar",
+     "manuscript": "Thm 1.1",
+     "status": "proved",
+     "note": "assemble_conditional lowNoise_proved complementary_proved (session 8)."
+    },
+    {
+     "id": "G4",
+     "lean": "CKF2.exactTargetAccepted (full gate)",
+     "manuscript": "Thm 1.1",
+     "status": "proved",
+     "note": "EXACT_CK_TARGET_ACCEPTED_BY_LEAN_AXIOMS_AUDITED (session 8); lean4checker replay of all project modules passed."
+    }
+   ]
+  }
+ ],
+ "mathematical_defects_found": [],
+ "audit_scope_without_defect": "Sections 1-7 and Appendices A-F of CK_Candidate_v9_1 (hand derivation of every inequality chain; sympy verification of (C.1)-(C.3), (D.2)-(D.4), Bernstein cubics of App E; exact-rational re-execution of App F; grid and local-optimisation checks of Lemma 2.1, Lemma 3.1, (4.2)-(4.6), (5.6), (6.5), (6.6); exhaustive check of the profile claim for n<=4). These checks are audit evidence, not kernel proofs.",
+ "full_ck_target_accepted": true,
+ "note_on_meaning": "\"proved\" means kernel-checked with the standard axioms [propext, Classical.choice, Quot.sound]. CK.courtadeKumar_proved : CK.CourtadeKumar exists and the full F2 gate accepted CKF2.exactTargetAccepted : CKF2.Spec.Target. The trusted base is the Lean 4.19.0 kernel/elaborator, the pinned mathlib olean cache, and the human reading of CKF2/Spec.lean + CK/Definitions.lean as the Courtade–Kumar inequality.",
+ "first_unresolved_critical_path_theorem": {
+  "id": "none",
+  "statement": "none — the full target is accepted",
+  "current_state": "complete"
+ }
+}

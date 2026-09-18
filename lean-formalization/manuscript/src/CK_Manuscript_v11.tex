@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,top=0.84in,bottom=0.88in,left=0.95in,right=0.95in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools,booktabs,array}
+\usepackage{enumitem,needspace,etoolbox}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\usepackage{bookmark,fancyhdr}
+\hypersetup{pdftitle={Entropy mixing and stability under Boolean noise},pdfauthor={Dimiter Kramer},pdfsubject={Reader and reuse edition v11; proposed CK proof, explicit principles and quantitative consequences}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Entropy mixing and stability under Boolean noise}
+\fancyhead[R]{}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{1.1em}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.025}
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\AtBeginEnvironment{lemma}{\Needspace{5\baselineskip}}
+\AtBeginEnvironment{proposition}{\Needspace{6\baselineskip}}
+\setcounter{tocdepth}{1}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\HH}{\mathsf H}
+\newcommand{\II}{\mathsf I}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\atanh}{\operatorname{atanh}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\wn}{\omega}
+
+\usepackage{tabularx}
+\pretocmd{\subsection}{\Needspace{9\baselineskip}}{}{}
+
+\newcommand{\proofpurpose}[1]{\par\smallskip\noindent\textit{#1}\par\smallskip}
+\title{Entropy mixing and stability under Boolean noise}
+\author{Dimiter Kramer\thanks{AI systems contributed substantially to proof development, checking code, and exposition under the author's direction. The manuscript presents a proposed proof for mathematical assessment; no end-to-end proof-assistant verification or journal acceptance is claimed.}}
+\date{17 September 2026\quad\textnormal{(reader and reuse edition v11)}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We present an analytic proof candidate for the Courtade--Kumar inequality, together with a dimension-independent stability estimate. The argument is organized around three statements that can be used separately. A restriction--mixing criterion converts a two-posterior entropy inequality into a bound in every dimension. An entropy-product comparison identifies the symmetric pair as an extremizer for the product of mixing gain and post-mixing entropy. A spectral-cap certificate converts a scalar entropy envelope into an information bound. At low noise, the first two statements control all output means by induction. At complementary noise, an antipodal identity and a polynomial moment bound supply the spectral cap. Retaining the mixing surplus gives a second induction and an explicit bound on distance to the nearest coordinate. Complete scalar proofs, exact finite-constant bounds, and examples are included. The paper uses no specialized external theorem as a premise.
+\end{abstract}
+
+\input{01_introduction.tex}
+\input{02_induction.tex}
+\input{03_entropy_mixing.tex}
+\input{04_fourier_structure.tex}
+\input{05_information_bound.tex}
+\input{06_stability.tex}
+\input{07_use_and_limits.tex}
+\appendix
+\input{appendices.tex}
+\input{references.tex}
+\end{document}

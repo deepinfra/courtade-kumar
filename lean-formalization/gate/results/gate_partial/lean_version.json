@@ -1,0 +1,10 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "--version"
+  ],
+  "returncode": 0,
+  "seconds": 0.373
+}

@@ -1,0 +1,3 @@
+# Lean build outputs and the mathlib olean cache (fetch with `lake exe cache get`)
+lean/.lake/
+**/.DS_Store

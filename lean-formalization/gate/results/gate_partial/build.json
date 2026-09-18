@@ -1,0 +1,10 @@
+{
+  "command": [
+    "lake",
+    "build",
+    "CK",
+    "CKF2"
+  ],
+  "returncode": 0,
+  "seconds": 0.565
+}

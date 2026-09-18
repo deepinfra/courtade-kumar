@@ -1,0 +1,682 @@
+\section{Centered two-point estimates}\label{app:centered}
+This appendix proves the three rows used in Section~\ref{sec:scalarfinish}. We retain the explicit product estimate at the endpoint as an intermediate step, then divide by a controlled entropy denominator.
+
+\subsection{The estimates to be proved}
+For $0<t<1$, integration of $-\eta'(u)=\atanh u$ and midpoint Jensen give
+\begin{equation}\label{eq:gainintegral}
+K_0=t\int_\rho^1\atanh(vt)\dd v
+\ge pt\ln\frac{1+(1-p)t}{1-(1-p)t}.
+\end{equation}
+The quantitative interior estimate is
+\begin{equation}\label{eq:interiorproduct}
+K_0M_0-h(p)^2t^2\ge\frac{1999}{1250000}\,pt^2,
+\quad 0<t\le22/25,\quad 0<p\le1/20.
+\end{equation}
+Appendix~\ref{app:interior} proves this from~\eqref{eq:gainintegral}, monotonicity in $p$, five endpoint comparisons, and $\ln20<749/250$. The explicit surplus will give the final term in Theorem~\ref{lem:mixing}.
+
+\paragraph{Near deterministic posteriors.}
+For $22/25\le t<1$, set
+\begin{equation}\label{eq:epsr}
+\eps=\frac{1-t}{2},\qquad r=\frac{\eps}{p}.
+\end{equation}
+The centered posteriors are $\eps,1-\eps$, so
+$J_0=h(\eps)$ and $M_0=h(p+\rho\eps)$. Keeping the actual $J_0$ matters: the entropy present before mixing helps control the quadratic.
+
+When $0<\eps\le p$, Appendix~\ref{app:rsmall} gives
+\begin{equation}\label{eq:endpointinterval}
+q_0(d)\ge\frac{23}{3600}\,pt,
+\qquad 0\le d\le\frac12.
+\end{equation}
+Here there is also a useful gain-dominance relation:
+\begin{equation}\label{eq:gaindominance}
+K_0\ge\frac{J_0}{2},\qquad\text{and therefore}\qquad K_0\ge\frac{M_0}{3}.
+\end{equation}
+To verify it, put $L=\ln(1/p)$. Since $\eps\le p\le1/20$, we have $t\ge9/10$, $J_0\le h(p)\le p(L+1)$, and the endpoint gain estimate~\eqref{eq:alphabeta} gives
+\[
+K_0\ge pt[L-\ln3+3/5]\ge\frac9{10}p(L-1/2).
+\]
+For $L\ge299/100$,
+\[
+\frac9{10}(L-1/2)-\frac{L+1}{2}
+=\frac25L-\frac{19}{20}\ge\frac{123}{500}>0.
+\]
+This proves~\eqref{eq:gaindominance}. Since $1/3>1/4$, the second part of Lemma~\ref{lem:transfer} applies with $D=1/2$.
+
+When $p\le\eps\le3/50$, Appendix~\ref{app:rlarge} instead proves the product margin
+\begin{equation}\label{eq:endpointproduct}
+K_0M_0-h(p)^2t^2\ge\frac{453}{5000}\,p^2t^2.
+\end{equation}
+The proof first moves to the worst boundary by monotonicity. Two affine lower bounds then control its positive product. The final calculation is~\eqref{eq:shortsign}; no parameter grid is used.
+
+
+We use the entropy decomposition
+\begin{equation}\label{eq:entropyremainder}
+h(s)=s\bigl[\ln(1/s)+\mathcal B(s)\bigr],\qquad
+\mathcal B(s)=-\frac{1-s}{s}\ln(1-s),\quad \mathcal B(0)=1.
+\end{equation}
+Expansion of $-\ln(1-s)$ gives
+\begin{equation}\label{eq:Bseries}
+\mathcal B(s)=1-\sum_{j\ge1}\frac{s^j}{j(j+1)}.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:Bbounds}
+1-s\le\mathcal B(s)\le1-s/2\le1,
+\qquad
+\mathcal B(s)\ge1-s/2-s^2/4\quad(0\le s\le1/3).
+\end{equation}
+For the last bound, the tail starting at $j=2$ is at most $s^2/[6(1-s)]\le s^2/4$. The lower bound $1-s$ follows from $-\ln(1-s)\ge s$. These formulas will also be used in Appendix~\ref{app:comparisons}.
+
+\subsection{Interior separations}\label{app:interior}
+Here we can use a product margin. The proof first bounds the mixing gain by its midpoint derivative, then shows that the resulting lower bound is worst at the largest permitted noise. What remains is a one-variable estimate, covered by five monotonicity intervals.
+
+Let $0<t\le22/25$ and $0<p\le1/20$. Define
+\[
+c(t)=\ln\frac{1+(19/20)t}{1-(19/20)t},\qquad L=\ln(1/p).
+\]
+The gain bound~\eqref{eq:gainintegral} gives $K_0\ge pt\,c(t)$. Since $M_0=J_0+K_0$,
+\begin{equation}\label{eq:productinterior}
+\frac{K_0M_0}{pt^2}\ge\frac{c(t)}t\eta(t)+p\,c(t)^2.
+\end{equation}
+Also $h(p)\le p(L+1)$. Consequently,
+\[
+\frac{K_0M_0-h(p)^2t^2}{pt^2}\ge\frac{c(t)}t\eta(t)-p\bigl[(L+1)^2-c(t)^2\bigr].
+\]
+For fixed $t$, the derivative of $p[(L+1)^2-c(t)^2]$ with respect to $p$ is
+\[
+L^2-1-c(t)^2>0,
+\]
+because $L\ge\ln20>299/100$ and $c(t)\le c(22/25)<5/2$. The lower bound is therefore worst at $p=1/20$. We first verify
+\begin{equation}\label{eq:tabletarget}
+\frac{c(t)}t\eta(t)+\frac{c(t)^2}{20}\ge\frac45.
+\end{equation}
+
+The ratio $c(t)/t$ increases (expand it as a power series with nonnegative coefficients), while $\eta(t)$ decreases. The following bounds therefore hold on entire intervals:
+\begin{center}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Interval for $t$ & Lower bound for $c(t)/t$ & For $\eta(t)$ & For $c(t)$\\
+\midrule
+$(0,1/2]$ & $19/10$ & $11/20$ & $0$\\
+$[1/2,3/4]$ & $2$ & $3/8$ & $1$\\
+$[3/4,4/5]$ & $7/3$ & $8/25$ & $7/4$\\
+$[4/5,21/25]$ & $39/16$ & $11/40$ & $39/20$\\
+$[21/25,22/25]$ & $325/126$ & $9/40$ & $13/6$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For each row, multiply the second and third entries and add one twentieth of the square of the fourth. The result is at least $4/5$; in the row giving equality, the underlying bounds are strict. The endpoint logarithms are
+\begin{align*}
+c(1/2)&=\ln(59/21)>1, & c(3/4)&=\ln(137/23)>7/4,\\
+c(4/5)&=\ln(22/3)>39/20, & c(21/25)&=\ln(899/101)>13/6,\\
+c(22/25)&=\ln(459/41)<5/2.
+\end{align*}
+Appendix~\ref{app:constants} verifies these and the five entropy values. This proves~\eqref{eq:tabletarget}. The sharper finite bound $\ln20<749/250$ now gives
+\[
+\frac{K_0M_0-h(p)^2t^2}{pt^2}
+\ge\frac45-\frac{(\ln20+1)^2}{20}
+\ge\frac45-\frac{(999/250)^2}{20}
+=\frac{1999}{1250000}.
+\]
+This is~\eqref{eq:interiorproduct}. The table is an endpoint argument justified by monotonicity, not a sample of signs on a continuous domain.
+
+\subsection{Endpoint separations: a common lower bound}\label{app:endpoint}
+As the centered posteriors approach $0$ and $1$, logarithms rather than quadratic approximations control the entropy. The ratio $r=\eps/p$ separates two situations: mixing supplies the dominant entropy when $r\le1$, whereas enough pre-existing entropy remains to control a discriminant when $r\ge1$. The bounds below are designed for those two uses.
+
+Let $22/25\le t<1$, and set
+\[
+\eps=\frac{1-t}{2},\quad r=\frac{\eps}{p},\quad
+u_e=\ln(1/\eps),\quad L=\ln(1/p)=u_e+\ln r.
+\]
+Here $0<\eps\le3/50$, $u_e>14/5$, and $L>299/100$. The subscript on $u_e$ distinguishes this endpoint logarithm from the curvature coordinate used in Section~\ref{app:curvature}.
+
+In~\eqref{eq:gainintegral}, the numerator is at least $459/250$, whose logarithm exceeds $3/5$. The denominator satisfies
+\[
+1-(1-p)t=p+2(1-p)\eps\le p(1+2r).
+\]
+Furthermore,~\eqref{eq:Bbounds} gives
+$\mathcal B(\eps)\ge9691/10000>19/20$. Consequently,
+\begin{equation}\label{eq:alphabeta}
+\frac{K_0}{pt}\ge\alpha:=L-\ln(1+2r)+\frac35,
+\qquad
+\frac{J_0}{pt}=\frac{r[u_e+\mathcal B(\eps)]}{t}
+\ge r\beta,\quad \beta:=u_e+\frac{19}{20}.
+\end{equation}
+The last inequality uses $0<t\le1$ and $u_e+\mathcal B(\eps)>0$: replacing $1/t$ by one preserves a lower bound. Since $M_0=J_0+K_0$ and $h(p)/p\le L+1$, for $d\ge0$ the normalized centered gap obeys
+\begin{equation}\label{eq:endquad}
+\frac{q_0(d)}{pt}\ge\mathcal Q(d)
+:=\alpha+(\alpha+r\beta)d^2-2(L+1)d.
+\end{equation}
+We next control this one quadratic in the two scale regimes.
+
+\subsection{When $\eps\le p$: use the endpoint of the allowed interval}\label{app:rsmall}
+Suppose $0<r\le1$. Here $\alpha>0$, because $L>299/100$ and $\ln(1+2r)\le\ln3<11/10$. Also $\beta>0$.
+
+At fixed $p$, and therefore fixed $L$, we have $u_e=L-\ln r$. Differentiating gives
+\[
+\frac{\partial}{\partial r}\bigl[\alpha+r\beta-2(L+1)\bigr]
+=u_e-\frac1{20}-\frac2{1+2r}>0.
+\]
+At $r=1$, the expression in square brackets is $-\ln3-9/20<0$. Thus
+\[
+\mathcal Q'(1/2)=\alpha+r\beta-2(L+1)<0.
+\]
+Because the quadratic coefficient is positive, $\mathcal Q$ decreases throughout $[0,1/2]$. Its minimum on that interval is therefore
+\begin{equation}\label{eq:endqhalf}
+\mathcal Q(1/2)=\frac{1+r}{4}L-\frac54\ln(1+2r)
+-\frac r4\ln r+\frac{19r}{80}-\frac14.
+\end{equation}
+
+For $r\le1/3$, use $\ln(1+2r)\le2r$, $-\ln r\ge\ln3>1$, and $L\ge299/100$. They give
+\[
+\mathcal Q(1/2)\ge\frac{199}{400}-\frac{253r}{200}
+\ge\frac{91}{1200}>0.
+\]
+For $1/3\le r\le1$, use the tangent bound
+\[
+\ln(1+2r)\le\ln3+\frac23(r-1)<\frac{11}{10}+\frac23(r-1)
+\]
+and discard $-r\ln r\ge0$. Then
+\[
+\mathcal Q(1/2)\ge\frac{91r}{600}-\frac{53}{1200}
+\ge\frac{23}{3600}>0.
+\]
+Together with~\eqref{eq:endquad}, these bounds prove~\eqref{eq:endpointinterval}.
+
+\subsection{When $\eps\ge p$: use the discriminant}\label{app:rlarge}
+Suppose $r\ge1$. The estimate
+\[
+\ln(2+1/r)=\ln3+\ln\left(1-\frac{r-1}{3r}\right)
+\le\frac{11}{10}-\frac{r-1}{3r}
+\]
+gives
+\begin{equation}\label{eq:astar}
+\alpha\ge a_*(u_e,r):=u_e-\frac12+\frac{r-1}{3r}>0.
+\end{equation}
+Both coefficients in~\eqref{eq:alphabeta} are positive. To prove~\eqref{eq:endpointproduct}, it therefore suffices to show
+\begin{equation}\label{eq:R}
+\mathcal R(u_e,r)
+:=a_*(u_e,r)\bigl[a_*(u_e,r)+r(u_e+19/20)\bigr]
+-(u_e+\ln r+1)^2\ge\frac{453}{5000}.
+\end{equation}
+Indeed,~\eqref{eq:alphabeta} then implies
+\[
+\frac{K_0M_0-h(p)^2t^2}{p^2t^2}
+\ge\alpha(\alpha+r\beta)-(L+1)^2
+\ge\mathcal R(u_e,r)\ge\frac{453}{5000}.
+\]
+
+We first reduce~\eqref{eq:R} to a boundary. At fixed $u_e$, $\partial_r a_*\ge0$, and direct differentiation gives
+\begin{align*}
+\partial_r\mathcal R
+&=(\partial_r a_*)\bigl[2a_*+r(u_e+19/20)\bigr]
++a_*(u_e+19/20)-\frac{2(u_e+\ln r+1)}r\\
+&\ge(u_e-1/2)(u_e+19/20)-2(u_e+1)\\
+&=u_e^2-\frac{31}{20}u_e-\frac{99}{40}
+\ge\frac{41}{40}>0.
+\end{align*}
+In the second line, we used that $(u_e+\ln r+1)/r$ decreases for $r\ge1$. The final quadratic increases for $u_e\ge14/5$.
+
+Put $c=299/100$. The actual domain satisfies $u_e\ge14/5$, $r\ge1$, and $u_e+\ln r\ge c$. We prove this uniform lower bound on the enlarged domain, so its lower boundary may lie outside the original noise constraint; this relaxation is harmless for a lower bound. The boundary in $r$ is
+\[
+r=\max(1,e^{c-u_e}).
+\]
+If $u_e\ge c$, monotonicity reduces to $r=1$. There,
+\[
+\mathcal R(u_e,1)=u_e^2-\frac{51}{20}u_e-\frac{49}{40}
+\ge\frac{453}{5000}>0.
+\]
+
+For the remaining boundary, write $v=c-u_e\in[0,19/100]\subset[0,1/5]$ and $r=e^v$. The negative term in~\eqref{eq:R} is then exactly $(c+1)^2$. We bound only its positive product, keeping that negative term fixed.
+
+Since $e^v\ge1+v$, the two positive factors have the affine lower bounds
+\begin{align}\label{eq:affinefactors}
+a_*(c-v,e^v)
+&\ge c-v-\frac12+\frac{v}{3(1+v)}
+\ge\frac{249}{100}-\frac{13}{18}v,\notag\\
+e^v(c-v+19/20)
+&\ge(1+v)\left(\frac{197}{50}-v\right)
+\ge\frac{197}{50}+\frac{137}{50}v.
+\end{align}
+The first line uses $1+v\le6/5$; the second uses $v^2\le v/5$. Both lower bounds are positive. Adding them to bound the second factor of the product in~\eqref{eq:R}, we obtain
+\begin{align}\label{eq:affineproduct}
+\mathcal R(c-v,e^v)
+&\ge\left(\frac{249}{100}-\frac{13}{18}v\right)
+\left(\frac{643}{100}+\frac{454}{225}v\right)
+-\left(\frac{399}{100}\right)^2\notag\\
+&=\frac{453}{5000}+\frac{17117}{45000}v-\frac{2951}{2025}v^2.
+\end{align}
+One more use of $v^2\le v/5$ gives the short sign certificate
+\begin{equation}\label{eq:shortsign}
+\mathcal R(c-v,e^v)
+\ge\frac{453}{5000}+\frac{36013}{405000}v>0.
+\end{equation}
+This proves~\eqref{eq:R} everywhere in the enlarged domain and completes~\eqref{eq:endpointproduct}. The endpoint argument has used monotonicity, two affine comparisons, and a quadratic expansion. It does not require a polynomial root count or a continuous-domain numerical certificate.
+
+\subsection{The normalized endpoint bound}\label{app:normalized}
+To obtain an order-$p$ surplus, the product estimate just proved is divided by the actual centered entropy, rather than by a constant upper bound on that entropy. We prove
+\[
+ K_0-\ell^2/M_0\ge(453/40000)pt
+ \qquad(p\le\eps\le3/50).
+\]
+ Let $p\le\eps\le3/50$, and set
+\[
+u=\ln(1/\eps),\qquad r=\eps/p,\qquad c=299/100.
+\]
+Here $u$ is the endpoint logarithm, not the midpoint displacement $\nu$. The domain satisfies
+\[
+u\ge14/5,\qquad r\ge1,\qquad u+\ln r\ge c.
+\]
+Define
+\begin{equation}\label{eq:relative-definitions}
+a_*=u-\frac12+\frac{r-1}{3r},\quad
+\beta=u+\frac{19}{20},\quad B_*=a_*+r\beta,\quad
+z_*=u+\ln r+1,\quad \Phi=a_*-\frac{z_*^2}{B_*}.
+\end{equation}
+All denominators and positive factors are positive. The endpoint estimates~\eqref{eq:alphabeta}--\eqref{eq:astar} imply
+\[
+K_0\ge pt\,a_*,\qquad M_0\ge pt\,B_*,\qquad h(p)/p\le z_*.
+\]
+Hence $K_0-\ell^2/M_0\ge pt\,\Phi$. It suffices to prove
+\begin{equation}\label{eq:relative-positive}
+\Phi(u,r)\ge\frac{453}{40000}>\frac1{500}
+\end{equation}
+on the enlarged domain above. This also ensures the nonnegative numerator required in~\eqref{eq:relative-transfer}.
+
+At fixed $u$, direct differentiation gives
+\[
+\partial_r\Phi=\partial_ra_*+
+\frac{z_*}{rB_*^2}\bigl[z_*r\partial_rB_*-2B_*\bigr].
+\]
+Since $\partial_ra_*=1/(3r^2)\ge0$, $a_*\le u-1/6$, and $z_*-2\ge u-1$, the bracket satisfies
+\begin{align*}
+z_*r\partial_rB_*-2B_*
+&=z_*r\partial_ra_*+r\beta(z_*-2)-2a_*\\
+&\ge (u+19/20)(u-1)-2(u-1/6)\\
+&=u^2-\frac{41}{20}u-\frac{37}{60}\ge\frac{89}{60}>0.
+\end{align*}
+The final polynomial increases for $u\ge14/5$. Thus $\Phi$ increases with $r$, and its minimum at fixed $u$ is at $r=\max(1,e^{c-u})$.
+
+If $u\ge c$, take $r=1$. Then
+\[
+\Phi(u,1)=\frac{u^2-51u/20-49/40}{2u+9/20}.
+\]
+Its derivative has positive numerator $2u^2+9u/10+521/400$. It follows that
+\[
+\Phi(u,1)\ge\Phi(c,1)=\frac{453}{32150}>\frac{453}{40000}.
+\]
+If $14/5\le u\le c$, write $v=c-u\in[0,19/100]$ and $r=e^v$. The function $\mathcal R$ in~\eqref{eq:R} is exactly $a_*B_*-z_*^2$, and the proof of~\eqref{eq:R} establishes $\mathcal R\ge453/5000$ on this enlarged domain. Moreover,
+\[
+a_*<3,\qquad \beta<4,\qquad
+r=e^v\le\frac1{1-v}\le\frac54,
+\]
+where the exponential bound follows term by term from its power series for $0\le v<1$. Therefore $B_*<8$, and
+\[
+\Phi=\frac{\mathcal R}{B_*}\ge\frac{453}{40000}.
+\]
+This proves~\eqref{eq:relative-positive}. Equation~\eqref{eq:relative-transfer} gives
+$S_{p,d}(a,b)\ge(453/40000)pt\ge pt^2/500$.
+
+
+\section{The large-coordinate comparison}\label{app:local}
+We supply the two facts used after~\eqref{eq:U}: concavity in the output bias and the endpoint comparison~\eqref{eq:largecoordscalar}.
+
+\subsection{Centering the information upper bound}
+The quantity to center is the explicit upper bound $U_\rho(m,b)$ on information, not the Boolean function and not its mutual information. At fixed coordinate coefficient $b$, an even concave function of $m$ is largest at $m=0$. The following derivative calculation proves that concavity on the full feasible bias interval.
+
+The function $U_\rho(m,b)$ is even in $m$. In the interior of $|m|+b\le1$, differentiation yields
+\begin{equation}\label{eq:Usecond}
+\partial_m^2 U_\rho(m,b)
+=\frac{-\rho^2 D_0}
+{(1-m^2)[1-(m+\rho b)^2][1-(m-\rho b)^2]},
+\end{equation}
+where
+\[
+D_0=(1-m^2)^2-b^2[1+3m^2+\rho^2(1-m^2)]+\rho^2b^4.
+\]
+By evenness it suffices to take $m\ge0$. Set $z=(1-m)^2-b^2\ge0$. Expanding gives the nonnegative decomposition
+\begin{align}\label{eq:D0decomp}
+D_0={}&2m(1-m)^3(1-\rho^2)\notag\\
+&+z\bigl[(1-\rho^2)(1+3m^2)+4\rho^2m\bigr]+\rho^2z^2\ge0.
+\end{align}
+The denominator in~\eqref{eq:Usecond} is positive in the interior. Thus $U_\rho$ is concave in $m$, and evenness gives $U_\rho(m,b)\le U_\rho(0,b)$. Boundary cases follow by continuity.
+
+\subsection{Reducing the coefficient range to its endpoints}
+Concavity in the coordinate coefficient reduces the comparison to $b=13/20$ and $b=1$. At the nontrivial endpoint, divide by $\rho^2(1-\rho^2)$ and expand in $\rho^2$. The coefficients from degree two onward have one sign, so a second concavity argument reduces the correlation interval to its endpoints.
+
+Put
+\[
+G_\rho(b)=(1-\rho^2)\eta(\rho b)-(1-b\rho^2)\eta(\rho).
+\]
+For fixed $\rho$, this is concave in $b$ and $G_\rho(1)=0$. It suffices to prove $G_\rho(13/20)\ge0$ throughout $0\le\rho\le9/10$; the chord then covers all $b\in[13/20,1]$.
+
+Let $x=\rho^2$ and $a_n=1/[2n(2n-1)]$. Expanding~\eqref{eq:series} and dividing by $x(1-x)$ gives
+\begin{equation}\label{eq:Gseries}
+\frac{G_\rho(b)}{x(1-x)}
+=\sum_{k\ge0}\left[a_{k+1}(1-b^{2k+2})-(1-b)T_k\right]x^k,
+\quad T_k=\sum_{n\ge k+1}a_n.
+\end{equation}
+For clarity, the coefficient of $x^k$ after division by $1-x$ is
+\[
+a_{k+1}(1-b^{2k+2})+(1-b)\sum_{j=1}^{k}a_j-(1-b)\ln2.
+\]
+The identity $\sum_{j\ge1}a_j=\ln2$ turns it into the displayed coefficient. Here $n=k+1$ is only a change of summation index, not a restriction on input dimension. A geometric-series integral gives
+\[
+T_k=\int_0^1\frac{v^{2n-2}}{1+v}\dd v
+\ge\frac1{2(2n-1)}=na_n.
+\]
+At $b=13/20$, every coefficient of $x^k$ for $k\ge2$ in~\eqref{eq:Gseries} is negative: $(1-b)(k+1)\ge21/20>1>1-b^{2k+2}$. The function defined by the series is therefore concave on $[0,81/100]$. Termwise differentiation is justified inside the radius of convergence.
+
+Its value at $x=0$ is
+\[
+(1-b)\left(\frac{1+b}{2}-\ln2\right)
+>\frac7{20}\left(\frac{33}{40}-\frac7{10}\right)=\frac7{160}>0.
+\]
+At the other endpoint, the unnormalized numerator is
+\begin{align*}
+G_{9/10}(13/20)
+&=\frac{19}{100}h(83/400)-\frac{947}{2000}h(1/20)\\
+&>\frac{19}{200}-\frac{947}{10000}=\frac3{10000}>0.
+\end{align*}
+Here $83/400>1/5$ and both are below $1/2$, so monotonicity gives $h(83/400)>h(1/5)>1/2$. The bounds $h(1/5)>1/2$ and $h(1/20)<1/5$ are verified in Appendix~\ref{app:constants}. Concavity of the normalized expression places it above the chord between its positive endpoints. This proves~\eqref{eq:largecoordscalar} for $\rho>0$. At $\rho=0$, it holds with equality.
+
+\section{A polynomial bound for capped sign sums}\label{app:fourierconstants}
+This appendix proves Lemma~\ref{lem:rademacher}. The method is an explicit polynomial majorant and exact moments; it imposes no bound on the number of signs.
+
+\subsection{Global positivity by a factorization}
+We need an upper envelope of $|x|$ whose expectation can be bounded from finitely many moments. Evenness treats negative $x$ automatically. The squared factors in the remainder below impose contact at three positive points; the remaining factor has positive coefficients. This certifies the envelope on the whole real line before any expectation is taken.
+
+Define the even polynomial
+\begin{equation}\label{eq:majorant}
+P(x)=\frac{4336x^{10}-117880x^8+1187295x^6-5572600x^4+15433465x^2+2903076}{12862500}.
+\end{equation}
+For $x\ge0$, direct expansion gives
+\begin{align}\label{eq:majorantfactor}
+P(x)-x={}&\frac{(x-3)^2(x-2)^2(2x-1)^2}{12862500}\notag\\
+&\quad\cdot(1084x^4+11924x^3+50475x^2+99674x+80641)\ge0.
+\end{align}
+All coefficients of the quartic are positive. Evenness then proves $P(x)\ge|x|$ for every real $x$. There is no root count and no sampled positivity test. The contact points $1/2,2,3$ explain the squared factors: $P$ agrees with $|x|$ and its derivative at those positive points.
+
+\subsection{Moments and one convex quadratic}
+Let $R=\sum_j a_jX_j$, $\sum_j a_j^2=1$, and $|a_j|\le2/5$. Put
+\[
+t=\sum_j a_j^4,\quad u=\sum_j a_j^6,\quad v=\sum_j a_j^8,\quad w=\sum_j a_j^{10},\qquad c=\frac4{25}.
+\]
+These are local moment variables, unrelated to posterior separation in Section~\ref{sec:product}. The coefficient cap gives
+\[
+0\le t\le c,\quad 0\le u\le ct,\quad 0\le v\le cu,\quad 0\le w\le cv.
+\]
+The even moments $M_j=\E R^j$ are
+\begin{align*}
+M_0&=M_2=1,\\
+M_4&=3-2t,\\
+M_6&=15-30t+16u,\\
+M_8&=105-420t+140t^2+448u-272v,\\
+M_{10}&=945-6300t+6300t^2+10080u-6720tu-12240v+7936w.
+\end{align*}
+For completeness, expand
+\[
+\log\E e^{sR}=\sum_j\log\cosh(a_js)
+=\frac{s^2}{2}-\frac{ts^4}{12}+\frac{us^6}{45}
+-\frac{17vs^8}{2520}+\frac{31ws^{10}}{14175}+O(s^{12}).
+\]
+Differentiating $\E e^{sR}=\exp(\log\E e^{sR})$ gives the recurrence
+$M_k=\sum_{j=1}^k\binom{k-1}{j-1}\kappa_j M_{k-j}$, where the even cumulants are
+$1,-2t,16u,-272v,7936w$ and the odd ones vanish. This yields the displayed moments in every finite dimension.
+
+Substitution in~\eqref{eq:majorant} gives the exact expression
+\begin{align}\label{eq:expectedmajorant}
+\E P(R)=\frac1{6431250}\big(&5406800t^2-14568960tu-1140425t\notag\\
+&+4946680u-10504640v+17205248w+5574143\big).
+\end{align}
+The coefficient of $w$ is positive. Using $w\le cv$, the two last moment terms satisfy
+\[
+-10504640v+17205248w\le-\frac{193795008}{25}v\le0.
+\]
+For $0\le t\le c$, the coefficient of $u$ is at least
+$4946680-14568960c=13078232/5>0$. We may therefore set $u=ct$ for an upper bound. Consequently,
+\begin{equation}\label{eq:momentquadratic}
+\E|R|\le\E P(R)\le Q_*(t):=
+\frac{15378832t^2-1744781t+27870715}{32156250}.
+\end{equation}
+This quadratic is convex. On $[0,c]$ it is at most the larger endpoint value, and
+\[
+\frac78-Q_*(0)=\frac{212803}{25725000}>0,\qquad
+\frac78-Q_*(c)=\frac{126225509}{26796875000}>0.
+\]
+Thus $\E|R|\le7/8$, proving Lemma~\ref{lem:rademacher}. Relaxing the moment constraints only enlarged an upper bound; no claim that an extremizing moment tuple is realizable is needed.
+
+\section{Entropy comparison on the correlation interval}\label{app:comparisons}
+We prove Lemma~\ref{lem:comparison}. The common device is to compare entropy with $\lambda\psi_\rho$ using the representation~\eqref{eq:entropyremainder}. It reduces a statement for all posterior values to a scalar inequality in the coefficient $\lambda$.
+
+\subsection{The strict anchor at $\rho=3/5$}\label{app:anchor}
+Put $\lambda_0=39/40$ and
+\[
+D(t)=\eta(t)-\lambda_0\psi_{3/5}(t).
+\]
+For $t\ge1/3$, write $y=(1-t)/2\le1/3$. From~\eqref{eq:Bseries},
+\[
+\mathcal B(y)\ge1-y/2-\frac{y^2}{6(1-y)}\ge1-\frac{7y}{12}.
+\]
+Since $\psi_\rho(t)=2y(2-\rho^2-2y)$, for $y>0$ this yields
+\[
+\frac{D(t)}y
+\ge-\ln y+1+(4\lambda_0-7/12)y-2\lambda_0(2-9/25).
+\]
+For every $c>0$, the minimum of $-\ln y+cy$ over $y>0$ is $1+\ln c$. Therefore the right side is at least
+\begin{equation}\label{eq:anchorlog1}
+\ln(199/60)-599/500>0.
+\end{equation}
+The certified rational margin is recorded in Appendix~\ref{app:constants}.
+
+For $0\le t\le1/3$,
+\[
+D''(t)=\frac{39}{20}-\frac1{1-t^2}>0,
+\qquad D'(1/3)=\frac{299}{1000}-\frac{\ln2}{2}<0.
+\]
+Hence $D'$ is negative on the whole interval, and the minimum of $D$ there is
+\begin{equation}\label{eq:anchorlog2}
+D(1/3)=\ln3-\frac23\ln2-\frac{949}{1500}>0.
+\end{equation}
+Appendix~\ref{app:constants} verifies the finite signs in~\eqref{eq:anchorlog1}--\eqref{eq:anchorlog2}. At $t=1$, both sides of~\eqref{eq:anchorcomparison} vanish. This proves the anchor comparison.
+
+\subsection{A coefficient criterion for the remaining interval}
+Rather than minimize the ratio $\eta(t)/\psi_\rho(t)$ separately for every $\rho$, we derive a sufficient condition on a coefficient $\lambda$. The substitution $y=(1-t)/2$ extracts the endpoint logarithm. Minimizing the elementary expression $-\ln y+cy$ then removes the posterior variable entirely.
+
+Now take $3/5\le\rho\le9/10$. The function $\mathcal B$ is concave by~\eqref{eq:Bseries}. Its chord between $0$ and $1/2$ gives
+\[
+\mathcal B(y)\ge1-2(1-\ln2)y\ge1-\frac58y,
+\qquad 0\le y\le1/2,
+\]
+since $\ln2>11/16$.
+
+For $\lambda>5/32$ and $y=(1-t)/2>0$, it follows that
+\begin{align*}
+\eta(t)-\lambda\psi_\rho(t)
+&\ge y\bigl[-\ln y+1+(4\lambda-5/8)y-2\lambda(2-\rho^2)\bigr]\\
+&\ge y\bigl[\ln(4\lambda-5/8)+2-2\lambda(2-\rho^2)\bigr].
+\end{align*}
+Thus a sufficient criterion for $\eta(t)\ge\lambda\psi_\rho(t)$ for every $t$ is
+\begin{equation}\label{eq:lambdacriterion}
+\ln(4\lambda-5/8)+2-2\lambda(2-\rho^2)\ge0.
+\end{equation}
+The case $y=0$ follows by continuity.
+
+The coefficient required by~\eqref{eq:comparison} is
+\[
+\lambda_{\rm req}(\rho)=\frac{\eta(\rho)}{(1-\rho)\Lambda_\rho}.
+\]
+Using $\mathcal B(y)\le1-y/2$ at $y=(1-\rho)/2$, we obtain the upper bound
+\begin{equation}\label{eq:lambdabar}
+\lambda_{\rm req}(\rho)\le\overline\lambda(\rho)
+:=\frac{\ln(2/(1-\rho))+3/4+\rho/4}{2\Lambda_\rho}.
+\end{equation}
+We will prove~\eqref{eq:lambdacriterion} for a still larger, explicitly constructed coefficient. Since $\psi_\rho\ge0$, that proves a stronger entropy lower bound and therefore the required one. This direction of comparison is essential.
+
+\subsection{Why four coefficients cover the whole interval}
+The required coefficient is bounded above by a convex function of $\rho$. Chords between four rational upper bounds therefore suffice. Concavity of the logarithm gives a lower chord in the opposite direction. The remaining sign is a cubic polynomial on each interval, certified by its positive Bernstein coefficients. Thus the table below represents complete-interval estimates, not samples.
+
+We first verify that $\overline\lambda$ is convex. Let $N$ be the numerator in~\eqref{eq:lambdabar}. Differentiating gives
+\[
+\overline\lambda''
+=\frac{N''\Lambda^2-2N'\Lambda\Lambda'
++2N(\Lambda')^2-N\Lambda\Lambda''}{2\Lambda^3},
+\]
+with all functions evaluated at $\rho$. Here $N,N',N'',\Lambda$ are positive and $\Lambda''<0$. If $\Lambda'\le0$, every term in the numerator is nonnegative and the first is positive. If $\Lambda'>0$, then $\rho<20/31$ and
+\[
+\Lambda'\le\frac7{100},\qquad N'<\frac{13}{4},\qquad
+N''\ge\frac{25}{4},\qquad \Lambda>\frac54.
+\]
+These imply $N''\Lambda-2N'\Lambda'>0$, and the remaining terms are nonnegative. Thus $\overline\lambda''>0$ throughout the interval.
+
+Choose four knots $\rho_j$, upper coefficients $\lambda_j$, and lower logarithm bounds $s_j$:
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$j$ & $\rho_j$ & $\lambda_j$ & $s_j$\\
+\midrule
+$0$ & $3/5$ & $19/20$ & $11553/10000$\\
+$1$ & $3/4$ & $287/250$ & $689/500$\\
+$2$ & $17/20$ & $1377/1000$ & $15857/10000$\\
+$3$ & $9/10$ & $1561/1000$ & $17261/10000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The finite comparisons, verified in Appendix~\ref{app:constants}, are
+\begin{equation}\label{eq:knotinequalities}
+\lambda_j>\overline\lambda(\rho_j),\qquad
+s_j<\ln(4\lambda_j-5/8).
+\end{equation}
+Appendix~\ref{app:constants} records certified margins for the narrowest of these comparisons.
+Between consecutive knots, write
+\[
+\rho=(1-z)\rho_j+z\rho_{j+1},\qquad
+\lambda=(1-z)\lambda_j+z\lambda_{j+1},\qquad 0\le z\le1.
+\]
+Convexity of $\overline\lambda$ places it below its chord, so $\lambda\ge\overline\lambda(\rho)$. Concavity of the logarithm places it above its chord, so the left side of~\eqref{eq:lambdacriterion} is at least
+\begin{equation}\label{eq:cubic}
+P_j(z)=(1-z)s_j+zs_{j+1}+2-2\lambda(2-\rho^2).
+\end{equation}
+\Needspace{15\baselineskip}
+Each $P_j$ is a cubic. Direct expansion gives
+\[
+P_j(z)=c_{j0}(1-z)^3+3c_{j1}z(1-z)^2
++3c_{j2}z^2(1-z)+c_{j3}z^3,
+\]
+with the following positive coefficients:
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+$j$ & $c_{j0}$ & $c_{j1}$ & $c_{j2}$ & $c_{j3}$\\
+\midrule
+$0$ & $393/10000$ & $829/75000$ & $1249/60000$ & $31/400$\\
+$1$ & $31/400$ & $1683/40000$ & $11161/300000$ & $13493/200000$\\
+$2$ & $13493/200000$ & $21353/600000$ & $493/30000$ & $273/25000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The four basis functions are nonnegative and sum to one on $[0,1]$. Hence $P_j(z)>0$ throughout that interval. This is an algebraic certificate covering the complete interval, not an interpolation of sampled signs.
+
+We have proved~\eqref{eq:lambdacriterion} for $\lambda\ge\overline\lambda(\rho)\ge\lambda_{\rm req}(\rho)$. Since $\psi_\rho(t)\ge0$, the resulting bound $\eta(t)\ge\lambda\psi_\rho(t)$ implies~\eqref{eq:comparison}. This completes Lemma~\ref{lem:comparison}.
+
+\section{Rational bounds for logarithms and constants}\label{app:constants}
+The finite comparisons in this manuscript use rational arithmetic and a convergent logarithm series with an explicit remainder. This appendix states the procedure so that no rounded decimal is a proof premise.
+
+For rational $q\ge1$, write $q=2^kv$ with $1\le v<2$, set $z=(v-1)/(v+1)$, and define
+\begin{align*}
+L_N(v)&=2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1},\\
+U_N(v)&=L_N(v)+\frac{2z^{2N+1}}{(2N+1)(1-z^2)}.
+\end{align*}
+The positive series for $\ln((1+z)/(1-z))$ gives
+\begin{equation}\label{eq:logbounds}
+L_N(v)\le\ln v\le U_N(v).
+\end{equation}
+For the powers-of-two reduction, evaluate the same series at $v=2$, where $z=1/3$; the displayed remainder is valid there as well. In particular set
+\[
+\ell_2=L_{12}(2),\qquad u_2=U_{12}(2).
+\]
+For $q=2^kv\ge1$ with $1\le v<2$, the actual working enclosures are
+\[
+k\ell_2+L_{12}(v)\le\ln q\le ku_2+U_{12}(v).
+\]
+The coarse claims $56/81<\ln2<7/10$ in the table below are \emph{outputs to verify}, not the enclosures used in these multiples. For an argument below one, reverse the bounds using $\ln q=-\ln(1/q)$. Every operation is on rational numbers.
+
+\Needspace{22\baselineskip}
+With $N=12$, these bounds prove all of the following comparisons:
+\begin{center}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Argument $q$ & Lower bound for $\ln q$ & Upper bound for $\ln q$\\
+\midrule
+$2$ & $56/81$ & $7/10$\\
+$3$ & $13/12$ & $11/10$\\
+$20$ & $299/100$ & $749/250$\\
+$50/3$ & $14/5$ & ---\\
+$459/250$ & $3/5$ & ---\\
+$59/21$ & $1$ & ---\\
+$137/23$ & $7/4$ & ---\\
+$22/3$ & $39/20$ & ---\\
+$899/101$ & $13/6$ & ---\\
+$459/41$ & --- & $5/2$\\
+$199/60$ & $599/500$ & ---\\
+$127/40$ & $11553/10000$ & ---\\
+$3967/1000$ & $689/500$ & ---\\
+$4883/1000$ & $15857/10000$ & ---\\
+$5619/1000$ & $17261/10000$ & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+The four upper bounds for $\overline\lambda(\rho_j)$ are equivalently
+\[
+\ln\frac2{1-\rho_j}
+<2\Lambda_{\rho_j}\lambda_j-\frac34-\frac{\rho_j}{4}.
+\]
+Their logarithm arguments are $5,8,40/3,20$, so~\eqref{eq:logbounds} verifies them by the same procedure.
+
+For rational $a=r/s\in(0,1)$, entropy can be evaluated through
+\[
+s\,h(r/s)=s\ln s-r\ln r-(s-r)\ln(s-r).
+\]
+The same rational enclosures prove
+\begin{gather*}
+h(1/4)>11/20,\qquad h(1/8)>3/8,\qquad h(1/10)>8/25,\\
+h(2/25)>11/40,\qquad h(3/50)>9/40,\\
+h(1/5)>1/2,\qquad h(1/20)<1/5,
+\end{gather*}
+as well as
+\[
+\ln3-\frac23\ln2>\frac{949}{1500},\qquad
+\ln2-\frac{39}{40}\frac25\frac{1321}{1000}<\frac9{50}.
+\]
+
+The quantitative scalar margin uses the rational comparisons
+\[
+\frac{1999}{1250000}>\frac7{5000},\qquad
+\frac{453}{5000}>\frac7{250},\qquad
+\frac{23}{3600}>\frac1{500}.
+\]
+These comparisons also imply the weaker $p^2/25$ surplus. The stronger coefficient $p/500$ in Theorem~\ref{lem:mixing} follows from the retained-denominator argument and the comparisons in its proof. The coefficient is deliberately conservative.
+
+
+\subsection*{Margins for the closest comparisons}
+The following lower bounds are strict rational inequalities verified by the preceding $N=12$ procedure. They are not rounded decimal estimates. For each row, the computed enclosure of the difference has width less than $10^{-11}$.
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lc@{}}
+\toprule
+Positive difference & Certified lower bound\\
+\midrule
+$\ln(127/40)-11553/10000$ & $7/10^6$\\
+$\ln(3967/1000)-689/500$ & $1/100000$\\
+$\lambda_1-\overline\lambda(3/4)$ & $1/20000$\\
+$\lambda_2-\overline\lambda(17/20)$ & $1/40000$\\
+$749/250-\ln20$ & $1/4000$\\
+$h(1/5)-1/2$ & $1/2500$\\
+$\ln(199/60)-599/500$ & $9/10000$\\
+\bottomrule
+\end{tabular}
+\end{center}
+These margins document the precision required at~\eqref{eq:knotinequalities}, \eqref{eq:anchorlog1}, and~\eqref{eq:tabletarget}. They do not change any constant used in the proof. The finite comparison in Section~\ref{app:linear}, $U_0<179/1000$, uses the same enclosure of $\ln2$.
