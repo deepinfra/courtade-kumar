@@ -1,0 +1,728 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,mathrsfs,amsmath,amssymb,amsthm,mathtools,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small An entropy--variance profile for Boolean noise}
+\fancyhead[R]{\small I18: analytic compensation}
+\fancyfoot[C]{\small\thepage}\setlength{\headheight}{14pt}
+\setlength{\parskip}{3pt}\setlength{\emergencystretch}{1.5em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}\newcommand{\Prb}{\mathbb P}
+\newcommand{\atanh}{\operatorname{atanh}}
+\newcommand{\B}{\mathcal B_p}\newcommand{\dd}{\,\mathrm d}
+\numberwithin{equation}{section}
+\hypersetup{pdftitle={An entropy-variance profile for Boolean noise -- I18},pdfauthor={Dimiter Kramer}}
+\title{An entropy--variance profile for Boolean noise}
+\author{Dimiter Kramer\thanks{Developed with substantial AI assistance. This is an analytic proof candidate for independent mathematical assessment, not an independently established resolution or a proof-kernel-verified theorem. The argument printed here uses no interval certificate or numerical optimization.}}
+\date{20 September 2026 \qquad I18}
+\begin{document}\maketitle
+\begin{abstract}
+We present an analytic candidate proof of a conditional-entropy profile for Boolean functions under binary symmetric noise. Two local entropy estimates are combined by positive weights. A polynomial allowance for the mean-consistency cost permits their compensated remainder to be bounded below by a square, uniformly in the noise level. The scalar product estimate follows from a monotone boundary reduction, a tangent at the channel correlation, and concavity in the entropy budget. Its two endpoint comparisons are proved by elementary logarithm bounds and completed squares; no interval covering or numerical certificate enters the argument. A quarter-variance coordinate and an independent two-bit calculation complete dimension induction. The profile includes the Courtade--Kumar inequality and identifies the equality cases. Independent review remains outstanding.
+\end{abstract}
+
+\section{The profile and its local form}
+Let $X$ be uniform on $\{-1,1\}^n$, and independently flip each coordinate with probability $p\in[0,1/2]$ to obtain $Y$. All entropies are in nats. Write
+\[
+ h(v)=-v\log v-(1-v)\log(1-v),\qquad
+ \eta(t)=h((1+t)/2),\qquad L=\log2,
+\]
+with $0\log0=0$. The proposed profile is
+\begin{equation}\label{profile}
+ \B(m)=h(p)(1-m^2)+4p(1-p)\,[\eta(m)-L(1-m^2)].
+\end{equation}
+\begin{theorem}\label{main}
+For every finite $n\ge0$ and every deterministic $f:\{-1,1\}^n\to\{0,1\}$,
+\[
+ H(f(X)\mid Y)\ge \B\bigl(\E[2f(X)-1]\bigr).
+\]
+Consequently $I(f(X);Y)\le L-h(p)$. For $0<p<1/2$, equality in the profile holds exactly for constants and signed coordinate indicators; equality in the information bound holds exactly for signed coordinate indicators.
+\end{theorem}
+The information inequality is the Courtade--Kumar assertion in natural units \cite{CK}.
+For a calculation at fixed noise, it is convenient to write
+\[
+ \rho=1-2p,\qquad q=1-\rho^2,\qquad
+ \alpha=\frac{h(p)}q-L\quad(0<p<1/2).
+\]
+Then $\B(m)=q[\eta(m)+\alpha(1-m^2)]$. These channel abbreviations will be used only at nontrivial noise.
+
+The elementary expansion
+\begin{equation}\label{entropyseries}
+ \kappa(t):=L-\eta(t)=\sum_{k\ge1}\frac{t^{2k}}{2k(2k-1)},
+ \qquad \frac{t^2}{2}\le\kappa(t)\le Lt^2
+\end{equation}
+converges at $|t|=1$. It implies $\alpha>0$, $0\le\B(m)\le\eta(m)$, and
+\[
+ \B(0)=h(p),\quad \B(\pm1)=0,\quad
+ \mathcal B_0(m)=0,\quad\mathcal B_{1/2}(m)=\eta(m).
+\]
+Moreover $\B$ is even and concave. If the profile holds, then
+\[
+ \B(m)-\eta(m)+\kappa(\rho)
+ =\rho^2\kappa(m)-[h(p)-qL]m^2
+ \ge(1-L)\rho^2m^2\ge0,
+\]
+because $h(p)-qL\le(L-1/2)\rho^2$. This proves the information consequence.
+
+\subsection*{The local statement}
+For posterior probabilities set
+\[
+ J(a,b)=\frac{h(a)+h(b)}2,\qquad
+ M_p(a,b)=\frac{h((1-p)a+pb)+h(pa+(1-p)b)}2.
+\]
+\begin{proposition}[Local closure]\label{local}
+Let $A,B\in[0,1]$ have any joint law on a finite probability space. Put
+\[
+ m=\E A+\E B-1,\qquad d=|\E B-\E A|.
+\]
+If $4d^2\le1-m^2$ and
+\begin{equation}\label{budgethyp}
+ \E J(A,B)\ge j:=\frac{\B(m-d)+\B(m+d)}2,
+\end{equation}
+then $\E M_p(A,B)\ge\B(m)$. The inequality is strict when $0<p<1/2$, $d>0$, and $|m|<1$.
+\end{proposition}
+Sections 2--4 prove this statement. No independence of $A,B$ is required.
+
+\subsection*{Why the coordinate condition is available}
+For a sign-valued Boolean $F$ on at least three coordinates, among any three distinct coordinates there is one with
+\begin{equation}\label{quarter}
+ d:=|\E FX_i|\le\tfrac12\sqrt{1-(\E F)^2}.
+\end{equation}
+To prove this, complement $F$ so that $m=\E F\ge0$, and choose signs so that $T$ is the sum of the three signed coordinates and $\E FT$ is the sum of their absolute correlations. Since $\E|T+1|=3/2$ and $\E T=0$,
+\[
+ \E FT\le\min\{3/2-m,\,3(1-m)\}.
+\]
+For $m\le3/4$ use
+\[
+ \frac94(1-m^2)-(3/2-m)^2=\frac{m(12-13m)}4\ge0;
+\]
+for $m\ge3/4$ use
+\[
+ \frac94(1-m^2)-9(1-m)^2=\frac94(1-m)(5m-3)\ge0.
+\]
+The smallest of the three correlations is at most one third of their sum, proving \eqref{quarter}.
+
+\subsection*{The base and the induction}
+Up to input sign changes, permutations, and output complementation, a Boolean function on at most two inputs is a constant, a coordinate, parity, or conjunction. Constants and coordinates attain the profile. Parity has conditional entropy $\eta(\rho^2)>\eta(\rho)=h(p)$ at nontrivial noise. For conjunction, subtracting the proposed profile gives
+\[
+ g(p)=\frac{h(p^2)+2h(p(1-p))+h((1-p)^2)}4
+ -\frac34h(p)-4p(1-p)[h(1/4)-3L/4].
+\]
+One has $g(0)=g(1/2)=g'(1/2)=0$. Direct differentiation, with $v=p(1-p)$, gives
+\[
+ g'''(p)=\frac{(1-2p)(5v^4+2v^3+39v^2+4v+4)}
+ {4v^2(2+v)^2(1-v)^2}>0.
+\]
+For $0<x<1/2$, subtract $c p(p-1/2)^2$ with $c=g(x)/[x(x-1/2)^2]$. Three applications of Rolle's theorem give $6c=g'''(\xi)>0$, proving $g(x)>0$.
+
+Now fix $p$ and induct on dimension. Choose a coordinate by \eqref{quarter}, let $f_0,f_1$ be the two sections, and let $W$ be the noisy observation of the other inputs. Put $A=\E[f_0\mid W]$, $B=\E[f_1\mid W]$. The two induction hypotheses give \eqref{budgethyp}. The selected noisy sign is fair and independent of $W$; the two parent posteriors are $(1-p)A+pB$ and $pA+(1-p)B$. Hence
+\[
+ H(f\mid Y)=\E M_p(A,B),
+\]
+and Proposition~\ref{local} closes the induction.
+
+For equality, discard inessential inputs. A nonconstant function other than a signed coordinate has either two essential inputs, covered strictly by the base, or at least three. If the selected gap is positive, strict local closure applies. If its gap is zero, its sections still differ as functions. The finite noise operator is invertible for $\rho>0$, so their noisy posteriors differ somewhere with positive probability; strict entropy concavity then gives $\E M_p>\E J\ge\B(m)$. This proves the asserted equality cases. At $p=0$ all functions attain the profile, and information equality means balanced output; at $p=1/2$ all functions attain both bounds.
+
+\section{Two complementary entropy estimates}
+Orient means so that $m,d\ge0$; automatically $m+d\le1$. Put
+\[
+ J_*:=\frac{\eta(m-d)+\eta(m+d)}2,\qquad
+ M_*:=\frac{\eta(m-\rho d)+\eta(m+\rho d)}2.
+\]
+The first estimate below retains the mean through a polynomial curvature allowance;
+the second retains the entropy budget and the gap.
+
+\subsection{Mean consistency}
+Use the polynomial
+\begin{equation}\label{allowance}
+ a(m):=(1-m^2)\left(2-\frac{1-m}{2}-\frac{(1-m)^2}{12}\right).
+\end{equation}
+\begin{lemma}\label{consistency}
+For every finite joint posterior law with these means and $\E J(A,B)\ge j$,
+\begin{equation}\label{Pbound}
+ \E M_p(A,B)\ge
+ P:=M_*-\left(1-\frac{qd^2}{a(m)+d^2}\right)(J_*-j).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Realize the law by taking its underlying outcome $W$, a uniform sign $S$ independent of $W$, and a bit $Z$ with conditional probability $A(W)$ or $B(W)$ according to $S$. Let $S_\rho$ be the independently corrupted sign. Write
+\[
+ I=I(Z;W),\qquad T=I(S;W\mid Z),\qquad D=I(Z;W\mid S)=I+T.
+\]
+The chain rule gives the exact recombination identity
+\begin{equation}\label{recombine}
+ (\E M_p-\E J)-(M_*-J_*)=T-I(S_\rho;W\mid Z)\ge qT.
+\end{equation}
+For the last inequality, binary relative entropy contracts by at most $\rho^2$ when both sign means are multiplied by $\rho$. Indeed its convex generator $\kappa$ has curvature $(1-u^2)^{-1}$, while $\kappa(\rho u)$ has curvature $\rho^2/(1-\rho^2u^2)\le\rho^2/(1-u^2)$. Integrate along the line segment between the two means and average conditionally on $Z$.
+
+We next show $T\ge d^2I/a(m)$. Let $\mu=\Prb(Z=1)=(1+m)/2$, $c=\Prb(Z=1\mid W)$, and let $t$ be the difference of the two section probabilities at $W$. Thus $\E c=\mu$ and $\E t=d$. Put $b=\mu(1-\mu)$ and $v=\operatorname{Var}(c)$. The binary Pinsker bound in sign means, obtained from $\kappa''\ge1$, yields
+\[
+ T\ge\frac18\left(\E\frac{t^2}{c(1-c)}-\frac{d^2}{b}\right)
+ \ge\frac{d^2v}{8b(b-v)}\ge\frac{d^2v}{8b^2}.
+\]
+The middle step is weighted Cauchy--Schwarz. At $c=0,1$, feasibility forces $t=0$ and the ratio is defined as zero. If $d>0$ then $b-v=\E c(1-c)>0$; the case $d=0$ is immediate.
+
+For a fixed prior $\mu\ge1/2$, the binary divergence satisfies
+\[
+ D(c\Vert\mu)\le\frac{-\log\mu}{(1-\mu)^2}(c-\mu)^2.
+\]
+To see this, write the quotient by $(c-\mu)^2$ as the integral of $1/[x(1-x)]$ along the segment from $\mu$ to $c$, with weight $1-t$. The quotient is convex in $c$, so its maximum is at an endpoint. The endpoint $c=1$ is larger: their difference has the sign of $-\mu^2\log\mu+(1-\mu)^2\log(1-\mu)$, a concave function vanishing at $1/2$ and $1$.
+
+The entropy remainder
+\begin{equation}\label{remainder}
+ B_0(y):=-\frac{1-y}{y}\log(1-y)
+ =1-\sum_{n\ge1}\frac{y^n}{n(n+1)}
+\end{equation}
+gives $8\mu^2(-\log\mu)/(1-m^2)=2B_0((1-m)/2)\le a(m)/(1-m^2)$. Averaging the divergence bound therefore gives $I\le a(m)v/(8b^2)$. It follows that $T\ge d^2I/a(m)$, hence $T\ge d^2D/(a(m)+d^2)$. Insert this in \eqref{recombine}, use $D=J_*-\E J$, and then use the nonnegative coefficient of $\E J$ to replace it by $j$.
+\end{proof}
+
+\subsection{The entropy budget and the gap}
+\begin{lemma}\label{budget}
+If $d=|\E A-\E B|>0$ and $\E J(A,B)\ge j$, with $0\le j\le\eta(d)$, let $\tau\in[d,1]$ satisfy $\eta(\tau)/\tau=j/d$. Then
+\begin{equation}\label{Cbound}
+ \E M_p(A,B)\ge C:=\frac d\tau\eta(\rho\tau).
+\end{equation}
+\end{lemma}
+\begin{proof}
+We first prove the pointwise comparison. Define $\tau(e)$ by $\eta(\tau(e))/\tau(e)=e$ and
+$\phi(e)=\eta(\rho\tau(e))/\tau(e)$. The ratio $\eta(t)/t$ decreases strictly, since
+\begin{equation}\label{entropyratio}
+ \left(\frac{\eta(t)}t\right)'=-\frac{\mathscr A(t)}{t^2},\qquad
+ \mathscr A(t)=L-\tfrac12\log(1-t^2)>0.
+\end{equation}
+For a pair with $t=|a-b|>0$ and $x=|a+b-1|$, put
+$\mathscr H(x,t)=[\eta(x+t)+\eta(x-t)]/2$. We claim
+\begin{equation}\label{pointwise}
+ \frac{M_p(a,b)}t\ge\phi\!\left(\frac{J(a,b)}t\right).
+\end{equation}
+In the interior $x>0$, $x+t<1$, let $u=-\mathscr H_x>0$ and $v=\mathscr H-t\mathscr H_t>0$. The ratio $v/u$ decreases with $t$. Indeed, if
+\[
+ \Theta=v-\frac{1-x^2-t^2}{2x}u,
+\]
+direct differentiation gives $u_t>0$, $\Theta_t=tu/x$, and $(v/u)_t=-\Theta u_t/u^2$. At zero gap,
+\[
+ \Theta(x,0)=\frac{2x\eta(x)-(1-x^2)\atanh x}{2x}\ge0:
+\]
+the numerator vanishes at $0,1$ and has second derivative $-2\atanh x\le0$.
+
+Now follow the contour $\mathscr H(x,t(x))/t(x)=e$ toward $x=0$. It exists all the way: the ratio decreases in $t$ from infinity to $h(x)/[2(1-x)]$, whose derivative in $x$ is $-\log x/[2(1-x)^2]>0$. Along this contour $t'=-tu/v$, and
+\[
+ \frac{\dd}{\dd x}\frac{\mathscr H(x,\rho t(x))}{t(x)}
+ =\frac1t\left[\frac{u(x,t)v(x,\rho t)}{v(x,t)}-u(x,\rho t)\right]\ge0.
+\]
+At $x=0$, $t=\tau(e)$, proving \eqref{pointwise}. Boundary pairs follow by continuity; $J=0$ gives the deterministic opposite pair directly.
+
+Finally $\phi$ is increasing and convex. Its derivative is
+\[
+ \phi'(e)=\frac{\mathscr A(\rho\tau)}{\mathscr A(\tau)}\in[0,1].
+\]
+The ratio decreases with $\tau$: if $\mathscr A(\sqrt x)=\sum b_kx^k$ with $b_0=L$, $b_k=1/(2k)>0$, the numerator of its derivative is
+\[
+ \sum_{i>k}(i-k)b_ib_k(\rho^{2i}-\rho^{2k})x^{i+k-1}\le0.
+\]
+As $\tau$ decreases with $e$, convexity follows. A supporting line at $e=j/d$ has slope $\lambda\ge0$ and intercept $c\ge0$, so \eqref{pointwise} gives
+\[
+ M_p(a,b)\ge\lambda J(a,b)+c|a-b|.
+\]
+This also holds when $a=b$. Average and use $\E|A-B|\ge d$. The resulting bound is $\lambda j+cd=C$. The zero-budget and noise endpoints follow by continuity or directly.
+\end{proof}
+
+\section{Compensation closes the induction}
+Fix $0<p<1/2$ and an oriented nondegenerate parent satisfying $4d^2\le1-m^2$. For this section abbreviate
+\[
+ V=1-m^2,\quad s=d^2,\quad a=a(m),\quad B=\B(m),
+ \qquad j=qJ_*+q\alpha(V-s).
+\]
+One has $0<j\le J_*\le\eta(d)$, so both lemmas apply. The following is the central compensation statement.
+\begin{proposition}[A compensated square]\label{square}
+With $C,P$ given by \eqref{Cbound}, \eqref{Pbound}, the positive weights
+\[
+ w_C=\frac{2(C+B-j)}q,\qquad
+ w_P=\frac{a(1+2\alpha V)}{\rho^2V}
+\]
+satisfy
+\begin{equation}\label{squarebound}
+ w_C(C-B)+w_P(P-B)>qs\,m^2(\alpha-1/8)^2\ge0.
+\end{equation}
+\end{proposition}
+Both weights are positive because $C\ge j$ and $B>0$. Thus $\E M_p\ge(w_CC+w_PP)/(w_C+w_P)>B$, proving strict local closure. If $d=0$, entropy concavity gives $\E M_p\ge\E J\ge B$. Deterministic means are immediate. At $p=0$ the profile vanishes; at $p=1/2$ the budget and Jensen's inequality force the sections to equal their means almost surely, giving parent entropy $\eta(m)$. These facts complete Proposition~\ref{local}.
+
+\subsection*{The exact cancellation}
+We prove Proposition~\ref{square} using the scalar product lemma in Section 4 and the elementary geometry in Appendix A. Write
+\[
+ D=\frac{\eta(m)-J_*}{s},\qquad
+ E_b=\eta(m)+aD-\frac{a+s}{2V},\qquad
+ c_k=\frac{(1-m)^{1-2k}+(1+m)^{1-2k}}{4k(2k-1)}.
+\]
+The exact binary-information identity gives $sD=\sum_{k\ge1}c_ks^k$, with $c_1=1/(2V)$ and $c_2=(4-3V)/(12V^3)$. The series converges also at $d=1-m$.
+
+Put $R=\rho^2$ locally. Expanding \eqref{Pbound}, and retaining the nonnegative remainder, gives
+\begin{align}
+ P-B&=\frac{Rqs}{a+s}E,\\
+ E&\ge E_b-\frac\alpha R(a+qV+Rs)\nonumber\\
+   &=E_b-\alpha(a+s)-\frac{q\alpha}R(a+V).
+ \label{Ebound}
+\end{align}
+For completeness, the difference in the first inequality is exactly
+\[
+ R(a+s)\sum_{k\ge3}c_k(1+R+\cdots+R^{k-3})s^{k-1}\ge0.
+\]
+No entropy equality is imposed on the actual child law; $j$ is inserted only as a lower budget.
+
+Define the scalar kernel
+\begin{equation}\label{kernel}
+ K_p(t)=\frac{2\eta(\rho t)[\eta(\rho t)-\eta(t)]}{qt^2}.
+\end{equation}
+The identity $(C-B)(C+B-j)=C(C-j)-B(B-j)$ yields, for the left side $\mathcal W$ of \eqref{squarebound},
+\begin{equation}\label{exactblend}
+ \frac{\mathcal W}s=K_p(\tau)-2q[\eta(m)+\alpha V](D+\alpha)
+ +\frac{qa(1+2\alpha V)}{V(a+s)}E.
+\end{equation}
+Feasibility gives $V\ge d(2-d)$, and the chosen coordinate gives $V\ge4d^2$. Hence
+\[
+ V-s-\frac65d
+ =\frac35[V-d(2-d)]+\frac25[V-4d^2]\ge0.
+\]
+Set $\beta=\min\{(V-s)/d,2\}\in[6/5,2]$. Since $\B(x)\ge h(p)(1-x^2)$, the entropy ratio defining $\tau$ obeys
+\[
+ \frac{\eta(\tau)}\tau=\frac jd\ge\beta h(p).
+\]
+Lemma~\ref{product} therefore bounds the first term of \eqref{exactblend} by
+$q[L+3\alpha+2(\beta+1)\alpha^2]$. Lemma~\ref{channel} gives
+\[
+ \frac{q\alpha}R(1+2\alpha V)\le L-\frac12.
+\]
+Insert this and \eqref{Ebound} into \eqref{exactblend}. The multiplying factors are positive, so the inequality directions are preserved. Collecting the three powers of $\alpha$ gives
+\begin{equation}\label{collect}
+ \frac{\mathcal W}{qs}\ge F_0+F_1\alpha+2G\alpha^2,
+\end{equation}
+where, only for this calculation,
+\begin{align*}
+ F_0&=L-2\eta(m)D+\frac{a}{V(a+s)}[E_b-(L-1/2)(a+V)],\\
+ F_1&=3-2\eta(m)-2VD+\frac{2a}{a+s}E_b-\frac aV,\\
+ G&=\beta+1-a-V.
+\end{align*}
+Appendix A proves the coupled bounds
+\[
+ F_0>\frac{m^2}{64},\qquad F_1> -\frac{m^2}{4},\qquad G\ge\frac{m^2}{2}.
+\]
+Consequently the right side of \eqref{collect} is strictly larger than
+\[
+ m^2\left(\frac1{64}-\frac\alpha4+\alpha^2\right)
+ =m^2(\alpha-1/8)^2.
+\]
+The strictness holds also at $m=0$ because $F_0>0$. This proves Proposition~\ref{square}.
+
+\section{The scalar entropy principle}
+\begin{lemma}[Budget-constrained product]\label{product}
+Let $0<p<1/2$, $0<t<1$, and $6/5\le\beta\le2$. If $\eta(t)/t\ge\beta h(p)$, then
+\begin{equation}\label{productgoal}
+ K_p(t)>q[L+3\alpha+2(\beta+1)\alpha^2].
+\end{equation}
+\end{lemma}
+The proof is analytic. First we record one channel estimate, then reduce the small-noise calculation to the two budget endpoints by a tangent at $t=\rho$.
+
+\subsection{An entropy-square expansion}
+Put $f(x)=\eta(\sqrt x)$ and $a_n=1/[2n(2n-1)]$. The positive entropy series gives $f(x)=L-\sum_{n\ge1}a_nx^n$ and $\sum a_n=L$. Direct convolution shows
+\begin{equation}\label{squaretails}
+ f(x)^2=L^2-Lx+\sum_{n\ge2}b_nx^n,\qquad b_n>0,\qquad
+ \sum_{k>n}b_k\ge a_n\quad(n\ge3).
+\end{equation}
+Here are the all-index details. Set $r_n=\sum_{j\ge n}a_j=\int_0^1x^{2n-2}/(1+x)\,\dd x$ and $O_{n-1}=\sum_{j=1}^{n-1}(2j-1)^{-1}$. Partial fractions give
+\[
+ b_n=2a_n\left(\frac{O_{n-1}}{n-1}-r_n\right)>0.
+\]
+Also $r_n\le1/[4(n-1)]$. For $n\ge5$,
+\[
+ \frac{(n-1)b_n}{a_n}\ge2O_{n-1}-\frac12
+ \ge\frac{77}{30}>\frac{17}{7}
+ \ge\frac{4n-3}{2n-3}
+ =\frac{(n-1)(a_{n-1}-a_n)}{a_n}.
+\]
+The case $n=4$ follows from $L<347/500$, giving $b_4-(a_3-a_4)>1/63000$. Summation proves the tail assertion. All endpoint series are absolutely convergent.
+
+\begin{lemma}\label{channel}
+For $0<R<1$, $q=1-R$, and $\alpha=f(R)/q-L$, one has $\alpha>0$, $\alpha' >0$, and
+\begin{equation}\label{channelbound}
+ q\alpha(1+2\alpha)\le(L-1/2)R.
+\end{equation}
+For fixed $t>0$, the kernel $K_p(t)$, regarded as a function of $R$, is concave.
+\end{lemma}
+\begin{proof}
+Division of the entropy series gives $\alpha=\sum_{n\ge1}r_{n+1}R^n$, proving positivity and monotonicity. Rewrite
+\[
+ q\alpha(1+2\alpha)=(1-4L)f(R)+\frac{2f(R)^2}{1-R}+(1-R)(2L^2-L).
+\]
+Its constant coefficient is zero, its linear coefficient is $L-1/2$, and its quadratic coefficient is $-1/12+2(L-1/2)^2<0$. For $n\ge3$, the coefficient is $(4L-1)a_n-2\sum_{k>n}b_k\le(4L-3)a_n<0$. This proves \eqref{channelbound}.
+
+For concavity, fix $y=t^2$, $v=f(y)$. The function $f(x)^2-vf(x)$ vanishes at $x=y$, and its coefficients of degree $n\ge2$ are $b_n+va_n>0$. Therefore
+\[
+ K_p(t)=\frac{2L(L-v)}y
+ -\frac2y\sum_{j\ge1}R^j\sum_{n>j}(b_n+va_n)y^n.
+\]
+Every nonconstant coefficient is negative. Differentiation on compact subintervals of $R<1$ proves concavity, also when $y=1$ by the convergent tails.
+\end{proof}
+In particular, for $\beta\le2$ the target in \eqref{productgoal} is at most
+\begin{equation}\label{targetcap}
+ qL+3q\alpha(1+2\alpha)
+ \le L-(3/2-2L)R<L-R/10.
+\end{equation}
+
+\subsection{Noise at least one sixth}
+The budget implies $t<3/4$: indeed $\eta(3/4)/(3/4)\le(3L+1)/6<31/60$, whereas $(6/5)h(1/6)>(1/5)(7/4+5/6)=31/60$ by \eqref{remainder} and $\log6>7/4$.
+
+Put $r=4/9$ and $x=t^2\le9/16$. Positive entropy series give
+\[
+ \eta(\sqrt r\,t)\ge L-\frac{rx}{2}-\frac{r^2x^2}{12(1-rx)},
+\]
+\[
+ \frac{2[\eta(\sqrt r\,t)-\eta(t)]}{(1-r)t^2}
+ \ge1+\frac{1+r}{6}x+\frac{1+r+r^2}{15}x^2
+       +\frac{1+r+r^2+r^3}{28}x^3.
+\]
+Both lower factors are positive. Multiply them, subtract $L-r/10$, and clear $1-rx$. Replacing $L$ by $693/1000$ decreases the result and gives
+\[
+ \frac2{45}-\frac{12173}{162000}x+\frac{37079}{1215000}x^2
+ +\frac{601643}{131220000}x^3-\frac{9815357}{413343000}x^4
+ +\frac{6305}{1240029}x^5.
+\]
+Using $x^4\le(9/16)^2x^2$, this is at least
+\[
+ \frac2{45}-\frac{19}{250}x+\frac{x^2}{50}>0,
+\]
+as the last quadratic decreases and is positive at $x=9/16$. Thus $K_r(t)>L-r/10$. Since $K_0(t)=2L\kappa(t)/t^2\ge L$, concavity supplies $K_R(t)>L-R/10$ on $0<R\le r$. Together with \eqref{targetcap}, this proves \eqref{productgoal} for $p\ge1/6$.
+
+\subsection{The remaining noise range}
+Put $b=1-p$, $e(t)=\eta(t)/t$, and $Y(t)=\atanh(bt)/b$. Convexity of $\atanh$ gives
+\begin{equation}\label{midpoint}
+ K_p(t)\ge K_{\rm mid}(t):=e(t)Y(t)+\frac q2Y(t)^2.
+\end{equation}
+We show that $K_{\rm mid}$ decreases on the entire interval $0<t<1$ when $b\ge5/6$.
+Write $S(t)=\atanh(t)/t$ and $\mathscr A(t)=L-\log(1-t^2)/2$. Direct differentiation of $2bK_{\rm mid}$ gives
+\[
+ -\frac{2\atanh(bt)}{1-b^2t^2}
+ \left[S(t)-b^2\mathscr A(t)-q
+ +\frac{\eta(t)}{t^2}\left(1-\frac1{S(bt)}\right)\right].
+\]
+Since $S(bt)\ge1+b^2t^2/3$, the bracket is at least
+$S-b^2\mathscr A-q+b^2\eta/4$. As a quadratic in $b\in[5/6,1]$, this is a convex combination of
+\[
+ V_0=S-25\mathscr A/36+25\eta/144-5/9,\quad
+ V_1=S-5\mathscr A/6+5\eta/24-1/3,\quad
+ V_2=S-\mathscr A+\eta/4.
+\]
+All three are positive. The series gives $S-\mathscr A\ge0$, so $V_2>0$. In $V_1$, only degrees one through three in $x=t^2$ can be negative; summing them at $x=1$ and using $L<347/500$ gives $V_1>1/100$. Its degree-$n$ coefficient has numerator $16n^2-58n+15$, positive for $n\ge4$. In $V_0$, all coefficients from degree two onward are positive (numerator $176n^2-338n+75$), and
+\[
+ V_0>\frac2{25}-\frac{11}{100}x+\frac{x^2}{90}+\frac{x^3}{48}
+ \ge\frac7{3600}>0.
+\]
+The last polynomial decreases on $[0,1]$. Thus $K_{\rm mid}'<0$.
+
+Let $t_\beta$ satisfy $e(t_\beta)=\beta H$, where $H=h(p)$. The budget gives $t\le t_\beta$, and hence
+\begin{equation}\label{boundary}
+ K_p(t)\ge K_{\rm mid}(t_\beta).
+\end{equation}
+We need not solve for $t_\beta$.
+
+\subsection{A tangent at the channel correlation}
+As a function of $e$, $Y$ satisfies
+\[
+ Y_e=-\frac{t^2}{\mathscr A(t)(1-b^2t^2)},\qquad
+ Y_{ee}=\frac{t^3[2\mathscr A(t)-t^2(1-b^2t^2)/(1-t^2)]}
+ {\mathscr A(t)^3(1-b^2t^2)^2}.
+\]
+The second derivative is positive between $t_\beta$ and $\rho$. If $\rho\ge5/6$, the budget gives $t_\beta\le\rho$, and on $t\le\rho$ its numerator bracket is at least $2L-t^4/16>0$, using $(1-b^2)/q\le9/16$ and $-\log(1-t^2)\ge t^2+t^4/2$. If $\rho<5/6$, then $t_\beta\le5/6$, and on this interval the bracket is at least
+\[
+ 2\mathscr A(t)-\frac{t^2}{1-t^2}
+ \ge\log(144/11)-25/11>1/4.
+\]
+Consequently the tangent at $t=\rho$, where $e(\rho)=H/\rho$, gives
+\begin{equation}\label{canonicaltangent}
+ Y(t_\beta)\ge\ell_\beta:=\frac{\atanh(b\rho)}b
+ +HJ\left(\frac1\rho-\beta\right),\qquad
+ J=\frac{\rho^2}{\mathscr A(\rho)(1-b^2\rho^2)}.
+\end{equation}
+Appendix B proves the endpoint estimates
+\begin{equation}\label{zbound}
+ \ell_{6/5}-2\alpha>\frac{29}{50},\qquad
+ \ell_2-2\alpha>\frac14+\frac35p+\frac12p^2.
+\end{equation}
+In particular, $\ell_\beta>0$ throughout $6/5\le\beta\le2$, since it is affine in $\beta$.
+
+At the boundary, $K_{\rm mid}/q=\beta(L+\alpha)Y+Y^2/2$. Inserting the positive tangent reduces its deficit to
+\[
+ Q_\beta=\beta(L+\alpha)\ell_\beta+\ell_\beta^2/2
+          -L-3\alpha-2(\beta+1)\alpha^2.
+\]
+The coefficient of $\beta^2$ is $H^2J(qJ-2)/(2q)<0$: indeed $1-b^2\rho^2\ge q$ gives $qJ\le\rho^2/\mathscr A(\rho)\le1/L<2$. It suffices to prove $Q_{6/5},Q_2>0$.
+
+Writing $z_\beta=\ell_\beta-2\alpha$ displays the cancellation:
+\begin{equation}\label{Qcancel}
+ Q_\beta=\alpha[2\beta L-3+(\beta+2)z_\beta]
+          +\beta Lz_\beta+z_\beta^2/2-L.
+\end{equation}
+For $p\le1/6$, monotonicity of $\alpha$ and \eqref{remainder} give
+\[
+ \alpha\ge\frac3{10}\left(\frac{43}{24}+\frac{41}{45}\right)
+ -\frac{347}{500}>\frac19.
+\]
+Use \eqref{zbound}, $693/1000<L<347/500$, and \eqref{Qcancel}. At $\beta=6/5$ the result is
+\[
+ Q_{6/5}>\frac{7997}{562500}>0.
+\]
+For $\beta=2$, Appendix B proves positivity using the same lower bound for $z_2$ and one elementary logarithm minorant. No subdivision or numerical test is used. Thus both endpoint deficits are positive, and concavity in $\beta$ proves \eqref{productgoal} for $p\le1/6$. Lemma~\ref{product}, and therefore the full argument, is complete.
+
+\appendix
+\section{The geometric square}
+We prove the three coupled coefficient bounds used in \eqref{collect}. In this appendix only, let
+\[
+ A=\frac aV=\frac{17+8m-m^2}{12},\quad
+ x=\frac sV,\quad c=L-\frac12,\quad E=L-\frac{m^2}{2}.
+\]
+The entropy series and feasibility give
+\begin{equation}\label{geomdomain}
+ \frac{17}{12}\le A<2,\quad \eta(m)\le E,\quad
+ c_2s\le D-c_1\le\frac cV,\quad
+ x\le x_*:=\min\left\{\frac14,\frac{1-m}{1+m}\right\}.
+\end{equation}
+The two possible values of $x_*$ agree at $m=3/5$.
+
+\subsection*{The constant coefficient}
+A direct rearrangement gives
+\[
+ (A+x)F_0=H_0+T(D-c_1),\qquad
+ H_0=L(A+x)-cA(A+1)-x\eta(m)/V-Ax/(2V),
+\]
+where $T=A^2-2\eta(m)(A+x)$. By \eqref{geomdomain}, this is at least the smaller of
+\[
+ H_+=H_0+T\frac{(4-3V)x}{12V^2},\qquad H_-=H_0+T\frac cV.
+\]
+Replacing $\eta(m)$ by $E$ decreases both expressions. The first is concave in $x$, the second affine. At $x=0$, $A>2L\ge2\eta(m)$, so their minimum divided by $A$ is $L-c(A+1)>1/10>m^2/64$. It remains to check $x=x_*$.
+
+In fact $H_->(A+x)/64$ throughout the domain. Differentiate $V[H_--(A+x)/64]$ in $A$ and use $A\ge4/3$; the result is at least
+\[
+ -2L^2+L+31/64-x/2
+ +m^2(11L/3-445/192)>0.
+\]
+At $A=4/3$, the coefficient of $x$ is negative, so use $x=1/4$. The remaining expression is
+\[
+ -19L^2/6+19L/12+365/768
+ +m^2(28L/9-5063/2304)>0,
+\]
+as follows by $m^2\le1$ and $693/1000<L<347/500$; a lower bound is $3289/562500$.
+
+For $H_+$, subtract $(A+x)m^2/64$ and set $x=x_*$. Its derivative with respect to $L$ is
+$-A^2-xm^2/V-2(A+x)(4-3V)x/(12V^2)<0$.
+Use $L=347/500$. Clear the positive denominators in the table below, obtaining the indicated polynomial $N$. The following elementary expansions prove positivity:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}\toprule
+Range & Multiplier of $H_+-(A+x)m^2/64$ & Variable\\\midrule
+$0\le m\le3/5$ & $864000(1-m^2)^2$ & $u=3/5-m\in[0,3/5]$\\
+$3/5\le m<1$ & $864000(1-m)(1+m)^4$ & $u=m-3/5\in[0,2/5)$\\\bottomrule
+\end{tabular}
+\end{center}
+In the first row, expansion gives coefficient bounds
+\begin{align*}
+ N>&\ 900+6800u+943000u^2-1202500u^3
+       -57500u^6-9500u^7-39u^8\\
+  \ge&\ 900+6800u+200000u^2>0.
+\end{align*}
+The omitted fourth and fifth coefficients are positive. The last inequality uses $u\le3/5$. In the second row the first six coefficients are positive, the constant exceeds $5800$, and the final four terms give
+\[
+ N>5800+u^6(400000-14000u-10000u^2)>0.
+\]
+For explicit reconstruction, before the shifts the two numerators are respectively
+\begin{align*}
+ &117089-83264m-505245m^2+200872m^3+601430m^4
+ \\ &\qquad -17856m^5-97467m^6+9624m^7-39m^8,\\[2pt]
+ &-433408+70440m+529891m^2+495985m^3+360375m^4
+ \\ &\qquad +442541m^5+369417m^6+31251m^7-9507m^8+39m^9.
+\end{align*}
+These are identities obtained by substituting the displayed formulas, not numerical enclosures of a transcendental function. They prove $F_0>m^2/64$.
+
+\subsection*{The linear coefficient}
+The coefficient of $D$ in
+\[
+ F_1=3-\frac{2s\eta(m)}{a+s}
+       +2\left(\frac{a^2}{a+s}-V\right)D-\frac{2a}{V}
+\]
+is positive by $A>4/3$ and $x\le1/4$. Use $D\ge c_1+c_2s$, $\eta(m)\le E$, and multiply by $A+x$. Then
+\begin{align*}
+ (A+x)(F_1+m^2/4)\ge J(x):={}&2(A+x)-A^2-2Ax-2xE\\
+ &+\frac{(4-3V)x}{6V}(A^2-A-x)+\frac{m^2}{4}(A+x).
+\end{align*}
+This is concave in $x$, and $J(0)=A(2-A+m^2/4)>0$. At $x=x_*$ replace $L$ by $347/500$. On the two mean intervals, multiply respectively by
+\[
+ 432000(1-m^2),\qquad 108000(1+m)^3.
+\]
+The resulting numerators, written before shifting, are
+\begin{align*}
+ &123221-362000m+50529m^2+568000m^3-140125m^4
+ -126000m^5+12375m^6,\\
+ &-158029-125529m+339529m^2+624529m^3+91125m^4
+ -64375m^5+15375m^6-2625m^7.
+\end{align*}
+For the first, put $u=3/5-m$. Its shifted coefficients imply
+\[
+ N>18000-117600u+(522000-470000u^2)u^2
+ \ge352800(u-1/6)^2+8200>0.
+\]
+For the second, put $u=m-3/5$. Its shifted coefficients imply
+\[
+ N>31000+u^3(660000-39000u-29000u^2-3000u^4)>0
+ \quad(0\le u\le2/5).
+\]
+This proves $F_1>-m^2/4$.
+
+\subsection*{The quadratic coefficient}
+If the cap $\beta=2$ is active, then $A\le2-V/4$ gives
+\[
+ G=3-a-V\ge3m^2+V^2/4\ge m^2/2.
+\]
+Otherwise $G=(V-d^2)/d+1-a-V$ decreases with $d$. For $m\ge3/5$, substitute the largest feasible gap $1-m$ and use $a\le2V$ to get
+\[
+ G-m^2/2\ge\tfrac52m^2+2m-2\ge\tfrac1{10}>0.
+\]
+For $m\le3/5$, substitute $d=\sqrt V/2$ and use
+$\sqrt{1-m^2}\ge1-m^2/2-m^4/6$ (square both positive sides). Direct substitution of \eqref{allowance} gives
+\[
+ G-m^2/2\ge\frac{1-8m+15m^2+8m^3-4m^4}{12}.
+\]
+With $u=m-1/4\in[-1/4,7/20]$, the numerator is
+\[
+ -4u^4+4u^3+\frac{39}{2}u^2+\frac34u+\frac3{64}
+ \ge18(u+1/48)^2+\frac5{128}>0,
+\]
+since $u(1-u)\ge-5/16$. This completes the geometric square.
+
+\section{The two canonical tangent endpoints}
+This appendix proves \eqref{zbound} and the remaining $Q_2$ sign on the whole interval $0<p\le1/6$. There is no finite interval verification. We use the elementary logarithm bounds
+\[
+ \frac{693}{1000}<L<\frac{347}{500},\quad
+ \frac{43}{24}<\log6<\frac95,\quad
+ 2<\log12<\frac52,\quad
+ \log(3/2)<\frac{3041}{7500}<\frac{203}{500}.
+\]
+For example, the first four positive terms of
+$\log w=2\sum_{j\ge0}z^{2j+1}/(2j+1)$, $z=(w-1)/(w+1)$, with the remaining tail bounded by $2z^9/[9(1-z^2)]$, prove these after reducing $w$ by powers of two. Two terms with their tail give the displayed bound for $\log(3/2)$.
+
+For this appendix write $\ell=-\log p$, $u=-\log(1-p)$, $b=1-p$, $\rho=1-2p$, and
+\[
+ D_p=(3-2p)(2-3p+2p^2),\qquad B_0(p)=bu/p.
+\]
+At the canonical tangent, exact logarithm expansion gives
+\begin{align}
+ Z:=Y(\rho)-2\alpha
+ &=2L+\frac{\log[(2-3p+2p^2)/(3-2p)]-B_0(p)}{2b},\\
+ HJ&=\frac{2\rho^2}{D_p}
+       \left(1+\frac{\rho u}{p(\ell+u)}\right),
+ \qquad z_\beta=Z+HJ(1/\rho-\beta).
+ \label{canonicalexact}
+\end{align}
+
+\subsection*{The first budget endpoint}
+The logarithm ratio in \eqref{canonicalexact} has derivative at least $-6/7$, since its derivative is $(-5+12p-4p^2)/D_p$ and
+\[
+ 6D_p+7(-5+12p-4p^2)=1+6p+44p^2-24p^3>0.
+\]
+With $B_0(p)\le1-p/2-p^2/6$, it follows that
+\[
+ Z>Z_*(p):=\frac{1386}{1000}
+ -\frac{1406/1000+5p/14-p^2/6}{2(1-p)}.
+\]
+Multiplication by $2(1-p)$ and a concave-quadratic endpoint check give
+\[
+ Z_*(p)>\begin{cases}
+ 17/25-p,&0<p\le1/12,\\
+ 7/10-6p/5,&1/12\le p\le1/6.
+ \end{cases}
+\]
+For the first range, $u\le p+p^2/[2(1-p)]$ gives $\rho u/p<1$, while $\ell>2$. Thus the parenthesis in \eqref{canonicalexact} is less than $3/2$. The prefactor $2\rho^2/D_p$ decreases from $1/3$ to $3/14$ as $p$ increases to $1/6$: factor it as $2[\rho/(3-2p)][\rho/(2-3p+2p^2)]$ and differentiate both factors. Therefore $HJ<1/2$, and
+\[
+ z_{6/5}>\frac2{25}-p+\frac1{2\rho}\ge\frac{29}{50}.
+\]
+For the second range, convexity of $-\log p$ gives $\ell\le16/5-42p/5$ from its two endpoint bounds. Since $u\ge p+p^2/2$,
+\[
+ (3-7p)u/p-\ell\ge-\frac15+\frac{29}{10}p-\frac72p^2>0.
+\]
+Thus the parenthesis in \eqref{canonicalexact} is at least $4/3$, and $HJ\ge2/7$. It follows that
+\[
+ z_{6/5}>\frac35\rho+\frac2{7\rho}-\frac{17}{70}
+ \ge2\sqrt{\frac6{35}}-\frac{17}{70}>\frac{29}{50}.
+\]
+All endpoint comparisons here are explicit quadratic or rational inequalities.
+
+\subsection*{The second budget endpoint}
+The following rational envelopes avoid a residual transcendental sign problem. Define locally
+\[
+ l(p)=\frac{43}{24}+2\frac{1-6p}{1+6p},\qquad
+ u_+(p)=p+\frac{p^2}{2(1-p)},\qquad z_*(p)=\frac14+\frac35p+\frac12p^2.
+\]
+The inequality $\log x\ge2(x-1)/(x+1)$ for $x\ge1$ gives $\ell\ge l(p)$, and $u\le u_+$. Put $a=p(3-2p)/2$, $c=2p/3$. Expanding the logarithm ratio gives the lower bound
+\[
+ v(p):=-\frac{3041}{7500}-a-\frac{a^2}{2(1-a)}+c+\frac{c^2}{2}
+ \le\log\frac{2-3p+2p^2}{3-2p}.
+\]
+It follows from \eqref{canonicalexact}, with every coefficient sign fixed, that
+\[
+ z_2\ge z_-(p):=
+ \frac{1386}{1000}+\frac{v(p)-(1-p/2-p^2/6)}{2(1-p)}
+ -\frac{2\rho(2\rho-1)}{D_p}
+       \left(1+\frac{\rho u_+}{p(l+u_+)}\right).
+\]
+The difference $z_--z_*$ equals $P_9(p)/D_9(p)$, where
+\begin{align*}
+ D_9={}&45000(1-p)(3-2p)(2-3p+2p^2)(91-97p+162p^2-72p^3)>0,\\
+ P_9={}&295362-7540725p+84215700p^2-389321927p^3+673748366p^4\\
+ &-511952624p^5+153218576p^6+16687440p^7-26964000p^8+6480000p^9.
+\end{align*}
+To prove its sign, put $v=1/6-p\in[0,1/6]$. Expansion and absorption of the last two negative terms into $v^4$ give
+\[
+ P_9>32800+1000v\,[1290-20053v+67910v^2+311000v^3].
+\]
+Indeed the first four shifted coefficients exceed $32800,1290000,-20053000,67910000$; the fourth-degree coefficient minus $17244000/6^4+6480000/6^5$ exceeds $311000000$, and the intervening coefficients are positive. For $w=v-1/10\ge-1/10$, the cubic in brackets is
+\[
+ \frac{1374}{5}+2859w+161210w^2+311000w^3
+ \ge\frac{1374}{5}+2859w+130110w^2>250.
+\]
+The last inequality follows by completing the square; equivalently its discriminant after subtracting $250$ is $-4733031$. Thus $z_2>z_*$.
+
+It remains to prove $Q_2>0$. From \eqref{remainder},
+\[
+ \alpha\ge a_-(p):=
+ \frac{l(p)+1-p/2-p^2/[6(1-p)]}{4(1-p)}-\frac{347}{500}.
+\]
+The coefficient of $\alpha$ in \eqref{Qcancel} is positive at $\beta=2,z=z_*$, and the expression increases with $z>0$. Hence
+\[
+ Q_2\ge a_-(4\cdot693/1000-3+4z_*)
+       +2(693/1000)z_*+z_*^2/2-347/500
+       =\frac{N_7(p)}{3000000(1-p)^2(1+6p)},
+\]
+where
+\begin{align*}
+ N_7={}&218321-3964841p+20656844p^2-9548824p^3\\
+ &-2992000p^4-12420000p^5+1275000p^6+2250000p^7.
+\end{align*}
+With $w=p-1/10$, $|w|\le1/10$, its shifted constant exceeds $18000$, its linear coefficient has magnitude less than $140000$, and its quadratic coefficient, after absorbing the higher powers, exceeds $16000000$. Explicitly the shifted coefficients from degree two onward are
+\[
+ \frac{87454309}{5},\quad-11954249,\quad-8932000,\quad-11182500,
+ \quad2850000,\quad2250000.
+\]
+Consequently
+\[
+ N_7>18000-140000|w|+16000000w^2
+ =16000000(|w|-7/1600)^2+\frac{70775}{4}>0.
+\]
+This proves the last endpoint sign and completes the analytic product proof.
+
+\begin{thebibliography}{1}
+\bibitem{CK} G.~R.~Kumar and T.~A.~Courtade.
+\emph{Which Boolean Functions are Most Informative?}
+arXiv:1302.2512v2, 2013.
+\end{thebibliography}
+\end{document}

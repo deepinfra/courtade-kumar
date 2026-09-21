@@ -1,0 +1,23 @@
+% !TeX root = courtade-kumar.tex
+% !TEX TS-program = pdfLaTeX
+\label{sec:low-noise}
+\section{The low noise inequality}
+Let $U$ be uniformly distributed in $[0,1]$ and $V$ be obtained by 
+setting $V=U$ with probability $\rho$ and taking a uniform random
+value in $[0,1]$ with probability $1-\rho$. For a real $\eps\in[0,1]$,
+let $C_\eps$ be the indicator that $V\le\eps$.
+Denoting $\mu=\E[B]$, we show that $\muti{X}{B}\le\muti{U}{C_\mu}$
+for $p\le 1/6$ by a rather direct induction the number
+of coordinates of $X$.
+
+\begin{lemma}
+Let $\mu =\E[B]$ and $p\le 1/6$. We have
+$\muti{B}{X}\le\muti{C_\mu}{U}$.
+\end{lemma}
+\begin{proof}
+We write
+\begin{align*}
+\muti{B}{X} = \muti{B}{X_1} + \muti{B}{X\emid X_1}
+\end{align*}
+To be written.
+\end{proof}

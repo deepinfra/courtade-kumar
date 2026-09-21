@@ -1,0 +1,105 @@
+% !TeX root = courtade-kumar.tex
+% !TEX TS-program = pdfLaTeX
+\label{sec:introduction}
+\section{Introduction}
+Let $X$ be distributed uniformly on $\cube$ and let $Y$
+be obtained by copying $X$ and then flipping each of its
+coordinates $Y_i$ with probability $p$, independently
+for $i\in[n]$.
+In \cite{KumarC2013}, Courtade and Kumar ask, what is the
+best strategy to output a bit $B$, having access to $Y$
+only, so that $\muti{B}{X}$, the information revealed about
+$X$, is maximized.
+
+They conjecture that, taking $B=Y_i$ for some $i\in[n]$
+maximizes the information conveyed about $X$. In particular,
+their Conjecture 1 states that 
+\begin{equation}
+\label{eq:ck}\tag{(CK)}
+\muti{B}{X}\le\muti{Y_1}{X} = 1 - \entb{p}.
+\end{equation}
+They further remark that, despite appearing like a freebie
+homework exercise, the statement appears to
+involve substantial depth. Indeed, despite extensive
+efforts and partial progress
+\cite{AnantharamBCJN2017,Arikan2009,BarnesO2020,ChenN2024,
+FischerKRSS2004,JavanmardW2026,KindlerOW2015,LiM2021,
+OrdentlichSW2015,ParnasRS2002,PichlerMP2016,Samorodnitsky2015,
+Samorodnitsky2016,Sarbu2017,Sarbu2017b,YangW2018,Yu2024},
+a full resolution
+of the conjecture remained elusive.
+
+In this work, we show that studying the inequality
+parametrized by $\mu=\E\sparen{B}$, a delicate refinement
+of \eqref{eq:ck} admits an induction on $n$, the number of
+coordinates of $X,Y$. In particular, we prove:
+
+\begin{theorem}
+\label{thm:ck}
+Let $X$ be a uniform random bit string and $Y$ be obtained
+by copying $X$ and then keeping each coordiante as-is with
+probability $\rho$, replacing with a uniform random bit
+with probability $1-\rho$, independently.
+Let $B$ a random bit obtained as a function of $Y$ with
+expectation $\mu$. Denoting
+$\nu = 4\mu(1-\mu)$, it holds that
+\begin{equation*}
+\muti{B}{X}\le \rho^2\nparen{\entb{\mu}-\nu}
+  + \nu\muti{Y_1}{X}
+\end{equation*}
+for any $\rho,\mu\in[0,1]$.
+\end{theorem}
+Two remarks are in order. First, note that an alternative
+description of $Y$ is to keep each coordinate of $X$ with
+probabilty $\rho = 1-2p$ and replace with a uniform random
+bit with probability $1-\rho$. Flipping a bit with
+probability $p$ or re-randomizing with probability $1-\rho$
+lead to the same distribution. Secondly, setting
+\newcommand{\Q}{Q_\rho(\mu)}
+\begin{equation}
+\label{eq:q}
+\Q = \rho^2\nparen{\entb{\mu}-\nu}
+  + \nu\muti{Y_1}{X},
+\end{equation}
+we have $\Q\le \muti{Y_1}{X}$ for all $\rho,\mu\in[0,1]$,
+whose proof we defer to \autoref{sec:proof}.
+
+\subsection{The continuous case}
+We remark that $\Q$ is a surprisingly strong bound, which is
+already violated by the most natural generalization of the
+problem.
+Let $X_\circ$ be distributed uniformly on the unit cube
+$[0,1]^n$ and $Y_\circ$ be obtained by copying the
+corresponding coordinate of $X_\circ$ with probability
+$\rho$ and taking a uniform random $[0,1]$ with probability
+$1-\rho$, for each coordinate $i\in[n]$ independently.
+Let $B_\circ$ be a random bit obtained as a function of
+$Y_\circ$ with $\mu=\E\sparen{B_\circ}$.
+
+Denote by $C_\mu$ the indicator of the event $Y_1\le \mu$.
+Note that $\E\sparen{C_\mu}=\mu$.
+In \autoref{lem:something} we show that
+$\muti{C_\mu}{X_\circ} < \Q$ for $\mu \neq 1/2$
+and $0<p<1/2$, which means the threshold functions already
+exceed the bound predicted by $\Q$. We further conjecture
+the following.
+\begin{conjecture}
+\label{conj:continuous}
+Let $X_\circ$, $Y_\circ$ and $B_\circ$ be as constructed
+and $C_\mu$ be the indicator of the event $Y_1 \le \mu$ as
+above. It holds that
+\begin{equation}
+\muti{B_\circ}{X_\circ}\le\muti{C_\mu}{X_\circ}
+\end{equation}
+for all $\rho, \mu\in [0,1]$.
+\end{conjecture}
+
+Note that \autoref{conj:continuous} directly implies
+\autoref{thm:ck} since we can take any informative
+function $f\colon\cube\to\binary$ for the original
+statement and set
+\begin{equation*}
+f_\circ(y)=f\nparen{\floor{y_1+1/2},\ldots,\floor{y_n+1/2}}
+\end{equation*}
+and $B_\circ = f_\circ(Y_\circ)$ to obtain the same
+information reveal for the continuous problem.

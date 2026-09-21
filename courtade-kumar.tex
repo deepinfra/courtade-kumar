@@ -1,0 +1,86 @@
+% !TeX root = courtade-kumar.tex
+% !TEX TS-program = pdfLaTeX
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{accents}
+\usepackage{microtype}
+\usepackage[hmargin=3.8cm,vmargin=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{bbm}
+\usepackage{aliascnt}
+\usepackage{mathtools}
+\usepackage{sectsty}
+\usepackage{tikz}
+
+\definecolor{Blue}{RGB}{5,55,77}
+\definecolor{Red}{RGB}{20,50,10}
+\definecolor{purple}{HTML}{8c3fcf}
+\hypersetup{
+    colorlinks,
+    citecolor=Blue,
+    filecolor=Blue,
+    linkcolor=Blue,
+    urlcolor=Blue,
+    breaklinks=false,
+}
+
+\sectionfont{\large}
+\subsectionfont{\normalsize}
+
+\input{definitions/math}
+\input{definitions/fields}
+\input{definitions/probability}
+\input{definitions/entropy}
+\input{definitions/linearalgebra}
+\input{definitions/theoremlike}
+\usepackage[
+  backend=biber,
+  style=numeric,
+  natbib=true,
+  backref,
+  url=true,
+  maxbibnames=99]{biblatex}
+\DefineBibliographyStrings{english}{%
+  backrefpage = {cited on page},
+  backrefpages = {cited on pages},
+}
+\addbibresource{references/main.bib}
+
+\newcommand{\vol}{\operatorname{Vol}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\circuit}{\mathbb C}
+\newcommand{\ball}{B_d}
+\newcommand{\kero}{K}
+
+\begin{document}
+\title{\bf\fontsize{15}{19}\selectfont
+  On the most informative Boolean function under noise%
+  \vspace{-2px}}
+\author{\fontsize{10}{12}\selectfont
+\begin{minipage}[t]{0.45\textwidth}\centering
+Dimiter Kramer\\[1pt]
+{\fontsize{9}{11}\selectfont DeepInfra\\
+dimiter@deepinfra.com}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.45\textwidth}\centering
+Mert Saglam\\[1pt]
+{\fontsize{9}{11}\selectfont DeepInfra\\
+mert@deepinfra.com}
+\end{minipage}}
+\date{}
+\maketitle
+\vspace{-8px}
+
+\input{abstract}
+\input{introduction}
+\input{induction}
+
+\printbibliography
+\appendix
+\input{appendix}
+\end{document}

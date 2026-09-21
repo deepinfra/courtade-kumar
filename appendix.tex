@@ -1,0 +1,731 @@
+% !TeX root = courtade-kumar.tex
+% !TEX TS-program = pdfLaTeX
+\section{Deferred proofs}
+
+\subsection{The posterior form of the induction step}\label{app:closure}
+All information quantities are measured in bits, and $\nu=4\mu(1-\mu)$ throughout. We write
+\[
+ \eta(t)=1-\kappa(t),\qquad p=(1-\rho)/2,
+ \qquad q=1-\rho^2,\qquad
+ \alpha=\frac{\rho^2-\kappa(\rho)}q\quad(0<\rho<1).
+\]
+Here $\eta(t)$ is the residual uncertainty of a bit with sign mean $t$;
+this quantity is needed for the conditional entropy budgets below. The
+profile for information lost through noise is
+\[
+ \mathcal B_\rho(\mu)
+ =1-\kldivb{\mu}{1/2}-Q_\rho(\mu)
+ =q\left[1-\kldivb{\mu}{1/2}+\alpha\nu\right].
+\]
+The divergence expansion \eqref{eq:app-entropyseries} implies $\alpha>0$ and
+\[
+ \eta(\rho)\nu\le\mathcal B_\rho(\mu)\le1-\kldivb{\mu}{1/2}.
+\]
+The endpoint profiles are $\mathcal B_1(\mu)=0$ and
+$\mathcal B_0(\mu)=1-\kldivb{\mu}{1/2}$.
+
+In \autoref{lem:closure}, let
+$A_s=\Pr(B=1\mid S=s,W)$ and define
+\[
+\begin{aligned}
+ J(a_0,a_1)&=1-\frac{\kldivb{a_0}{1/2}+\kldivb{a_1}{1/2}}2,\\
+ M_p(a_0,a_1)&=J((1-p)a_0+pa_1,pa_0+(1-p)a_1).
+\end{aligned}
+\]
+Complementing $B$ and exchanging the values of $S$ if needed, assume
+\[
+ \mu=\frac{\E A_0+\E A_1}{2}\ge\frac12,\qquad
+ d=\E A_1-\E A_0\ge0,
+ \qquad \mu+d/2\le1.
+\]
+Write
+\[
+\begin{aligned}
+ J_* &=1-\frac{\kldivb{\mu-d/2}{1/2}+\kldivb{\mu+d/2}{1/2}}2,\\
+ j&=\frac{\mathcal B_\rho(\mu-d/2)+\mathcal B_\rho(\mu+d/2)}2.
+\end{aligned}
+\]
+The identities
+\[
+ \muti{B}{W\mid S}=J_*-\E J(A_0,A_1),\qquad
+ \muti{B}{S_\rho,W}=1-\kldivb{\mu}{1/2}-\E M_p(A_0,A_1)
+\]
+show that \autoref{lem:closure} is equivalent to
+\begin{equation}\label{eq:app-local}
+ 4d^2\le\nu,\quad \E J(A_0,A_1)\ge j
+ \quad\Longrightarrow\quad
+ \E M_p(A_0,A_1)\ge\mathcal B_\rho(\mu).
+\end{equation}
+Thus $J$ and $M_p$ represent conditional uncertainties before and after
+recombining the sections. There is no independence assumption on $A_0,A_1$.
+
+\subsection{Two local estimates}
+Put
+\[
+ M_*:=1-\frac{\kldivb{\mu-\rho d/2}{1/2}+\kldivb{\mu+\rho d/2}{1/2}}2.
+\]
+
+\subsubsection*{Mean consistency}
+\begin{lemma}\label{lem:app-consistency}
+For $\mu<1$ and every finite joint posterior law with these means and $\E
+J(A_0,A_1)\ge j$,
+\begin{equation}\label{eq:app-Pbound}
+ \E M_p(A_0,A_1)\ge
+ P:=M_*-\left(1-\frac{qd^2}{a(\mu)+d^2}\right)(J_*-j).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Apply \autoref{lem:consistency} to the posterior law. Since
+\[
+ \muti{B}{W\mid S}=J_*-\E J,\qquad
+ \muti{B}{S_\rho}=1-\kldivb{\mu}{1/2}-M_*,
+\]
+it gives $\E M_p\ge M_*-(1-qd^2/(a(\mu)+d^2))(J_*-\E J)$.
+The coefficient of $\E J$ is nonnegative, so $\E J\ge j$ proves the claim.
+\end{proof}
+
+\subsubsection*{The entropy budget and the gap}
+\begin{lemma}\label{lem:app-budget}
+If $d=|\E A_0-\E A_1|>0$ and $\E J(A_0,A_1)\ge j$, with $0\le j\le\eta(d)$,
+let $\tau\in[d,1]$ satisfy $\eta(\tau)/\tau=j/d$. Then
+\begin{equation}\label{eq:app-Cbound}
+ \E M_p(A_0,A_1)\ge C:=\frac d\tau\eta(\rho\tau).
+\end{equation}
+\end{lemma}
+\begin{proof}
+We first prove the pointwise comparison. Define $\tau(e)$ by
+$\eta(\tau(e))/\tau(e)=e$ and
+$\phi(e)=\eta(\rho\tau(e))/\tau(e)$. The ratio $\eta(t)/t$ decreases strictly, since
+\begin{equation}\label{eq:app-entropyratio}
+ \left(\frac{\eta(t)}t\right)'=-\frac{\mathcal A(t)}{t^2},\qquad
+ \mathcal A(t)=1-\frac{\ln(1-t^2)}{2\ln2}>0.
+\end{equation}
+For a pair with $t=|a_0-a_1|>0$ and $x=|a_0+a_1-1|$, put
+$\mathcal H(x,t)=[\eta(x+t)+\eta(x-t)]/2$. We claim
+\begin{equation}\label{eq:app-pointwise}
+ \frac{M_p(a_0,a_1)}t\ge\phi\!\left(\frac{J(a_0,a_1)}t\right).
+\end{equation}
+In the interior $x>0$, $x+t<1$, let $u=-\mathcal H_x>0$ and $v=\mathcal
+H-t\mathcal H_t>0$. The ratio $v/u$ decreases with $t$. Indeed, if
+\[
+ \Theta=v-\frac{1-x^2-t^2}{2x}u,
+\]
+direct differentiation gives $u_t>0$, $\Theta_t=tu/x$, and $(v/u)_t=-\Theta
+u_t/u^2$. At zero gap,
+\[
+ \Theta(x,0)=\frac{2x\eta(x)-(1-x^2)\operatorname{atanh} x/\ln2}{2x}\ge0:
+\]
+the numerator vanishes at $0,1$ and has second derivative
+$-2\operatorname{atanh} x/\ln2\le0$.
+
+Now follow the contour $\mathcal H(x,t(x))/t(x)=e$ toward $x=0$. It exists all
+the way: the ratio decreases in $t$ from infinity to $[1-\kldivb{x}{1/2}]/[2(1-x)]$, whose
+derivative in $x$ is $-\ln x/[2(1-x)^2\ln2]>0$. Along this contour $t'=-tu/v$,
+and
+\[
+ \frac{\mathrm d}{\mathrm d x}\frac{\mathcal H(x,\rho t(x))}{t(x)}
+ =\frac1t\left[\frac{u(x,t)v(x,\rho t)}{v(x,t)}-u(x,\rho t)\right]\ge0.
+\]
+At $x=0$, $t=\tau(e)$, proving \eqref{eq:app-pointwise}. Boundary pairs follow
+by continuity; $J=0$ gives the deterministic opposite pair directly.
+
+Finally $\phi$ is increasing and convex. Its derivative is
+\[
+ \phi'(e)=\frac{\mathcal A(\rho\tau)}{\mathcal A(\tau)}\in[0,1].
+\]
+The ratio decreases with $\tau$: if $\mathcal A(\sqrt x)=\sum b_kx^k$ with
+$b_0=1$, $b_k=1/(2k\ln2)>0$, the numerator of its derivative is
+\[
+ \sum_{i>k}(i-k)b_ib_k(\rho^{2i}-\rho^{2k})x^{i+k-1}\le0.
+\]
+As $\tau$ decreases with $e$, convexity follows. Since $\phi(e)\ge e$ and
+$0\le\phi'(e)\le1$, a supporting line at $e=j/d$ has slope $\lambda\in[0,1]$
+and intercept $c\ge0$, so \eqref{eq:app-pointwise} gives
+\[
+ M_p(a_0,a_1)\ge\lambda J(a_0,a_1)+c|a_0-a_1|.
+\]
+This also holds when $a_0=a_1$. Average and use $\E|A_0-A_1|\ge d$. The
+resulting bound is $\lambda j+cd=C$. The zero-budget and noise endpoints
+follow by continuity or directly.
+\end{proof}
+
+\subsection{Combining the estimates}
+Assume $0<p<1/2$, $1/2\le\mu<1$, and $0<4d^2\le\nu$. Abbreviate
+\[
+ s=d^2,\quad a=a(\mu),\quad b_*=\mathcal B_\rho(\mu),
+ \qquad j=qJ_*+q\alpha(\nu-s).
+\]
+One has $0<j\le J_*\le\eta(d)$, so both lemmas apply. 
+\begin{proposition}[A compensated square]\label{lem:app-square}
+With $C,P$ given by \eqref{eq:app-Cbound}, \eqref{eq:app-Pbound}, the positive weights
+\[
+ w_C=\frac{2(C+b_*-j)}q,\qquad
+ w_P=\frac{a(1/\ln2+2\alpha \nu)}{\rho^2\nu}
+\]
+satisfy
+\begin{equation}\label{eq:app-squarebound}
+ w_C(C-b_*)+w_P(P-b_*)>qs(1-\nu)(\alpha-1/(8\ln2))^2\ge0.
+\end{equation}
+\end{proposition}
+\begin{proof}[Proof of \autoref{lem:closure}]
+Both weights are positive because $C\ge j$ and $b_*>0$. Thus $\E
+M_p\ge(w_CC+w_PP)/(w_C+w_P)>b_*$, which proves \eqref{eq:app-local} for $d>0$.
+If $d=0$, entropy concavity gives $\E M_p\ge\E J\ge b_*$. Deterministic means
+are immediate. At $p=0$ the profile vanishes; at $p=1/2$ the budget and
+Jensen's inequality force the sections to equal their means almost surely,
+giving parent entropy $1-\kldivb{\mu}{1/2}$.
+\end{proof}
+
+\subsubsection*{The cancellation}
+We prove \autoref{lem:app-square} using the scalar product lemma in
+\autoref{app:scalar} and the elementary geometry in \autoref{app:geometry}.
+Write
+\begin{align*}
+ \delta&=\frac{\muti{B}{S}}s
+ =\frac{\kldivb{\mu-d/2}{\mu}+\kldivb{\mu+d/2}{\mu}}{2s},\\
+ E_b&=1-\kldivb{\mu}{1/2}+a\delta-\frac{a+s}{2\nu\ln2},\\
+ c_k&=\frac{\mu^{1-2k}+(1-\mu)^{1-2k}}{2^{2k+1}k(2k-1)\ln2}.
+\end{align*}
+The exact binary-information identity gives $s\delta=\sum_{k\ge1}c_ks^k$, with
+$c_1=1/(2\nu\ln2)$ and $c_2=(4-3\nu)/(12\nu^3\ln2)$. The series converges also at $d=2(1-\mu)$.
+
+Put $R=\rho^2$ locally. Expanding \eqref{eq:app-Pbound}, and retaining the
+nonnegative remainder, gives
+\begin{align}
+ P-b_*&=\frac{Rqs}{a+s}E,\\
+ E&\ge E_b-\frac\alpha R(a+q\nu+Rs)\nonumber\\
+   &=E_b-\alpha(a+s)-\frac{q\alpha}R(a+\nu).
+ \label{eq:app-Ebound}
+\end{align}
+The difference in the first inequality is exactly
+\[
+ R(a+s)\sum_{k\ge3}c_k(1+R+\cdots+R^{k-3})s^{k-1}\ge0.
+\]
+
+Define the scalar kernel
+\begin{equation}\label{eq:app-kernel}
+ K_p(t)=\frac{2\eta(\rho t)[\kappa(t)-\kappa(\rho t)]}{qt^2}.
+\end{equation}
+The identity $(C-b_*)(C+b_*-j)=C(C-j)-b_*(b_*-j)$ yields, for the left side
+$\mathcal W$ of \eqref{eq:app-squarebound},
+\begin{equation}\label{eq:app-exactblend}
+ \frac{\mathcal W}s=K_p(\tau)-2q\left[1-\kldivb{\mu}{1/2}+\alpha\nu\right](\delta+\alpha)
+ +\frac{qa(1/\ln2+2\alpha \nu)}{\nu(a+s)}E.
+\end{equation}
+Feasibility gives $\nu\ge d(2-d)$, and the chosen coordinate gives $\nu\ge4d^2$. Hence
+\[
+ \nu-s-\frac65d
+ =\frac35[\nu-d(2-d)]+\frac25[\nu-4d^2]\ge0.
+\]
+Set $\beta=\min\{(\nu-s)/d,2\}\in[6/5,2]$. Since $\mathcal B_\rho(x)\ge
+4x(1-x)\eta(\rho)$, the entropy ratio defining $\tau$ obeys
+\[
+ \frac{\eta(\tau)}\tau=\frac jd\ge\beta \eta(\rho).
+\]
+\autoref{lem:app-product} therefore bounds the first term of \eqref{eq:app-exactblend} by
+$q[1/\ln2+3\alpha/\ln2+2(\beta+1)\alpha^2]$. \autoref{lem:app-channel} gives
+\[
+ \frac{q\alpha}R(1/\ln2+2\alpha \nu)\le \frac1{\ln2}-\frac1{2(\ln2)^2}.
+\]
+Insert this and \eqref{eq:app-Ebound} into \eqref{eq:app-exactblend}. The
+multiplying factors are positive, so the inequality directions are preserved.
+Collecting the three powers of $\alpha$ gives
+\begin{equation}\label{eq:app-collect}
+ \frac{\mathcal W}{qs}\ge F_0+F_1\alpha+2G\alpha^2,
+\end{equation}
+where, only for this calculation,
+\begin{align*}
+ F_0&=\frac1{\ln2}-2\left[1-\kldivb{\mu}{1/2}\right]\delta
+ +\frac{a}{\nu(a+s)\ln2}\left[E_b-\left(1-\frac1{2\ln2}\right)(a+\nu)\right],\\
+ F_1&=\frac3{\ln2}-2+2\kldivb{\mu}{1/2}-2\nu\delta+\frac{2a}{a+s}E_b-\frac a{\nu\ln2},\\
+ G&=\beta+1-a-\nu.
+\end{align*}
+\autoref{app:geometry} proves the coupled bounds
+\[
+ F_0>\frac{1-\nu}{64(\ln2)^2},\qquad F_1> -\frac{1-\nu}{4\ln2},\qquad G\ge\frac{1-\nu}{2}.
+\]
+Consequently the right side of \eqref{eq:app-collect} is strictly larger than
+\[
+ (1-\nu)\left(\frac1{64(\ln2)^2}-\frac\alpha{4\ln2}+\alpha^2\right)
+ =(1-\nu)(\alpha-1/(8\ln2))^2.
+\]
+The strictness holds also at $\mu=1/2$ because $F_0>0$. This proves
+\autoref{lem:app-square}.
+
+\section{A scalar entropy inequality}\label{app:scalar}
+\begin{lemma}[Budget-constrained product]\label{lem:app-product}
+Let $0<p<1/2$, $0<t<1$, and $6/5\le\beta\le2$. If $\eta(t)/t\ge\beta \eta(\rho)$, then
+\begin{equation}\label{eq:app-productgoal}
+ K_p(t)>q[1/\ln2+3\alpha/\ln2+2(\beta+1)\alpha^2].
+\end{equation}
+\end{lemma}
+We first bound the channel parameters, then use a tangent at $t=\rho$ to
+reduce the remaining inequality to two endpoints.
+The logarithmic remainder used below is
+\begin{equation}\label{eq:app-remainder}
+ \mathcal R(y):=-\frac{1-y}{y}\ln(1-y)
+ =1-\sum_{n\ge1}\frac{y^n}{n(n+1)}.
+\end{equation}
+
+\subsection{An entropy-square expansion}
+Put $f(x)=\eta(\sqrt x)$ and $a_n=1/[2n(2n-1)\ln2]$. The divergence series
+gives $f(x)=1-\sum_{n\ge1}a_nx^n$ and $\sum a_n=1$. Direct convolution shows
+\begin{equation}\label{eq:app-squaretails}
+ f(x)^2=1-x/\ln2+\sum_{n\ge2}b_nx^n,\qquad b_n>0,\qquad
+ \sum_{k>n}b_k\ge a_n/\ln2\quad(n\ge3).
+\end{equation}
+Set $r_n=\sum_{j\ge n}a_j=\frac1{\ln2}\int_0^1x^{2n-2}/(1+x)\,\mathrm d x$ and
+$O_{n-1}=\sum_{j=1}^{n-1}(2j-1)^{-1}$. Partial fractions give
+\[
+ b_n=2a_n\left(\frac{O_{n-1}}{(n-1)\ln2}-r_n\right)>0.
+\]
+Also $r_n\le1/[4(n-1)\ln2]$. For $n\ge5$,
+\[
+ \frac{(n-1)(\ln2)b_n}{a_n}\ge2O_{n-1}-\frac12
+ \ge\frac{77}{30}>\frac{17}{7}
+ \ge\frac{4n-3}{2n-3}
+ =\frac{(n-1)(a_{n-1}-a_n)}{a_n}.
+\]
+The case $n=4$ follows from $\ln2<347/500$, giving $b_4-(a_3-a_4)/\ln2>1/[63000(\ln2)^2]$.
+Summation proves the tail assertion. All endpoint series are absolutely
+convergent.
+
+To index the kernel by squared correlation, write
+$\mathcal K_R(t)=K_{(1-\sqrt R)/2}(t)$.
+\begin{lemma}\label{lem:app-channel}
+For $0<R<1$, $q=1-R$, and $\alpha=f(R)/q-1$, one has $\alpha>0$, $\alpha' >0$, and
+\begin{equation}\label{eq:app-channelbound}
+ q\alpha(1/\ln2+2\alpha)\le\left(\frac1{\ln2}-\frac1{2(\ln2)^2}\right)R.
+\end{equation}
+For fixed $0<t\le1$, $\mathcal K_R(t)$ is concave in $R$.
+\end{lemma}
+\begin{proof}
+Division of the entropy series gives $\alpha=\sum_{n\ge1}r_{n+1}R^n$, proving
+positivity and monotonicity. Rewrite
+\[
+ q\alpha(1/\ln2+2\alpha)=(1/\ln2-4)f(R)+\frac{2f(R)^2}{1-R}
+ +(1-R)(2-1/\ln2).
+\]
+Its constant coefficient is zero, its linear coefficient is $1/\ln2-1/[2(\ln2)^2]$, and its
+quadratic coefficient is $[-1/12+2(\ln2-1/2)^2]/(\ln2)^2<0$. For $n\ge3$, the coefficient is
+$(4-1/\ln2)a_n-2\sum_{k>n}b_k\le(4-3/\ln2)a_n<0$. This proves
+\eqref{eq:app-channelbound}.
+
+For concavity, fix $y=t^2$, $v=f(y)$. The function $f(x)^2-vf(x)$ vanishes at
+$x=y$, and its coefficients of degree $n\ge2$ are $b_n+va_n>0$. Therefore
+\[
+ \mathcal K_R(t)=\frac{2(1-v)}y
+ -\frac2y\sum_{j\ge1}R^j\sum_{n>j}(b_n+va_n)y^n.
+\]
+Every nonconstant coefficient is negative. Differentiation on compact
+subintervals of $R<1$ proves concavity, also when $y=1$ by the convergent
+tails.
+\end{proof}
+In particular, for $\beta\le2$ the target in \eqref{eq:app-productgoal} is at most
+\begin{equation}\label{eq:app-targetcap}
+ \frac q{\ln2}+3q\alpha(1/\ln2+2\alpha)
+ \le\frac1{\ln2}-\left(\frac3{2(\ln2)^2}-\frac2{\ln2}\right)R
+ <\frac1{\ln2}-\frac R{10(\ln2)^2}.
+\end{equation}
+
+\subsection{Noise at least one sixth}
+For $p\ge1/6$, the budget implies $t<3/4$, since
+\[
+ \frac{\eta(3/4)}{3/4}\le\frac{3\ln2+1}{6\ln2}<\frac{31}{60\ln2}
+ <\frac65\eta(2/3).
+\]
+The last inequality follows from \eqref{eq:app-remainder} and
+$\ln6>7/4$.
+
+Put $r=4/9$ and $x=t^2\le9/16$. The divergence series gives
+\[
+ \eta(\sqrt r\,t)\ge 1-\frac{rx}{2\ln2}-\frac{r^2x^2}{12(1-rx)\ln2},
+\]
+\[
+ \frac{2[\kappa(t)-\kappa(\sqrt r\,t)]}{(1-r)t^2}
+ \ge\frac1{\ln2}\left[1+\frac{1+r}{6}x+\frac{1+r+r^2}{15}x^2
+       +\frac{1+r+r^2+r^3}{28}x^3\right].
+\]
+Both lower factors are positive. Multiply them, subtract $1/\ln2-r/[10(\ln2)^2]$, and clear
+$(\ln2)^2(1-rx)$. Replacing $\ln2$ by $693/1000$ decreases the result and gives
+\[
+ \frac2{45}-\frac{12173}{162000}x+\frac{37079}{1215000}x^2
+ +\frac{601643}{131220000}x^3-\frac{9815357}{413343000}x^4
+ +\frac{6305}{1240029}x^5.
+\]
+Using $x^4\le(9/16)^2x^2$, this is at least
+\[
+ \frac2{45}-\frac{19}{250}x+\frac{x^2}{50}>0,
+\]
+as the last quadratic decreases and is positive at $x=9/16$. Thus $\mathcal
+K_r(t)>1/\ln2-r/[10(\ln2)^2]$. Since $\mathcal K_0(t)=2\kappa(t)/t^2\ge1/\ln2$, concavity
+supplies $\mathcal K_R(t)>1/\ln2-R/[10(\ln2)^2]$ on $0<R\le r$. Together with
+\eqref{eq:app-targetcap}, this proves \eqref{eq:app-productgoal} for
+$p\ge1/6$.
+
+\subsection{The remaining noise range}
+Put $b=1-p$, $e(t)=\eta(t)/t$, and $\zeta(t)=\operatorname{atanh}(bt)/(b\ln2)$.
+Convexity of $\operatorname{atanh}$ gives
+\begin{equation}\label{eq:app-midpoint}
+ K_p(t)\ge K_{\rm mid}(t):=e(t)\zeta(t)+\frac q2\zeta(t)^2.
+\end{equation}
+We show that $K_{\rm mid}$ decreases on the entire interval $0<t<1$ when $b\ge5/6$.
+Write $S(t)=\operatorname{atanh}(t)/(t\ln2)$ and $\mathcal A(t)=1-\ln(1-t^2)/(2\ln2)$.
+Direct differentiation of $2bK_{\rm mid}$ gives
+\[
+ -\frac{2\operatorname{atanh}(bt)}{(\ln2)(1-b^2t^2)}
+ \left[S(t)-b^2\mathcal A(t)-q/\ln2
+ +\frac{\eta(t)}{t^2}\left(1-\frac1{(\ln2)S(bt)}\right)\right].
+\]
+Since $S(bt)\ge(1+b^2t^2/3)/\ln2$, the bracket is at least
+$S-b^2\mathcal A-q/\ln2+b^2\eta/4$. As a quadratic in $b\in[5/6,1]$, this is a convex combination of
+\begin{align*}
+ U_0&=S-25\mathcal A/36+25\eta/144-5/(9\ln2),\\
+ U_1&=S-5\mathcal A/6+5\eta/24-1/(3\ln2),\\
+ U_2&=S-\mathcal A+\eta/4.
+\end{align*}
+All three are positive. The series gives $S-\mathcal A\ge0$, so $U_2>0$. In
+$U_1$, only degrees one through three in $x=t^2$ can be negative; summing them
+at $x=1$ and using $\ln2<347/500$ gives $U_1>1/(100\ln2)$. Its degree-$n$ coefficient
+has numerator $16n^2-58n+15$, positive for $n\ge4$. In $U_0$, all coefficients
+from degree two onward are positive (numerator $176n^2-338n+75$), and
+\[
+ U_0>\frac1{\ln2}\left[\frac2{25}-\frac{11}{100}x+\frac{x^2}{90}+\frac{x^3}{48}\right]
+ \ge\frac7{3600\ln2}>0.
+\]
+The last polynomial decreases on $[0,1]$. Thus $K_{\rm mid}'<0$.
+
+Let $t_\beta$ satisfy $e(t_\beta)=\beta H$, where $H=\eta(\rho)$. The budget gives
+$t\le t_\beta$, and hence
+\begin{equation}\label{eq:app-boundary}
+ K_p(t)\ge K_{\rm mid}(t_\beta).
+\end{equation}
+
+\subsection{A tangent at the channel correlation}
+As a function of $e$, $\zeta$ satisfies
+\[
+ \zeta_e=-\frac{t^2}{(\ln2)\mathcal A(t)(1-b^2t^2)},\qquad
+ \zeta_{ee}=\frac{t^3[2(\ln2)\mathcal A(t)-t^2(1-b^2t^2)/(1-t^2)]}
+ {(\ln2)^2\mathcal A(t)^3(1-b^2t^2)^2}.
+\]
+The second derivative is positive between $t_\beta$ and $\rho$. If
+$\rho\ge5/6$, then $\beta\ge1/\rho$, so $e(t_\beta)=\beta H\ge e(\rho)$ and
+$t_\beta\le\rho$, and on $t\le\rho$ its numerator bracket is at least
+$2\ln2-t^4/16>0$, using $(1-b^2)/q\le9/16$ and $-\ln(1-t^2)\ge t^2+t^4/2$. If
+$\rho<5/6$, then $H\ge\eta(5/6)$ and $\beta\ge6/5$, so $e(t_\beta)\ge e(5/6)$
+and $t_\beta\le5/6$, and on this interval the bracket is at least
+\[
+ 2(\ln2)\mathcal A(t)-\frac{t^2}{1-t^2}
+ \ge\ln(144/11)-25/11>1/4.
+\]
+Consequently the tangent at $t=\rho$, where $e(\rho)=H/\rho$, gives
+\begin{equation}\label{eq:app-canonicaltangent}
+ \zeta(t_\beta)\ge\ell_\beta:=\frac{\operatorname{atanh}(b\rho)}{b\ln2}
+ +HJ\left(\frac1\rho-\beta\right),\qquad
+ J=\frac{\rho^2}{(\ln2)\mathcal A(\rho)(1-b^2\rho^2)}.
+\end{equation}
+\autoref{app:tangent} proves the endpoint estimates
+\begin{equation}\label{eq:app-zbound}
+ \ell_{6/5}-2\alpha>\frac{29}{50\ln2},\qquad
+ \ell_2-2\alpha>\frac{1/4+3p/5+p^2/2}{\ln2}.
+\end{equation}
+In particular, $\ell_\beta>0$ throughout $6/5\le\beta\le2$, since it is affine
+in $\beta$.
+
+At $t=t_\beta$, write $\zeta=\zeta(t_\beta)$. Then
+$K_{\rm mid}/q=\beta(1+\alpha)\zeta+\zeta^2/2$.
+Inserting the positive tangent reduces its deficit to
+\[
+ Q_\beta=\beta(1+\alpha)\ell_\beta+\ell_\beta^2/2
+          -1/\ln2-3\alpha/\ln2-2(\beta+1)\alpha^2.
+\]
+The coefficient of $\beta^2$ is $H^2J(qJ-2)/(2q)<0$: indeed $1-b^2\rho^2\ge q$
+gives $qJ\le\rho^2/[(\ln2)\mathcal A(\rho)]\le1/\ln2<2$. It suffices to prove
+$Q_{6/5},Q_2>0$.
+
+Writing $z_\beta=\ell_\beta-2\alpha$ displays the cancellation:
+\begin{equation}\label{eq:app-Qcancel}
+ Q_\beta=\alpha[2\beta-3/\ln2+(\beta+2)z_\beta]
+          +\beta z_\beta+z_\beta^2/2-1/\ln2.
+\end{equation}
+For $p\le1/6$, monotonicity of $\alpha$ and \eqref{eq:app-remainder} give
+\[
+ (\ln2)\alpha\ge\frac3{10}\left(\frac{43}{24}+\frac{41}{45}\right)
+ -\frac{347}{500}>\frac19.
+\]
+Use \eqref{eq:app-zbound}, $693/1000<\ln2<347/500$, and \eqref{eq:app-Qcancel}.
+At $\beta=6/5$ the result is
+\[
+ (\ln2)^2Q_{6/5}>\frac{7997}{562500}>0.
+\]
+For $\beta=2$, \autoref{app:tangent} proves positivity using the same lower
+bound for $z_2$ and one elementary logarithm minorant. Thus both endpoint
+deficits are positive, and concavity in $\beta$ proves
+\eqref{eq:app-productgoal} for $p\le1/6$. This proves
+\autoref{lem:app-product}.
+
+\section{Polynomial coefficient bounds}\label{app:geometry}
+We prove the three coupled coefficient bounds used in \eqref{eq:app-collect}.
+In this appendix only, let
+\[
+ A=\frac a\nu=1+\mu-\frac{(1-\mu)^2}{3},\quad
+ x=\frac s\nu,\quad c=1-\frac1{2\ln2},\quad E=1-\frac{1-\nu}{2\ln2}.
+\]
+The divergence series and $d\le2(1-\mu)$ give
+\begin{equation}\label{eq:app-geomdomain}
+ \frac{17}{12}\le A<2,\quad 1-\kldivb{\mu}{1/2}\le E,\quad
+ c_2s\le \delta-c_1\le\frac c\nu,\quad
+ x\le x_*:=\min\left\{\frac14,\frac{1-\mu}{\mu}\right\}.
+\end{equation}
+For the upper bound on $\delta-c_1$, use
+$c_kd^{2k-2}\le[2k(2k-1)\nu\ln2]^{-1}$ and sum over $k\ge2$.
+The two possible values of $x_*$ agree at $\mu=4/5$.
+
+\subsection*{The constant coefficient}
+Clearing the explicit logarithm denominators gives
+\begin{align*}
+ (A+x)(\ln2)^2F_0&=H_0+(\ln2)T(\delta-c_1),\\
+ H_0&=(\ln2)(A+x)-c(\ln2)A(A+1)
+       -\frac{x(\ln2)[1-\kldivb{\mu}{1/2}]}\nu-\frac{Ax}{2\nu},
+\end{align*}
+where $T=A^2-2(\ln2)[1-\kldivb{\mu}{1/2}](A+x)$. By \eqref{eq:app-geomdomain}, this is at least
+the smaller of
+\[
+ H_+=H_0+T\frac{(4-3\nu)x}{12\nu^2},\qquad H_-=H_0+T\frac{c\ln2}\nu.
+\]
+Replacing $1-\kldivb{\mu}{1/2}$ by $E$ decreases both expressions; below, $H_\pm$ denote
+these lower bounds. The first is concave in $x$, the second affine. At $x=0$,
+$A>2\ln2\ge2(\ln2)[1-\kldivb{\mu}{1/2}]$, so their minimum divided by $A$ is $\ln2-c(\ln2)(A+1)>1/10>(1-\nu)/64$.
+It remains to check $x=x_*$.
+
+In fact $H_->(A+x)/64$ throughout the domain. Differentiate $\nu[H_--(A+x)/64]$
+in $A$ and use $A\ge4/3$; the result is at least
+\[
+ -2(\ln2)^2+\ln2+31/64-x/2
+ +(1-\nu)(11\ln2/3-445/192)>0.
+\]
+At $A=4/3$, the coefficient of $x$ is negative, so use $x=1/4$. The remaining
+expression is
+\[
+ -19(\ln2)^2/6+19\ln2/12+365/768
+ +(1-\nu)(28\ln2/9-5063/2304)>0,
+\]
+as follows by $0\le\nu\le1$ and $693/1000<\ln2<347/500$; a lower bound is $3289/562500$.
+
+For $H_+$, subtract $(A+x)(1-\nu)/64$ and set $x=x_*$. Its derivative with respect to $\ln2$ is
+$-A^2-x(1-\nu)/\nu-2(A+x)(4-3\nu)x/(12\nu^2)<0$.
+Use $\ln2=347/500$. Clear the positive denominators in the table below, obtaining
+the indicated polynomial $N$. The following elementary expansions prove
+positivity:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}\hline
+Range & Multiplier of $H_+-(A+x)(1-\nu)/64$ & Variable\\\hline
+$1/2\le\mu\le4/5$ & $864000\nu^2$ & $u=8/5-2\mu\in[0,3/5]$\\
+$4/5\le\mu<1$ & $27648000(1-\mu)\mu^4$ & $u=2\mu-8/5\in[0,2/5)$\\\hline
+\end{tabular}
+\end{center}
+In the first row, expansion gives coefficient bounds
+\begin{align*}
+ N>&\ 900+6800u+943000u^2-1202500u^3
+       -57500u^6-9500u^7-39u^8\\
+  \ge&\ 900+6800u+200000u^2>0.
+\end{align*}
+The omitted fourth and fifth coefficients are positive. The last inequality
+uses $u\le3/5$. In the second row the first six coefficients are positive, the
+constant exceeds $5800$, and the final four terms give
+\[
+ N>5800+u^6(400000-14000u-10000u^2)>0.
+\]
+These bounds prove $F_0>(1-\nu)/[64(\ln2)^2]$.
+
+\subsection*{The linear coefficient}
+The coefficient of $\delta$ in
+\[
+ F_1=\frac3{\ln2}-\frac{2s[1-\kldivb{\mu}{1/2}]}{a+s}
+       +2\left(\frac{a^2}{a+s}-\nu\right)\delta-\frac{2a}{\nu\ln2}
+\]
+is positive by $A>4/3$ and $x\le1/4$. Use $\delta\ge c_1+c_2s$, $1-\kldivb{\mu}{1/2}\le E$, and
+multiply by $(A+x)\ln2$ to clear the logarithm denominator. Then
+\begin{align*}
+ (A+x)((\ln2)F_1+(1-\nu)/4)\ge J(x):={}&2(A+x)-A^2-2Ax-2x(\ln2)E\\
+ &+\frac{(4-3\nu)x}{6\nu}(A^2-A-x)+\frac{1-\nu}{4}(A+x).
+\end{align*}
+This is concave in $x$, and $J(0)=A(2-A+(1-\nu)/4)>0$. At $x=x_*$ replace $\ln2$ by
+$347/500$. On the two mean intervals, multiply respectively by
+\[
+ 432000\nu,\qquad 864000\mu^3.
+\]
+For the first numerator, put $u=8/5-2\mu$. Its shifted coefficients imply
+\[
+ N>18000-117600u+(522000-470000u^2)u^2
+ \ge352800(u-1/6)^2+8200>0.
+\]
+For the second, put $u=2\mu-8/5$. Its shifted coefficients imply
+\[
+ N>31000+u^3(660000-39000u-29000u^2-3000u^4)>0
+ \quad(0\le u\le2/5).
+\]
+This proves $F_1>-(1-\nu)/(4\ln2)$.
+
+\subsection*{The quadratic coefficient}
+If the cap $\beta=2$ is active, then $A\le2-\nu/4$ gives
+\[
+ G=3-a-\nu\ge3(1-\nu)+\nu^2/4\ge(1-\nu)/2.
+\]
+Otherwise $G=(\nu-d^2)/d+1-a-\nu$ decreases with $d$. For $\mu\ge4/5$, substitute
+the largest feasible gap $2(1-\mu)$ and use $a\le2\nu$ to get
+\[
+ G-(1-\nu)/2\ge\tfrac52(1-\nu)+4\mu-4\ge\tfrac1{10}>0.
+\]
+For $\mu\le4/5$, substitute $d=\sqrt \nu/2$ and use
+$\sqrt\nu\ge(2+5\nu-\nu^2)/6$ (square both positive sides). Direct substitution of \eqref{eq:app-allowance} gives
+\[
+ G-(1-\nu)/2\ge\frac{12+(1-16\mu)\nu-4\nu^2}{12}.
+\]
+With $u=2\mu-5/4\in[-1/4,7/20]$, the numerator is
+\[
+ -4u^4+4u^3+\frac{39}{2}u^2+\frac34u+\frac3{64}
+ \ge18(u+1/48)^2+\frac5{128}>0,
+\]
+since $u(1-u)\ge-5/16$. This completes the geometric square.
+
+\section{Tangent endpoint estimates}\label{app:tangent}
+This appendix proves \eqref{eq:app-zbound} and the remaining $Q_2$ sign on the
+whole interval $0<p\le1/6$. We use the elementary logarithm bounds
+\[
+ \frac{693}{1000}<\ln2<\frac{347}{500},\quad
+ \frac{43}{24}<\ln6<\frac95,\quad
+ 2<\ln12<\frac52,\quad
+ \ln(3/2)<\frac{3041}{7500}<\frac{203}{500}.
+\]
+For example, the first four positive terms of
+$\ln w=2\sum_{j\ge0}z^{2j+1}/(2j+1)$, $z=(w-1)/(w+1)$, with the remaining tail bounded by $2z^9/[9(1-z^2)]$, prove these after reducing $w$ by powers of two. Two terms with their tail give the displayed bound for $\ln(3/2)$.
+
+For this appendix write $\ell=-\ln p$, $u=-\ln(1-p)$, $b=1-p$, $\rho=1-2p$, and
+\[
+ \Delta_p=(3-2p)(2-3p+2p^2),\qquad \mathcal R(p)=bu/p.
+\]
+At the canonical tangent, exact logarithm expansion gives
+\begin{equation}\label{eq:app-canonicalexact}
+\begin{aligned}
+ Z:=\zeta(\rho)-2\alpha
+ &=2+\frac{\ln[(2-3p+2p^2)/(3-2p)]-\mathcal R(p)}{2b\ln2},\\
+ HJ&=\frac{2\rho^2}{\Delta_p\ln2}
+       \left(1+\frac{\rho u}{p(\ell+u)}\right),
+ \qquad z_\beta=Z+HJ(1/\rho-\beta).
+\end{aligned}
+\end{equation}
+
+\subsection*{The first budget endpoint}
+The logarithm ratio in \eqref{eq:app-canonicalexact} has derivative at least
+$-6/7$, since its derivative is $(-5+12p-4p^2)/\Delta_p$ and
+\[
+ 6\Delta_p+7(-5+12p-4p^2)=1+6p+44p^2-24p^3>0.
+\]
+With $\mathcal R(p)\le1-p/2-p^2/6$, it follows that
+\[
+ (\ln2)Z>Z_*(p):=\frac{1386}{1000}
+ -\frac{1406/1000+5p/14-p^2/6}{2(1-p)}.
+\]
+Multiplication by $2(1-p)$ and a concave-quadratic endpoint check give
+\[
+ Z_*(p)>\begin{cases}
+ 17/25-p,&0<p\le1/12,\\
+ 7/10-6p/5,&1/12\le p\le1/6.
+ \end{cases}
+\]
+For the first range, $u\le p+p^2/[2(1-p)]$ gives $\rho u/p<1$, while $\ell>2$.
+Thus the parenthesis in \eqref{eq:app-canonicalexact} is less than $3/2$. The
+prefactor $2\rho^2/\Delta_p$ decreases from $1/3$ to $3/14$ as $p$ increases to
+$1/6$: factor it as $2[\rho/(3-2p)][\rho/(2-3p+2p^2)]$ and differentiate both
+factors. Therefore $(\ln2)HJ<1/2$, and
+\[
+ (\ln2)z_{6/5}>\frac2{25}-p+\frac1{2\rho}\ge\frac{29}{50}.
+\]
+For the second range, convexity of $-\ln p$ gives $\ell\le16/5-42p/5$ from
+its two endpoint bounds. Since $u\ge p+p^2/2$,
+\[
+ (3-7p)u/p-\ell\ge-\frac15+\frac{29}{10}p-\frac72p^2>0.
+\]
+Thus the parenthesis in \eqref{eq:app-canonicalexact} is at least $4/3$, and
+$(\ln2)HJ\ge2/7$. It follows that
+\[
+ (\ln2)z_{6/5}>\frac35\rho+\frac2{7\rho}-\frac{17}{70}
+ \ge2\sqrt{\frac6{35}}-\frac{17}{70}>\frac{29}{50}.
+\]
+All endpoint comparisons here are explicit quadratic or rational inequalities.
+
+\subsection*{The second budget endpoint}
+Define locally
+\[
+ l(p)=\frac{43}{24}+2\frac{1-6p}{1+6p},\qquad
+ u_+(p)=p+\frac{p^2}{2(1-p)},\qquad z_*(p)=\frac14+\frac35p+\frac12p^2.
+\]
+The inequality $\ln x\ge2(x-1)/(x+1)$ for $x\ge1$ gives $\ell\ge l(p)$, and
+$u\le u_+$. Put $a=p(3-2p)/2$, $c=2p/3$. Expanding the logarithm ratio gives
+the lower bound
+\[
+ v(p):=-\frac{3041}{7500}-a-\frac{a^2}{2(1-a)}+c+\frac{c^2}{2}
+ \le\ln\frac{2-3p+2p^2}{3-2p}.
+\]
+It follows from \eqref{eq:app-canonicalexact}, with every coefficient sign fixed, that
+\[
+ (\ln2)z_2\ge z_-(p):=
+ \frac{1386}{1000}+\frac{v(p)-(1-p/2-p^2/6)}{2(1-p)}
+ -\frac{2\rho(2\rho-1)}{\Delta_p}
+       \left(1+\frac{\rho u_+}{p(l+u_+)}\right).
+\]
+The difference $z_--z_*$ equals $P_9(p)/\Delta_9(p)$, where
+\begin{align*}
+ \Delta_9={}&45000(1-p)(3-2p)(2-3p+2p^2)(91-97p+162p^2-72p^3)>0,\\
+ P_9={}&295362-7540725p+84215700p^2-389321927p^3+673748366p^4\\
+ &-511952624p^5+153218576p^6+16687440p^7-26964000p^8+6480000p^9.
+\end{align*}
+To prove its sign, put $v=1/6-p\in[0,1/6]$. Expansion and absorption of the
+last two negative terms into $v^4$ give
+\[
+ P_9>32800+1000v\,[1290-20053v+67910v^2+311000v^3].
+\]
+Indeed the first four shifted coefficients exceed
+$32800,1290000,-20053000,67910000$; the fourth-degree coefficient minus
+$17244000/6^4+6480000/6^5$ exceeds $311000000$, and the intervening
+coefficients are positive. For $w=v-1/10\ge-1/10$, the cubic in brackets is
+\[
+ \frac{1374}{5}+2859w+161210w^2+311000w^3
+ \ge\frac{1374}{5}+2859w+130110w^2>250.
+\]
+The last inequality follows by completing the square; equivalently its
+discriminant after subtracting $250$ is $-4733031$. Thus $(\ln2)z_2>z_*$.
+
+It remains to prove $Q_2>0$. From \eqref{eq:app-remainder},
+\[
+ (\ln2)\alpha\ge a_-(p):=
+ \frac{l(p)+1-p/2-p^2/[6(1-p)]}{4(1-p)}-\frac{347}{500}.
+\]
+The coefficient of $\alpha$ in \eqref{eq:app-Qcancel} is positive at
+$\beta=2,z=z_*/\ln2$, and the expression increases with $z>0$. Hence
+\begin{align*}
+ (\ln2)^2Q_2
+ &\ge a_-(4\cdot693/1000-3+4z_*)
+       +2(693/1000)z_*+z_*^2/2-347/500\\
+ &=\frac{N_7(p)}{3000000(1-p)^2(1+6p)},
+\end{align*}
+where
+\begin{align*}
+ N_7={}&218321-3964841p+20656844p^2-9548824p^3\\
+ &-2992000p^4-12420000p^5+1275000p^6+2250000p^7.
+\end{align*}
+With $w=p-1/10$, $|w|\le1/10$, its shifted constant exceeds $18000$, its
+linear coefficient has magnitude less than $140000$, and its quadratic
+coefficient, after absorbing the higher powers, exceeds $16000000$. Explicitly
+the shifted coefficients from degree two onward are
+\[
+ \frac{87454309}{5},\quad-11954249,\quad-8932000,\quad-11182500,
+ \quad2850000,\quad2250000.
+\]
+Consequently
+\[
+ N_7>18000-140000|w|+16000000w^2
+ =16000000(|w|-7/1600)^2+\frac{70775}{4}>0.
+\]
+Thus $Q_2>0$, completing the endpoint estimates.

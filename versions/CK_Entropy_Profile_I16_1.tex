@@ -1,0 +1,1281 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,mathrsfs,amsmath,amssymb,amsthm,mathtools,booktabs,array,longtable}
+\usepackage{xcolor}
+\definecolor{linkink}{RGB}{28,63,88}
+\usepackage[colorlinks=true,linkcolor=linkink,citecolor=linkink,urlcolor=linkink]{hyperref}
+\hypersetup{pdftitle={An entropy--variance profile for Boolean noise: I16.1},pdfauthor={Dimiter Kramer}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Entropy profiles for Boolean noise}
+\fancyhead[R]{\small I16.1: compressed certificates}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{1em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}\newcommand{\PP}{\mathbb P}\newcommand{\dd}{\,\mathrm d}
+\newcommand{\eps}{\varepsilon}\newcommand{\atanh}{\operatorname{atanh}}
+\newcommand{\KL}{\operatorname{D}}\newcommand{\MI}{\operatorname I}
+\newcommand{\Bprof}{\mathsf B_p}\newcommand{\Pprof}{\Phi_p}
+\newcommand{\privA}{\mathfrak a}\newcommand{\Afun}{\mathscr A}
+\numberwithin{equation}{section}
+\title{An entropy--variance profile for Boolean noise}
+\author{Dimiter Kramer\thanks{Developed with substantial AI assistance. This is a computer-assisted proof candidate for independent mathematical assessment, not an independently established resolution or a proof-kernel-verified theorem. The rational certificates are replayed in the supplied package; the analytic and probabilistic arguments remain subject to independent scrutiny.}}
+\date{20 September 2026 \quad Unified closure, compressed certificates I16.1}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a computer-assisted candidate proof of an entropy--variance profile
+for deterministic Boolean functions, uniform in finite dimension, output mean,
+and binary-symmetric noise. The same positive blend of two entropy lower bounds
+closes the induction at every nontrivial noise level. Its finite-gap deficit
+reduces to three positive geometric coefficients and one constrained
+entropy-product inequality. A differential channel estimate both controls the
+compensation and makes the product target monotone. This permits a compact
+certificate of 184 positive quartics and 36 entropy-infeasible boxes, with exact
+rational replay; the two noise endpoints are treated analytically. The geometric
+checks use 71 positive coefficients and two-term logarithm bounds.
+The profile, all-noise blend, quantitative remainder, and equality cases of I16
+are unchanged. This revision reduces the verification burden, not the domain.
+The supplied replay checks finite certificates; independent mathematical review
+and end-to-end proof-kernel verification remain outstanding.
+\end{abstract}
+% === 01_profile.tex ===
+\section{The profile and its consequences}\label{sec:intro}
+Let $X=(X_1,\ldots,X_n)$ be uniform on $\{-1,1\}^n$. Independently flip
+each sign with probability $p\in[0,1/2]$ to obtain $Y$. For a deterministic
+$f:\{-1,1\}^n\to\{0,1\}$, put $F=2f-1$ and $m=\E F$. All entropies
+are in nats. Throughout,
+\[
+ h(a)=-a\ln a-(1-a)\ln(1-a),\qquad
+ \eta(u)=h((1+u)/2),\qquad L=\ln2,
+\]
+with $0\ln0=0$. A coordinate indicator has mutual information $L-h(p)$.
+The Courtade--Kumar problem asks whether any Boolean function can do better~\cite{CK}.
+
+Write
+\[
+ \rho=1-2p,\quad R=\rho^2,\quad q=1-R,\quad V(m)=1-m^2,
+ \qquad \mathscr E_m=\eta(m)-LV(m).
+\]
+The proposed lower bound separates a variance term from an entropy excess:
+\begin{equation}\label{eq:profile}
+ \boxed{\Bprof(m)=h(p)V(m)+q\mathscr E_m
+       =q\eta(m)+\theta V(m),\qquad \theta=h(p)-qL.}
+\end{equation}
+\begin{samepage}\begin{theorem}[Entropy--variance profile]\label{thm:main}
+For every integer $n\ge0$, every deterministic Boolean $f$, and every
+$p\in[0,1/2]$,
+\begin{equation}\label{eq:main-profile}
+ H(f(X)\mid Y)\ge\Bprof\bigl(\E[2f(X)-1]\bigr).
+\end{equation}
+\end{theorem}\end{samepage}
+The first form of the profile describes the bound; the second is convenient
+for restriction. The coefficient $q$ depends only on the channel.
+
+\subsection{Why the formula has the right endpoints}
+Set $\kappa(u)=L-\eta(u)$. Integration of
+$\eta'(u)=-\atanh u$ gives
+\begin{equation}\label{eq:kappa-series}
+ \kappa(u)=\sum_{j\ge1}\frac{u^{2j}}{(2j)(2j-1)},\qquad
+ \frac{u^2}{2}\le\kappa(u)\le Lu^2\quad (|u|\le1).
+\end{equation}
+The endpoint series converges, and its coefficients sum to $L$.
+Consequently $\mathscr E_m\ge0$,
+$0\le\theta\le(L-1/2)R$, and
+\[
+ \Bprof(0)=h(p),\qquad \Bprof(\pm1)=0,\qquad
+ \mathsf B_0(m)=0,\qquad \mathsf B_{1/2}(m)=\eta(m).
+\]
+These correspond to coordinates, constants, zero noise, and complete noise.
+Also $\Bprof$ is even and concave, and
+\[
+ \eta(m)-\Bprof(m)=R\mathscr E_m+\kappa(\rho)V(m)\ge0.
+\]
+Thus the local entropy budgets used in the proof are feasible.
+
+\begin{corollary}[Courtade--Kumar consequence]\label{cor:CK}
+Theorem~\ref{thm:main} implies, on the same full domain,
+\begin{equation}\label{eq:CK}
+ \MI(f(X);Y)\le L-h(p)=\kappa(\rho).
+\end{equation}
+\end{corollary}
+\begin{proof}
+Since $H(f(X))=\eta(m)$, it suffices to observe that
+\begin{equation}\label{eq:bias-payment}
+ \Bprof(m)-\eta(m)+\kappa(\rho)
+ =R\kappa(m)-\theta m^2\ge(1-L)Rm^2\ge0.
+\end{equation}
+Here $\kappa(m)\ge m^2/2$, $\theta\le(L-1/2)R$, and $L<1$.
+\end{proof}
+For $0<p<1/2$, Section~\ref{sec:equality} derives equality only for
+constants and signed coordinates in the profile, and only for signed
+coordinates in~\eqref{eq:CK}. A signed coordinate means
+$f(x)=\mathbf1\{\sigma x_i=1\}$, $\sigma\in\{-1,1\}$.
+
+
+\subsection{One closure mechanism, and its verification boundary}
+The proof spine is unchanged: two all-noise lower bounds, one compensated
+blend, and a positive finite-gap remainder. The auxiliary product lemma is
+proved by analytic caps and a rational compact certificate. The latter now
+fits in six lines, reproduced in Appendix~\ref{app:replay}; every leaf is
+verified on its whole box, not sampled. Numerical partitions remain inside
+this subsidiary verification, not in the choice of closure mechanism.
+
+\begin{center}
+\begin{tabular}{p{.25\textwidth}p{.57\textwidth}p{.09\textwidth}}
+\toprule
+Ingredient & Role & Section\\
+\midrule
+Quarter-variance induction & Two-bit base and a coordinate supplied in every higher dimension & 2\\
+Two all-noise bounds & Prior-sensitive consistency and sharp entropy/gap bound & 3--4\\
+One compensated blend & Exact finite-gap cancellation; no extremizer hypothesis & 5\\
+Scalar ingredients & Channel compensation, certified product, geometric coefficients & 6--8\\
+Equality & Strict closure, or strict entropy concavity at zero gap & 9\\
+\bottomrule
+\end{tabular}
+\end{center}
+% === 02_induction.tex ===
+\section{A quarter-variance gap and a two-bit base}\label{sec:induction}
+For posterior probabilities define
+\[
+ J(a,b)=\frac{h(a)+h(b)}2,\qquad
+ M_p(a,b)=\frac{h((1-p)a+pb)+h(pa+(1-p)b)}2.
+\]
+The local theorem keeps the actual means and is used only on the domain
+needed by the induction.
+\begin{theorem}[Posterior closure at a quarter-variance gap]\label{thm:closure}
+Fix $p\in[0,1/2]$. Let $A,B\in[0,1]$ be random variables on one finite
+probability space, and put
+\[
+ \mu_0=\E A,\quad\mu_1=\E B,\quad
+ m=\mu_0+\mu_1-1,\quad d=|\mu_1-\mu_0|.
+\]
+Suppose $4d^2\le1-m^2$ and
+\begin{equation}\label{eq:childhyp}
+ \E J(A,B)\ge\frac{\Bprof(2\mu_0-1)+\Bprof(2\mu_1-1)}2.
+\end{equation}
+Then
+\begin{equation}\label{eq:closure}
+ \E M_p(A,B)\ge\Bprof(m).
+\end{equation}
+No independence of $A,B$ is assumed.
+\end{theorem}
+Section~\ref{sec:blend} proves this statement with one all-noise blend. The next lemma
+explains why the gap hypothesis does not restrict the final theorem.
+
+\begin{lemma}[A quarter-variance coordinate]\label{lem:normalized-gap}
+Let $F:\{-1,1\}^n\to\{-1,1\}$, with $n\ge3$, and let $m=\E F$.
+Among any three distinct coordinates, at least one satisfies
+\begin{equation}\label{eq:normalized-gap}
+ d:=|\E(FX_i)|\le\frac12,\qquad 4d^2\le1-m^2.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Complement $F$ so that $m\ge0$, and choose signs so that
+$T=\sigma_iX_i+\sigma_jX_j+\sigma_kX_k$ satisfies
+$\E(FT)=|\E(FX_i)|+|\E(FX_j)|+|\E(FX_k)|$.
+Independence and fairness give $\E|T+1|=3/2$ and $\E T=0$.
+The bounds $F(T+1)\le|T+1|$ and $F(T+3)\le T+3$ yield
+\[
+ \E(FT)\le\min\{3/2-m,\,3(1-m)\}.
+\]
+For $0\le m\le3/4$ and $3/4\le m\le1$, respectively,
+\begin{align*}
+ \frac94(1-m^2)-(3/2-m)^2
+ &=\frac{m(12-13m)}4\ge0,\\
+ \frac94(1-m^2)-9(1-m)^2
+ &=\frac94(1-m)(5m-3)\ge0.
+\end{align*}
+Thus the smallest correlation obeys
+$3d\le\E(FT)\le\tfrac32\sqrt{1-m^2}$.
+This gives $4d^2\le1-m^2$ and hence $d\le1/2$.
+\end{proof}
+The bound is sharp: three-bit majority has mean zero and all three
+coordinate correlations equal to $1/2$.
+A two-bit conjunction does not satisfy this condition at either coordinate,
+which is why the base is proved separately.
+
+\begin{lemma}[The two-bit base]\label{lem:two-bit}
+The profile inequality holds for every Boolean function of at most two
+variables. For $0<p<1/2$, the only profile equality cases in this class
+are constants and signed coordinates.
+\end{lemma}
+\begin{proof}
+Under input permutations, input sign changes, and output complementation,
+every two-bit Boolean function is a constant, a coordinate, parity, or
+conjunction. A truth table with one or three ones is in the conjunction
+orbit; with two ones, the marked vertices are adjacent (a coordinate) or
+opposite (parity). These operations preserve the conditional entropy and the even
+profile. Constants and coordinates attain the profile. Parity has mean zero
+and conditional entropy $\eta(\rho^2)>\eta(\rho)=h(p)$ at nontrivial noise.
+
+For conjunction define its profile deficit
+\begin{equation}\label{eq:two-bit-deficit}
+ G(p)=\frac{h(p^2)+2h(p(1-p))+h((1-p)^2)}4
+       -\frac34h(p)-4p(1-p)
+        \left[h(1/4)-\frac34L\right].
+\end{equation}
+The four posterior probabilities give the first term directly. Thus
+$G(0)=G(1/2)=0$; symmetry under $p\mapsto1-p$ gives $G'(1/2)=0$.
+Writing $v=p(1-p)$, differentiation and rational simplification give
+\begin{equation}\label{eq:two-bit-third}
+ G'''(p)=
+ \frac{(1-2p)(5v^4+2v^3+39v^2+4v+4)}
+ {4v^2(2+v)^2(1-v)^2}>0\qquad(0<p<1/2).
+\end{equation}
+To see that these signs suffice, fix $x\in(0,1/2)$ and put
+$c=G(x)/[x(x-1/2)^2]$.
+The function $G(t)-ct(t-1/2)^2$ vanishes at $0,x,1/2$, and its derivative
+vanishes at $1/2$. Three applications of Rolle's theorem, all derivative
+points lying in $(0,1/2)$, give $6c=G'''(\xi)>0$ for some $\xi$.
+Hence $G(x)>0$. Only continuity, not differentiability, at $p=0$ is needed.
+The noise endpoints are immediate.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}, using Theorem~\ref{thm:closure}]
+Fix $p$ and induct on $n$. Lemma~\ref{lem:two-bit} supplies $n\le2$.
+For $n\ge3$, choose $i$ by Lemma~\ref{lem:normalized-gap}, write $f_0,f_1$
+for the two sections, and let $W$ be the noisy observation of the other
+coordinates. Define $A=\E[f_0\mid W]$ and $B=\E[f_1\mid W]$.
+Then $m=\E[2f-1]$ and
+$d=|\E f_1-\E f_0|=|\E((2f-1)X_i)|$, so the local quarter-variance condition holds.
+The two induction hypotheses imply~\eqref{eq:childhyp}.
+The selected noisy sign is fair and independent of $W$, with posterior
+input probabilities $1-p,p$. Its two output posteriors are
+$(1-p)A+pB$ and $pA+(1-p)B$, each with conditional probability $1/2$.
+Therefore $H(f\mid Y)=\E M_p(A,B)$, and~\eqref{eq:closure} proves the parent bound.
+The endpoints $p=0,1/2$ follow directly as well. Corollary~\ref{cor:CK}
+gives the information bound.
+\end{proof}
+
+% === 03_recombination.tex ===
+\section{Mean consistency and entropy recombination}\label{sec:privacy}
+Let $S$ be a uniform sign independent of a finite random variable $W$, and let $Z$ be a binary random variable. It may be randomized given $(S,W)$. Write $S_\rho=SN_S$, where the noise sign $N_S$ is independent of $(S,W,Z)$ and
+$\PP(N_S=-1)=p$.
+Although $S$ and $W$ are independent, they need not remain independent after $Z$ is known. We retain that conditional dependence instead of discarding it.
+
+\subsection{Two elementary relative-entropy estimates}
+For Bernoulli probabilities let
+\[
+\KL(x\Vert y)=x\ln(x/y)+(1-x)\ln((1-x)/(1-y)).
+\]
+For sign means, the same divergence is the Bregman divergence of $\kappa$; its second derivative is $\kappa''(u)=(1-u^2)^{-1}$. Consequently
+\begin{equation}\label{eq:binary-pinsker}
+\KL\bigl((1+u)/2\Vert(1+v)/2\bigr)\ge\tfrac12(u-v)^2.
+\end{equation}
+Also the second derivative of $u\mapsto\kappa(\rho u)$ is
+$R/(1-Ru^2)\le R/(1-u^2)$. Integrating the second derivatives along a line segment gives
+\begin{equation}\label{eq:onebit-contraction}
+\KL\bigl((1+\rho u)/2\Vert(1+\rho v)/2\bigr)
+\le R\KL\bigl((1+u)/2\Vert(1+v)/2\bigr).
+\end{equation}
+This is a \emph{one-bit} statement for arbitrary priors. We do not assert the corresponding product-channel mutual-information contraction for arbitrary input laws. Averaging \eqref{eq:onebit-contraction} over conditional laws gives
+\begin{equation}\label{eq:conditional-contraction}
+\MI(S_\rho;W\mid Z)\le R\MI(S;W\mid Z).
+\end{equation}
+Endpoint cases follow by limits, or directly on deterministic supports.
+
+We also need an upper bound with a fixed Bernoulli prior. For $1/2\le\mu<1$,
+\begin{equation}\label{eq:binary-upper}
+\KL(c\Vert\mu)\le\frac{-\ln\mu}{(1-\mu)^2}(c-\mu)^2,
+\qquad 0\le c\le1.
+\end{equation}
+To prove the upper bound, observe that the continuous extension of
+$\KL(c\Vert\mu)/(c-\mu)^2$ is
+\[
+\int_0^1\frac{1-t}{[\mu+t(c-\mu)][1-\mu-t(c-\mu)]}\dd t.
+\]
+It is convex as a function of $c$, since $1/[x(1-x)]=1/x+1/(1-x)$ is convex. Its maximum is therefore at $c=0$ or $c=1$. The second endpoint is larger when $\mu\ge1/2$: the difference
+$-\mu^2\ln\mu+(1-\mu)^2\ln(1-\mu)$ has derivative $2h(\mu)-1$, is concave on $[1/2,1]$, and vanishes at both ends. This proves \eqref{eq:binary-upper}.
+
+\subsection{Dependence forced by the actual mean gap}
+Orient the binary variables so that
+\[
+ \mu=\PP(Z=1)\in[1/2,1),\qquad
+ d=\PP(Z=1\mid S=1)-\PP(Z=1\mid S=-1)\ge0,
+ \qquad m=2\mu-1.
+\]
+Write $V=1-m^2$ and
+\begin{equation}\label{eq:a}
+ a(m)=2(1+m)^2\ln\frac2{1+m}=8\mu^2(-\ln\mu).
+\end{equation}
+The bounds $1-\mu\le-\ln\mu\le(1-\mu)/\mu$ imply
+\begin{equation}\label{eq:a-bounds}
+ V\le a(m)\le2V.
+\end{equation}
+Set $I_W=I(Z;W)$, $T_W=I(S;W\mid Z)$, and
+$D_W=I(Z;W\mid S)=I_W+T_W$, the last equality using $S\perp W$.
+
+\begin{lemma}[Conditional dependence forced by a mean gap]\label{lem:dependence}
+In this finite experiment,
+\begin{equation}\label{eq:privacy-ratio}
+ T_W\ge\frac{d^2}{a(m)}I_W,
+ \qquad
+ T_W\ge\frac{d^2}{a(m)+d^2}D_W.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Only $d>0$ requires proof. Let $c=\PP(Z=1\mid W)$ and let $t$ be the
+corresponding difference between the two section probabilities. Then
+$\E c=\mu$, $\E t=d$. Put $b=\mu(1-\mu)$ and $v=\operatorname{Var}(c)$.
+Conditioning on $Z$ gives posterior sign means $t/(2c)$ and
+$-t/[2(1-c)]$, with prior means $d/(2\mu)$ and $-d/[2(1-\mu)]$.
+Apply \eqref{eq:binary-pinsker} and expand the resulting two variances:
+\[
+ T_W\ge\frac18\left(\E\frac{t^2}{c(1-c)}-\frac{d^2}{b}\right)
+ \ge\frac{d^2v}{8b(b-v)}\ge\frac{d^2v}{8b^2}.
+\]
+The middle inequality is weighted Cauchy--Schwarz, since
+$\E[c(1-c)]=b-v$. This denominator is positive: if it vanished, $c$ would
+be zero or one almost surely, forcing $t=0$ and contradicting $d>0$.
+At such individual endpoints the ratio is defined as zero because $t=0$.
+On the other hand, \eqref{eq:binary-upper} gives
+\[
+ I_W=\E D(c\Vert\mu)\le\frac{-\ln\mu}{(1-\mu)^2}v.
+\]
+Multiplication by $d^2/a(m)$ proves the first assertion without division by
+$v$. The identity $D_W=I_W+T_W$ gives the second. For $d=0$, both follow
+from nonnegativity.
+\end{proof}
+
+\subsection{The recombination identity}
+Define
+\[
+\mathcal H(m,d)=\frac{\eta(m+d)+\eta(m-d)}2,\qquad
+\bar J=\E J(A,B),\quad \bar M=\E M_p(A,B),
+\]
+where $A=\PP(Z=1\mid S=-1,W)$ and $B=\PP(Z=1\mid S=1,W)$. Set
+\[
+J_*=\mathcal H(m,d)=H(Z\mid S),\qquad M_*=\mathcal H(m,\rho d)=H(Z\mid S_\rho),\qquad
+\gamma=\frac{q d^2}{\privA(m)+d^2}.
+\]
+\begin{theorem}[Mean-sensitive recombination]\label{thm:privacy}
+For $0\le m<1$, $0\le d\le1-m$, and $0<p<1/2$,
+\begin{equation}\label{eq:privacy-bound}
+\bar M\ge M_*-(1-\gamma)(J_*-\bar J).
+\end{equation}
+The theorem holds for every joint posterior law, with the means stated above. Complementation and exchange of the two sections remove the sign conventions on $m,d$.
+\end{theorem}
+\begin{proof}
+The chain rule and $S\perp W$, $S_\rho\perp W$ give
+\begin{align*}
+(\bar M-\bar J)-(M_*-J_*)
+&=\MI(Z;W\mid S)-\MI(Z;W\mid S_\rho)\\
+&=\MI(S;W\mid Z)-\MI(S_\rho;W\mid Z)\\
+&\ge q\MI(S;W\mid Z)\\
+&\ge\gamma\MI(Z;W\mid S)=\gamma(J_*-\bar J).
+\end{align*}
+The last two inequalities are \eqref{eq:conditional-contraction} and \eqref{eq:privacy-ratio}. Rearrangement gives \eqref{eq:privacy-bound}.
+\end{proof}
+This bound retains the prior midpoint through $\privA(m),J_*,M_*$. That information is absent from an estimate expressed only in terms of average child entropy and an absolute posterior difference.
+
+
+
+Every finite joint law of the posterior pair $(A,B)$ is covered by this
+experiment: take $W$ to be its underlying finite outcome, $S$ independently
+fair, and $\PP(Z=1\mid S=-1,W)=A(W)$, $\PP(Z=1\mid S=1,W)=B(W)$.
+For an entropy lower budget $\bar J\ge j$, the coefficient $1-\gamma$ is
+nonnegative, so Theorem~\ref{thm:privacy} also gives
+$\bar M\ge M_*-(1-\gamma)(J_*-j)$.
+\section{The sharp entropy--gap bound}\label{sec:budget}
+This bound retains the average child entropy before estimating the mixing
+gain. Its sharpness fixes the entropy budget and the mean gap, not an
+additional parent mean. No mean-preserving extremizer claim is used below.
+
+\subsection{Centering at fixed entropy per unit gap}
+For $0\le\rho\le1$ and $e\ge0$, let $\tau(e)\in(0,1]$ be the unique solution of
+\[
+ \frac{\eta(\tau(e))}{\tau(e)}=e,
+ \qquad \mathcal F_\rho(e)=\frac{\eta(\rho\tau(e))}{\tau(e)}.
+\]
+Existence and uniqueness follow from
+\begin{equation}\label{eq:I15-entropy-ratio}
+ \left(\frac{\eta(t)}t\right)'=-\frac{\mathscr A(t)}{t^2}<0,
+ \qquad \mathscr A(t)=\eta(t)-t\eta'(t)
+       =L-\frac12\ln(1-t^2),
+\end{equation}
+and the limits $\eta(t)/t\to\infty$ at zero and $\eta(1)=0$.
+
+\begin{lemma}[Fixed-budget centering]\label{lem:I15-perspective}
+For $a,b\in[0,1]$ with $t=|a-b|>0$,
+\begin{equation}\label{eq:I15-pointwise-budget}
+ \frac{M_p(a,b)}t\ge
+ \mathcal F_\rho\!\left(\frac{J(a,b)}t\right),\qquad 0\le p\le1/2.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The cases $p=0$, $a+b=1$, and $J(a,b)=0$ are immediate. Otherwise write
+$x=|a+b-1|>0$ and $\mathcal H(x,t)=[\eta(x+t)+\eta(x-t)]/2$.
+In the interior $x+t<1$, put
+\[
+ \ell=-\mathcal H_x>0,\quad \jmath=-\mathcal H_t\ge0,\quad
+ Q=\mathcal H+t\jmath>0,\quad P=Q+x\ell,\quad
+ R_0=\frac{1+x^2-t^2}{2x},\quad \Theta=P-R_0\ell.
+\]
+Direct differentiation gives
+\begin{equation}\label{eq:I15-ratio-calculus}
+ \ell_t=\frac{(1-(x+t)^2)^{-1}-(1-(x-t)^2)^{-1}}2>0,
+ \quad P_t=R_0\ell_t,\quad \Theta_t=\frac tx\ell.
+\end{equation}
+At $t=0$,
+\[
+ \Theta(x,0)=\frac{\Omega(x)}{2x},\qquad
+ \Omega(u)=2u\eta(u)-(1-u^2)\atanh u.
+\]
+The endpoint limits are $\Omega(0)=\Omega(1)=0$ and
+$\Omega''(u)=-2\atanh u\le0$. Thus $\Theta\ge0$ and
+\begin{equation}\label{eq:I15-decreasing-ratio}
+ \partial_t(Q/\ell)=\partial_t(P/\ell)
+   =-\frac{\Theta\ell_t}{\ell^2}\le0.
+\end{equation}
+
+Fix the actual ratio $e=\mathcal H(x,t)/t>0$ and follow the level curve
+$\mathcal H(x,t(x))/t(x)=e$ toward $x=0$.
+This curve exists on the whole intervening interval: at each fixed $x$ the
+ratio decreases strictly in $t$, from infinity to
+$h(x)/[2(1-x)]$ at $t=1-x$, and this last value increases with $x$, since
+its derivative is $-\ln x/[2(1-x)^2]>0$.
+Along the interior of the curve,
+\begin{equation}\label{eq:I15-level-derivative}
+ t'(x)=-\frac{t\ell(x,t)}{Q(x,t)},\qquad
+ \frac{\mathrm d}{\mathrm dx}\frac{\mathcal H(x,\rho t(x))}{t(x)}
+ =\frac1t\left[
+ \frac{\ell(x,t)Q(x,\rho t)}{Q(x,t)}-\ell(x,\rho t)\right]\ge0.
+\end{equation}
+The sign follows from~\eqref{eq:I15-decreasing-ratio} because $\rho t\le t$.
+At $x=0$ the curve has $t(0)=\tau(e)$, proving the claim.
+Continuity supplies $x+t=1$; when $J=0$ and $t>0$, the pair is $(0,1)$
+up to exchange and the formula is an equality. No probability law has
+been changed in this pointwise comparison.
+\end{proof}
+
+\subsection{The sharp bound determined by the child budget}
+\begin{theorem}[Entropy-budget bound]\label{thm:I15-budget}
+Let $A,B\in[0,1]$ be random variables on one finite probability space,
+let $d=|\E A-\E B|>0$, and suppose
+$\E J(A,B)\ge j$ with $0\le j\le\eta(d)$. Define $\tau\in[d,1]$ by
+\begin{equation}\label{eq:I15-budget-root}
+ \frac{\eta(\tau)}\tau=\frac jd.
+\end{equation}
+Then, for every $0\le p\le1/2$,
+\begin{equation}\label{eq:I15-budget-bound}
+ \boxed{\E M_p(A,B)\ge\mathcal C_p(j,d):=
+                    \frac d\tau\eta(\rho\tau).}
+\end{equation}
+The bound is sharp under these two constraints. No fixed parent mean is
+included in this sharpness assertion. If $d=0$, the bound used is simply
+$\E M_p(A,B)\ge j$.
+\end{theorem}
+\begin{proof}
+For $p=0$ the assertion is $\E J\ge j$, so assume $0\le\rho<1$.
+The function $\mathcal F_\rho$ is increasing and convex. Indeed, for $0\le\rho<1$
+and $e>0$, the chain rule gives
+\begin{equation}\label{eq:I15-budget-slope}
+ \mathcal F_\rho'(e)=\frac{\mathscr A(\rho\tau(e))}{\mathscr A(\tau(e))}
+                  \in(0,1).
+\end{equation}
+The ratio decreases with $\tau$: write
+$\mathscr A(\sqrt x)=\sum_{k\ge0}b_kx^k$ with
+$b_0=L$ and $b_k=1/(2k)>0$ for $k\ge1$.
+After differentiation, the numerator of the derivative of
+$\mathscr A(\rho\sqrt x)/\mathscr A(\sqrt x)$ is
+\[
+ \sum_{i>k\ge0}(i-k)b_i b_k(\rho^{2i}-\rho^{2k})x^{i+k-1}\le0.
+\]
+Here $\rho^0=1$, including when $\rho=0$.
+Absolute convergence justifies the calculation for $0<x<1$.
+Since $\tau(e)$ decreases, the slope in~\eqref{eq:I15-budget-slope}
+increases with $e>0$. Finally $\tau(e)\to1$ as $e\downarrow0$,
+so $\mathcal F_\rho(e)\to h(p)$; continuity extends convexity to $e=0$.
+No derivative of $\mathscr A$ at $t=1$ is needed.
+
+For $j>0$ put $e_*=j/d$, $\lambda=\mathcal F_\rho'(e_*)$ and
+$c=\mathcal F_\rho(e_*)-\lambda e_*$.
+One has $c>0$: in its expression
+$[\eta(\rho\tau)-\lambda\eta(\tau)]/\tau$, both
+$\eta(\rho\tau)\ge\eta(\tau)$ and $\lambda<1$ apply.
+A supporting line to the convex function, followed by Lemma~\ref{lem:I15-perspective},
+gives pointwise
+\[
+ M_p(a,b)\ge\lambda J(a,b)+c|a-b|.
+\]
+At $a=b$ this follows instead from $M_p=J$ and $\lambda\le1$.
+Averaging and using $\E|A-B|\ge d$ proves
+$\E M_p\ge\lambda j+cd=\mathcal C_p(j,d)$.
+For $j=0$, monotonicity gives $\mathcal F_\rho(e)\ge\mathcal F_\rho(0)=h(p)$
+and the same argument applies with $\lambda=0,c=h(p)$.
+
+For sharpness, put $w=d/\tau\le1$. Assign mass $w$ to the centered pair
+$((1-\tau)/2,(1+\tau)/2)$ and mass $(1-w)/2$ to each of $(0,0)$ and $(1,1)$.
+Then the mean difference is $d$, the average child entropy is
+$w\eta(\tau)=j$, and the mixed entropy is $w\eta(\rho\tau)$.
+The case $d=0$ follows from entropy concavity.
+\end{proof}
+
+
+\section{One compensated blend on the entire noise range}\label{sec:blend}
+Throughout Sections 5--8, use the nondegenerate domain
+\begin{equation}\label{eq:I16-domain}
+ 0<R<1,\qquad 0\le m<1,\qquad
+ 0<d\le\min\{1-m,\sqrt{1-m^2}/2\}.
+\end{equation}
+Set $V=1-m^2$, $s=d^2$, $H=\eta(\rho)=h(p)$ and
+\[
+ q=1-R,\qquad \theta=H-qL,\qquad
+ \alpha=\theta/q,\qquad u=\alpha/R,\qquad
+ \Omega=\eta(m)+\alpha V,\qquad B=\Bprof(m)=q\Omega.
+\]
+The symbol $\alpha$ here is a channel parameter; the mixing coefficient of
+Section 3 was denoted $\gamma$. Write
+\begin{equation}\label{eq:I16-budget}
+ J_*=\mathcal H(m,d),\quad M_*=\mathcal H(m,\rho d),\quad
+ j=qJ_*+\theta(V-s),\quad a=\privA(m),\quad A=a/V,\quad U=1+2\alpha V.
+\end{equation}
+For the prescribed means and $\bar J\ge j$, Sections 3--4 give
+\begin{equation}\label{eq:I16-two-bounds}
+ \bar M\ge C:=\frac d\tau\eta(\rho\tau),\quad
+ \frac{\eta(\tau)}\tau=\frac jd;\qquad
+ \bar M\ge P:=M_*-\left(1-\frac{qs}{a+s}\right)(J_*-j).
+\end{equation}
+Here $0<j\le J_*\le\eta(d)$ and $d\le\tau<1$. The lower strictness of
+$j$ follows from $j\ge H(V-s)>0$; the upper bounds follow from
+$\Bprof\le\eta$ and concavity of $\eta$.
+
+Choose the positive weights
+\begin{equation}\label{eq:I16-weights}
+ \boxed{w_C=\frac{2(C+B-j)}q,\qquad
+ w_P=\frac aV\frac{1+2\alpha V}{R}.}
+\end{equation}
+They are positive because $C\ge j$, $B>0$, and the remaining factors are
+positive. In particular, the denominator $a+s$ inside $P$ is retained.
+
+\begin{theorem}[All-noise compensated closure]\label{thm:I16-blend}
+On \eqref{eq:I16-domain}, define
+$\mathcal W=w_C(C-B)+w_P(P-B)$. Then
+\begin{equation}\label{eq:I16-margin}
+ \boxed{\mathcal W>
+ qd^2\left(\frac1{250}+\frac\alpha{10}+\frac{\alpha^2}{53}\right)>0.}
+\end{equation}
+Consequently the same convex blend gives, for every admissible posterior law,
+\begin{equation}\label{eq:I16-assembly}
+ \bar M\ge\frac{w_CC+w_PP}{w_C+w_P}
+ =B+\frac{\mathcal W}{w_C+w_P}>B.
+\end{equation}
+The theorem uses the certified scalar product lemma in Section 7 and the
+rational geometric certificates in Section 8.
+\end{theorem}
+
+\subsection{The exact finite-gap identity}
+Define
+\[
+ D=\eta(m)-J_*,\qquad \overline D=D/s,\qquad
+ c_k=\frac{(1-m)^{1-2k}+(1+m)^{1-2k}}{4k(2k-1)}.
+\]
+Expanding the exact binary-information identity
+\begin{equation}\label{eq:I16-D}
+ D=\frac{1+m}{2}\kappa\!\left(\frac d{1+m}\right)
+  +\frac{1-m}{2}\kappa\!\left(\frac d{1-m}\right)
+  =\sum_{k\ge1}c_ks^k
+\end{equation}
+gives $c_1=1/(2V)$, $c_2=(4-3V)/(12V^3)$. The series converges at
+$d=1-m$, by the convergent positive entropy series. Put
+$G_n(R)=1+R+\cdots+R^n$. Direct substitution in $P$ yields
+\begin{align}
+ P-B&=\frac{Rq s}{a+s}\,E,\label{eq:I16-P-E}\\
+ E&=\eta(m)-u(a+qV+Rs)+s(ac_2-c_1)\notag\\
+ &\quad+\sum_{k\ge3}c_k
+       \left[aG_{k-2}(R)s^{k-1}+RG_{k-3}(R)s^k\right].\label{eq:I16-E}
+\end{align}
+No child slack has been set to zero in the posterior law: $j$ is a lower
+budget inserted into the two increasing lower bounds.
+
+Let
+\begin{equation}\label{eq:I16-E-L}
+ E_{\rm b}=\eta(m)+a\overline D-\frac{a+s}{2V},\qquad
+ E_L=E_{\rm b}-u(a+qV+Rs).
+\end{equation}
+The discarded series has an explicit sign:
+\begin{equation}\label{eq:I16-E-remainder}
+ E-E_L=R(a+s)\sum_{k\ge3}c_kG_{k-3}(R)s^{k-1}\ge0.
+\end{equation}
+The entropy-product kernel is
+\begin{equation}\label{eq:I16-kernel}
+ \mathcal K_R(t)=
+ \frac{2\eta(\rho t)[\eta(\rho t)-\eta(t)]}{q t^2}.
+\end{equation}
+Since $j=d\eta(\tau)/\tau$ and
+$B-j=q(D+\alpha s)$, the identity
+$(C-B)(C+B-j)=C(C-j)-B(B-j)$ gives
+\begin{equation}\label{eq:I16-exact-W}
+ \boxed{\frac{\mathcal W}{s}
+ =\mathcal K_R(\tau)-2q\Omega(\overline D+\alpha)
+ +\frac{qaU}{V(a+s)}E.}
+\end{equation}
+This identity, rather than a truncated small-gap expansion, carries the
+compensation through finite gaps.
+
+\subsection{Proof of the positive remainder}
+Feasibility and quarter variance give $V\ge d(2-d)$ and $V\ge4d^2$.
+Their exact convex combination is
+\[
+ V-d^2-\frac65d
+ =\frac35\{V-d(2-d)\}+\frac25\{V-4d^2\}\ge0.
+\]
+Thus
+\begin{equation}\label{eq:I16-beta}
+ \beta=\min\left\{\frac{V-s}{d},2\right\}\in[6/5,2],\qquad
+ \frac{\eta(\tau)}\tau=\frac jd\ge\beta H.
+\end{equation}
+Lemma~\ref{lem:I16-product} applies and gives
+\[
+ \mathcal K_R(\tau)\ge
+ q\left[L+\frac{13}{4}\alpha+2(\beta+1)\alpha^2\right].
+\]
+Write $c_0=L-1/2$. The channel estimate in Lemma~\ref{lem:I16-channel}
+implies
+\begin{equation}\label{eq:I16-comp-use}
+ (qu)U=\frac\theta R(1+2\alpha V)\le c_0.
+\end{equation}
+Since $u=\alpha+qu$, equation~\eqref{eq:I16-E-L} can be written as
+\[
+ E_L=E_{\rm b}-\alpha(a+s)-(qu)(a+V).
+\]
+Insert these estimates into \eqref{eq:I16-exact-W} and collect powers of
+$\alpha$. All multiplying factors are positive before each substitution.
+The result is
+\begin{equation}\label{eq:I16-quadratic}
+ \frac{\mathcal W}{q s}\ge F_0+F_1\alpha+2G\alpha^2,
+\end{equation}
+where
+\begin{align}
+ F_0&=L-2\eta(m)\overline D+
+ \frac a{V(a+s)}[E_{\rm b}-c_0(a+V)],\label{eq:I16-F0}\\
+ F_1&=\frac{13}{4}-2\eta(m)-2V\overline D
+        +\frac{2a}{a+s}E_{\rm b}-\frac aV,\label{eq:I16-F1}\\
+ G&=\beta+1-a-V.\label{eq:I16-G}
+\end{align}
+Lemma~\ref{lem:I16-geometry} proves $F_0>1/250$, $F_1>1/10$, and
+$G>1/106$ over the whole parent domain. Substitution proves
+\eqref{eq:I16-margin}; averaging the two bounds with their positive weights
+proves \eqref{eq:I16-assembly}. This proves Theorem~\ref{thm:I16-blend}.
+
+\paragraph{Completion of Theorem~\ref{thm:closure}.}
+Complementation and section exchange orient the means as above. At $d=0$,
+the child means agree, so entropy concavity gives $\bar M\ge\bar J\ge\Bprof(m)$.
+For deterministic output both posteriors are deterministic. At $p=0$ the
+profile is zero. At $p=1/2$, the child budget and Jensen's inequality force
+both posteriors to equal their means almost surely; the parent mixed entropy
+is then $\eta(m)=\Bprof(m)$. For every other case, the strict compensated
+blend applies. The local theorem therefore holds on the full stated domain,
+and the induction of Section 2 applies without a numerical closure seam.
+
+\section{One differential channel estimate}\label{sec:channel}
+Put $c_0=L-1/2$ and retain $\alpha=\theta/q$, $q=1-R$.
+
+\begin{lemma}[Channel compensation]\label{lem:I16-channel}
+On $0<R<1$, $\alpha>0$ is increasing and
+\begin{equation}\label{eq:I161-differential}
+ \boxed{q\alpha'(R)<c_0+\frac{\alpha(R)}6.}
+\end{equation}
+Consequently
+\begin{equation}\label{eq:I16-channel}
+ \boxed{\theta\left(1+\frac{2\theta}{q}\right)
+ <c_0R-\frac{R^2}{200}.}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The entropy series gives
+\begin{equation}\label{eq:I16-u-series}
+ \alpha(R)=\sum_{j\ge0}\tau_jR^{j+1},\qquad
+ \tau_j=\sum_{k\ge j+2}\frac1{(2k)(2k-1)}
+       =\int_0^1\frac{x^{2j+2}}{1+x}\,\mathrm dx>0.
+\end{equation}
+Thus $\tau_0=c_0$, $\alpha\ge c_0R$, and $\alpha'>0$.
+Write $a_{n+1}=1/[(2n+2)(2n+1)]$. The coefficient of $R^n$, $n\ge1$,
+in $c_0+\alpha/6-q\alpha'$ is
+\[
+ \frac{(6n+1)a_{n+1}-5\tau_n}{6}.
+\]
+At $n=1$ its numerator is $7/2-5L>0$. For $n\ge2$, integration of
+$(1+x)^{-1}\le(2x)^{-1}$ gives $\tau_n\le1/[4(n+1)]$, so the numerator
+is at least
+\[
+ \frac{6n+1}{(2n+2)(2n+1)}-\frac5{4(n+1)}
+ =\frac{2n-3}{4(n+1)(2n+1)}>0.
+\]
+Termwise differentiation is justified on each compact subinterval of $R<1$;
+this proves \eqref{eq:I161-differential} for the entire open interval.
+
+For $Z=q(\alpha+2\alpha^2)=\theta(1+2\theta/q)$, it follows that
+\[
+ Z'=(1+4\alpha)q\alpha'-\alpha-2\alpha^2
+ <c_0-\left(\frac56-4c_0\right)\alpha-\frac43\alpha^2.
+\]
+Using $\alpha\ge c_0R$ and $Z(0)=0$, integration gives
+\[
+ Z<c_0R-\frac{c_0}{2}\left(\frac56-4c_0\right)R^2.
+\]
+The simple bounds $693/1000<L<347/500$ imply
+$c_0(5/6-4c_0)/2>8299/1500000>1/200$, proving the conclusion.
+\end{proof}
+
+\begin{corollary}[The product target is monotone]\label{cor:I161-target}
+For fixed $0\le\gamma\le3$, set
+\[
+ T_\gamma=q\left[L+\frac{13}{4}\alpha+2\gamma\alpha^2\right].
+\]
+This function decreases with $R$, hence increases with $p$, and satisfies
+$T_\gamma<L$ at nontrivial noise.
+\end{corollary}
+\begin{proof}
+Using \eqref{eq:I161-differential} and $L<7/10$,
+\begin{align*}
+ \frac{\mathrm dT_\gamma}{\mathrm dR}
+ &<\frac{13}{4}c_0-L
+   +\left(4\gamma c_0-\frac{65}{24}\right)\alpha
+   -\frac{4\gamma}{3}\alpha^2\\
+ &<-\frac1{20}-\frac{37}{120}\alpha-\frac{4\gamma}{3}\alpha^2<0.
+\end{align*}
+Finally $T_\gamma(0)=L$ and $R=(1-2p)^2$ decreases with $p$.
+\end{proof}
+
+\section{The certified two-variable entropy-product inequality}\label{sec:product}
+\begin{lemma}[Single product bound]\label{lem:I16-product}
+Let $0<p<1/2$, $0<t<1$, $6/5\le\beta\le2$, and
+$\eta(t)/t\ge\beta H$. Then
+\begin{equation}\label{eq:I16-product}
+ \boxed{\mathcal K_R(t)\ge
+ q\left[L+\frac{13}{4}\alpha+2(\beta+1)\alpha^2\right].}
+\end{equation}
+\end{lemma}
+The coefficient, expression, and entropy constraint in this lemma are the
+same throughout the proof. Analytic caps and a compact rational certificate
+verify this one inequality; they do not select different posterior closure
+bounds.
+
+\subsection{A lower product with no implicit parameter}
+Put $b=1-p$, $S(z)=\atanh(z)/z$ with $S(0)=1$, and
+$Y=\atanh(bt)/b=tS(bt)$. Convexity of $\atanh$ gives
+\[
+ \eta(\rho t)-\eta(t)
+ =t\int_\rho^1\atanh(vt)\,\mathrm dv
+ \ge2pt\atanh(bt).
+\]
+Substitution in \eqref{eq:I16-kernel} gives
+\begin{equation}\label{eq:I16-midpoint}
+ \mathcal K_R(t)\ge K_{\rm mid}(p,t)
+ :=\frac{\eta(t)}tY+\frac q2Y^2
+ =\eta(t)S(bt)+\frac q2t^2S(bt)^2.
+\end{equation}
+The right side has a continuous value $L$ at $t=0$.
+The target in Lemma~\ref{lem:I16-product} is $T_{\beta+1}$, hence
+\begin{equation}\label{eq:I16-target-L}
+ q\left[L+\frac{13}{4}\alpha+2(\beta+1)\alpha^2\right]<L
+\end{equation}
+by Corollary~\ref{cor:I161-target}.
+
+\subsection{The complete-noise cap}
+For $9/20\le p<1/2$, the entropy constraint implies $t<5/8$.
+Indeed $H\ge\eta(1/10)$ and the exact logarithm bounds certify
+\[
+ \frac{\eta(5/8)}{5/8}<\frac65\eta(1/10),
+\]
+while $\eta(t)/t$ decreases. Write $x=t^2\le25/64$.
+Since $q\ge99/100$, $b\ge1/2$, and the relevant series have positive
+coefficients,
+\[
+ \eta(t)\ge L-\frac x2-\frac{x^2}{12(1-x)},\qquad
+ S(bt)\ge1+\frac{x}{12}.
+\]
+The entropy lower bound is positive on this interval. Thus
+\begin{align*}
+ K_{\rm mid}-L
+ &\ge\left(L-\frac x2-\frac{x^2}{12(1-x)}\right)(1+x/12)
+       +\frac{99}{200}(x+x^2/6)-L\\
+ &\ge\frac{x}{1-x}
+ \left(\frac{211}{4000}-\frac{381x}{4000}-\frac{43x^2}{900}\right)>0.
+\end{align*}
+The last polynomial decreases on this interval and equals
+$152113/18432000>0$ at $x=25/64$; the substitution used $L>693/1000$.
+Equation~\eqref{eq:I16-target-L} proves the product bound on this cap.
+
+\subsection{The zero-noise cap}
+Suppose $0<p\le1/100$. Appendix~\ref{app:midpoint-monotone} proves that
+$K_{\rm mid}(p,t)$ decreases with $t$. It therefore suffices to use the budget
+endpoint $t_\beta$, determined by $\eta(t_\beta)/t_\beta=\beta H$.
+Put $\epsilon=(1-t_\beta)/2$ and $\ell=\log(1/p)\ge23/5$.
+The elementary entropy remainder is
+\begin{equation}\label{eq:I16-B-remainder}
+ h(x)=x[\log(1/x)+B(x)],\qquad
+ B(x)=1-\sum_{k\ge1}\frac{x^k}{k(k+1)},\qquad
+ 1-x\le B(x)\le1-x/2\le1.
+\end{equation}
+Set $k=5\beta/4-1/10\in[7/5,12/5]$. These bounds imply
+\[
+ \frac{h(kp)-\beta H}{p}
+ \ge(k-\beta)(\ell+1)-k\log k-k^2p
+ \ge(k-\beta)\frac{28}{5}-k\log k-\frac{k^2}{100}.
+\]
+The last expression is concave in $\beta$. At its endpoints it exceeds
+$1561/2500$ and $44/625$, respectively, using
+$\log(7/5)<17/50$ and $\log(12/5)<22/25$.
+Since $h(x)/(1-2x)$ increases on $(0,1/2)$, this proves
+\begin{equation}\label{eq:I16-epsilon}
+ \epsilon<kp.
+\end{equation}
+At $t_\beta$, the exact identity
+\[
+ Y-2\alpha=2L+\frac{1}{2(1-p)}
+ \left[\log\frac{1+(1-p)t_\beta}{1-(1-p)t_\beta}-\ell-B(p)\right]
+\]
+now gives a linear lower bound. Indeed, set $C_\beta=1+2k=4/5+5\beta/2$.
+Then $1-(1-p)t_\beta\le pC_\beta$ and
+$1+(1-p)t_\beta\ge2-pC_\beta$. The tangent bound
+\[
+ \log C_\beta\le\log(19/5)+\frac{25}{38}(\beta-6/5)
+ <\frac{167}{125}+\frac{25}{38}(\beta-6/5)
+\]
+and $\log(1-pC_\beta/2)\ge-29/971$ therefore imply
+\begin{equation}\label{eq:I16-Y-lower}
+ Y>2\alpha+z_\beta,\qquad
+ z_\beta=\frac{541}{1000}-\frac{\beta-6/5}{3}>0.
+\end{equation}
+For an explicit rational check, the preceding lower expression for $Y-2\alpha$ is
+\[
+ \frac{1386}{1000}+
+ \frac{\frac{693}{1000}-\frac{167}{125}
+       -\frac{25}{38}(\beta-6/5)-\frac{29}{971}-1}{2(99/100)}.
+\]
+Its difference from $z_\beta$ is positive at both endpoints and affine in $\beta$.
+Also \eqref{eq:I16-B-remainder} gives
+$\alpha\ge(\ell+1-p)/4-L>1407/2000>7/10$.
+
+At the budget endpoint,
+\[
+ \frac{K_{\rm mid}(p,t_\beta)}q
+ =\beta(L+\alpha)Y+\frac{Y^2}{2}.
+\]
+Substitute \eqref{eq:I16-Y-lower} and subtract the target divided by $q$.
+The result exceeds $\alpha f_1(\beta)+f_0(\beta)$, where
+\[
+ f_1=2\beta\frac{693}{1000}-\frac{13}{4}+(\beta+2)z_\beta,
+ \qquad
+ f_0=\beta\frac{693}{1000}z_\beta+\frac{z_\beta^2}{2}-\frac{347}{500}.
+\]
+Both $f_1$ and $(7/10)f_1+f_0$ are concave quadratics. The first is positive
+at both endpoints. The endpoint values of the second are
+$33161/10^7$ and $2832997/18000000$, both greater than $1/400$.
+Thus the product inequality holds with surplus $q/400$ on this entire cap.
+
+\subsection{The compact certificate: concavity, tangents, and quartics}\label{sec:compact}
+The remaining rectangle is exactly
+\begin{equation}\label{eq:I16-rectangle}
+ \frac1{100}\le p\le\frac9{20},\qquad 0\le t\le1.
+\end{equation}
+It meets both analytic caps without rounding. Each box is tested using an
+entropy secant and a tangent to $S$, rather than bounding their factors
+independently at opposite corners.
+
+For $[p_l,p_h]\times[t_l,t_h]$, write $t(z)=(1-z)t_l+zt_h$, $0\le z\le1$,
+and $t_0=(t_l+t_h)/2$. Let $h_-(z)$ interpolate rigorous lower bounds for
+$\eta(t_l),\eta(t_h)$. Concavity of $\eta$ gives $h_-\le\eta(t(z))$.
+The positive series $S(x)=\sum_{n\ge0}x^{2n}/(2n+1)$ proves convexity and
+monotonicity. Enclose the value and derivative of $S((1-p_h)t)$ at $t_0$
+by $[s_l,s_h]$ and $[v_l,v_h]$. The affine function with endpoint values
+\[
+ s_-(0)=s_l+v_h(t_l-t_0),\qquad
+ s_-(1)=s_l+v_l(t_h-t_0)
+\]
+lies below its tangent, and hence below $S((1-p)t(z))$ throughout the box.
+The derivative formula used is
+\[
+ \frac{\mathrm d}{\mathrm dt}S(bt)
+ =\frac{(1-b^2t^2)^{-1}-S(bt)}t.
+\]
+All positive-leaf tests require $s_-\ge0$ at both endpoints.
+
+For $t_l>0$, set
+\[
+ \beta_u=\min\left\{2,\frac{\eta(t_l)^+}{t_lH(p_l)^-}\right\};
+\]
+put $\beta_u=2$ when $t_l=0$. A box is entropy-infeasible if
+\begin{equation}\label{eq:I16-empty-test}
+ \frac{\eta(t_l)^+}{t_lH(p_l)^-}<\frac65.
+\end{equation}
+Superscripts indicate outward bounds, not new functions.
+Otherwise every admissible $\beta$ is at most $\beta_u$.
+Corollary~\ref{cor:I161-target} permits evaluation of the target at $p_h$.
+One sufficient polynomial is
+\begin{equation}\label{eq:I16-box-test}
+ \Pi_C(z)=h_-(z)s_-(z)+\frac{q(p_l)}2t(z)^2s_-(z)^2
+             -T_{\beta_u+1}(p_h)^+.
+\end{equation}
+
+A second test retains the entropy budget before bounding the product.
+Since $\beta\le\eta(t)/(tH)$,
+\[
+ K_{\rm mid}-T_{\beta+1}
+ \ge\eta(t)\left[S((1-p)t)-\frac{k(p)}t\right]
+       +\frac q2t^2S((1-p)t)^2-T_1(p),
+ \quad k(p)=\frac{2\alpha(p)^2}{L+\alpha(p)}.
+\]
+Here $k$ decreases with $p$. For $t_l>0$, let
+$r(z)=(1-z)/t_l+z/t_h$ and let $k_+\ge k(p_l)$ be a rational upper bound.
+Convexity of $1/t$ gives $r(z)\ge1/t(z)$. If
+$d_-(z)=s_-(z)-k_+r(z)$ is nonnegative at both endpoints, another sufficient
+polynomial is
+\[
+ \Pi_B(z)=h_-(z)d_-(z)+\frac{q(p_l)}2t(z)^2s_-(z)^2-T_1(p_h)^+.
+\]
+All substitutions now multiply nonnegative factors. Both polynomials have
+at most degree four. Strict positivity of their five Bernstein coefficients
+proves positivity on the whole box, including its boundary; the coefficient
+formula is supplied in Appendix~\ref{app:geometry-cert}.
+
+The complete certificate has 439 nodes: 219 exact midpoint bisections,
+52 positive $\Pi_C$ leaves, 132 positive $\Pi_B$ leaves, and 36
+entropy-infeasible leaves. All 920 positive-leaf Bernstein coefficients
+are strictly positive. The smallest certified leaf margin exceeds
+$7.43\times10^{-5}$; this decimal is descriptive, not a proof premise.
+Each endpoint, enclosure and sign is checked with rational arithmetic and
+eight logarithm-series terms. Appendix~\ref{app:replay} specifies the complete
+439-character action certificate, exact coverage, and a second polynomial
+reconstruction. This establishes the product lemma on the rectangle; the two
+analytic caps complete its full domain.
+
+\section{Three geometric coefficients}\label{sec:geometry}
+\begin{lemma}\label{lem:I16-geometry}
+The coefficients in \eqref{eq:I16-F0}--\eqref{eq:I16-G} satisfy
+\begin{equation}\label{eq:I16-geometry}
+ F_0>\frac1{250},\qquad F_1>\frac1{10},\qquad G>\frac1{106}
+\end{equation}
+throughout the parent domain in \eqref{eq:I16-domain}, independently of $R$.
+The first two estimates use the six exact rational polynomial certificates
+specified below and reconstructed in the replay.
+\end{lemma}
+
+\subsection{Elementary mean and gap bounds}
+Put $y=(1-m)/2$. Equation~\eqref{eq:I16-B-remainder} gives
+\begin{equation}\label{eq:I16-A-bounds}
+ A=2\mathcal B(y),\qquad 2L\le A\le2-y\le2-V/4<2.
+\end{equation}
+The lower bound uses that $\mathcal B$ decreases and
+$\mathcal B(1/2)=L$. Also \eqref{eq:I16-D} and the entropy series give
+\begin{equation}\label{eq:I16-D-bounds}
+ c_2s\le\overline D-c_1\le\frac{L-1/2}{V}.
+\end{equation}
+The upper bound follows by applying $\kappa(z)\le Lz^2$ to each term of
+the exact binary-information identity, giving $D\le Ls/V$.
+Let $x=s/V$; then
+\[
+ 0<x\le x_*:=\min\{1/4,(1-m)/(1+m)\}.
+\]
+The two expressions for $x_*$ meet at $m=3/5$.
+
+\subsection{The constant coefficient \texorpdfstring{$F_0$}{F0}}
+Write $\eta=\eta(m)$ and $c_0=L-1/2$. From its definition,
+\begin{align*}
+ (A+x)F_0&=H_0+T(\overline D-c_1),\\
+ H_0&=L(A+x)-c_0A(A+1)-x\eta/V-Ax/(2V),\\
+ T&=A^2-2\eta(A+x).
+\end{align*}
+The sign of $T$ need not be chosen: equation~\eqref{eq:I16-D-bounds} gives
+\[
+ (A+x)F_0\ge\min\{H_+(x),H_-(x)\},
+\]
+where
+\[
+ H_+=H_0+T\frac{(4-3V)x}{12V^2},\qquad
+ H_-=H_0+T\frac{c_0}{V}.
+\]
+The first is a concave quadratic in $x$; the second is affine. Subtracting
+$\epsilon_0(A+x)$, with $\epsilon_0=1/250$, preserves concavity. At $x=0$,
+$T=A(A-2\eta)\ge0$ by \eqref{eq:I16-A-bounds}, so their minimum is
+\[
+ A\{L-c_0(A+1)\}\ge A(3/2-2L)>A/10.
+\]
+It remains only to check both expressions at $x=x_*$. The four rational
+polynomials in Appendix~\ref{app:geometry-cert} certify these endpoint
+inequalities on $[0,3/5]$ and $[3/5,1)$. Concavity completes the whole
+allowed interval of $x$, proving $F_0>1/250$.
+
+\subsection{The linear coefficient \texorpdfstring{$F_1$}{F1}}
+Rearrangement gives
+\[
+ F_1=\frac{13}{4}-\frac{2s\eta}{a+s}
+ +2\left(\frac{a^2}{a+s}-V\right)\overline D-\frac{2a}{V}.
+\]
+The coefficient of $\overline D$ is positive: by $A\ge2L>4/3$ and
+$x\le1/4$,
+\[
+ A^2-A-x\ge(4/3)^2-4/3-1/4=7/36>0.
+\]
+Use $\overline D\ge c_1+c_2s$ and multiply by $a+s$ to obtain
+\begin{align*}
+ (a+s)F_1\ge J_1(s)
+ &=\frac94(a+s)-\frac{a^2}{V}-\frac{2as}{V}-2s\eta\\
+ &\quad+2c_2s(a^2-aV-Vs).
+\end{align*}
+This is concave in $s$. At zero,
+$J_1(0)/a=9/4-A\ge1/4>1/10$. At $s=Vx_*$, the two remaining rational
+polynomials in Appendix~\ref{app:geometry-cert} certify
+$J_1(s)>(a+s)/10$. Concavity of $J_1(s)-(a+s)/10$ proves $F_1>1/10$.
+
+\subsection{The quadratic coefficient \texorpdfstring{$G$}{G}}
+First omit the cap at two and put
+\[
+ G_{\rm raw}=\frac{V-s}{d}+1-a-V.
+\]
+For fixed $m$, its derivative in $d$ is $-1-V/d^2<0$, so the largest
+permitted gap gives the smallest value. For $0\le m\le3/5$, use
+$d=\sqrt V/2$ and the chord estimate $\sqrt{1-m^2}\ge1-5m^2/9$.
+The function $a(m)$ has third derivative $-4/(1+m)<0$, hence
+\[
+ a\le2L+(4L-2)m+(2L-3)m^2
+ <\frac75+\frac45m-\frac85m^2.
+\]
+Therefore
+\[
+ G_{\rm raw}>\frac1{10}-\frac45m+\frac{53}{30}m^2
+ =\frac{53}{30}\left(m-\frac{12}{53}\right)^2+\frac1{106}.
+\]
+For $3/5\le m<1$, the largest gap is $1-m$, and $a\le2V$ gives
+\[
+ G_{\rm raw}\ge m^2+2m-a\ge3m^2+2m-2\ge\frac7{25}>\frac1{106}.
+\]
+If the cap in \eqref{eq:I16-beta} is active, instead use
+\[
+ G=3-a-V\ge3-3V+V^2/4\ge1/4>1/106.
+\]
+This proves the quadratic coefficient bound and completes
+Lemma~\ref{lem:I16-geometry}.
+% === 06_equality.tex ===
+\section{Equality and the scope of the result}\label{sec:equality}
+Define the profile deficit and the information deficit by
+\[
+\Delta^{\mathsf B}_p(f)=H(f\mid Y)-\Bprof(m),\qquad
+\mathcal D_p(f)=\kappa(\rho)-I(f;Y).
+\]
+The master theorem and a direct subtraction give
+\begin{equation}\label{eq:gap-decomposition}
+\mathcal D_p(f)=\Delta^{\mathsf B}_p(f)+R\kappa(m)-\theta m^2
+\ge\Delta^{\mathsf B}_p(f)+(1-L)Rm^2.
+\end{equation}
+Thus the stronger profile records an explicit bias penalty that the CK inequality alone does not contain. This inequality is uniform in dimension. It is not a distance-to-coordinate stability theorem by itself.
+
+\begin{theorem}[Equality at nontrivial noise]\label{thm:equality}
+For $0<p<1/2$, equality in~\eqref{eq:main-profile} holds exactly for constants and coordinate indicators or their complements. Equality in~\eqref{eq:CK} holds exactly for coordinate indicators and their complements.
+\end{theorem}
+\begin{proof}
+The local closure is strict whenever $d>0$, by Theorem~\ref{thm:I16-blend} and the positive-weight assembly in Section~\ref{sec:blend}.
+
+A nonconstant Boolean function that is not a signed coordinate either
+has exactly two essential coordinates, in which case Lemma~\ref{lem:two-bit}
+gives strictness, or has at least three. Inessential noisy coordinates are
+independent of the output and may be discarded. In the latter case apply
+Lemma~\ref{lem:normalized-gap} to three essential coordinates. The selected
+coordinate satisfies the local quarter-variance condition. If $d>0$, strict local
+closure applies.
+
+If $d=0$, its two child means agree. They therefore supply $\overline J\ge\Bprof(m)$. Essentiality means $f_0-f_1$ is not identically zero. For $0<\rho<1$, the one-bit noise matrix has nonzero eigenvalues $1,\rho$; its finite tensor product is invertible. Hence $A-B=T_\rho(f_0-f_1)$ is nonzero for at least one observation of positive probability. Strict concavity of binary entropy then gives $\overline M>\overline J\ge\Bprof(m)$.
+
+Constants and signed coordinates attain the profile directly. For the information inequality, constants have gap $\kappa(\rho)>0$, while signed coordinates have zero gap. All other functions have positive profile deficit, hence positive information deficit by~\eqref{eq:gap-decomposition}.
+\end{proof}
+At $p=0$, the profile is zero and all functions attain it; CK equality means that the output is balanced. At $p=1/2$, the profile is the output entropy and all functions attain both bounds.
+
+
+\paragraph{Scope.}
+The target, quantitative remainder and equality conclusions are unchanged.
+No characterization of extremizing or realizable posterior laws is assumed.
+
+\appendix
+\section{Monotonicity of the midpoint product on the zero-noise cap}\label{app:midpoint-monotone}
+For $0<p\le1/100$, put $b=1-p$, $c(t)=2\atanh(bt)$, and
+\[
+ F_p(t)=\frac{c(t)}t\eta(t)+p c(t)^2=2bK_{\rm mid}(p,t).
+\]
+We prove $F_p'(t)<0$ for every $0<t<1$, without a separation subdivision.
+Let
+\[
+ S(t)=\frac{\atanh t}{t},\quad
+ \mathscr A(t)=L-\frac12\ln(1-t^2),\quad G_0(t)=S(t)-\mathscr A(t).
+\]
+The convergent positive series and its endpoint sum give
+\[
+ G_0(t)=1-L-\sum_{n\ge1}\frac{t^{2n}}{2n(2n+1)}\ge0,
+ \qquad \sum_{n\ge1}\frac1{2n(2n+1)}=1-L.
+\]
+Furthermore only the first two coefficients below are negative:
+\[
+ G_0(t)+\frac{S(t)}6
+ =\frac76-L+\sum_{n\ge1}\frac{n-3}{6n(2n+1)}t^{2n}
+ \ge\frac{187}{180}-L>\frac{61}{180}.
+\]
+Define $G_p=S-b^2\mathscr A-4b(1-b)$. Since $7b^2-6>0$ on this cap,
+\begin{align*}
+ G_p&=(7b^2-6)G_0+6(1-b^2)(G_0+S/6)-4b(1-b)\\
+ &>(7b^2-6)G_0+2(1-b)^2+\frac{1-b^2}{30}>0.
+\end{align*}
+Direct differentiation gives the exact identity
+\[
+ F_p'(t)=-\frac{c(t)G_p(t)}{1-b^2t^2}
+ +\frac{\eta(t)[2bt-c(t)]}{t^2(1-b^2t^2)}<0,
+\]
+because $c(t)\ge2bt$. All denominators are positive. This establishes the
+monotonicity used only to verify the zero-noise cap of the single product lemma.
+
+\section{The six rational geometric certificates}\label{app:geometry-cert}
+This appendix specifies all rational functions whose positivity is used in
+Section 8. Their numerators are reconstructed from these formulas, rather
+than loaded as unexplained coefficients.
+
+Write
+\[
+ \ell_- =\frac{693}{1000},\qquad
+ \ell_+ =\frac{347}{500},\qquad
+ \ell_-<L<\ell_+,
+\]
+\[
+ z=\frac{1-m}{3+m},\qquad
+ A_- =\frac{4(1+m)}{3+m}\left(1+\frac{z^2}{3}\right),\qquad
+ A_+=A_-+\frac{4(1+m)}{3+m}\frac{z^4}{5(1-z^2)}.
+\]
+The identity $A=4(1+m)\atanh(z)/[(3+m)z]$ and the positive atanh series
+show $A_-\le A\le A_+$. The expressions extend continuously to $m=1$.
+Put $E_+=\ell_+-m^2/2\ge\eta(m)$, $c_-=\ell_--1/2$, $c_+=\ell_+-1/2$,
+and $\epsilon_0=1/250$, $\epsilon_1=1/10$.
+
+For each of the two intervals use its endpoint gap
+\[
+ (I,x)=([0,3/5],1/4)\quad\hbox{or}\quad
+ ([3/5,1],(1-m)/(1+m)).
+\]
+The following lower rational functions suffice:
+\begin{align}
+ P_{0,+}={}&12\ell_-V^2(A_-+x)-12c_+V^2A_+(A_++1)
+ -12VxE_+-6VA_+x\notag\\
+ &+[A_-^2-2E_+(A_++x)](4-3V)x
+ -12\epsilon_0V^2(A_++x),\label{eq:I16-polyplus}\\
+ P_{0,-}={}&2V\ell_-(A_-+x)-2xE_+-A_+x
+ +2c_-(1-V)A_-^2\notag\\
+ &-2c_+\{VA_++2E_+(A_++x)\}
+ -2\epsilon_0V(A_++x),\label{eq:I16-polyminus}\\
+ P_1={}&6V\{\tfrac94(A_-+x)-A_+^2-2A_+x-2xE_+
+                         -\epsilon_1(A_++x)\}\notag\\
+ &+(4-3V)x(A_-^2-A_+-x).\label{eq:I16-polyone}
+\end{align}
+They are, respectively, lower bounds for
+$12V^2[H_+-\epsilon_0(A+x)]$,
+$2V[H_--\epsilon_0(A+x)]$, and the sufficient expression
+$6V[J_1/V-\epsilon_1(A+x)]$ at $s=Vx$.
+Every substitution respects its displayed coefficient sign. In particular,
+$P_{0,-}$ separates the positive term $2c_0(1-V)A^2$ before replacing
+$L$ and $A$ by upper or lower bounds.
+
+Here is an explicit common denominator useful for independent reconstruction.
+Let $T=3+m$, $Z=1-m$, and
+\begin{align*}
+ D_A&=30T^3,\\
+ N_-&=4(1+m)(30T^2+10Z^2),\\
+ N_+&=N_-+3Z^4.
+\end{align*}
+Then $A_-=N_-/D_A$, $A_+=N_+/D_A$. Write $x=X/Y$, with
+$(X,Y)=(1,4)$ or $(1-m,1+m)$. Multiply $P_{0,+}$ and $P_1$ by
+$D_A^2Y^2$, and $P_{0,-}$ by $D_A^2Y$; these multipliers are positive.
+In the two indicated cases below a factor $1-m$ is then removed, which is
+positive on the actual domain $m<1$.
+
+\begin{center}
+\begin{tabular}{llllr}
+\toprule
+Mean interval & Numerator & Degree & Removed factor & Positive coefficients\\
+\midrule
+$[0,3/5]$ & $P_{0,+}$ & 12 & none & 13\\
+$[0,3/5]$ & $P_{0,-}$ & 9 & none & 10\\
+$[0,3/5]$ & $P_1$ & 10 & none & 11\\
+$[3/5,1]$ & $P_{0,+}$ & 13 & $1-m$ & 14\\
+$[3/5,1]$ & $P_{0,-}$ & 10 & none & 11\\
+$[3/5,1]$ & $P_1$ & 11 & $1-m$ & 12\\
+\bottomrule
+\end{tabular}
+\end{center}
+All 71 Bernstein coefficients are strictly positive, with exact rational
+arithmetic. No further interval subdivision is needed for these polynomials.
+For explicit reconstruction, if $P(m)=\sum_{j=0}^n p_jm^j$ on $[a,b]$, define
+\[
+ c_k=\sum_{j=k}^n p_j{j\choose k}a^{j-k}(b-a)^k,
+ \qquad
+ B_i=\sum_{k=0}^i c_k\frac{{i\choose k}}{{n\choose k}}.
+\]
+Then
+\[
+ P(a+(b-a)t)=\sum_{i=0}^n B_i{n\choose i}t^i(1-t)^{n-i}.
+\]
+The weights are nonnegative and sum to one on $0\le t\le1$.
+The replay rebuilds every $p_j$ from \eqref{eq:I16-polyplus}--\eqref{eq:I16-polyone},
+checks the exact divisions by $1-m$, computes every $B_i$, and verifies its
+strict sign. The emitted JSON contains all power and Bernstein coefficients.
+This proves the six endpoint inequalities used by the concavity reductions.
+
+\section{Exact replay and provenance}\label{app:replay}
+For a rational $w\in[1,2]$, put $z=(w-1)/(w+1)$. The positive logarithm
+series gives the exact enclosure
+\begin{equation}\label{eq:I16-log-enclosure}
+ 2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1}
+ \le\log w\le
+ 2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1}
+ +\frac{2z^{2N+1}}{(2N+1)(1-z^2)}.
+\end{equation}
+It follows by bounding every omitted denominator below by $2N+1$ and
+summing the geometric tail. For arbitrary positive rational $x$, multiplication
+or division by powers of two reduces to $[1,2)$; the contribution of $k\log2$
+uses the correct endpoint order when $k<0$. For rational $x\in(0,1)$,
+$h(x)=-x\log x-(1-x)\log(1-x)$ is enclosed with outward rational endpoints.
+The conventions $h(0)=h(1)=0$ are exact.
+
+The entire replay uses $N=8$. The certificate file
+\texttt{product\_actions.txt} contains only the 439 preorder actions
+\texttt{P}, \texttt{T}, \texttt{C}, \texttt{B}, \texttt{E}; whitespace is ignored.
+The root is \eqref{eq:I16-rectangle}. The first two actions bisect the indicated
+coordinate exactly at its rational midpoint, lower child first. The last three
+require their respective positive-polynomial or infeasibility test. A stack
+checks that no box is omitted and that there are no extra actions.
+All endpoints are derived; none are stored as rounded floating-point values.
+The complete action string is:
+\begin{center}\begin{minipage}{0.97\textwidth}\small
+\begin{verbatim}
+PPPPPPTCTCPTCTCPTPBBTTPPBBPBBEETPBPBBTTPPBBPBEEETCTPCBTPPPBBPBBPPBBPBBETCTCTCPTP
+BBTPPPTBBTBBPTBBTBBPPTBBTBBPTBBTBEETPBBTTPPBBPBBEETCTCPTCPTPBBTTPPBBPBBEETPPBBPB
+BETPBBTPPPBBPBBPPBBPBBETCPTCPTPBBTPPPBTBBPTBBTBBPPTBBTBBTBEETPBBTTPBBEETCTPPBBPB
+BTPTPPBBPBBETPPBEEEETCPTPPCCPCCTPPPBBPPBBPBBPPPBBPBBPPBBPBBETPTCPBBPBBTPPPTBBTBB
+TBETPBBEETTCPCCPPTPPBBPBBTPTPBBETPBBEETPPBBTCBTPTBEEETPPTCBTCBTCPBBETTTTTCCPCCPC
+TCCPPTCCTCCTPCCPCCTPPPTCCTCCTCCPTCCTCEE
+\end{verbatim}
+\end{minipage}\end{center}
+Run \texttt{python run\_exact.py}. The command
+\texttt{python product\_cert/verify\_product\_exact.py} \verb|--build| regenerates
+all actions; both use the standard library only. The checker reconstructs
+coverage, every leaf, the six geometric polynomials and the finite analytic
+constants. A second implementation reconstructs quartics directly in Bernstein
+form and checks exact agreement. Negative controls must fail. The archive
+preserves ten I16 statements byte-for-byte and records the unchanged original
+files' hashes. Optional high-precision tests are diagnostics, not proofs.
+This remains a computer-assisted candidate without independent mathematical
+approval or foundational proof-kernel verification.
+
+\begin{thebibliography}{9}
+\bibitem{CK} G. R. Kumar and T. A. Courtade.
+\emph{Which Boolean Functions are Most Informative?}
+arXiv:1302.2512v2 (2013).
+\bibitem{I15} D. Kramer.
+\emph{An entropy--variance profile for Boolean noise}, entropy-budget
+iteration I15, 19 September 2026. Unpublished AI-assisted candidate.
+\end{thebibliography}
+\end{document}

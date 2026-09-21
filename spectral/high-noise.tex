@@ -1,0 +1,124 @@
+% !TeX root = courtade-kumar.tex
+% !TEX TS-program = pdfLaTeX
+\newpage
+\label{sec:high-noise}
+\section{The high noise inequality}
+By negating $B$ as necessary, we can assume that
+$\E[B]\le 1/2$. Let us observe that we can also assume
+$\E[B]\ge1/6$, as otherwise the bound follows from
+known inequalities.
+\begin{lemma}
+\label{lem:biasedB}
+When $\E[B]\le1/6$ we have $\muti{B}{X}\le\muti{Y_1}{X}$.
+\end{lemma}
+\begin{proof}
+Let us write
+\begin{align*}
+\muti{B}{X} &= \sum_i \muti{B}{X_i \emid X_{<i}}\\
+  &\le \rho^2\sum_i \muti{B}{Y_i \emid X_{<i}}\\
+  &\le \rho^2\sum_i \muti{B}{Y_i \emid Y_{<i}}\\
+  &  = \rho^2 \muti{B}{Y}
+\end{align*}
+Setting $\mu=\E[B]$, we have $\muti{B}{Y}=\entb{\mu}$.
+Direct calculation shows that when $\mu\le 1/6$ it holds
+that $\entb{\mu}\le \frac{1}{2\ln 2}$. Observing
+\begin{align*}
+\frac{\rho^2}{2\ln 2} \le \kldivb{p}{1/2} = \muti{Y_1}{X}
+\end{align*}
+finishes the proof.
+\end{proof}
+
+\subsection{One-sided functions}
+For $i\in[n]$ let us define $d_i =\E\sparen{B(2Y_i - 1)}$.
+We show that if the output $B$ is highly dependent on a single
+coordinate $Y_i$, an argument similar to 
+\autoref{lem:biasedB} establishes the bound.
+
+\begin{lemma}
+\label{lem:high-corr}
+Suppose $\E[B]>1/6$ and there exists a coordinate $i$
+such that $\abs{d_i}> \frac{1}{6}$. 
+Then we have $\muti{B}{X}\le\muti{C_\mu}{U}$.
+\end{lemma}
+\begin{proof}
+Let us reveal $Y$ gradually as $X_i$, $Y_{-i}$ and
+$Y_i$ and study the information they convey about $B$
+using the chain rule:
+\begin{align*}
+\muti{B}{Y} &= \muti{B}{X_i} + \muti{B}{Y_{-i}\emid X_i}
+  + \muti{B}{Y_i\emid Y_{-i}X_i}.
+\end{align*}
+Observe that $\muti{B}{Y}=\ent{B}$ as $Y$ determines $B$ and
+$\muti{B}{Y_i\emid Y_{-i}X_i}\ge 2\abs{d_i} \ent{Y_i\emid X}$.
+Using the chain rule again,
+\begin{align*}
+\muti{B}{X}
+  &=   \muti{B}{X_i} + \muti{B}{X_{-i}\emid X_i}\\
+  &\le \muti{B}{X_i} + \rho^2 \muti{B}{Y_{-i}\emid X_i}\\
+  &\le \muti{B}{X_i} + \rho^2 \nparen{\ent{B}
+    - \muti{B}{X_i}-d_i \ent{Y_i \emid X}}\\
+  &=   (1-\rho^2)\muti{B}{X_i} + \rho^2 \ent{B}
+    - 2\rho^2\abs{d_i} \ent{Y_i\emid X}
+\end{align*}
+Using \autoref{lem:scalarlemmathatidnthaveyet} we get
+\begin{align*}
+\muti{B}{X} \le \muti{C_\mu}{U},
+\end{align*}
+which completes the proof.
+\end{proof}
+
+\subsection{Even-handed functions}
+\label{sec:well-rounded}
+In the remainder of the paper, we show that even-handed
+functions cannot come close to the benchmark $\muti{C_\mu}{U}$
+due to Fourier theoretic reasons---any informative function
+needs to be highly dependent on at least some coordinate.
+In particular, assuming $1/6\le \E[B]\le1/2$ and
+$\abs{d_i}\le 1/6$ for all $i\in[n]$ we show that
+$\muti{B}{X}<\muti{C_\mu}{U}$.
+
+
+Define
+\begin{align*}
+f(x) &= \E\sparen{B\emid Y=x}\text{, and}\\
+g(x) &= \E\sparen{B\emid X=x}.
+\end{align*}
+Our proof proceeds as follows. We have 
+\begin{align*}
+\muti{B}{X} &= \kldiv{B\emid X}{B}\\
+  &= \E_x\sparen{\kldivb{g(x)}{\mu}}
+\end{align*}
+We will design a function $Q_{\mu, p}(t)$ such that
+$\kldivb{t}{\mu}\le Q_{\mu,p}(t)$ for all $t\in[0,1]$
+further, $Q_{\mu,p}(t)$ is the minimum of two quadratic
+polynomials in $t$.
+The fact that $Q_{\mu,p}(t)$ is made of quadratic
+polynomials in $t$ allows us to argue that
+$\E_x[Q_{\mu,p}(g(x))]$ gets noticeably attenuated
+via Fourier analysis. Moreover $Q_{\mu,p}$ is chosen
+so that the attenuated value satisfies
+\begin{equation*}
+\E_x[Q_{\mu,p}(g(x))] \le \muti{C_\mu}{U},
+\end{equation*}
+which gives the desired bound.
+
+Let us define the level energies
+of $f$ as
+\begin{align*}
+W_k &= \sum_{\abs{S}=k}\E\sparen{\chi_S(Y)B}^2\\
+    &= \sum_{\abs{S}=k}\E_x\sparen{\chi_S(x)f(x)}^2
+\end{align*}
+It is well known and not difficult to see that
+$\E[\chi_S(X)B] = \rho^{|S|}\E[\chi_S(Y)B]$, since
+$X$ is a noisy copy of $Y$. Our key observation is that
+\begin{align*}
+\E_x[g(x)^2] - \rho^2\E_x[f(x)g(x)]
+  &=   \sum_{k}\nparen{\rho^{2k} - \rho^{k+2}} W_k\\
+  &\le \rho^2(1-\rho) W_1 - \rho^2\mu^2.
+\end{align*}
+
+\begin{lemma}
+Suppose $\abs{d_i}\le 1/6$ for all $i\in[n]$. Then $W_1\le 4/5$.
+\end{lemma}
+\begin{proof}
+\end{proof}
