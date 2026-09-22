@@ -1,0 +1,903 @@
+% !TeX root = courtade-kumar.tex
+% !TEX TS-program = pdfLaTeX
+\section{The proof}
+\label{sec:proof}
+Our proof proceeds by an induction on $n$, the number of
+coordinates of $X$, $Y$. Given random variables $B$ and $Y$,
+our proof adaptively picks a coordinate $i\in[n]$ and
+studies
+\begin{align*}
+\muti{B}{X}
+  = \muti{B}{Y_i}
+    -\muti{B}{Y_i\emid X}
+    + \muti{B}{X\emid Y_i}.
+\end{align*}
+When $Y_i$ is fixed, $B$ depends on at most $n-1$
+coordinates and therefore the induction hypothesis applies,
+upper-bounding the last term. The middle two terms,
+on the other hand, are analyzed in detail in
+\autoref{sec:bit-contrib}.
+
+Throughout this section, we use the notation
+$\mu_0=\E[B\emid Y_i=0]$ and $\mu_1=\E[B\emid Y_i=1]$,
+which satisfy $\mu = \nparen{\mu_0 + \mu_1}/2$ since $Y_i$ is
+distributed uniformly.
+Recall that $\nu=4\mu(1-\mu)$. Similarly, we define
+$\nu_0 = 4\mu_0(1-\mu_0)$ and $\nu_1 = 4\mu_1(1-\mu_1)$
+and observe the simple but useful identity
+\begin{align}
+\tag{(V)}\label{eq:V}
+\frac{\nu_0 + \nu_1}{2} = \nu - (\mu_1-\mu_0)^2.
+\end{align}
+As the final stop before our proof, let us verify that
+\autoref{thm:ck+} indeed implies \eqref{eq:ck}.
+\begin{lemma}
+\label{lem:ck+to_ck}
+For all $\rho,\mu\in[0,1]$, we have
+$Q_\rho(\mu)\le \muti{Y_1}{X}$.
+\end{lemma}
+\begin{proof}
+Recall that
+$\Q=\rho^2\nparen{\entb{\mu}-\nu}+\nu\muti{Y_1}{X}$.
+By \eqref{eq:U},
+\begin{equation*}
+ \kldivb{\mu}{1/2}\ge\frac{1-\nu}{2\ln2},
+ \qquad \muti{Y_1}{X}\ge\frac{\rho^2}{2\ln2}.
+\end{equation*}
+Consequently,
+\begin{align*}
+ \muti{Y_1}{X}-Q_\rho(\mu)
+ &=\rho^2\kldivb{\mu}{1/2}
+       -(\rho^2-\muti{Y_1}{X})(1-\nu)\\
+ &\ge\rho^2\nparen{\frac1{\ln2}-1}(1-\nu)\ge0,
+\end{align*}
+noting $\ln 2 < 1$, which completes the proof.
+\end{proof}
+Define $d_j = 2\abs{\E\nparen{B(2Y_j- 1)}}$ for $j\in[n]$.
+Our induction step always picks a coordinate $i$ with
+$d_i\le 1/2$ and the next lemma establishes that such a
+coordinate exists when $n\ge 2$.
+\begin{lemma}
+\label{lem:good-coordinate}
+For any two distinct coordinates $i,j$, we have $d_i+d_j\le1$.
+In particular, one of $d_i,d_j$ is at most $1/2$.
+\end{lemma}
+\begin{proof}
+Relabel $Y_i,Y_j$ if necessary so that
+$\E[B(2Y_i-1)]$ and $\E[B(2Y_j-1)]$ are nonnegative. Then
+\[
+ d_i+d_j
+ =2\E\sparen{B(2Y_i-1)+B(2Y_j-1)}
+ \le4\Pr[Y_i=Y_j=1]=1,
+\]
+since $0\le B\le1$.
+\end{proof}
+
+We fix such an $i$ with $d_i\le 1/2$ and denote $d=d_i$,
+which coincides with $\abs{\mu_0 - \mu_1}$ defined above.
+Next, we would like to bound the middle terms
+$\muti{B}{Y_i}-\muti{B}{Y_i\emid X}$. However we can
+control these terms only when mixed with
+$\frac{1}{2}\muti{B}{X\emid Y_i}$, as follows.
+\begin{lemma}
+\label{lem:bit-reveal}
+Suppose $d_i\le1/2$ and $\muti{B}{X\emid Y_i}
+ \le\frac12\nparen{Q_\rho(\mu_0)+Q_\rho(\mu_1)}$.
+Then
+\begin{align*}
+\muti{B}{Y_i} - \muti{B}{Y_i\emid X}
+  + \frac{1}{2} \muti{B}{X\emid Y_i}
+  \le \Q - \frac14\nparen{Q_\rho(\mu_0)+Q_\rho(\mu_1)}
+\end{align*}
+holds.
+\end{lemma}
+\autoref{sec:conditional-information} is dedicated to establishing
+\autoref{lem:bit-reveal};
+here we will show how the lemma implies the main theorem.
+\begingroup
+\newtheorem*{restatedtheorem}{Theorem~\ref{thm:ck+}}
+\begin{restatedtheorem}[restated]
+Let $X,Y$ and $B$ be as above. We have $\muti{B}{X}\le\Q$
+for all $\rho,\mu\in[0,1]$.
+\end{restatedtheorem}
+\endgroup
+\begin{proof}
+At $\rho=0$, both sides are zero. At $\rho=1$, we have
+$Y=X$ and both sides equal $\entb{\mu}$. Assume $0<\rho<1$.
+When $n=1$, the bound holds as $B$ is either a constant,
+$Y_1$ or negation of $Y_1$. The last two cases hold with
+equality, whereas the first case reveals zero information.
+
+For $n\ge2$, \autoref{lem:good-coordinate} applies, giving
+a coordinate $i$ with $d_i\le 1/2$. Using the chain rule,
+we write
+\begin{align*}
+\muti{B}{X}
+  = \muti{B}{Y_i} - \muti{B}{Y_i\emid X}
+  + \muti{B}{X\emid Y_i}.
+\end{align*}
+Having fixed $Y_i$, note that $B$ depends on at most $n-1$
+coordinates so our induction hypothesis applies to $Y_i=0$
+and $Y_i=1$ cases individually, giving
+\begin{align*}
+\muti{B}{X\emid Y_i}
+  &\le\frac12\nparen{Q_\rho(\mu_0) + Q_\rho(\mu_1)}.
+\intertext{Summing up the inequality given by \autoref{lem:bit-reveal},
+we have}
+\muti{B}{X}
+  &=\muti{B}{Y_i}-\muti{B}{Y_i\emid X}
+       +\muti{B}{X\emid Y_i}\\
+  &\le Q_\rho(\mu)+\frac12\muti{B}{X\emid Y_i}
+       -\frac{Q_\rho(\mu_0)+Q_\rho(\mu_1)}4\\
+  &\le Q_\rho(\mu).
+\end{align*}
+completing the proof.
+\end{proof}
+
+\subsection{The contribution of bit \texorpdfstring{$Y_i$}{Y\_i}}
+\label{sec:bit-contrib}
+Fix the coordinate $i$ chosen above. We first condition on
+$X_{-i}$ and write
+\[
+ a_s=\Pr[B=1\emid X_{-i},Y_i=s]\quad(s=0,1),\qquad
+ a=\frac{a_0+a_1}{2},\qquad t=a_1-a_0,\qquad x=2a-1.
+\]
+These are functions of $X_{-i}$. Since $Y_i$ is uniform and
+independent of $X_{-i}$, we have
+$a=\Pr[B=1\emid X_{-i}]$, $\E[a_s]=\mu_s$ and $|\E[t]|=d$.
+Also, $|x|+|t|\le1$. Set $v=\E[4a(1-a)]$. Then
+\[
+ \nu-v=4\E[(a-\mu)^2].
+\]
+The first lemma bounds how much information $X_i$ reveals
+about $B$, given $X_{-i}$, in terms of the corresponding
+information revealed by $Y_i$.
+
+\begin{lemma}
+\label{lem:transport}
+Suppose $0<\rho<1$ and $d>0$. Then $d\le v\le\nu$ and
+\begin{equation}
+\label{eq:transport-lower}
+ v\kldivb{\frac{1+d/v}{2}}{1/2}
+ \le\muti{B}{Y_i\emid X_{-i}}\le v.
+\end{equation}
+Let $\tau\in(0,1]$ satisfy
+\[
+ \kldivb{\frac{1+\tau}{2}}{1/2}
+ =\frac{\muti{B}{Y_i\emid X_{-i}}}{v}.
+\]
+Then
+\begin{equation}
+\label{eq:transport-bounds}
+ \muti{B}{X_i\emid X_{-i}}
+ \le v\kldivb{\frac{1+\rho\tau}{2}}{1/2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Since $|t|\le1-|x|\le1-x^2$, we have $d\le v$.
+Also, $\nu-v=4\E[(a-\mu)^2]\ge0$, so $v\le\nu$.
+In particular, $v>0$.
+
+Fix a value of $X_{-i}$. The information that $Y_i$ reveals
+about $B$ in this conditional distribution is
+\[
+ \ell(x,t)=\frac12\left[
+   \kldivb{\frac{1+x-t}{2}}{\frac{1+x}{2}}
+  +\kldivb{\frac{1+x+t}{2}}{\frac{1+x}{2}}\right].
+\]
+Conditioned on $Y_i$, the bit $X_i$ is obtained by flipping
+$Y_i$ with probability $p=(1-\rho)/2$, independently of
+$(B,X_{-i})$. Thus
+\begin{equation}
+\label{eq:posterior-information}
+ \muti{B}{Y_i\emid X_{-i}}=\E[\ell(x,t)],
+ \qquad
+ \muti{B}{X_i\emid X_{-i}}=\E[\ell(x,\rho t)].
+\end{equation}
+Computing $\ell(x,t)$ by conditioning on $B$ instead of $Y_i$,
+Bayes' rule gives
+\[
+ \ell(x,t)
+ =\frac{1+x}{2}\kldivb{\frac{1+t/(1+x)}2}{1/2}
+  +\frac{1-x}{2}\kldivb{\frac{1-t/(1-x)}2}{1/2}.
+\]
+For now suppose $|x|<1$, and put $V_x=1-x^2$.
+By \eqref{eq:binary-divergence-series},
+\begin{equation}
+\label{eq:posterior-moment}
+ \frac{\ell(x,t)}{V_x}
+ =\sum_{k\ge1}
+   \frac{W_k(x)(t/V_x)^{2k}}{2k(2k-1)\ln 2},
+ \qquad
+ W_k(x)=\frac{(1+x)^{2k-1}+(1-x)^{2k-1}}2.
+\end{equation}
+Here $W_1=1$ and $W_k\ge1$. Together with \eqref{eq:U},
+the two expressions for $\ell(x,t)$ give
+\begin{equation}
+\label{eq:posterior-pointwise-bounds}
+ V_x\kldivb{\frac{1+t/V_x}{2}}{1/2}
+ \le\ell(x,t)\le\frac{t^2}{V_x}\le V_x,
+\end{equation}
+where the last inequality uses $|t|\le1-|x|\le V_x$.
+
+We next compare $\ell(x,\rho t)$ with $\ell(x,t)$.
+Choose $u\in[0,1]$ so that
+\[
+ \kldivb{\frac{1+u}{2}}{1/2}=\frac{\ell(x,t)}{V_x}.
+\]
+Cauchy--Schwarz gives $W_k^2\le W_{k-1}W_{k+1}$ for $k\ge2$.
+Since $W_1=1$ and $W_k\ge1$, it follows that
+\[
+ \ln W_{k+1}-\ln W_k\ge\frac{\ln W_k}{k-1}
+ \qquad(k\ge2),
+\]
+and hence $W_k^{1/k}$ is nondecreasing.
+The coefficients
+\[
+ \frac{W_k(x)(t/V_x)^{2k}-u^{2k}}{2k(2k-1)\ln 2}
+\]
+therefore change sign at most once, from negative to positive.
+Their sum converges absolutely and is zero by the choice of $u$.
+Multiplying them by
+the decreasing weights $\rho^{2k}$ gives a nonpositive sum:
+subtract the weight at a sign-change index, and every term
+is nonpositive. Consequently,
+\[
+ \ell(x,\rho t)\le
+ V_x\kldivb{\frac{1+\rho u}{2}}{1/2}.
+\]
+This also holds when all the coefficients vanish.
+
+To average this inequality, define $F_\rho$ by
+\[
+ F_\rho\left(\kldivb{\frac{1+u}{2}}{1/2}\right)
+ =\kldivb{\frac{1+\rho u}{2}}{1/2}
+ \qquad(0\le u\le1).
+\]
+We claim that $F_\rho$ is increasing and concave.
+For $y=\kldivb{(1+u)/2}{1/2}$ and $0<u<1$,
+\[
+ F_\rho'(y)
+ =\rho^2
+   \frac{\sum_{j\ge0}\rho^{2j}u^{2j}/(2j+1)}
+        {\sum_{j\ge0}u^{2j}/(2j+1)}>0.
+\]
+The ratio decreases with $u$: differentiating and pairing
+the terms indexed by $j,k$ gives the sign
+$(j-k)(\rho^{2j}-\rho^{2k})\le0$.
+Since $y$ increases with $u$, the derivative decreases with
+$y$, proving concavity. Continuity covers the endpoints.
+
+We can now average with weights $V_x/v$. Jensen's inequality gives
+\begin{align*}
+ \muti{B}{X_i\emid X_{-i}}
+ &\le\E\left[
+   V_x F_\rho\left(\frac{\ell(x,t)}{V_x}\right)\right]\\
+ &\le vF_\rho\left(\frac{\muti{B}{Y_i\emid X_{-i}}}{v}\right)
+ =v\kldivb{\frac{1+\rho\tau}{2}}{1/2}.
+\end{align*}
+Applying Jensen's inequality to the lower bound in
+\eqref{eq:posterior-pointwise-bounds} similarly gives
+\begin{align*}
+ \muti{B}{Y_i\emid X_{-i}}
+ &\ge\E\left[
+   V_x\kldivb{\frac{1+t/V_x}{2}}{1/2}\right]\\
+ &\ge v\kldivb{\frac{1+\E[t]/v}{2}}{1/2}
+ =v\kldivb{\frac{1+d/v}{2}}{1/2},
+\end{align*}
+using symmetry in the last equality.
+The upper bound in \eqref{eq:posterior-pointwise-bounds} gives
+$\muti{B}{Y_i\emid X_{-i}}\le v$.
+The lower bound is positive when $d>0$, so $\tau$ is well-defined.
+When $|x|=1$, we have $t=0$ and $\ell(x,t)=0$; these points
+contribute zero to the weighted averages.
+\end{proof}
+
+The next lemma compares conditioning on $X_{-i}$ with not
+conditioning on it. Both estimates use the same quantity
+$\nu-v=4\E[(a-\mu)^2]$.
+\begin{lemma}
+\label{lem:consistency}
+Suppose $d>0$, and put
+\[
+ m=|2\mu-1|,\qquad
+ C=\frac{\ln(2/(1+m))}{(1-m)^2}.
+\]
+Then
+\begin{align}
+\label{eq:consistency-bounds}
+ \muti{B}{Y_i\emid X_{-i}}-\muti{B}{Y_i}
+ &\ge\frac{d^2(\nu-v)}{2\nu v\ln 2},\\
+\label{eq:posterior-divergence-bound}
+ \E\kldivb{a}{\mu}
+ &\le\frac{C(\nu-v)}{\ln 2}.
+\end{align}
+Also, $\ent{B\emid X_{-i}}\ge v$ and $\nu C\le1$.
+\end{lemma}
+\begin{proof}
+Complement $B$ and relabel $Y_i$ if necessary so that
+$\E[x]=2\mu-1=m\ge0$ and $\E[t]=d$.
+Since $Y_i$ and $X_{-i}$ are independent, the chain rule gives
+\[
+ \muti{B}{Y_i\emid X_{-i}}-\muti{B}{Y_i}
+ =\muti{Y_i}{X_{-i}\emid B}.
+\]
+Conditioned on $(X_{-i},B=1)$, the mean of $2Y_i-1$ is
+$t/(1+x)$; conditioned on $B=1$ alone, it is $d/(1+m)$.
+For $B=0$, the corresponding means are $-t/(1-x)$ and
+$-d/(1-m)$. Given $X_{-i}$, these cases have probabilities
+$(1+x)/2$ and $(1-x)/2$. Applying the lower bound in
+\eqref{eq:U} and averaging gives
+\begin{align*}
+ \muti{Y_i}{X_{-i}\emid B}
+ &\ge\frac1{2\ln 2}
+   \left(\E\frac{t^2}{1-x^2}-\frac{d^2}{\nu}\right)\\
+ &\ge\frac{d^2}{2\ln 2}\left(\frac1v-\frac1\nu\right)
+ =\frac{d^2(\nu-v)}{2\nu v\ln 2}.
+\end{align*}
+The second inequality is Cauchy--Schwarz.
+At $|x|=1$, the contribution $t^2/(1-x^2)$ is zero.
+
+For the second bound, $\mu=(1+m)/2\ge1/2$, so \eqref{eq:U}
+gives
+\[
+ \E\kldivb{a}{\mu}
+ \le\frac{\ln(1/\mu)}{(1-\mu)^2\ln 2}\E[(a-\mu)^2]
+ =\frac{C(\nu-v)}{\ln 2}.
+\]
+Taking $b=1/2$ in the upper bound of \eqref{eq:U} gives
+$\entb{a}\ge4a(1-a)$; averaging yields
+$\ent{B\emid X_{-i}}\ge v$.
+Finally, $\ln(1+u)\le u$ gives
+\[
+ \nu C
+ =\frac{1+m}{1-m}\ln\left(1+\frac{1-m}{1+m}\right)\le1.
+\]
+\end{proof}
+
+
+\subsection{The conditional mutual information bound}
+\label{sec:conditional-information}
+We will combine the two estimates from \autoref{sec:bit-contrib}
+to prove \autoref{lem:bit-reveal}. We first need the following
+scalar inequality.
+Write
+\[
+ q=1-\rho^2,\qquad
+ \beta=\rho^2-\muti{Y_1}{X},\qquad
+ \alpha=\frac{\beta\ln 2}q,
+\]
+and, for $0<u\le1$, set
+\begin{align*}
+ \mathcal A_\rho(u)
+ &=\muti{Y_1}{X}-\kldivb{(1+\rho u)/2}{1/2},\\
+ \mathcal R_\rho(u)
+ &=\rho^2\kldivb{(1+u)/2}{1/2}
+       -\kldivb{(1+\rho u)/2}{1/2}.
+\end{align*}
+Both quantities are nonnegative by
+\eqref{eq:binary-divergence-series}.
+For $0<\rho<1$, we also have $\beta,\alpha>0$.
+
+\subsubsection*{A scalar inequality}
+For the scalar argument, write $r=\rho^2$.
+
+\begin{lemma}[Scalar inequality]
+\label{lem:scalar}
+For $0<\rho<1$ and $0<u\le1$,
+\begin{equation}
+\label{eq:scalar-inequality}
+ \frac{\mathcal A_\rho(u)}{2(1+\alpha)}
+ +\frac{2\mathcal R_\rho(u)}{u}>\beta.
+\end{equation}
+\end{lemma}
+
+We prove the lemma by expanding in $r$ and showing that every
+coefficient is positive. For integers $N\ge1$, define the divergence tails
+\begin{align*}
+ b_N&=\sum_{k>N}\frac{1}{2k(2k-1)}
+     =\int_0^1\frac{x^{2N}}{1+x}\,\mathrm{d}x,
+ &s_N(u)&=\sum_{k>N}\frac{u^{2k}}{2k(2k-1)}
+     =\int_0^u\frac{(u-x)x^{2N}}{1-x^2}\,\mathrm{d}x.
+\end{align*}
+Set $b_0=1$ as a separate convention, and define
+\begin{align*}
+ T_N&=\sum_{i=0}^{N-1}b_i,
+ &B_N&=\sum_{i=0}^{N-1}b_i b_{N-i},\\
+ G_N(u)&=\sum_{i=0}^{N-1}b_i s_{N-i}(u),
+ &C_N(u)&=\sum_{k=1}^N\frac{1-u^{2k}}{2k(2k-1)}.
+\end{align*}
+The first ingredient compares the divergence tails in two ways.
+
+\begin{lemma}[Divergence-tail comparisons]
+\label{lem:scalar-tail-order}
+For $0<u<1$ and $N\ge1$,
+\begin{equation}
+\label{eq:scalar-convolution-order}
+ G_N(u)\ge B_N\frac{s_N(u)}{b_N}.
+\end{equation}
+For $N\ge2$, setting $w=u^{N/2}$ gives
+\begin{equation}
+\label{eq:scalar-rescaled-order}
+ \frac{s_N(u)}{u b_N}\ge\frac{s_2(w)}{w b_2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+First, $s_j(u)/b_j$ is the expectation of the decreasing function
+$(u-x)_+/(1-x)$ under the probability density proportional to
+$x^{2j}/(1+x)$ on $(0,1)$. Increasing $j$ tilts this density by an
+increasing function, so $s_j(u)/b_j$ decreases with $j$.
+For $1\le j\le N$, therefore,
+$s_j(u)\ge b_j s_N(u)/b_N$; summing proves
+\eqref{eq:scalar-convolution-order}.
+
+Here is the elementary order principle used in this argument.
+If $Z,Z'$ are independent with the same distribution, then
+\[
+ \operatorname{Cov}(f(Z),g(Z))
+ =\frac12\E\sparen{(f(Z)-f(Z'))(g(Z)-g(Z'))}.
+\]
+It is nonnegative when both functions increase and nonpositive when
+one increases and the other decreases. Applying this identity to a
+density ratio gives the stated comparison of expectations.
+
+For the second comparison, fix $a\ge0$ and put
+\[
+ M_N(a)=\frac{s_N(e^{-a/N})}{e^{-a/N}b_N}.
+\]
+Changing variables in the two tail integrals gives
+\begin{equation}
+\label{eq:scalar-tail-kernel}
+ M_N(a)=e^{-2a}\E_{\pi_N}
+ \sparen{\frac{\sinh(z/N)}{\sinh((z+a)/N)}},
+ \qquad
+ \pi_N(\mathrm{d}z)\ \propto
+ \frac{e^{-2z}}{1+e^{z/N}}\,\mathrm{d}z,
+ \quad z>0.
+\end{equation}
+The quotient inside the expectation increases with $z$ because
+$\coth$ decreases. It also increases with $N$, since
+$x\coth x$ increases for $x>0$:
+its derivative has the sign of $\sinh x\cosh x-x>0$.
+Moreover, for $K>N$ the density ratio $\pi_K/\pi_N$ increases with
+$z$, as its logarithmic derivative is
+\[
+ \frac{N^{-1}}{1+e^{-z/N}}
+ -\frac{K^{-1}}{1+e^{-z/K}}>0.
+\]
+The order principle and then the pointwise comparison of quotients
+show that $M_N(a)$ increases with $N$.
+Taking $a=-N\ln u$ gives
+$e^{-a/N}=u$ and $e^{-a/2}=u^{N/2}=w$, proving
+\eqref{eq:scalar-rescaled-order}.
+All the densities are integrable; at $a=0$ the quotient in
+\eqref{eq:scalar-tail-kernel} equals one.
+\end{proof}
+
+The second ingredient gives estimates uniform in the coefficient
+index $N$.
+
+\begin{lemma}[Uniform moment bounds]
+\label{lem:scalar-moments}
+Let
+\[
+ e_N=\frac12\sum_{k=1}^N\frac{1}{2k-1},\qquad
+ R_N=2T_N-1,\qquad x=1-u^{2N}.
+\]
+For $N\ge2$ and $0\le u\le1$,
+\begin{equation}
+\label{eq:scalar-moment-bounds}
+ B_N\le b_NR_N,\qquad
+ \frac{R_N}{2e_N}<\frac{19}{18},\qquad
+ \frac{C_N(u)}{2e_Nb_N}
+ \ge 2x+\frac34x^2+\frac18x^3.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The tail integral and finite summation give
+\begin{equation}
+\label{eq:scalar-basic-tails}
+ \frac{1}{4N+2}\le b_N\le\frac{1}{4N+1},\qquad
+ T_N=1-\ln 2+e_N+Nb_N.
+\end{equation}
+Indeed, the integral bounds follow from
+$1+x\le2$ and $1+x\ge2\sqrt{x}$.
+For positive integers $i,j$, they imply
+\[
+ b_i^{-1}+b_j^{-1}\ge4(i+j)+2\ge b_{i+j}^{-1},
+ \qquad
+ b_i b_j\le b_{i+j}(b_i+b_j).
+\]
+Summing over $i+j=N$ and including the $b_0b_N=b_N$ term proves
+$B_N\le b_NR_N$.
+
+For the second bound, put $t=\sqrt{2/N}\in(0,1]$.
+We will use
+\begin{equation}
+\label{eq:scalar-harmonic-bound}
+ e_N\ge\frac76-\frac t2\ge1-\frac t3.
+\end{equation}
+The first inequality is equality at $N=2$.
+Its right-hand side increases from $N$ to $N+1$ by at most
+$e_{N+1}-e_N=1/(4N+2)$, because
+\[
+ \sqrt{N}\sqrt{N+1}(\sqrt{N}+\sqrt{N+1})
+ \ge(2N+1)\sqrt{N}\ge(2N+1)\sqrt2.
+\]
+This proves the first inequality by induction; the second uses
+$t\le1$.
+We also have
+\begin{equation}
+\label{eq:scalar-log-two-bounds}
+ \frac9{13}<\ln 2<\frac{25}{36}.
+\end{equation}
+For the lower bound, the first three terms of
+$\ln 2=2\sum_{j\ge0}((2j+1)3^{2j+1})^{-1}$ sum to
+$842/1215>9/13$. For the upper bound, replace $2j+1$ by $3$
+for every $j\ge1$ and sum the resulting geometric series.
+Writing $\gamma=\ln 2-1/2>5/26$, we obtain
+\begin{align*}
+ Nb_N&\le\frac{1}{4+t^2/2}\le\frac14-\frac{t^2}{36},\\
+ 18Nb_N-e_N
+ &\le\frac{10}{3}+\frac{t-t^2}{2}
+ \le\frac{83}{24}<\frac{45}{13}<18\gamma.
+\end{align*}
+Since $R_N=2e_N+2Nb_N-2\gamma$, this is equivalent to
+$R_N/(2e_N)<19/18$.
+
+For the third bound, apply the first three nonnegative terms of
+the binomial expansion of $1-(1-x)^a$, where $0<a\le1$.
+Put $s=1/N=t^2/2$ and $e=e_N$. The moment identities
+\[
+ \sum_{k=1}^N\frac{k}{2(2k-1)}=\frac N4+\frac{e_N}{2},\qquad
+ \sum_{k=1}^N\frac{k^2}{2(2k-1)}=\frac{N(N+2)}8+\frac{e_N}{4}
+\]
+follow by dividing the rational summands.
+Together with $b_N\le1/(4N+1)$, they yield
+\begin{equation}
+\label{eq:scalar-moment-expansion}
+ \begin{gathered}
+ \frac{C_N(u)}{2e_Nb_N}
+ \ge\frac{4+s}{2}\sparen{x+\theta_2x^2+\theta_3x^3},\\
+ \theta_2=\frac12-\frac s4-\frac{1}{8e},\qquad
+ \theta_3=\frac13-\frac s4+\frac{s^2}{24}
+          -\frac{5-2s}{48e}.
+ \end{gathered}
+\end{equation}
+By \eqref{eq:scalar-harmonic-bound},
+\[
+ e^{-1}\le(1-t/3)^{-1}\le1+t/2.
+\]
+Let
+$A=(4+s)\theta_2/2-3/4$ and
+$D=(4+s)\theta_3/2-1/8$.
+Substitution gives
+\begin{align*}
+ A&\ge-\frac t8-\frac{5t^2}{32}-\frac{t^3}{64}
+          -\frac{t^4}{32}
+   \ge-\frac{21t}{64}\ge-\frac t3,\\
+ D-\nparen{\frac13-\frac t4}
+ &\ge\frac{t}{384}
+ \sparen{2(1-t)(28-t)+t^2\nparen{(1-t)^2+t^3}}
+ \ge0.
+\end{align*}
+Consequently, the difference between the right-hand side of
+\eqref{eq:scalar-moment-expansion} and
+$2x+3x^2/4+x^3/8$ is bounded below by
+\begin{align*}
+ x\sparen{\frac{t^2}{4}-\frac{tx}{3}
+              +\nparen{\frac13-\frac t4}x^2}
+ &=\frac{x}{12}
+   \sparen{3(t-x)^2+2tx(1-x)+x^2(1-t)}\\
+ &\ge0.
+\end{align*}
+This proves the last bound.
+\end{proof}
+
+The preceding estimates will reduce every coefficient of index at
+least two to the following fixed function.
+
+\begin{lemma}[A fixed divergence inequality]
+\label{lem:scalar-fixed-function}
+For $0<w<1$,
+\begin{equation}
+\label{eq:scalar-fixed-function}
+ \mathcal J(w)=\frac{55}{72}-\frac{31w^4}{8}
+       +\frac{9w^8}{8}-\frac{w^{12}}8
+       +38\frac{s_2(w)}w>0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Write $g(w)=s_2(w)/w$. Differentiation gives
+\begin{align*}
+ g'(w)&=-\frac{\ln(1-w^2)}{2w^2}-\frac12-\frac{w^2}{4}
+       =\sum_{k\ge3}\frac{w^{2k-2}}{2k},\\
+ g''(w)&=\frac{1}{w(1-w^2)}
+          +\frac{\ln(1-w^2)}{w^3}-\frac w2.
+\end{align*}
+Thus
+\[
+ \frac{\mathcal J'(w)}{w^3}
+ =-\frac{31}{2}+9w^4-\frac32w^8
+   +19\sum_{k\ge3}\frac{w^{2k-5}}{k}
+\]
+is strictly increasing on $(0,1)$.
+Also $g'''(w)>0$, and for $w\ge4/5$,
+\[
+ \nparen{-\frac{31w^4}{8}+\frac{9w^8}{8}
+              -\frac{w^{12}}8}'''
+ =w(-93+378w^4-165w^8)>0.
+\]
+Indeed, the quadratic $-93+378z-165z^2$ increases on $[0,1]$
+and is positive at $z=2/5<(4/5)^4$.
+Hence $\mathcal J'''(w)>0$ for $w\ge4/5$.
+
+We need four finite estimates:
+\begin{equation}
+\label{eq:scalar-fixed-checks}
+ \mathcal J'(4/5)<0,\qquad
+ \mathcal J''(4/5)>25,\qquad
+ \mathcal J(5/6)>\frac1{256},\qquad
+ |\mathcal J'(5/6)|<\frac15.
+\end{equation}
+For completeness, the following rational bounds certify them.
+For $z>1$, put $v=(z-1)/(z+1)$ and define
+\[
+ P(z)=2\sum_{j=0}^5\frac{v^{2j+1}}{2j+1},\qquad
+ E(z)=\frac{2v^{13}}{13(1-v^2)}.
+\]
+The logarithm series gives
+$P(z)<\ln z<P(z)+E(z)$.
+Only $z\in\{2,3/2,5/4,11/8\}$ are needed, using
+\begin{align*}
+ \ln(9/25)&=2\ln(3/2)-2\ln(5/4)-2\ln 2,\\
+ \ln(11/36)&=\ln(11/8)-2\ln(3/2)-\ln 2,\\
+ (\ln 2)\kldivb{11/12}{1/2}&=\frac34\ln 2+\frac{11}{12}\ln(11/8)-\ln(3/2).
+\end{align*}
+Substituting the appropriate lower or upper bound for each logarithm
+in the displayed formulas for $g',g''$, and
+\[
+ g(w)=\frac{(\ln 2)\kldivb{(1+w)/2}{1/2}-w^2/2-w^4/12}{w},
+\]
+gives
+\[
+\begin{array}{c|c|c}
+ \text{quantity}&\text{strict lower bound}&\text{strict upper bound}\\ \hline
+ \mathcal J'(4/5)&-1&-9/10\\
+ \mathcal J''(4/5)&25&26\\
+ \mathcal J(5/6)&9/2000&1/200\\
+ \mathcal J'(5/6)&9/50&19/100
+\end{array}
+\]
+These are finite rational comparisons and imply
+\eqref{eq:scalar-fixed-checks}.
+
+Since $\mathcal J'''$ is positive on $[4/5,1)$, we have
+$\mathcal J''>25$ there. Taylor's formula at $5/6$ therefore gives
+\begin{align*}
+ \mathcal J(w)
+ &\ge\mathcal J(5/6)+\mathcal J'(5/6)(w-5/6)
+       +\frac{25}{2}(w-5/6)^2\\
+ &>\frac1{256}-\frac1{1250}>0
+ \qquad(4/5\le w<1).
+\end{align*}
+On $(0,4/5]$, the increasing ratio $\mathcal J'(w)/w^3$
+and the inequality $\mathcal J'(4/5)<0$ show that
+$\mathcal J$ decreases. Its value there is consequently at least
+$\mathcal J(4/5)>0$.
+\end{proof}
+
+\begin{lemma}[Positive coefficients]
+\label{lem:scalar-coefficients}
+For every integer $N\ge1$ and $0<u\le1$,
+\[
+ c_N(u):=C_N(u)+\frac{4G_N(u)}u-2B_N>0.
+\]
+\end{lemma}
+\begin{proof}
+First suppose $N\ge2$ and $0<u<1$, and put
+\[
+ k=\frac{4s_N(u)}{u b_N}-2,\qquad
+ w=u^{N/2},\qquad x=1-w^4.
+\]
+By \autoref{lem:scalar-tail-order},
+$c_N(u)\ge C_N(u)+B_Nk$.
+If $k\ge0$, this is positive because $C_N(u)>0$.
+If $k<0$, \autoref{lem:scalar-moments} gives
+\begin{align*}
+ \frac{c_N(u)}{2e_Nb_N}
+ &\ge\frac{C_N(u)}{2e_Nb_N}+\frac{R_N}{2e_N}k\\
+ &\ge2x+\frac34x^2+\frac18x^3+\frac{19}{18}k.
+\end{align*}
+Here the upper bounds on $B_N$ and $R_N/(2e_N)$ give lower bounds
+after multiplication by the negative number $k$.
+Since $b_2=\ln 2-7/12<1/9$, the rescaled tail comparison gives
+\[
+ k\ge36\frac{s_2(w)}w-2.
+\]
+Substituting this and $x=1-w^4$ into the preceding lower bound
+gives exactly $\mathcal J(w)>0$.
+For $u=1$, we instead have $s_j(1)=b_j$ and $C_N(1)=0$,
+so $c_N(1)=2B_N>0$.
+
+It remains to treat $N=1$.
+Writing $\gamma=\ln 2-1/2<7/36$ and retaining the first two terms
+of $s_1(u)$ gives
+\begin{align*}
+ c_1(u)&=\frac{1-u^2}{2}+\frac{4s_1(u)}u-2\gamma\\
+ &\ge Z(u):=\frac19-\frac{u^2}{2}
+                 +\frac{u^3}{3}+\frac{2u^5}{15}.
+\end{align*}
+To see that $Z>0$, note that
+$Z'(u)/u=-1+u+2u^3/3$ increases and is negative at $u=2/3$.
+Also $Z''(u)=-1+2u+8u^3/3>1$ on $[2/3,1]$.
+At $a=3/4$,
+\[
+ Z(a)=\frac{49}{23040}>\frac1{512},\qquad
+ Z'(a)=\frac3{128}<\frac1{32}.
+\]
+Taylor's formula on $[2/3,1]$ yields
+\[
+ Z(u)\ge Z(a)+Z'(a)(u-a)+\frac12(u-a)^2
+       >\frac1{512}-\frac1{2048}>0.
+\]
+On $(0,2/3]$, the monotonicity of $Z'(u)/u$ makes $Z$
+decreasing, so $Z(u)\ge Z(2/3)>0$ there as well.
+\end{proof}
+
+\begin{proof}[Proof of \autoref{lem:scalar}]
+The divergence-tail definitions give the absolutely convergent expansions
+\[
+ \alpha=\sum_{N\ge1}b_Nr^N,\qquad
+ \frac{(\ln 2)\mathcal R_\rho(u)}q=\sum_{N\ge1}s_N(u)r^N,
+ \qquad
+ \frac{(\ln 2)\mathcal A_\rho(u)}q=\sum_{N\ge1}C_N(u)r^N.
+\]
+In particular, $\alpha>0$.
+Multiplying the series, and using the convention $b_0=1$, gives
+\[
+ \frac{\ln 2}q\sparen{\mathcal A_\rho(u)
+       +\frac{4(1+\alpha)\mathcal R_\rho(u)}u
+       -2\beta(1+\alpha)}
+   =\sum_{N\ge1}c_N(u)r^N.
+\]
+Every coefficient on the right is positive by
+\autoref{lem:scalar-coefficients}. Since $0<r<1$ and $q>0$,
+the expression in brackets is positive. Dividing it by
+$2(1+\alpha)$ proves
+\eqref{eq:scalar-inequality}.
+\end{proof}
+
+
+\subsubsection*{Combining the posterior estimates}
+\begin{proof}[Proof of \autoref{lem:bit-reveal}]
+At $\rho=0,1$, the claimed inequality is an equality, so
+assume $0<\rho<1$. If $d=0$, then $\mu_0=\mu_1=\mu$ and
+$\muti{B}{Y_i}=0$. The claim follows from
+\eqref{eq:section-induction} and $\muti{B}{Y_i\emid X}\ge0$.
+
+Assume $d>0$. Use $v,\tau$ from \autoref{lem:transport}
+and $m,C$ from \autoref{lem:consistency}. For this proof, write
+\begin{align*}
+ h&=\ent{B\emid X_{-i}},
+ &J&=\ent{B\emid X,Y_i},\\
+ M&=\ent{B\emid X},
+ &J_*&=\ent{B\emid Y_i},\\
+ K&=\muti{B}{Y_i\emid X_{-i}},
+ &K_*&=\muti{B}{Y_i}.
+\end{align*}
+Since $X_i$ is independent of $(B,X_{-i})$ given $Y_i$,
+the chain rule gives
+\[
+ K=h-J,\qquad K_*=\entb{\mu}-J_*,\qquad
+ M-J=\muti{B}{Y_i\emid X}.
+\]
+Also, $\entb{\mu}-h=\E\kldivb{a}{\mu}$.
+Put $z=\nu-v$, $s=d^2$ and
+\[
+ j=qJ_*+\beta(\nu-s).
+\]
+Since $J_*=\ent{B\emid Y_i}$ and
+$J=\ent{B\emid X,Y_i}$, the assumption
+\eqref{eq:section-induction} is exactly $J\ge j$.
+We obtain two lower bounds on
+$\muti{B}{Y_i\emid X}=M-J$.
+
+First, \autoref{lem:transport} and the defining equation for
+$\tau$ give
+\[
+ M\ge J+qK+v\mathcal R_\rho(\tau).
+\]
+Using \autoref{lem:consistency}, we obtain
+\begin{equation}
+\label{eq:cmi-first}
+ \muti{B}{Y_i\emid X}
+ \ge qK_*+\frac{qs}{2\nu v\ln 2}z+v\mathcal R_\rho(\tau).
+\end{equation}
+
+Second, write the same transport estimate as
+\begin{align}
+\label{eq:cmi-second}
+ \muti{B}{Y_i\emid X}
+ &\ge h-v\kldivb{(1+\rho\tau)/2}{1/2}-J\nonumber\\
+ &=qK_*+\beta s+(j-J)+v\mathcal A_\rho(\tau)\nonumber\\
+ &\quad+\rho^2(h-v)-q\E\kldivb{a}{\mu}-\beta z\nonumber\\
+ &\ge qK_*+\beta s+(j-J)+v\mathcal A_\rho(\tau)
+       -\frac q{\ln 2}(C+\alpha)z.
+\end{align}
+The equality uses $K_*=\entb{\mu}-J_*$,
+$z=\nu-v$, $\beta=\rho^2-\muti{Y_1}{X}$, and
+$\E\kldivb{a}{\mu}=\entb{\mu}-h$.
+The last step uses $h\ge v$ and
+$\E\kldivb{a}{\mu}\le Cz/\ln 2$ from
+\autoref{lem:consistency}.
+
+Multiply \eqref{eq:cmi-second} by
+\[
+ \lambda=\frac{s}{2\nu v(C+\alpha)}>0
+\]
+and add \eqref{eq:cmi-first}. The terms involving $z$ cancel,
+leaving
+\begin{align}
+\label{eq:cmi-cancellation}
+ (1+\lambda)\muti{B}{Y_i\emid X}
+ &\ge(1+\lambda)(qK_*+\beta s)+\lambda(j-J)\nonumber\\
+ &\quad+s\left[
+   \frac vs\mathcal R_\rho(\tau)
+   +\frac{\mathcal A_\rho(\tau)}{2\nu(C+\alpha)}-\beta
+ \right].
+\end{align}
+By \autoref{lem:transport}, $d/v\le\tau$.
+Together with $d\le1/2$, this gives $s/v\le\tau/2$.
+Also $\nu C\le1$ and $\nu\le1$, so
+$\nu(C+\alpha)\le1+\alpha$.
+The expression in brackets is therefore at least
+\[
+ \frac{2\mathcal R_\rho(\tau)}\tau
+ +\frac{\mathcal A_\rho(\tau)}{2(1+\alpha)}-\beta>0,
+\]
+where the strict inequality is \autoref{lem:scalar}.
+Consequently,
+\begin{equation}
+\label{eq:cmi-weighted-bound}
+ \muti{B}{Y_i\emid X}
+ >qK_*+\beta s+\frac{\lambda}{1+\lambda}(j-J).
+\end{equation}
+
+It remains to bound the coefficient of $j-J$.
+For $b=(1-m)/(1+m)\in(0,1]$, concavity of the logarithm gives
+\[
+ \nu C=\frac{\ln(1+b)}b\ge\ln 2.
+\]
+Since $v\ge d$ and $d\le1/2$, we have
+\[
+ \lambda
+ \le\frac{d}{2\nu C}
+ \le\frac1{4\ln 2}<1,
+ \qquad \frac{\lambda}{1+\lambda}<\frac12.
+\]
+Using $j-J\le0$ in \eqref{eq:cmi-weighted-bound} now yields
+\[
+ \muti{B}{Y_i\emid X}
+ >qK_*+\beta d^2+\frac12(j-J).
+\]
+Finally,
+\[
+ j-J=\muti{B}{X\emid Y_i}
+       -\frac{Q_\rho(\mu_0)+Q_\rho(\mu_1)}2.
+\]
+By \eqref{eq:V}, we also have
+\begin{equation}
+\label{eq:average-section-bound}
+ \frac{Q_\rho(\mu_0)+Q_\rho(\mu_1)}2
+ =Q_\rho(\mu)-\rho^2\muti{B}{Y_i}
+  +(\rho^2-\muti{Y_1}{X})d^2.
+\end{equation}
+Substituting these two identities gives
+\[
+ \muti{B}{Y_i}-\muti{B}{Y_i\emid X}
+ +\frac12\muti{B}{X\emid Y_i}
+ <Q_\rho(\mu)-\frac{Q_\rho(\mu_0)+Q_\rho(\mu_1)}4,
+\]
+as required.
+\end{proof}

@@ -51,12 +51,6 @@
 }
 \addbibresource{references/main.bib}
 
-\newcommand{\vol}{\operatorname{Vol}}
-\newcommand{\wt}{\operatorname{wt}}
-\newcommand{\circuit}{\mathbb C}
-\newcommand{\ball}{B_d}
-\newcommand{\kero}{K}
-
 \begin{document}
 \title{\bf\fontsize{15}{19}\selectfont
   On the most informative Boolean function under noise%
@@ -78,9 +72,60 @@ mert@deepinfra.com}
 
 \input{abstract}
 \input{introduction}
-\input{induction}
-
-\printbibliography
+%\input{preliminaries}
+\input{proof}
+\section{Acknowledgements}
+The proof has been obtained with deep collaboration with
+DeepSeek-V4.1-Flash and GPT-6 Astra.
 \appendix
-\input{appendix}
+\section{The continuous case}
+\label{app:continuous}
+
+\begin{lemma}
+\label{lem:ck+vscontinuous}
+In the continuous problem, let $C_\mu$ be the indicator of
+$Y_\circ[1]\le\mu$. Then
+\begin{align*}
+Q_\rho(\mu)\le\muti{C_\mu}{X_\circ}
+\end{align*}
+for $\rho,\mu\in[0,1]$. For $0<\rho<1$, equality holds
+exactly when $\mu\in\{0,1/2,1\}$. At $\rho=0,1$, equality
+holds for every $\mu$.
+\end{lemma}
+\begin{proof}
+The cases $\mu=0,1/2,1$ follow directly, so assume
+$0<\mu<1$ and $\mu\ne1/2$. Conditioned on $X_\circ$, the
+probability that $C_\mu=1$ is
+$\rho+(1-\rho)\mu$ if $X_{\circ,1}\le\mu$, and
+$(1-\rho)\mu$ otherwise. Hence
+\begin{equation*}
+ \muti{C_\mu}{X_\circ}
+ =\mu\kldivb{\rho+(1-\rho)\mu}{\mu}
+ +(1-\mu)\kldivb{(1-\rho)\mu}{\mu}.
+\end{equation*}
+Keep $\mu$ fixed and write
+\[
+ F(\rho)=\muti{C_\mu}{X_\circ}
+          -\nu\kldivb{(1-\rho)/2}{1/2}.
+\]
+We have $F(0)=F'(0)=0$ and $F(1)=\entb{\mu}-\nu$.
+Differentiating the displayed divergence formula twice gives
+\[
+ F''(\rho)=
+ \frac{\nu(1-\nu)(1-\rho)}
+ {\ln2\,(1+\rho)\bigl(4\rho+\nu(1-\rho)^2\bigr)}.
+\]
+This is strictly decreasing on $[0,1]$: its numerator decreases,
+while both factors in its denominator increase. Thus, for
+$0<\rho<1$,
+\[
+ \frac{F(\rho)}{\rho^2}
+ =\int_0^1(1-t)F''(\rho t)\,dt
+ >\int_0^1(1-t)F''(t)\,dt
+ =F(1)=\entb{\mu}-\nu.
+\]
+Adding $\nu\kldivb{(1-\rho)/2}{1/2}$ proves the strict inequality.
+The cases $\rho=0,1$ follow from the values of $F$ at the endpoints.
+\end{proof}
+\printbibliography
 \end{document}
