@@ -25,10 +25,10 @@ distributed uniformly.
 Recall that $\nu=4\mu(1-\mu)$. Similarly, we define
 $\nu_0 = 4\mu_0(1-\mu_0)$ and $\nu_1 = 4\mu_1(1-\mu_1)$
 and observe the simple but useful identity
-\begin{align}
+\begin{equation}
 \tag{(V)}\label{eq:V}
 \frac{\nu_0 + \nu_1}{2} = \nu - (\mu_1-\mu_0)^2.
-\end{align}
+\end{equation}
 As the final stop before our proof, let us verify that
 \autoref{thm:ck+} indeed implies \eqref{eq:ck}.
 \begin{lemma}
@@ -49,7 +49,7 @@ Consequently,
  \muti{Y_1}{X}-Q_\rho(\mu)
  &=\rho^2\kldivb{\mu}{1/2}
        -(\rho^2-\muti{Y_1}{X})(1-\nu)\\
- &\ge\rho^2\nparen{\frac1{\ln2}-1}(1-\nu)\ge0,
+ &\ge\rho^2\nparen{\tfrac1{\ln2}-1}(1-\nu)\ge0,
 \end{align*}
 noting $\ln 2 < 1$, which completes the proof.
 \end{proof}
@@ -111,19 +111,21 @@ equality, whereas the first case reveals zero information.
 For $n\ge2$, \autoref{lem:good-coordinate} applies, giving
 a coordinate $i$ with $d_i\le 1/2$. Using the chain rule,
 we write
-\begin{align*}
+\begin{equation*}
 \muti{B}{X}
   = \muti{B}{Y_i} - \muti{B}{Y_i\emid X}
   + \muti{B}{X\emid Y_i}.
-\end{align*}
+\end{equation*}
 Having fixed $Y_i$, note that $B$ depends on at most $n-1$
 coordinates so our induction hypothesis applies to $Y_i=0$
 and $Y_i=1$ cases individually, giving
-\begin{align*}
+\begin{equation*}
 \muti{B}{X\emid Y_i}
-  &\le\frac12\nparen{Q_\rho(\mu_0) + Q_\rho(\mu_1)}.
-\intertext{Summing up the inequality given by \autoref{lem:bit-reveal},
-we have}
+  \le\frac12\nparen{Q_\rho(\mu_0) + Q_\rho(\mu_1)}.
+\end{equation*}
+Summing up the inequality given by \autoref{lem:bit-reveal},
+we have
+\begin{align*}
 \muti{B}{X}
   &=\muti{B}{Y_i}-\muti{B}{Y_i\emid X}
        +\muti{B}{X\emid Y_i}\\
