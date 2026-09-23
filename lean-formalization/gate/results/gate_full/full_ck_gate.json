@@ -1,0 +1,12 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    "/Users/dimiter/ck_f2/lean/.lake/build/lib/lean/F2CompletionGate.olean",
+    "F2CompletionGate.lean"
+  ],
+  "returncode": 0,
+  "seconds": 2.158
+}

@@ -1,0 +1,205 @@
+\section{The two-point entropy inequality}\label{sec:product}
+We now prove Theorem~\ref{lem:mixing} independently of the induction. There are two distinct tasks: reduce arbitrary pairs to a centered comparison, and verify that comparison on its full scalar domain. The first produces a reusable entropy comparison; the second supplies constants for the chosen low-noise range. Fix $p$, and let
+\begin{equation}\label{eq:JKM}
+J=\frac{h(a)+h(b)}2,\qquad M=M_p(a,b),\qquad K=M-J,\qquad t=|a-b|.
+\end{equation}
+Here $J$ is the entropy before mixing, $M$ the entropy after mixing, and $K\ge0$ the mixing gain. The scalar gap, before the extra quantitative margin is subtracted, is
+\begin{equation}\label{eq:quadratic}
+q(d)=K+Md^2-2\ell d,\qquad \ell=h(p)t.
+\end{equation}
+This is a quadratic in the section-mean parameter $d$. Completing the square gives
+\begin{equation}\label{eq:square}
+q(d)=M\left(d-\frac{\ell}{M}\right)^2+\frac{KM-\ell^2}{M}
+\end{equation}
+when $M>0$.
+
+If $KM-\ell^2$ is nonnegative, the completed square controls every real $d$. Where it is negative, the restriction $0\le d\le1/2$ must be used. Both arguments benefit from the same comparison: moving a pair away from symmetry may decrease $M$, but it cannot decrease either $K$ or $KM$. We establish that precise statement, not a separate lower bound on $M$.
+
+\subsection{Separation and displacement from symmetry}
+Swapping $a,b$ or complementing both leaves the scalar inequality unchanged. Besides the separation $t$, introduce
+\[
+\nu=|a+b-1|,\qquad 0\le\nu,\quad \nu+t\le1.
+\]
+The pair is symmetric about $1/2$ precisely when $\nu=0$. Define
+\begin{equation}\label{eq:Q}
+Q(\nu,z)=\frac{\eta(\nu+z)+\eta(\nu-z)}2.
+\end{equation}
+Then $J=Q(\nu,t)$ and $M=Q(\nu,\rho t)$. Noisy mixing preserves the midpoint of the pair and contracts its separation from $t$ to $\rho t$.
+
+At the symmetric pair, write
+\begin{equation}\label{eq:centered}
+J_0=\eta(t),\qquad M_0=\eta(\rho t),\qquad K_0=M_0-J_0.
+\end{equation}
+These quantities correspond to $a=(1-t)/2$ and $b=(1+t)/2$.
+
+\begin{lemma}[Product centering]\label{lem:product}
+For $0<p<1/2$ and every feasible $(\nu,t)$,
+\begin{equation}\label{eq:product}
+K\ge K_0,\qquad KM\ge K_0M_0.
+\end{equation}
+\end{lemma}
+The assertion concerns the gain and a product. It does \emph{not} say that $M$ is minimized at symmetry, or that $q(d)$ is minimized there for each fixed $d$.
+
+\subsection{The curvature inequality}
+To compare products as the midpoint moves, we will differentiate $Q(\nu,z)^2$ in both variables. The derivative involves a difference of entropy curvatures. This suggests the coordinate $k(u)=-\eta^{\prime\prime}(u)$. Define, for $0\le x\le y<1$,
+\begin{equation}\label{eq:curvaturedefect}
+\mathcal C(x,y)=[\eta(x)+\eta(y)][k(y)-k(x)]
+-\big[\atanh^2 y-\atanh^2 x\big],\qquad k(u)=\frac1{1-u^2}.
+\end{equation}
+For $v\ge1$, put $g(v)=\eta(\sqrt{1-1/v})$. If $a=k(x)$ and $b=k(y)$, the following identity exposes the required sign:
+\begin{equation}\label{eq:curvaturepositive}
+\mathcal C(x,y)=\int_a^b\left[(v-a)(b-v)g''(v)+2\big(g(v)+vg'(v)\big)\right]\dd v\ge0.
+\end{equation}
+The proof below establishes the identity and both signs $g''\ge0$ and $g+vg'\ge0$. In particular,
+\begin{equation}\label{eq:curvature}
+[\eta(x)+\eta(y)][k(y)-k(x)]\ge\atanh^2 y-\atanh^2 x.
+\end{equation}
+The curvature variable is not arbitrary: $k(u)=-\eta''(u)$, exactly the factor whose difference occurs in~\eqref{eq:curvaturedefect}.
+
+\paragraph{Proof of the curvature identity.}\label{app:curvature}
+We prove~\eqref{eq:curvaturepositive}, not merely its sign. Let $k(u)=(1-u^2)^{-1}$ and $g(v)=\eta(u)$ with $u=\sqrt{1-1/v}$. The relation $v=k(u)$ gives
+\[
+\frac{\dd u}{\dd v}=\frac{(1-u^2)^2}{2u}.
+\]
+Using $\eta'(u)=-\atanh u$, differentiation yields
+\begin{align}\label{eq:curvaturederivatives}
+g'(v)&=-\frac{(1-u^2)^2}{2u}\atanh u,\\
+g''(v)&=\frac{(1-u^2)^3}{4u^3}\big[(1+3u^2)\atanh u-u\big]\ge0.\notag
+\end{align}
+The last sign uses $\atanh u\ge u$ for $u\ge0$. The limits at $v=1$ are $g'(1)=-1/2$ and $g''(1)=5/6$.
+
+For the other sign, write
+\[
+g(v)+vg'(v)=\frac{w(u)}{2u},\qquad
+w(u)=2u\eta(u)-(1-u^2)\atanh u.
+\]
+The continuous endpoint values of $w$ are $w(0)=w(1)=0$. At $u=1$, both $\eta(u)$ and $(1-u^2)\atanh u$ tend to zero. In the interior,
+\[
+w'(u)=2\eta(u)-1,\qquad w''(u)=-2\atanh u\le0.
+\]
+Thus $w$ is concave with zero endpoints, and $w\ge0$. At $u=0$, $w(u)/(2u)\to\ln2-1/2$. Therefore $g+vg'\ge0$ on every finite interval $v\ge1$.
+
+Now fix $1\le a\le b<\infty$. Integration by parts twice gives
+\begin{equation}\label{eq:trapezoid}
+\int_a^b(v-a)(b-v)g''(v)\dd v
+=(b-a)[g(a)+g(b)]-2\int_a^b g(v)\dd v.
+\end{equation}
+For a direct verification, differentiate
+$(v-a)(b-v)g'(v)-(a+b-2v)g(v)$; the result is
+$(v-a)(b-v)g''(v)+2g(v)$. Its boundary values give~\eqref{eq:trapezoid}.
+Also,
+\[
+\frac{\dd}{\dd v}\atanh^2\sqrt{1-1/v}=-2vg'(v).
+\]
+Adding $2\int_a^b(g+vg')$ to both sides of~\eqref{eq:trapezoid}, and taking $a=k(x)$, $b=k(y)$, proves~\eqref{eq:curvaturepositive}. Its integrand is nonnegative throughout the interval. This proof uses only finite curvature endpoints; deterministic posterior cases are obtained by continuity in the product-centering proof below.
+
+\subsection{From curvature to product centering}
+\begin{proof}[Proof of Lemma~\ref{lem:product}]
+First assume $\nu,t>0$ and $\nu+t<1$. For $0\le z\le t$, define
+\[
+L_z=-\partial_\nu Q(\nu,z)=\frac{\atanh(\nu+z)+\atanh(\nu-z)}2\ge0.
+\]
+The sign follows because $Q$ is even and concave in $\nu$. Differentiating with $\nu$ fixed gives
+\begin{align}\label{eq:mixed}
+\partial_zL_z&=\tfrac12[k(\nu+z)-k(\nu-z)]\ge0,\\
+\partial_\nu\partial_z(Q(\nu,z)^2)
+&=-\tfrac12\mathcal C(|\nu-z|,\nu+z)\le0.\label{eq:Qresidual}
+\end{align}
+Therefore
+\[
+\partial_z(Q(\nu,z)L_z)=\frac14\mathcal C(|\nu-z|,\nu+z).
+\]
+Integrating this identity from $\rho t$ to $t$, and recalling $J=Q(\nu,t)$ and $M=Q(\nu,\rho t)$, yields
+\begin{equation}\label{eq:productintermediate}
+JL_t-ML_{\rho t}=\frac14\int_{\rho t}^{t}\mathcal C(|\nu-z|,\nu+z)\dd z.
+\end{equation}
+Now $K=M-J$ and differentiation gives the exact identities
+\begin{align}
+\partial_\nu K&=L_t-L_{\rho t}\ge0,\label{eq:Kmonotone}\\
+J\,\partial_\nu(KM)
+&=\frac M4\int_{\rho t}^{t}\mathcal C(|\nu-z|,\nu+z)\dd z
++K^2L_{\rho t}\ge0.\label{eq:KMpositive}
+\end{align}
+To verify the second identity directly, expand its left side as
+$J[ML_t-(2M-J)L_{\rho t}]$, then insert~\eqref{eq:productintermediate}. Every term on the right of~\eqref{eq:KMpositive} has the asserted sign, and $J>0$ in the interior. Hence $K$ and $KM$ are nondecreasing in $\nu$. At $\nu=0$ they equal $K_0$ and $K_0M_0$.
+
+Here are the boundary cases explicitly. If $\nu=0$ the comparisons are equalities; if $t=0$ both gains vanish. For $0<t<1$ and $\nu+t=1$, approach the point with smaller $\nu$ and use continuity of binary entropy. If $t=1$, feasibility forces $\nu=0$. No derivative at a deterministic posterior and no integral to infinite curvature is used.
+\end{proof}
+
+The two comparisons have now been proved on the whole feasible domain. We next specify when they give the desired lower bound for the quadratic in $d$. The proof of product centering is valid for every $0<p<1/2$, not just the low-noise range used in the main theorem.
+
+\subsection{Two transfer rules}
+\begin{lemma}[Quantitative transfer]\label{lem:transfer}
+For $0<p<1/2$ and $0<t<1$, let $q(d)$ be~\eqref{eq:quadratic}, and put
+\begin{equation}\label{eq:q0}
+q_0(d)=K_0+M_0d^2-2\ell d.
+\end{equation}
+There are two sufficient comparisons.
+
+If $K_0M_0-\ell^2\ge\gamma\ge0$, then, at every feasible midpoint and for every real $d$,
+\begin{equation}\label{eq:transferproduct}
+q(d)\ge\frac{\gamma}{\ln2}.
+\end{equation}
+If $K_0\ge D^2M_0$, then, at every feasible midpoint and for every $0\le d\le D$,
+\begin{equation}\label{eq:transfergain}
+q(d)\ge q_0(d).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The first statement is product centering, the completed square~\eqref{eq:square}, and $0<M\le\ln2$.
+
+For the second, set $w=K/K_0\ge1$. Product centering gives $M\ge M_0/w$. Hence
+\begin{align*}
+K+Md^2-(K_0+M_0d^2)
+&\ge wK_0+\frac{M_0d^2}{w}-(K_0+M_0d^2)\\
+&=(w-1)\left(K_0-\frac{M_0d^2}{w}\right)\ge0.
+\end{align*}
+Subtract $2\ell d$. Both factors in the last line are nonnegative because $w\ge1$ and $d\le D$.
+\end{proof}
+
+The second comparison is not a global claim about fixed-$d$ centering: it requires the stated dominance of the gain. We will establish that dominance only in the endpoint regime where it is needed.
+
+
+\paragraph{Keep the actual denominator when it helps.}
+For fixed separation, $Q(\nu,\rho t)$ is even and concave in $\nu$, so $0<M\le M_0$ when $0<t<1$. If $K_0M_0-\ell^2\ge0$, product centering and completion of the square therefore give the more informative transfer
+\begin{equation}\label{eq:relative-transfer}
+S_{p,d}(a,b)
+\ge\frac{KM-\ell^2}{M}
+\ge\frac{K_0M_0-\ell^2}{M_0}
+=K_0-\frac{\ell^2}{M_0}.
+\end{equation}
+The nonnegative numerator is essential to the second inequality. Replacing $M_0$ by $\ln2$ can lose a factor of the noise scale near the endpoint; we do not do so there.
+
+
+\subsection{Three centered estimates and their uses}\label{sec:scalarfinish}
+Write $\eps=(1-t)/2$, so the symmetric posteriors are $(\eps,1-\eps)$. Then $J_0=h(\eps)$ and $M_0=h(p+\rho\eps)$. There are two relevant scales: the distance $\eps$ from a deterministic pair and the noise $p$.
+
+The following estimates hold throughout $0<p\le1/20$. Their complete proofs are in Appendix~\ref{app:centered}.
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.47\linewidth}p{0.22\linewidth}@{}}
+\toprule
+Posterior regime & Available centered estimate & Transfer used\\
+\midrule
+$0<t\le22/25$ & $K_0M_0-\ell^2\ge\dfrac{1999}{1250000}\,pt^2$ & product and $M\le\ln2$\\
+$t\ge22/25$, $0<\eps\le p$ & $q_0(d)\ge\dfrac{23}{3600}\,pt$,\quad $K_0\ge M_0/3$ & \shortstack[l]{gain dominance\\$0\le d\le1/2$}\\
+$t\ge22/25$, $p\le\eps$ & $K_0-\ell^2/M_0\ge\dfrac{453}{40000}\,pt$ & retained denominator\\
+\bottomrule
+\end{tabular}
+\end{center}
+The middle row is not a nonnegative-discriminant claim: its restriction on $d$ is essential to the argument. The last row also proves that $K_0M_0-\ell^2\ge0$, which is required before changing its denominator.
+
+\begin{proof}[Proof of Theorem~\ref{lem:mixing}]
+Let $0<t<1$. In the first regime,~\eqref{eq:transferproduct} gives
+\[
+ q(d)\ge\frac{1999}{1250000\ln2}\,pt^2\ge\frac p{500}t^2,
+\]
+because $1999/1250000>7/5000>(\ln2)/500$. In the second regime, $K_0\ge M_0/3\ge M_0/4$ permits~\eqref{eq:transfergain} with $D=1/2$. Therefore
+\[
+ q(d)\ge q_0(d)\ge\frac{23}{3600}pt\ge\frac p{500}t^2.
+\]
+In the third regime use~\eqref{eq:relative-transfer} and $453/40000>1/500$, again with $t\le1$.
+
+The regimes cover every $0<t<1$, including the shared boundaries. At $t=0$, the pair agrees and the gap is $d^2h(a)\ge0$. At $t=1$, the pair is $(0,1)$ up to swapping, so the gap is $h(p)(1-d)^2\ge h(p)/4\ge p/4\ge p/500$. Here $h(p)\ge p\ln(1/p)\ge p$ for $p\le1/20$.
+\end{proof}
+This proves the actual posterior inequality, at every midpoint and every allowed $d$. Proposition~\ref{prop:induction} and Corollary~\ref{cor:low} now apply. The positive surplus is kept for the quantitative argument of Section~\ref{app:linear}.

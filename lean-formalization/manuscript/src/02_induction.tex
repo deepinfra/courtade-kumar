@@ -1,0 +1,162 @@
+\section{From posterior mixing to a dimension-independent bound}\label{sec:induction}
+A restriction of a balanced function need not be balanced. We therefore work with the whole mean-dependent profile, not only its value at $\mu=1/2$. This section isolates the probability identities and the induction. The entropy estimate that supplies its hypothesis is proved in Section~\ref{sec:product}.
+
+\subsection{Restriction and the exact variance loss}
+Fix an input coordinate and let $f_0,f_1$ be the restrictions obtained by setting that coordinate to $-1,+1$. Let their means be $\mu_0,\mu_1$. The parent mean and section-mean gap are
+\[
+\mu=\frac{\mu_0+\mu_1}{2},\qquad d=|\mu_1-\mu_0|.
+\]
+The law of total variance, or direct expansion, gives
+\begin{equation}\label{eq:variance}
+\frac{V(\mu_0)+V(\mu_1)}2=V(\mu)-d^2.
+\end{equation}
+Indeed, the variance of the two equally likely numbers $\mu_0,\mu_1$ is $d^2/4$. Multiplying the total-variance identity by four yields~\eqref{eq:variance}.
+
+This identity determines what the induction needs. The two child bounds provide only $[V(\mu)-d^2]h(p)$; the desired parent bound is $V(\mu)h(p)$. We must recover the missing contribution when the noisy coordinate recombines the children.
+
+For example, the two-bit AND function has one constant section and one coordinate section. Their means are $0$ and $1/2$, whereas the parent mean is $1/4$. Thus $d=1/2$, $V(\mu)=3/4$, and the average child factor is $1/2=3/4-(1/2)^2$. An induction confined to balanced outputs would not even admit this example.
+
+\subsection{What noisy recombination looks like}
+Suppose that, after seeing the other noisy coordinates, the probabilities that the two sections output $1$ are $a$ and $b$. The remaining noisy coordinate mixes them into
+\[
+(1-p)a+pb\quad\hbox{or}\quad pa+(1-p)b,
+\]
+with equal probabilities. Define the average resulting entropy by
+\begin{equation}\label{eq:mix}
+M_p(a,b)=\frac{h((1-p)a+pb)+h(pa+(1-p)b)}2.
+\end{equation}
+Concavity alone says that this is at least $[h(a)+h(b)]/2$. That only preserves the child entropy; it does not recover the variance loss. After recording the coordinate and channel identities, we state a criterion that isolates exactly what an induction needs. Its substantive hypothesis is scalar and does not refer to a dimension.
+
+\subsection{Selecting and observing a coordinate}
+A coordinate with $d$ close to one would demand a stronger scalar statement. We need not choose that coordinate.
+
+\begin{lemma}[A small-gap coordinate]\label{lem:smallcoordinate}
+If $n\ge2$, at least one coordinate has section-mean gap at most $1/2$.
+\end{lemma}
+\begin{proof}
+Write $F=2f-1$ and $b_i=\E(FX_i)$. Conditioning on $X_i$ shows that
+\[
+b_i=\E f_1-\E f_0.
+\]
+For any distinct $i,j$, choose signs $\sigma_i,\sigma_j$ to match the signs of $b_i,b_j$. Since $|F|=1$,
+\[
+|b_i|+|b_j|
+=\E[F(\sigma_iX_i+\sigma_jX_j)]
+\le\E|\sigma_iX_i+\sigma_jX_j|=1.
+\]
+The last absolute value is zero or two, each with probability $1/2$. Therefore two coordinate gaps cannot both exceed $1/2$. When $n\ge2$, some gap is at most $1/2$.
+\end{proof}
+Notice the direction of the choice: the induction selects a small-gap coordinate, rather than requiring the scalar lemma to work for the most influential coordinate. One-bit functions are treated separately.
+
+\paragraph{The posterior calculation.}
+The induction must use the original probability model, rather than an arbitrary pair of random probabilities. We record the identity that makes the scalar lemma applicable.
+
+\begin{lemma}[Posterior mixtures]\label{lem:posterioridentity}
+Let $X'$ be uniform on $\{-1,1\}^{n-1}$, let $U$ be an independent uniform sign, and let $W,S$ be their respective independent BSC observations with flip probability $p$. Let $f_0,f_1$ be the sections of $f(X',U)$ at $U=-1,+1$. Define
+\[
+A(w)=\Pp\{f_0(X')=1\mid W=w\},\qquad
+B(w)=\Pp\{f_1(X')=1\mid W=w\}.
+\]
+Then $S$ is independent of $W$ and fair, and
+\begin{equation}\label{eq:conditionalmixtures}
+\begin{array}{c|c}
+\text{observation}&\Pp\{f(X',U)=1\mid W=w,S\}\\ \hline
+S=-1&(1-p)A(w)+pB(w)\\
+S=+1&pA(w)+(1-p)B(w).
+\end{array}
+\end{equation}
+Consequently $\HH(f(X',U)\mid W,S)=\E M_p(A,B)$.
+\end{lemma}
+\begin{proof}
+For $k$ coordinates write the channel matrix as
+\[
+\mathcal K_{p,k}(w,x)=\prod_{j=1}^k\big[(1-p)\one_{\{w_j=x_j\}}+p\one_{\{w_j\ne x_j\}}\big].
+\]
+It is symmetric and every row sums to one. With uniform input, the output is uniform and Bayes' formula gives
+\[
+\Pp\{X'=x\mid W=w\}=\mathcal K_{p,n-1}(w,x).
+\]
+Thus $A(w)=\sum_x f_0(x)\mathcal K_{p,n-1}(w,x)$, and similarly for $B$. Independence of the two channel blocks implies that, given $(W,S)$, the posterior of $X'$ depends only on $W$ and that of $U$ only on $S$. The latter assigns probabilities $1-p,p$ to the agreeing and disagreeing signs. Summing over $U$ gives~\eqref{eq:conditionalmixtures}. Averaging its two binary entropies proves the last assertion. This uses no independence between $A(W)$ and $B(W)$.
+\end{proof}
+
+
+\subsection{The scalar-to-cube principle}
+\begin{proposition}[Restriction--mixing criterion]\label{prop:induction}
+Fix $0<p<1/2$ and $0\le c\le h(p)$. Suppose that, for every $a,b\in[0,1]$ and independently every $d\in[0,1/2]$,
+\begin{equation}\label{eq:generic-mixing}
+ (1+d^2)M_p(a,b)\ge\frac{h(a)+h(b)}2+2cd\,|a-b|.
+\end{equation}
+Then, in every finite dimension and at every output mean,
+\begin{equation}\label{eq:generic-profile}
+ \HH(f(X)\mid Y)\ge c\,V(\mu).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Induct on dimension. A zero-bit function is constant. A one-bit function is constant or a signed coordinate; the latter has conditional entropy $h(p)\ge c$ and $V(\mu)=1$.
+
+For $n\ge2$, select a coordinate with $d=|\mu_1-\mu_0|\le1/2$ by Lemma~\ref{lem:smallcoordinate}. Use the posteriors $A,B$ of Lemma~\ref{lem:posterioridentity}. Its identity and the tower property give
+\begin{equation}\label{eq:parent}
+ \HH(f(X)\mid Y)=\E M_p(A,B),\qquad
+ \E|A-B|\ge|\E A-\E B|=d.
+\end{equation}
+The induction hypothesis applies to both sections with their actual means, so
+\[
+ \E\frac{h(A)+h(B)}2\ge
+ \frac{cV(\mu_0)+cV(\mu_1)}2=c[V(\mu)-d^2].
+\]
+Apply~\eqref{eq:generic-mixing} pointwise with the fixed parameter $d$, then average:
+\begin{align}\label{eq:generic-induction}
+ (1+d^2)\HH(f\mid Y)
+ &\ge c[V(\mu)-d^2]+2cd\,\E|A-B|\notag\\
+ &\ge c[V(\mu)+d^2]\notag\\
+ &\ge(1+d^2)cV(\mu).
+\end{align}
+The last step is $cd^2[1-V(\mu)]\ge0$. Division by $1+d^2$ proves the claim.
+\end{proof}
+
+\paragraph{What has been gained.}
+To prove a dimension-independent profile, it is enough to check a two-posterior inequality with the single free coefficient $c$. The restriction to $d\le1/2$ is legitimate because the splitting coordinate is chosen; it is not an assumption about every coordinate of the function.
+
+\subsection{The entropy estimate used here}
+\begin{theorem}[Quantitative two-posterior mixing]\label{lem:mixing}\label{thm:linear-mixing}
+For $0<p\le1/20$, every $a,b\in[0,1]$, and every independent $d\in[0,1/2]$,
+\begin{equation}\label{eq:mixing}
+ (1+d^2)M_p(a,b)\ge\frac{h(a)+h(b)}2+
+ 2d\,h(p)|a-b|+\frac p{500}(a-b)^2.
+\end{equation}
+\end{theorem}
+Section~\ref{sec:product} proves this theorem without using Proposition~\ref{prop:induction}. Taking $c=h(p)$ and dropping the final nonnegative term gives the profile~\eqref{eq:profile}. Keeping that term later gives the dimension-independent spectral deficit in Theorem~\ref{thm:spectral-deficit}.
+
+\subsection{All slack remains visible}
+\begin{remark}[Accounting for the entire deficit]\label{rem:deficit}
+Put $\Delta_p(f)=\HH(f(X)\mid Y)-V(\mu)h(p)$, and let
+\[
+S_{p,d}(a,b)=(1+d^2)M_p(a,b)-\frac{h(a)+h(b)}2-2d\,h(p)|a-b|.
+\]
+For the sections above, direct rearrangement gives
+\begin{align}\label{eq:deficit}
+(1+d^2)\Delta_p(f)
+={}&\E S_{p,d}(A,B)+\frac{\Delta_p(f_0)+\Delta_p(f_1)}2\notag\\
+&+2d\,h(p)\bigl(\E|A-B|-d\bigr)
++d^2[1-V(\mu)]h(p).
+\end{align}
+The four terms are, respectively, the scalar slack, the average child deficit, the gap from the triangle inequality, and the bias surplus. Under the scalar lemma and child hypotheses, every term is nonnegative. Moreover, the scalar term is at least $(p/500)\E(A-B)^2$. This is the same induction, with no contribution suppressed.
+\end{remark}
+The identity separates four possible sources of strictness. Neither the triangle gap nor the bias term is forced to be positive: complementary balanced sections can have $d=0$. Section~\ref{sec:examples} exhibits exactly that situation.
+
+\subsection{From the profile to information}
+\begin{corollary}\label{cor:low}
+Once Theorem~\ref{lem:mixing} is proved, Theorem~\ref{thm:main} holds for $0\le p\le1/20$.
+\end{corollary}
+\begin{proof}
+Set $m=2\mu-1$. Then $V(\mu)=1-m^2$ and~\eqref{eq:entropyfacts} gives
+$h(\mu)=\eta(m)\le\ln2-m^2/2$. Hence
+\[
+\II(f(X);Y)
+\le\ln2-h(p)-m^2\bigl[1/2-h(p)\bigr]
+\le\ln2-h(p),
+\]
+since $h(p)\le h(1/20)<1/5$. At $p=0$, use $\HH(f(X))\le\ln2$ directly.
+\end{proof}
+The use of a quadratic function of $\mu$ should not obscure the strength of the claim. When $\mu=1/2$, the profile itself says $\HH(f(X)\mid Y)\ge h(p)$, exactly the desired conditional-entropy bound in this range. The remaining problem is to justify the scalar inequality, not to reprove an elementary variance identity.
+

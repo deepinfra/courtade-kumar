@@ -1,0 +1,107 @@
+\section{Using the conclusions and locating their limits}\label{sec:use}
+The preceding proofs provide both a bound to apply and intermediate statements to reuse. This section distinguishes those uses from numerical evidence or an assertion of optimal constants.
+
+\subsection{An explicit route from information to a coordinate}
+Throughout this section, $n\ge1$. Let
+\[
+ \mathcal D_p(f)=\ln2-h(p)-\II(f(X);Y).
+\]
+For $0<p<1/2$, the proof gives the stronger piecewise coefficient
+\begin{equation}\label{eq:usable-coefficient}
+ c_p=\begin{cases}
+ \dfrac{9p(1-2p)^2}{10000},&0<p<1/20,\\[4pt]
+ \dfrac{(1-2p)^2}{2000},&1/20\le p<1/2,
+ \end{cases}
+ \qquad \mathcal D_p(f)\ge c_p\,\delta(f).
+\end{equation}
+These are precisely~\eqref{eq:low-stability} and~\eqref{eq:complement-stability}; at the shared endpoint we use the larger coefficient. The change of formula reflects the proof, not a discontinuity of mutual information.
+
+\begin{corollary}[Recovering a coordinate from a near-optimal value]\label{cor:recovery}
+If $\mathcal D_p(f)\le\epsilon$ at fixed $0<p<1/2$, there are $i$ and $\sigma\in\{-1,1\}$ such that
+\begin{equation}\label{eq:recovery}
+ \Pp\{2f(X)-1=\sigma X_i\}\ge
+ 1-\min\{1/2,\epsilon/c_p\}.
+\end{equation}
+For $\epsilon\ge0$, the coordinate can be chosen to maximize $|\E[(2f-1)X_i]|$, with its sign chosen to agree with that coefficient.
+\end{corollary}
+\begin{proof}
+For $F=2f-1$,
+$\Pp(F\ne\sigma X_i)=(1-\sigma\E(FX_i))/2$.
+Minimizing this expression identifies the stated coordinate and gives
+$\delta(f)=(1-\max_i|\E(FX_i)|)/2$. Now use~\eqref{eq:usable-coefficient} and $\delta(f)\le1/2$.
+\end{proof}
+
+For example, at $p=1/4$ one has $c_p=1/8000$. An information gap of at most $10^{-6}$ nats therefore guarantees disagreement on at most $1/125$ of the inputs, in every finite dimension. The coefficient is deliberately conservative. The corollary becomes nontrivial only when a valid upper bound on the information gap is sufficiently small. It neither supplies a statistical estimator of that gap nor claims sharp numerical performance or an efficient learning algorithm.
+
+There is also an elementary converse, requiring no new CK machinery.
+\begin{proposition}[Closeness implies a small information gap]\label{prop:continuity}
+For $0<p<1/2$,
+\begin{equation}\label{eq:stability-sandwich}
+ c_p\delta(f)\le\mathcal D_p(f)\le h(\delta(f)).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The lower bound is~\eqref{eq:usable-coefficient}. Choose a nearest coordinate indicator $g$ and put $E=f\mathbin{\oplus}g$, the error bit. The chain rule gives
+\[
+ \II(g;Y)-\II(f;Y)
+ =\II(g;Y\mid f)-\II(f;Y\mid g)
+ \le\HH(g\mid f)=\HH(E\mid f)\le h(\delta(f)).
+\]
+Since $\II(g;Y)=\ln2-h(p)$, this is the upper bound.
+\end{proof}
+The two bounds give a qualitative equivalence between near optimality and nearness to a coordinate at fixed nontrivial noise. Their rates do not match: the lower bound is linear, whereas $h(\delta)$ is of order $\delta\ln(1/\delta)$ near zero. No sharp stability rate is asserted.
+
+\subsection{Three examples that explain the hypotheses}\label{sec:examples}
+\paragraph{Constants and coordinates.}
+A constant output has $V(\mu)=0$, zero conditional entropy, and zero information. It saturates the variance profile but not the information optimum when $0<p<1/2$. A coordinate has $V=1$ and conditional entropy $h(p)$, and saturates both bounds. This distinction explains the separate output-bias term in Corollary~\ref{cor:low}.
+
+\paragraph{Parity: zero mean gap does not mean zero posterior gap.}
+For $F(x)=\prod_{i=1}^k x_i$, the noisy posterior mean is $T_\rho F=\rho^kF$. Thus
+\begin{equation}\label{eq:parity-example}
+ \HH(f\mid Y)=\eta(\rho^k),\qquad
+ \Delta_p(f)=\mathcal D_p(f)=\eta(\rho^k)-\eta(\rho).
+\end{equation}
+For $k\ge2$, all mass is at degree $k$, and $\delta(f)=1/2$. The two-bit case is especially useful: both sections are balanced, so $d=0$, but their posterior difference has constant magnitude $\rho$. In the exact deficit identity~\eqref{eq:deficit}, the two child deficits, the triangle term, and the bias surplus vanish. All remaining entropy comes from the scalar mixing slack.
+
+\paragraph{AND: unequal section means are unavoidable.}
+For $f(x)=\one\{x_1=x_2=1\}$,
+\[
+ F(x)=\frac{-1+x_1+x_2+x_1x_2}{2},\qquad
+ \mu=\frac14,\quad m^2=\frac14,\quad W_1(F)=\frac12,\quad
+ \sum_{k\ge2}W_k(F)=\frac14,\quad\delta(f)=\frac14.
+\]
+The conditional entropy can be calculated without Fourier theory:
+\begin{equation}\label{eq:and-example}
+ \HH(f\mid Y)=\frac14\bigl[h(p^2)+2h(p(1-p))+h((1-p)^2)\bigr].
+\end{equation}
+The four terms correspond to the four equally likely noisy observations. Fixing one coordinate gives a constant section and a coordinate section, not two balanced functions. The example checks both the meaning of the variance loss and the factor-four conversion between indicator and sign Fourier weights.
+
+\subsection{Why the uniform scalar margin has the scale it does}
+\begin{proposition}[An upper limit on a uniform quadratic surplus]\label{prop:scalar-barrier}
+Fix $0<p<1/2$. If a number $\gamma(p)$ satisfies
+$S_{p,d}(a,b)\ge\gamma(p)(a-b)^2$ for all $a,b\in[0,1]$ and independently all $d\in[0,1/2]$, then
+\begin{equation}\label{eq:scalar-barrier}
+ \gamma(p)\le2p(1-p).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Take $d=0$, $a=(1-t)/2$, and $b=(1+t)/2$. The slack is then $\eta(\rho t)-\eta(t)$. Since $\eta'(0)=0$ and $\eta''(0)=-1$, Taylor's formula gives
+\[
+ \lim_{t\downarrow0}\frac{\eta(\rho t)-\eta(t)}{t^2}
+ =\frac{1-\rho^2}{2}=2p(1-p).
+\]
+Apply the hypothesized bound and take this limit.
+\end{proof}
+For $0<p\le1/20$, the best possible coefficient in this particular all-posterior statement therefore lies between $p/500$ and $2p(1-p)$. In particular it cannot be bounded below by $Cp\ln(1/p)$ for one positive constant $C$ and all sufficiently small $p$.
+
+This does not preclude a logarithm for actual posteriors attached to a fixed Boolean function. For two-bit parity,~\eqref{eq:parity-example} reads
+\[
+ \Delta_p(f)=h(2p(1-p))-h(p)
+ =p\ln(1/p)+(1-2\ln2)p+O\bigl(p^2\ln(1/p)\bigr).
+\]
+Here the posteriors approach deterministic endpoints as $p\downarrow0$. The uniform scalar coefficient and the deficit along such a family of posteriors are different objects. This fixed two-bit expansion is not a uniform asymptotic theorem over dimension.
+
+\subsection{What can be taken from the proof}
+Proposition~\ref{prop:induction} can be used whenever a two-posterior inequality supplies a profile coefficient $c$. Lemma~\ref{lem:product} supplies an entropy-product comparison without reference to a Boolean dimension. Proposition~\ref{prop:certificate} separates a spectral cap from the entropy envelope needed to convert it into information. The induction behind~\eqref{eq:generic-spectral} explains how a local surplus pays for precisely the spectral mass lost under restriction.
+
+These statements suggest concrete questions rather than a blanket claim of generality. How large can the uniform scalar surplus be within the upper limit~\eqref{eq:scalar-barrier}? Can a better cap or a better envelope improve the constants in~\eqref{eq:generic-certificate}? What additional statistics of realizable posteriors recover information discarded by the all-pair scalar bound? None of the present results covers biased product inputs or asymmetric channels: equal section weights, uniform output of the channel, and the sign-cube Fourier basis enter explicitly.

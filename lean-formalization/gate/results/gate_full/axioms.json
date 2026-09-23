@@ -1,0 +1,10 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "F2AxiomAudit.lean"
+  ],
+  "returncode": 0,
+  "seconds": 4.798
+}

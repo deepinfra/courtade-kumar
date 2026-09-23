@@ -1,0 +1,196 @@
+\section{From Fourier structure to the information bound}\label{sec:energy}
+For the remaining class, we now know that the constant and linear Fourier levels carry at most $\wn=31/40$ of the total squared mass. The next task is to turn that geometric fact into a lower bound on conditional entropy.
+
+\subsection{Degree-two cancellation}
+The noise operator is
+\[
+T_\rho F(y)=\E[F(X)\mid Y=y].
+\]
+Since $\E(X_i\mid Y_i)=\rho Y_i$, coordinate independence gives
+$T_\rho\chi_S=\rho^{|S|}\chi_S$.
+Set $G=T_\rho F$ and $R=|G|$. The posterior probability of $f(X)=1$ is $(1+G(Y))/2$, hence
+\begin{equation}\label{eq:posteriorentropy}
+\HH(f(X)\mid Y)=\E\eta(R).
+\end{equation}
+Here and below, expectations of products of cube functions such as $FG$ use the \emph{same uniform argument}. In particular $\E(FG)$ means $\E[F(U)G(U)]$ for uniform $U$; it does not mean $\E[F(X)G(Y)]$ at the two correlated channel endpoints. The entropy identity is unchanged because $U$ and $Y$ are both uniform.
+
+A bound on $\E G^2$ alone would retain contributions from every Fourier level. Instead, consider
+\begin{equation}\label{eq:cancellation}
+\E G^2-\rho^2\E(FG)
+=\sum_{k\ge0}(\rho^{2k}-\rho^{k+2})W_k(F).
+\end{equation}
+The factor $\rho^2$ is chosen so that the degree-two coefficient vanishes. The degree-zero and degree-one coefficients are nonnegative, and every coefficient of degree at least three is nonpositive. Thus the higher levels can be discarded in the direction we need:
+\begin{equation}\label{eq:energyraw}
+\E G^2-\rho^2\E(FG)
+\le(1-\rho^2)m^2+\rho^2(1-\rho)W_1(F).
+\end{equation}
+The Boolean constraint $|F|=1$ gives the pointwise inequality $FG\le|G|=R$.
+
+\subsection{The posterior statistic and the entropy comparison}
+Rearranging~\eqref{eq:energyraw} produces $1-\rho^2+\rho^2R-R^2$. This is why the comparison function is
+\begin{equation}\label{eq:psi}
+\psi_\rho(t)=(1-t)(1+t-\rho^2),\qquad 0\le t\le1.
+\end{equation}
+It is nonnegative on this interval and vanishes when the posterior is certain ($t=1$), as entropy does. Put
+\begin{equation}\label{eq:LambdaGamma}
+\Lambda_\rho=1+\rho-\wn\rho^2,\qquad
+\Gamma_\rho=1+\rho-\rho^2.
+\end{equation}
+Both are positive on $[0,1]$.
+
+\begin{lemma}[Energy identity and its nonnegative remainder]\label{lem:energy}
+For $0<\rho<1$, define
+\[
+\mathcal T_\rho(F)=\sum_{k=3}^n(\rho^{k+2}-\rho^{2k})W_k(F),\qquad
+s=\wn-m^2-W_1(F).
+\]
+Then the exact identity is
+\begin{align}\label{eq:energyidentity}
+&\E\psi_\rho(R)-(1-\rho)(\Lambda_\rho-\Gamma_\rho m^2)\notag\\
+&\hspace{1em}=\rho^2\E(R-FG)+\mathcal T_\rho(F)+\rho^2(1-\rho)s.
+\end{align}
+Under~\eqref{eq:cap}, all three terms on the right are nonnegative. In particular,
+\begin{equation}\label{eq:energy}
+\E\psi_\rho(R)\ge(1-\rho)(\Lambda_\rho-\Gamma_\rho m^2).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use the exact spectral equality~\eqref{eq:cancellation}, rather than its upper bound. The degree-zero and degree-one contributions are $(1-\rho^2)m^2$ and $\rho^2(1-\rho)W_1(F)$; degree two is zero. Thus
+\[
+\E G^2=\rho^2\E(FG)+(1-\rho^2)m^2+\rho^2(1-\rho)W_1(F)-\mathcal T_\rho(F).
+\]
+Insert this in $\E\psi_\rho(R)=1-\rho^2+\rho^2\E R-\E G^2$, and write $W_1(F)=\wn-m^2-s$. Rearranging gives~\eqref{eq:energyidentity}.
+
+For the signs, $R-FG\ge0$ pointwise because $F\in\{-1,1\}$. For $k\ge3$, $k+2\le2k$ and $0<\rho<1$, hence $\rho^{k+2}-\rho^{2k}\ge0$. Finally $s\ge0$ is exactly~\eqref{eq:cap}. There is no unestimated Fourier tail. The endpoints extend by continuity.
+\end{proof}
+
+The task is now scalar again: find a multiple of $\psi_\rho$ below $\eta$. For a balanced output,~\eqref{eq:energy} supplies $(1-\rho)\Lambda_\rho$. To obtain the desired entropy $\eta(\rho)$, the natural coefficient is therefore
+\[
+\frac{\eta(\rho)}{(1-\rho)\Lambda_\rho}.
+\]
+The coefficient is determined by the target, not chosen independently of it.
+
+\subsection{A reusable Fourier-to-entropy certificate}\label{sec:certificate}
+The preceding mechanism can be stated without the particular cap $31/40$. This isolates two inputs that can be improved independently: a Fourier cap and a scalar lower envelope for entropy.
+
+\begin{proposition}[Information from a spectral cap and an entropy envelope]\label{prop:certificate}
+Fix $0<\rho<1$ and a sign-valued Boolean $F$, and write $f=(1+F)/2$, $m=\E F$, $R=|T_\rho F|$. Suppose
+\[
+ m^2+W_1(F)\le\Omega\le1,
+ \qquad \eta(t)\ge\lambda\psi_\rho(t)+\zeta(1-t)
+ \quad(0\le t\le1),
+\]
+where $\lambda,\zeta\ge0$. Put $\Lambda_\Omega=1+\rho-\Omega\rho^2$ and $\Gamma=1+\rho-\rho^2$. Then
+\begin{align}\label{eq:generic-certificate}
+ \kappa(\rho)-\II(f;Y)\ge{}&
+ \lambda(1-\rho)\Lambda_\Omega-\eta(\rho)\notag\\
+ &+m^2\left[\frac12-\lambda(1-\rho)\Gamma\right]
+ +\zeta\E(1-R).
+\end{align}
+In particular, the CK bound follows for this $F$ whenever
+\begin{equation}\label{eq:certificate-budgets}
+ \lambda(1-\rho)\Lambda_\Omega\ge\eta(\rho),\qquad
+ \lambda(1-\rho)\Gamma\le\frac12.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The energy identity is algebraic in the cap. With $s_\Omega=\Omega-m^2-W_1(F)\ge0$, its exact form is
+\[
+ \E\psi_\rho(R)-(1-\rho)(\Lambda_\Omega-\Gamma m^2)
+ =\rho^2\E(R-FG)+\mathcal T_\rho(F)+\rho^2(1-\rho)s_\Omega\ge0,
+\]
+where $G=T_\rho F$ and the products use the same uniform argument. Multiply by $\lambda\ge0$, average the scalar envelope, and use
+$\HH(f)=\eta(m)\le\ln2-m^2/2$.
+Subtracting the resulting information upper bound from $\kappa(\rho)$ gives~\eqref{eq:generic-certificate}.
+\end{proof}
+
+The first condition in~\eqref{eq:certificate-budgets} pays for the balanced target. The second pays for the loss caused by a nonzero mean. A nonzero $\zeta$ leaves an explicit stability remainder. This proposition requires no balance assumption; all dependence on $m$ has been displayed.
+
+\subsection{The envelope needed for this proof}
+We use $\Omega=31/40$. The following two bounds supply the scalar envelopes and the strict starting point for adding further noise.
+
+\begin{lemma}[Entropy comparisons]\label{lem:comparison}
+For all $t\in[0,1]$,
+\begin{align}
+\eta(t)&\ge\frac{\eta(\rho)}{(1-\rho)\Lambda_\rho}\,\psi_\rho(t)
+&&\left(\frac35\le\rho\le\frac9{10}\right),\label{eq:comparison}\\
+\eta(t)&\ge\frac{39}{40}\,\psi_{3/5}(t).\label{eq:anchorcomparison}
+\end{align}
+\end{lemma}
+Appendix~\ref{app:comparisons} proves these inequalities. The proof of~\eqref{eq:comparison} constructs a piecewise-affine upper bound for the required coefficient, then uses entropy concavity and three positive polynomial expansions. The second inequality is a deliberately stronger estimate at one correlation, needed to continue toward still higher noise.
+
+\subsection{Accounting for output bias}
+\begin{proposition}\label{prop:middle}
+Under $|m|,\max_i|b_i|\le13/20$, the target holds for $3/5\le\rho\le9/10$.
+\end{proposition}
+\begin{proof}
+Combine~\eqref{eq:posteriorentropy},~\eqref{eq:energy}, and~\eqref{eq:comparison}:
+\[
+\HH(f(X)\mid Y)\ge\eta(\rho)\left(1-\frac{\Gamma_\rho}{\Lambda_\rho}m^2\right).
+\]
+Meanwhile $\HH(f(X))=\eta(m)\le\ln2-m^2/2$. Subtracting gives
+\begin{equation}\label{eq:biaspayment}
+\II(f(X);Y)\le\kappa(\rho)+m^2\left[\frac{\eta(\rho)\Gamma_\rho}{\Lambda_\rho}-\frac12\right].
+\end{equation}
+The bracket is negative. The factor $\eta(\rho)$ decreases, and so does
+\[
+\frac{\Gamma_\rho}{\Lambda_\rho}
+=1-(1-\wn)\frac{\rho^2}{\Lambda_\rho},
+\qquad
+\left(\frac{\rho^2}{\Lambda_\rho}\right)'=\frac{\rho(2+\rho)}{\Lambda_\rho^2}>0.
+\]
+At $\rho=3/5$, the two positive factors satisfy
+\[
+\eta(3/5)\le\ln2-\frac9{50}<\frac{13}{25},\qquad
+\frac{\Gamma_{3/5}}{\Lambda_{3/5}}=\frac{1240}{1321},\qquad
+\frac{13}{25}\frac{1240}{1321}<\frac12.
+\]
+Thus the bias term in~\eqref{eq:biaspayment} is nonpositive throughout the interval.
+\end{proof}
+This is the explicit reason the balanced comparison extends to arbitrary means. The conditional-entropy estimate loses a term proportional to $m^2$, but the smaller output entropy pays for that loss.
+
+\subsection{Why a strict anchor is needed for higher noise}
+For $0<\rho<\rho_0=3/5$, adding noise to only the bound $\II\le\kappa(\rho_0)$ gives an upper bound strictly \emph{larger} than the target. Indeed, the positive series~\eqref{eq:series} gives
+\[
+\frac{\kappa(u)}{u^2}=\sum_{j\ge1}\frac{u^{2j-2}}{(2j)(2j-1)},
+\]
+which is strictly increasing for $0<u<1$. Consequently $(\rho/\rho_0)^2\kappa(\rho_0)>\kappa(\rho)$. We therefore establish an anchor strictly below $\rho_0^2/2$ before degrading. At $\rho=0$, both quantities vanish.
+
+\begin{proposition}\label{prop:high}
+Under $|m|,\max_i|b_i|\le13/20$, the target holds for $0\le\rho\le3/5$.
+\end{proposition}
+\begin{proof}
+Let $\rho_0=3/5$ and let $Y_0$ be the observation at that correlation. Apply~\eqref{eq:anchorcomparison} to~\eqref{eq:energy}. Since
+\[
+\Lambda_{\rho_0}=\frac{1321}{1000},\qquad
+\Gamma_{\rho_0}=\frac{31}{25},
+\]
+we obtain
+\begin{align*}
+\II(f(X);Y_0)
+&\le\ln2-\frac{39}{40}\frac25\frac{1321}{1000}
++m^2\left[\frac{39}{40}\frac25\frac{31}{25}-\frac12\right]\\
+&\le U_0:=\ln2-\frac{39}{40}\frac25\frac{1321}{1000}
+<\frac9{50}=\frac{\rho_0^2}{2}.
+\end{align*}
+The bracket is negative; the last finite comparison is in Appendix~\ref{app:constants}.
+
+For $0<\rho\le\rho_0$, pass $Y_0$ through independent sign noise of correlation $\rho/\rho_0$. The resulting vector has the same joint distribution with $f(X)$ as the observation $Y$ at correlation $\rho$. Since $Y_0$ is uniform, Lemma~\ref{lem:contraction} gives
+\[
+\II(f(X);Y)\le\left(\frac{\rho}{\rho_0}\right)^2U_0
+<\frac{\rho^2}{2}\le\kappa(\rho).
+\]
+Only degradation toward more noise is used. At $\rho=0$, independence gives zero mutual information.
+\end{proof}
+
+\subsection{Proof of the full-range theorem}\label{sec:completion}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $0<p\le1/20$, Theorem~\ref{lem:mixing}, Proposition~\ref{prop:induction}, and Corollary~\ref{cor:low} prove the target.
+
+For $1/20\le p<1/2$, set $\rho=1-2p\in(0,9/10]$. If $|m|\ge13/20$, use Lemma~\ref{lem:bias}. If a coordinate coefficient has magnitude at least $13/20$, use Lemma~\ref{lem:largecoordinate}. Otherwise Proposition~\ref{prop:cap} applies, and Propositions~\ref{prop:middle} and~\ref{prop:high} give the result. These cases cover every Boolean function and every output mean.
+
+At $p=0$, the claim is $\HH(f(X))\le\ln2$. At $p=1/2$, $Y$ is independent of $X$, so the mutual information is zero. The two nontrivial ranges meet at $p=1/20$.
+\end{proof}
+
+
+This completes the proof of Theorem~\ref{thm:main}. The two branches use different estimates but the same entropy--information identity. The next section is not needed for that conclusion: it keeps quantitative slack to describe how close a nearly optimal function must be to a coordinate.
