@@ -6,7 +6,6 @@
 *.gz
 *.log
 *.out
-*.pdf
 *.run.xml
 *latexmk
 .DS_Store
