@@ -1,0 +1,54 @@
+% !TeX root = ../courtade-kumar.tex
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+\begin{figure}[H]
+\centering
+% Previous palette: originalbit FF8040 (coral), comparisonbit 00BFA5 (teal).
+\definecolor{originalbit}{HTML}{F252A0}
+\definecolor{comparisonbit}{HTML}{E5A900}
+\begin{tikzpicture}[
+    cell label/.style={minimum width=0.6cm,minimum height=0.6cm,
+      inner sep=0pt,outer sep=0pt},
+    dependency/.style={-{Stealth[length=1.65mm,width=1.15mm]},
+      line width=0.65pt,draw=black!65,shorten <=2pt,shorten >=2pt},
+    group brace/.style={decorate,
+      decoration={brace,amplitude=4pt},draw=black!40,line width=0.45pt}]
+  % The selected coordinate is placed at the right in both rows.
+  \fill[lecol,opacity=0.28] (4.8,-0.3) rectangle (5.4,0.3);
+  \fill[gecol,opacity=0.28] (4.8,-1.25) rectangle (5.4,-0.65);
+  \foreach \y in {0,-0.95} {
+    \draw[black!40,line width=0.5pt]
+      (0,\y-0.3) rectangle (5.4,\y+0.3);
+  }
+  \foreach \k in {1,2,6,7} {
+    \draw[black!25,dashed,line width=0.35pt]
+      (0.6*\k,-0.3) -- (0.6*\k,0.3);
+  }
+  \foreach \k in {1,...,8} {
+    \draw[black!30,line width=0.35pt]
+      (0.6*\k,-1.25) -- (0.6*\k,-0.65);
+  }
+  \draw[lecol!85,line width=1pt] (4.8,-0.3) rectangle (5.4,0.3);
+  \draw[gecol!85,line width=1pt] (4.8,-1.25) rectangle (5.4,-0.65);
+  \node[cell label] (B) at (5.1,0) {$B$};
+  \node[cell label] (A) at (5.1,-0.95) {$A$};
+  \node[anchor=east] at (-0.24,0) {$Y$};
+  \node[anchor=east] at (-0.24,-0.95) {$X$};
+
+  \node[cell label,minimum width=4.8cm] (Yrest) at (2.4,0) {$Y_{-i}$};
+  \draw[group brace] (4.8,-1.40) -- (0,-1.40);
+  \node[anchor=north,inner sep=2pt] at (2.4,-1.57) {$U=X_{-i}$};
+
+  \node[cell label,draw=originalbit!85,fill=originalbit!12,line width=1pt]
+    (C) at (5.1,1.65) {$C$};
+  \node[cell label,draw=comparisonbit!85,fill=comparisonbit!12,line width=1pt]
+    (Cprime) at (6.25,1.65) {$C'$};
+  \draw[dependency] (C.south west) to[out=205,in=65] (Yrest.north);
+  \draw[dependency] (C.south) -- (B.north);
+  \draw[dependency] (Cprime.south west) to[out=245,in=65] (B.north east);
+\end{tikzpicture}
+\captionsetup{font=small,name=Figure,labelformat=default,labelsep=period,labelfont=bf}
+\caption{Arrows indicate dependence. The original bit $C$ depends on
+$Y_{-i}$ and $B$, while the comparison bit $C'$ depends only on $B$
+and private randomness.}
+\label{fig:comparison-bit}
+\end{figure}

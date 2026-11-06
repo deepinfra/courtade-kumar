@@ -3,24 +3,21 @@
 \section{Introduction}
 \label{sec:introduction}
 Let $X$ be distributed uniformly on $\cube$ and let $Y$
-be obtained by copying $X$ and then flipping each of its
-coordinates $Y_i$ with probability $p$, independently
-for $i\in[n]$.
-In \cite{KumarC2013}, Courtade and Kumar ask, what is the
-best strategy to output a bit $B$, having access to $Y$
-only, so that $\muti{B}{X}$, the information revealed about
-$X$, is maximized.
-
-They conjecture that taking $B=Y_i$ for some $i\in[n]$
+be obtained by flipping each coordinate of $X$ with
+probability $p$, independently.
+In \cite{KumarC2013,CourtadeK2014}, Courtade and Kumar ask:
+which bit $C$ computed from $Y$ is most informative about
+$X$?
+They conjecture that taking $C=Y_i$ for some $i\in[n]$
 maximizes the information conveyed about $X$. In particular,
 their Conjecture 1 states that 
 \begin{equation}
 \label{eq:ck}\tag{(CK)}
-\muti{B}{X}\le\muti{Y_1}{X} = 1 - \entb{p}.
+\muti{C}{X}\le\muti{Y_1}{X} = 1 - \entb{p}.
 \end{equation}
 They further remark that, despite its resemblance to a
-freebie homework exercise, the statement appears to
-involve substantial depth. Indeed, despite extensive
+simple homework exercise, the statement appears to
+involve substantial depth. Indeed, even after extensive
 efforts and partial progress
 \cite{AnantharamBCJN2017,Arikan2009,BarnesO2020,ChenN2024,
 FischerKRSS2004,JavanmardW2026,KindlerOW2015,LiM2021,
@@ -28,79 +25,111 @@ OrdentlichSW2015,ParnasRS2002,PichlerMP2016,Samorodnitsky2015,
 Samorodnitsky2016,Sarbu2017,Sarbu2017b,YangW2018,Yu2024},
 a full resolution of the conjecture remained elusive.
 
-In this work, we show that if we study the inequality
-parametrized by $\mu=\E\sparen{B}$, a delicate refinement
-of \eqref{eq:ck} emerges, which admits an induction on $n$,
-the number of coordinates of $X,Y$. In particular, we prove:
-
+\input{figures/q-square}
+In this work, we observe that if we study the inequality
+parametrized by $\mu=\E[C]$, a delicate refinement
+of \eqref{eq:ck} interpolating between Shannon and Tsallis
+entropies emerges. This refinement admits a proof by induction
+on the number of coordinates of $X$, $Y\!$.
+Denoting the Tsallis entropy of $C$ by $\tsent{C} = 4\mu(1-\mu)$
+and setting $\sI = \muti{Y_1}{X}$ and $\qI = (1-2p)^2$, we define
+the progressive entropy of $C$ as
+\begin{equation}
+\label{eq:Q}\tag{(Q)}
+  \Q=\qI\ent{C}-(\qI-\sI)\tsent{C}.
+\end{equation}
+With this definition in hand, we prove the following.
 \begin{theorem}
 \label{thm:ck+}
 Let $X$ be a uniform random bit string and $Y$ be obtained
-by copying $X$ and then keeping each coordinate as-is with
-probability $\rho$, replacing it with a uniform random bit
-with probability $1-\rho$, independently.
-Let $B$ be a random bit obtained as a function of $Y$ with
-expectation $\mu$. Writing $\nu = 4\mu(1-\mu)$, we have
+by flipping each bit of $X$ with probability $p$,
+independently. For a bit $C$ obtained from $Y\!$, we have
 \begin{equation*}
-\muti{B}{X}\le \rho^2\nparen{\entb{\mu}-\nu}
-  + \nu\muti{Y_1}{X}
+\muti{C}{X}\le\qent{C}\le \muti{Y_1}{X}
 \end{equation*}
-for any $\rho,\mu\in[0,1]$.
+for any $p\in[0,1]$.
 \end{theorem}
-Two remarks are in order. First, note that an alternative
-description of $Y$ is to keep each coordinate of $X$ with
-probability $\rho = 1-2p$ and replace it with a uniform random
-bit with probability $1-\rho$. Flipping a bit with
-probability $p$ or re-randomizing with probability $1-\rho$
-leads to the same distribution. Secondly, setting
-\newcommand{\Q}{Q_\rho(\mu)}
-\begin{equation}
-\label{eq:q}\tag{(Q)}
-\Q = \rho^2\nparen{\entb{\mu}-\nu}
-  + \nu\muti{Y_1}{X},
-\end{equation}
-we have $\Q\le \muti{Y_1}{X}$ for all $\rho,\mu\in[0,1]$,
-whose proof we defer to \autoref{sec:proof}.
+
+\subsection{Comparison with earlier bounds}
+\label{sec:earlier}
+The strong data-processing inequality \cite{AhlswedeG1976}
+gives $\muti{C}{X}\le\qI\ent{C}$,
+the upper-right corner of \autoref{fig:q-square}.
+Courtade and Kumar's \cite{CourtadeK2014} Conjecture~2
+concerns the stronger upper bound $\sI\ent{C}$ at the upper-left
+corner. This bound was later shown to be too strong in
+general \cite{ChandarT2014,KindlerOW2015}.
+Our refinement $\qent{C}$ subtracts a Tsallis correction
+$(\qI-\sI)\,\tsent{C}$ from the strong data-processing bound
+and sits between the two.
+
+\subsection{Concurrent work}
+\label{sec:concurrent}
+Concurrently with our work, Ky and Tran~\cite{KyT2026},
+Chen et al.~\cite{ChenGJL+2026}, and Mahdavifar and
+Beirami~\cite{MahdavifarB2026} announced proofs of the
+Courtade--Kumar conjecture. Their preprints were first
+submitted to arXiv on September~21--22, 2026.
+We had obtained a proof using Fourier analysis by
+September~17, 2026, and completed writing down the simpler
+induction proof, which we present here, by September~20, 2026.
+Both versions are recorded in our public repository.\footnote{%
+The Fourier proof:
+\url{https://github.com/deepinfra/courtade-kumar/commit/1b7f244}.
+The induction proof:
+\url{https://github.com/deepinfra/courtade-kumar/commit/a07761c}.}
+
+OpenAI subsequently released two further proofs in its
+\href{https://github.com/openai/math}{\texttt{openai/math}} repository on October~6,
+2026.\footnote{\url{https://openai.com/index/sharing-ai-progress-in-mathematics/}.}
+Both manuscripts are dated September~24, 2026.
+The first~\cite{OpenAI2026a} derives \eqref{eq:ck} from a
+Hellinger-contraction inequality and uses computer-assisted
+verification of scalar inequalities.
+The second~\cite{OpenAI2026b} proves sharp information
+contraction for randomized binary outputs.
 
 \subsection{The continuous case}
-We note that $\muti{B}{X}\le \Q$ is a surprisingly sharp
-bound, which is already violated by the most natural
+\label{sec:continuous}
+We note that $\muti{C}{X}\le \Q$ is a surprisingly sharp
+bound, which is already violated by a natural
 generalization of the problem.
 Let $X_\circ$ be distributed uniformly on the unit cube
-$[0,1]^n$ and $Y_\circ$ be obtained by copying the
-corresponding coordinate of $X_\circ$ with probability
-$\rho$ and drawing uniformly from $[0,1]$ with probability
-$1-\rho$, for each coordinate $i\in[n]$ independently.
-Let $B_\circ$ be a random bit obtained as a function of
-$Y_\circ$ with $\mu=\E\sparen{B_\circ}$.
+$[0,1]^n$ and $Y_\circ$ be obtained by independently
+resampling each coordinate of $X_\circ$ uniformly from
+$[0,1]$ with probability $2p$.
+Assume $C_\circ$ is a random bit obtained as a
+function of $Y_\circ$ with $\mu=\E\sparen{C_\circ}$.
 
-Denote by $C_\mu$ the indicator of the event
-$Y_\circ[1]\le \mu$, that is, the first coordinate of
-$Y_\circ$ being at most $\mu$. Note that
-$\E\sparen{C_\mu}=\mu$. In \autoref{lem:ck+vscontinuous} we
-show that $\Q < \muti{C_\mu}{X_\circ}$ for $0<\mu<1$,
-$\mu\ne1/2$, and $0<p<1/2$, which means the threshold
-functions already exceed the bound $\Q$. We further
-conjecture the following.
+Let $T_\mu$ be the indicator of
+$Y_{\circ,1}\le \mu$, so that $\E\sparen{T_\mu}=\mu$. In
+\autoref{lem:ck+vscontinuous} we show that
+$\qent{C_\circ} < \muti{T_\mu}{X_\circ}$ for $0<\mu<1$,
+$\mu\ne1/2$, and $0<p<1/2$, which shows that $\qent{C_\circ}$
+is too strong for the continuous problem. We conjecture that
+the threshold functions maximize mutual information at
+each fixed mean.
 \begin{conjecture}
 \label{conj:continuous}
-Let $X_\circ$, $Y_\circ$ and $B_\circ$ be as constructed
-and $C_\mu$ be the indicator of the event $Y_\circ[1]\le\mu$
+Let $X_\circ$, $Y_\circ$ and $C_\circ$ be as constructed
+and $T_\mu$ be the indicator of the event $Y_{\circ,1}\le\mu$
 as above. It holds that
 \begin{equation*}
-\muti{B_\circ}{X_\circ}\le\muti{C_\mu}{X_\circ}
+  \muti{C_\circ}{X_\circ}\le\muti{T_\mu}{X_\circ}
 \end{equation*}
-for all $\rho, \mu\in [0,1]$.
+for $0\le p\le1/2$ and $0\le\mu\le1$.
 \end{conjecture}
 
 Note that a proof of \autoref{conj:continuous} directly
 implies \eqref{eq:ck}---though not our
-\autoref{thm:ck+}---since given a strategy to output $B$
-from $Y$ revealing $\muti{X}{B}$ bits of information, we can
+\autoref{thm:ck+}---since given a strategy to output $C$
+from $Y$ revealing $\muti{C}{X}$ bits of information, we can
 quantize $Y_\circ$ by rounding each coordinate to $0$ or $1$
 with threshold $1/2$ and apply the strategy to obtain
-$B_\circ$. We get $\muti{B_\circ}{X_\circ}=\muti{B}{X}$.
-
+$C_\circ$. We get $\muti{C_\circ}{X_\circ}=\muti{C}{X}$
+and it can be shown that
+$\muti{T_\mu}{X_\circ}\le\muti{Y_1}{X}$.
+\iffalse 
 \subsection{Notation}
 \label{sec:notation}
 All logarithms are base $2$, except $\ln$, which denotes the
@@ -130,7 +159,7 @@ For the upper bound, Taylor's integral formula gives
  \frac{\kldivb{a}{b}}{(a-b)^2}
  =\frac1{\ln2}\int_0^1
    \frac{1-s}{\nparen{b+s(a-b)}\nparen{1-b-s(a-b)}}
-   \,\mathrm{d}s.
+   \lebd s.
 \]
 The quotient extends continuously to $a=b$ and is convex in $a$,
 since $1/(x(1-x))=1/x+1/(1-x)$ is convex on $(0,1)$.
@@ -157,3 +186,4 @@ derivative is $1/((1-u^2)\ln2)$.
 Expanding this derivative as a geometric series and integrating
 twice proves the identity for $|u|<1$; absolute convergence and
 continuity include the endpoints.
+\fi

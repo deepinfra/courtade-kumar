@@ -1,0 +1,89 @@
+% !TeX root = courtade-kumar.tex
+\section{Preliminaries}
+\label{sec:preliminaries}
+We use $\ent{\cdot}$ and $\muti{\cdot}{\cdot}$ for Shannon
+entropy and mutual information, with logarithms in base $2$.
+We denote the natural logarithm by $\ln$. We only need
+Tsallis entropy for bits, while the observed variables may
+be arbitrary. For a bit $C$ with mean $\mu$, we define
+\begin{equation*}
+  \tsent{C}=4\mu(1-\mu).
+\end{equation*}
+For a bit $C$ and an arbitrary random variable $Z$,
+Tsallis information is defined by
+\begin{equation*}
+  \tsmuti{C}{Z}=\tsent{C}-\tsent{C\emid Z}.
+\end{equation*}
+Note that for bits $B$, $C$, the quantities
+$\tsmuti{B}{C}$ and $\tsmuti{C}{B}$ need
+not be equal. We denote
+\begin{equation*}
+\begin{aligned}
+  \sI=1-\entb{p},\qquad \qI&=(1-2p)^2,\\
+  \text{and}\qquad \qJ&=\qI-\sI.
+\end{aligned}
+\end{equation*}
+Thus $\sI=\muti{Y_i}{X_i}$ and $\qI=\tsmuti{Y_i}{X_i}$.
+With these shorthands, we have
+\begin{equation*}
+  \qent{C}=\qI\ent{C}-\qJ\tsent{C}.
+\end{equation*}
+For all our entropy and information quantities
+$\ent{\cdot}$, $\muti{\cdot}{\cdot}$, $\tsent{\cdot}$,
+$\tsmuti{\cdot}{\cdot}$, and $Q$, conditioning on $U$ means
+evaluating the quantity under the conditional law given $U$
+and taking expectation over $U$, with $p$ held fixed.
+For instance,
+$\qent{C\emid U} = \E_{u\sim U}[\qent{C\emid U=u}]$.
+Next, we gather some facts about Tsallis and Shannon
+information.
+\begin{lemma}
+\label{lem:tsallis-properties}
+Let $B$ and $C$ be bits and $Z$, $W$, $U$ be arbitrary
+random variables. We have
+\leavevmode
+\begin{enumerate}
+\setlength{\itemsep}{4pt}
+\item\label{item:tsallis-bounds}
+$0\le\tsmuti{C}{Z\emid U}\le\tsent{C\emid U}$ and
+$\tsent{C\emid U}\le\ent{C\emid U}
+\le\bigl(1+\tsent{C\emid U}\bigr)/2$.
+\item\label{item:tsallis-chain}
+$\tsmuti{C}{Z,W\emid U}
+=\tsmuti{C}{Z\emid U}+\tsmuti{C}{W\emid Z,U}$.
+If $C-Z-W$ is a Markov chain, then
+$\tsmuti{C}{W}\le\tsmuti{C}{Z}$.
+\item\label{item:tsallis-shannon}
+$\tsmuti{C}{Z\emid U}\le2\ln2\,\muti{C}{Z\emid U}$.
+If $C$ is unbiased and independent of $U$, then also
+$\muti{C}{Z\emid U}\le\tsmuti{C}{Z\emid U}$.
+\item\label{item:tsallis-bits}
+$\tsent{C}\tsmuti{B}{C}=\tsent{B}\tsmuti{C}{B}$.
+If $B$ is unbiased, then
+$\tsmuti{C}{B}=\bigl(2\Pr[B=C]-1\bigr)^2$.
+\item\label{item:tsallis-conditioning}
+If $B$ is independent of $U$, then
+$\tsmuti{B}{C\emid U}\,\tsent{C\emid U}
+\ge\tsent{B}\,\tsmuti{C}{B}$.
+\item\label{item:tsallis-noise}
+$0\le\qJ\le\sI$ for every $p\in[0,1]$.
+\end{enumerate}
+\end{lemma}
+
+Proofs of the preceding and the next lemma are given in
+\autoref{sec:quadi}. Let us define
+\begin{equation*}
+  c(\mu)=\frac{\ln(1/\mu)}{4(1-\mu)^2}
+  \qquad\nparen{1/2\le\mu<1},
+\end{equation*}
+extending it to $0<\mu<1/2$ by $c(\mu)=c(1-\mu)$.
+
+\begin{lemma}
+\label{lem:biased-comparison}
+For a nonconstant bit $C$ with mean $\mu$ and every random variable $U$,
+\begin{equation*}
+  \muti{C}{U}\le\frac{c(\mu)}{\ln2}\tsmuti{C}{U},
+  \qquad\text{and}\qquad
+  \tsent{C}\,c(\mu)\le1.
+\end{equation*}
+\end{lemma}

@@ -1,0 +1,43 @@
+% !TeX root = courtade-kumar.tex
+\section{Remaining proofs}
+\label{app:remaining}
+\label{app:continuous}
+\label{app:comparison}
+
+We use the setup of \autoref{sec:continuous}.
+
+\begin{lemma}
+\label{lem:ck+vscontinuous}
+For the threshold bit $T_\mu$ defined in \autoref{sec:continuous},
+we have
+\begin{equation*}
+  \qent{T_\mu}\le\muti{T_\mu}{X_\circ}.
+\end{equation*}
+For $0<p<1/2$, equality holds exactly when $\mu\in\{0,1/2,1\}$.
+At $p=0,1/2$, equality holds for every $\mu$.
+\end{lemma}
+\begin{proof}
+The cases $p\in\{0,1/2\}$ or $\mu\in\{0,1/2,1\}$ follow
+directly. Let us fix $0<\mu<1$, $\mu\ne1/2$, and write
+\begin{equation*}
+  \rho=1-2p,\qquad
+  F(\rho)=\muti{T_\mu}{X_\circ}-\tsent{T_\mu}\sI.
+\end{equation*}
+We have $F(0)=F'(0)=0$, $F(1)=\ent{T_\mu}-\tsent{T_\mu}$,
+and differentiation gives
+\begin{equation*}
+  F''(\rho)=
+  \frac{\tsent{T_\mu}(1-\tsent{T_\mu})(1-\rho)}
+  {\ln2\,(1+\rho)\bigl(4\rho+\tsent{T_\mu}(1-\rho)^2\bigr)}.
+\end{equation*}
+This is strictly decreasing: the numerator decreases and both
+factors in the denominator increase. Hence, for $0<\rho<1$,
+\begin{equation*}
+  \frac{F(\rho)}{\rho^2}
+  =\int_0^1(1-t)F''(\rho t)\,\mathrm{d}t
+  >F(1).
+\end{equation*}
+Since $\qI=\rho^2$, this is precisely
+$\muti{T_\mu}{X_\circ}>\qent{T_\mu}$.
+\end{proof}
+\input{comparison-calculations}

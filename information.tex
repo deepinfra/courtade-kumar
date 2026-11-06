@@ -1,0 +1,271 @@
+% !TeX root = courtade-kumar.tex
+\section{Shannon and Tsallis information}
+\label{sec:quadi}
+\iffalse
+We develop the quantities from \autoref{sec:preliminaries}
+for random variables on an arbitrary finite alphabet $\Omega$,
+and prove \autoref{lem:tsallis-properties} below.
+
+\subsection*{Divergence and entropy}
+For random variables $X,W$ on $\Omega$, define the quadratic
+divergence and the quadratic entropy by
+\begin{equation*}
+  \tsdiv{X}{W}
+  =2\sum_{\omega\in\Omega}\nparen{\Pr[X=\omega]-\Pr[W=\omega]}^2,
+  \qquad
+  \tsent{X}=2\nparen{1-\sum_{\omega\in\Omega}\Pr[X=\omega]^2}.
+\end{equation*}
+Thus $\tsdiv{X}{W}\ge0$ with equality iff $X$ and $W$ have the
+same law, and $\tsent{X}=2\Pr[X\ne X']$ for an independent copy
+$X'$ of $X$; up to the factor $2$, $\tsent{\cdot}$ is the Tsallis
+$2$-entropy \cite{Tsallis1988}. If $W$ is uniform on $\Omega$,
+then
+\begin{equation*}
+  \tsent{X}=2\nparen{1-\tfrac1{|\Omega|}}-\tsdiv{X}{W}.
+\end{equation*}
+For bits with $\Pr[X=1]=a$ and $\Pr[W=1]=b$, we have
+$\tsdiv{X}{W}=4(a-b)^2$, hence
+\begin{equation*}
+  \tsdivb{a}{b}=4(a-b)^2,
+  \qquad
+  \tsent{a}=4a(1-a)=1-\tsdivb{a}{1/2},
+\end{equation*}
+recovering the definitions of \autoref{sec:preliminaries}.
+
+Conditioning on a random variable $Z$ means averaging over it:
+\begin{equation*}
+  \tsent{X\emid Z}=\E_{z\sim Z}\tsent{X\emid Z=z},
+  \qquad
+  \tsdiv{X\emid Z}{W}=\E_{z\sim Z}\tsdiv{X\emid Z=z}{W}.
+\end{equation*}
+
+\subsection*{Information}
+Let $X,W$ take values in $\Omega$ and $Z$ be an observed random
+variable. The key fact is a Pythagorean identity.
+\begin{lemma}
+\label{lem:quad-pythagoras}
+\begin{equation*}
+  \tsdiv{X\emid Z}{W}=\tsdiv{X\emid Z}{X}+\tsdiv{X}{W}.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+For each $\omega$, write $\Pr[X=\omega\emid Z=z]-\Pr[W=\omega]$ as
+$\nparen{\Pr[X=\omega\emid Z=z]-\Pr[X=\omega]}
++\nparen{\Pr[X=\omega]-\Pr[W=\omega]}$ and square. The cross term
+averages to $0$ over $z\sim Z$, since
+$\E_{z\sim Z}\Pr[X=\omega\emid Z=z]=\Pr[X=\omega]$.
+\end{proof}
+Define the quadratic information of $X$ revealed by $Z$ as
+\begin{equation*}
+  \tsmuti{X}{Z}=\tsdiv{X\emid Z}{X}.
+\end{equation*}
+The same computation with $\Pr[W=\omega]$ replaced by $0$ gives
+the chain identity
+\begin{equation}
+  \label{eq:quad-chain}
+  \tsmuti{X}{Z}=\tsent{X}-\tsent{X\emid Z}.
+\end{equation}
+For a bit $B$ with $\E B=\mu$, this gives
+$\tsent{B}=4\mu(1-\mu)$ and
+$\tsmuti{B}{Z}=4\E\bigl[(\Pr[B=1\emid Z]-\mu)^2\bigr]$.
+For instance, $\tsmuti{Y_1}{X}=\rho^2$, since
+$\Pr[Y_1=1\emid X]=(1\pm\rho)/2$.
+
+Let $X,Z,W$ be random variables on finite alphabets.
+As before, conditioning means averaging:
+\begin{equation*}
+  \tsmuti{X}{W\emid Z}=\E_{z\sim Z}\tsmuti{X}{W\emid Z=z}
+  =\tsent{X\emid Z}-\tsent{X\emid Z,W}.
+\end{equation*}
+
+\begin{lemma}
+\label{lem:quad-properties}
+\leavevmode
+\begin{enumerate}
+\item $0\le\tsmuti{X}{Z}\le\tsent{X}$, with
+  $\tsmuti{X}{Z}=0$ iff $X$ and $Z$ are independent, and
+  $\tsmuti{X}{Z}=\tsent{X}$ iff $X$ is a function of $Z$.
+\item (Chain rule.) We have $\tsmuti{X}{W\emid Z}\ge0$ and
+\begin{equation*}
+  \tsmuti{X}{Z,W}=\tsmuti{X}{Z}+\tsmuti{X}{W\emid Z}.
+\end{equation*}
+\item (Data processing.) If $X-Z-W$ is a Markov chain, then
+  $\tsmuti{X}{W}\le\tsmuti{X}{Z}$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) Nonnegativity is clear. The upper bound is
+\eqref{eq:quad-chain} with $\tsent{X\emid Z}\ge0$, and
+$\tsent{X\emid Z}=0$ iff $X$ is a function of $Z$.
+(2) Telescope \eqref{eq:quad-chain}; the conditional term is the
+average of $\tsmuti{X}{W\emid Z=z}$ over $z\sim Z$, hence
+nonnegative.
+(3) By the Markov property $\tsent{X\emid Z,W}=\tsent{X\emid Z}$,
+so the chain rule in both orders gives
+$\tsmuti{X}{Z}=\tsmuti{X}{Z,W}=\tsmuti{X}{W}+\tsmuti{X}{Z\emid W}
+\ge\tsmuti{X}{W}$.
+\end{proof}
+
+Unlike Shannon information, $\tsmuti{\cdot}{\cdot}$ is not
+symmetric. If $X$ is a uniform bit and $Z=(X,W)$ with $W$ an
+independent uniform bit, then $\tsmuti{X}{Z}=\tsent{X}=1$ while
+$\tsmuti{Z}{X}=\tsent{Z}-\tsent{Z\emid X}=\tfrac32-1=\tfrac12$.
+This is why the notation uses a semicolon and why the order of
+arguments matters in \autoref{sec:proof}: the first argument is
+always the variable whose conditional law is compared with its marginal law.
+
+\fi
+
+\begin{lemma}
+\label{lem:binary-divergence-comparison}
+For $a\in[0,1]$ and $b\in[1/2,1)$,
+\begin{equation*}
+  \frac{2(a-b)^2}{\ln2}
+  \le\kldivb{a}{b}
+  \le\frac{\ln(1/b)}{(1-b)^2\ln2}(a-b)^2.
+\end{equation*}
+The lower bound holds for every $b\in(0,1)$; complementing
+$a,b$ gives the corresponding upper bound for $b<1/2$.
+\end{lemma}
+\begin{proof}
+The second derivative of the divergence in $a$ is
+$1/(a(1-a)\ln2)\ge4/\ln2$, and its value and first derivative
+vanish at $a=b$. This proves the lower bound.
+For the upper bound, Taylor's integral formula gives
+\begin{equation*}
+  \frac{\kldivb{a}{b}}{(a-b)^2}
+  =\frac1{\ln2}\int_0^1
+  \frac{1-t}{(b+t(a-b))(1-b-t(a-b))}\,\mathrm dt.
+\end{equation*}
+The quotient extends continuously to $a=b$ and is convex in
+$a$, because $1/(x(1-x))=1/x+1/(1-x)$ is convex.
+It therefore attains its maximum at an endpoint.
+For $b\ge1/2$, the value at $a=1$ is at least the value at
+$a=0$: equivalently,
+\begin{equation*}
+  -b^2\ln b+(1-b)^2\ln(1-b)\ge0.
+\end{equation*}
+The expression vanishes at $b=1/2$ and $b=1$, and its second
+derivative is $2\ln((1-b)/b)\le0$ on this interval.
+The value at $a=1$ is the claimed coefficient.
+\end{proof}
+
+For bits, we write $\tsdivb{a}{b}=4(a-b)^2$ and
+$\tsent{a}=4a(1-a)$.
+The binary divergence has the expansion
+\begin{equation}
+  \label{eq:binary-divergence-series}
+  \kldivb{\tfrac{1+u}{2}}{\tfrac12}
+  =\sum_{k\ge1}\frac{u^{2k}}{2k(2k-1)\ln2},
+  \qquad -1\le u\le1.
+\end{equation}
+Indeed, expanding its second derivative
+$1/((1-u^2)\ln2)$ as a geometric series and integrating twice
+proves the identity for $|u|<1$; continuity gives the endpoints.
+The coefficients $c_k=1/(2k(2k-1)\ln2)$ are nonnegative and
+satisfy $\sum_k c_k=1$ (set $u=1$). Hence,
+\begin{equation*}
+  \kldivb{\tfrac{1+u}2}{\tfrac12}=\sum_{k\ge1}c_ku^{2k}
+  \le u^2=\tsdivb{\tfrac{1+u}2}{\tfrac12},
+\end{equation*}
+with equality iff $u\in\{-1,0,1\}$. Since
+$\entb{a}=1-\kldivb{a}{1/2}$ and
+$\tsent{a}=1-\tsdivb{a}{1/2}$, this gives
+\begin{equation*}
+  \tsent{a}\le\entb{a}\quad(0\le a\le1),
+  \qquad
+  \muti{B}{Z}\le\tsmuti{B}{Z}\quad\text{when $B$ is a uniform bit}.
+\end{equation*}
+In particular $\tsent{B}\le\ent{B}$ and
+$\muti{Y_1}{X}=\sI\le\qI=\tsmuti{Y_1}{X}$,
+the orderings used in \autoref{fig:q-square}. The second
+inequality needs the uniform reference: for a nonconstant biased
+bit $B$, taking $Z=B$ gives
+$\muti{B}{B}=\ent{B}>\tsent{B}=\tsmuti{B}{B}$.
+
+\begin{proof}[Proof of \autoref{lem:tsallis-properties}]
+Let us write $\mu_Z=\Pr[C=1\emid Z]$ and $\mu=\E C$.
+Expanding the definition gives
+\begin{equation*}
+  \tsmuti{C}{Z}=4\E\bigl[(\mu_Z-\mu)^2\bigr].
+\end{equation*}
+This proves nonnegativity, while the upper bound by $\tsent{C}$
+follows from $\tsent{C\emid Z}\ge0$. Both statements may be
+averaged over $U$.
+We already have $\tsent{C}\le\ent{C}$. The lower bound of
+\autoref{lem:binary-divergence-comparison} with reference mean
+$1/2$ also gives
+\begin{equation*}
+  1-\ent{C}=\kldivb{\mu}{1/2}
+  \ge\frac{1-\tsent{C}}{2\ln2}
+  \ge\frac{1-\tsent{C}}2.
+\end{equation*}
+Averaging over $U$ completes part~\ref{item:tsallis-bounds}.
+
+The chain rule follows by telescoping the entropy differences.
+If $C-Z-W$ is a Markov chain, then
+$\tsent{C\emid Z,W}=\tsent{C\emid Z}$, so the chain rule
+also gives the data processing inequality in
+part~\ref{item:tsallis-chain}.
+
+The lower bound of \autoref{lem:binary-divergence-comparison},
+averaged over the conditional mean $\mu_Z$, gives
+\begin{equation*}
+  \muti{C}{Z}\ge\frac{2\E[(\mu_Z-\mu)^2]}{\ln2}
+  =\frac{\tsmuti{C}{Z}}{2\ln2}.
+\end{equation*}
+The upper comparison for unbiased $C$ was proved above using
+\eqref{eq:binary-divergence-series}. Averaging both comparisons
+over $U$ gives part~\ref{item:tsallis-shannon}; the upper one
+requires $C$ to remain unbiased given $U$. If a conditional law
+of $C$ is constant, both informations are zero.
+
+For two bits, evaluating the two conditional means gives
+\begin{equation*}
+  \tsent{C}\tsmuti{B}{C}
+  =16\operatorname{Cov}(B,C)^2
+  =\tsent{B}\tsmuti{C}{B}.
+\end{equation*}
+If either bit is constant, all three terms vanish.
+When $B$ is unbiased, the definition also gives
+\begin{equation*}
+  \tsmuti{C}{B}
+  =\bigl(\Pr[C=1\emid B=1]-\Pr[C=1\emid B=0]\bigr)^2
+  =\bigl(2\Pr[B=C]-1\bigr)^2.
+\end{equation*}
+This proves part~\ref{item:tsallis-bits}.
+
+For part~\ref{item:tsallis-conditioning}, let us write
+$V_u=\tsent{C\emid U=u}$ and
+$\sigma_u=\operatorname{Cov}(B,C\emid U=u)$.
+The identity for two bits, applied conditionally, and
+Cauchy--Schwarz give
+\begin{align*}
+  \tsmuti{B}{C\emid U}\,\tsent{C\emid U}
+  &=16\left(\E_{u\sim U}\frac{\sigma_u^2}{V_u}\right)
+  \left(\E_{u\sim U}V_u\right)\\
+  &\ge16\left(\E_{u\sim U}\sigma_u\right)^2.
+\end{align*}
+Terms with $V_u=0$ have $\sigma_u=0$ and contribute zero.
+Since $B$ is independent of $U$, its conditional mean is constant,
+and hence $\E_{u\sim U}\sigma_u=\operatorname{Cov}(B,C)$.
+The last display is therefore at least
+$\tsent{B}\tsmuti{C}{B}$, as required.
+
+Finally, applying the Shannon comparisons to the unbiased noise
+bits gives $\qI/(2\ln2)\le\sI\le\qI$. Since $\ln2<1$,
+we have $\qI\le2\sI$, proving part~\ref{item:tsallis-noise}.
+\end{proof}
+
+\begin{proof}[Proof of \autoref{lem:biased-comparison}]
+Complementing $C$ if necessary lets us assume $\mu\ge1/2$.
+Averaging the upper bound of
+\autoref{lem:binary-divergence-comparison} over the conditional
+mean $\Pr[C=1\mid U]$ gives the first inequality.
+For the second, $\ln(1+x)\le x$ gives
+\begin{equation*}
+  \tsent{C}\,c(\mu)
+  =\frac{\mu}{1-\mu}\ln\left(1+\frac{1-\mu}{\mu}\right)
+  \le1.
+\end{equation*}
+\end{proof}
