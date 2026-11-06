@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="644" height="336" viewBox="0 0 644 336"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Bounds on Q(C)</title>
+  <desc id="desc">
+    Arrows point toward the larger quantity. Q(C) is the open circle on the top edge,
+    directly above the bottom-left dot. Its distance to the top-right dot equals
+    the length of the bottom edge. Blue marks quantities at most I(Y₁ : X).
+    Purple marks upper bounds on I(C : X). Of the five marked quantities,
+    only Q(C) lies in both regions.
+  </desc>
+  <defs>
+    <clipPath id="frame">
+      <rect width="644" height="336" rx="16"/>
+    </clipPath>
+    <marker id="arrow" viewBox="0 -5 12 10" refX="12" refY="0"
+            markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 -5 12 0 0 5 4 0Z"/>
+    </marker>
+  </defs>
+
+  <!-- Draw the purple region second so its fill also tints the blue boundary. -->
+  <g clip-path="url(#frame)">
+    <rect width="644" height="336" fill="white"/>
+    <path d="M334 336 C384 206 344 86 372 0 H0 V336Z" fill="#28a0eb" fill-opacity=".28"/>
+    <path d="M334 336 C384 206 344 86 372 0" fill="none" stroke="#48aeef" stroke-width="2.5"/>
+    <path d="M172 0 C188 146 404 186 644 200 V0Z" fill="#8c52eb" fill-opacity=".28"/>
+    <path d="M172 0 C188 146 404 186 644 200" fill="none" stroke="#9d6cee" stroke-width="2.5"/>
+  </g>
+
+  <path d="M264 84 V268" fill="none" stroke="#999" stroke-width="1.2" stroke-dasharray="5 5"/>
+  <g fill="none" stroke="black" stroke-width="2" stroke-linecap="round" marker-mid="url(#arrow)">
+    <path d="M144 76 H320 H464"/>
+    <path d="M264 276 H374 H464"/>
+    <path d="M264 276 198 166 144 76"/>
+    <path d="M464 276 V166 V76"/>
+  </g>
+  <g fill="black">
+    <circle cx="144" cy="76" r="7"/>
+    <circle cx="464" cy="76" r="7"/>
+    <circle cx="264" cy="276" r="7"/>
+    <circle cx="464" cy="276" r="7"/>
+    <circle cx="264" cy="76" r="8" fill="white" stroke="black" stroke-width="2.3"/>
+  </g>
+
+  <g font-family="'Times New Roman', Times, serif" font-size="24">
+    <text x="264" y="55" text-anchor="middle" font-size="27"><tspan font-style="italic">Q</tspan>(<tspan font-style="italic">C</tspan>)</text>
+
+    <!-- Local coordinates keep each overbar attached to its I or H. -->
+    <g transform="translate(94 59)">
+      <text>I<tspan dy="5" font-size="16" font-style="italic">p</tspan><tspan dy="-5">H</tspan></text>
+    </g>
+    <g transform="translate(475 59)">
+      <text>I<tspan dy="5" font-size="16" font-style="italic">p</tspan><tspan dy="-5">H</tspan></text>
+      <path d="M0 -20 H8" stroke="black" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(214 308)">
+      <text>I<tspan dy="5" font-size="16" font-style="italic">p</tspan><tspan dy="-5">H</tspan></text>
+      <path d="M17 -20 H32" stroke="black" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(475 308)">
+      <text>I<tspan dy="5" font-size="16" font-style="italic">p</tspan><tspan dy="-5">H</tspan></text>
+      <path d="M0 -20 H8 M17 -20 H32" stroke="black" stroke-width="1.4"/>
+    </g>
+
+    <g fill="#333">
+      <text x="16" y="314">≤ <tspan font-weight="bold">I</tspan>(<tspan font-style="italic">Y</tspan><tspan dy="5" font-size="16">1</tspan><tspan dy="-5"> : </tspan><tspan font-style="italic">X</tspan>)</text>
+      <text x="628" y="163" text-anchor="end">≥ <tspan font-weight="bold">I</tspan>(<tspan font-style="italic">C</tspan> : <tspan font-style="italic">X</tspan>)</text>
+    </g>
+  </g>
+</svg>

@@ -131,7 +131,7 @@ Every such bit satisfies
 For the fixed channel between $A$ and $B$, let $F$ be the
 function determined by
 \begin{equation*}
-F\bigl(\muti{B}{D}\bigr)=\muti{A}{D}
+F\nparen{\muti{B}{D}}=\muti{A}{D}
 \end{equation*}
 as $D$ ranges over unbiased bits generated from $B$.
 It can be shown that $F$ is increasing and
@@ -140,8 +140,8 @@ concave (cf.\ \autoref{lem:comparison-calculus}), and
   \muti{B}{C\emid U=u}&\le\tsent{C\emid U=u},\\
   \muti{A}{C\emid U=u}
   &\le\tsent{C\emid U=u}
-  F\left(\frac{\muti{B}{C\emid U=u}}
-  {\tsent{C\emid U=u}}\right).
+  F\nparen{\frac{\muti{B}{C\emid U=u}}
+  {\tsent{C\emid U=u}}}.
 \end{align*}
 Values of $u$ with zero conditional Tsallis entropy contribute
 zero to both informations and may be omitted.
@@ -154,7 +154,7 @@ proportional to $\tsent{C\emid U=u}$, gives
 \begin{equation*}
   \muti{A}{C\emid U}
   \le\tsent{C\emid U}
-  F\left(\frac{\muti{B}{C\emid U}}{\tsent{C\emid U}}\right)
+  F\nparen{\frac{\muti{B}{C\emid U}}{\tsent{C\emid U}}}
   =\tsent{C\emid U}\muti{A}{C'},
 \end{equation*}
 as required.
@@ -209,8 +209,9 @@ The comparisons in \autoref{lem:comparison} and
 of coordinate with $\tsmuti{C}{B}\le1/4$, allow us to charge
 these terms to quantities
 involving $\muti{A}{C'}$ and $\muti{B}{C'}$.
-What remains is an inequality about the three unbiased bits in the
-Markov chain $A-B-C'$, which we analyze in \autoref{sec:3bit}.
+What remains is an inequality about three unbiased bits 
+forming the Markov chain $A-B-C'$, which we analyze in
+\autoref{sec:3bit}.
 
 \input{figures/comparison-bit}
 
@@ -243,9 +244,10 @@ of \autoref{lem:tsallis-properties} give
   \muti{B}{U\emid C}
   &\ge\frac{\tsmuti{B}{U\emid C}}{2\ln2}\\
   &\ge\frac{\tsmuti{C}{B}}{2\ln2}
-  \left(\frac1{\tsent{C\emid U}}-\frac1{\tsent{C}}\right)\\
-  &=\frac{\tsmuti{C}{B}\,\tsmuti{C}{U}}
-  {2\ln2\,\tsent{C}\,\tsent{C\emid U}},
+  \sparen{\frac1{\tsent{C\emid U}}-\frac1{\tsent{C}}}\\
+  &=\frac{1}{2\ln 2}
+    \frac{\tsmuti{C}{B}\,\tsmuti{C}{U}}
+         {\tsent{C}\,\tsent{C\emid U}},
 \end{align*}
 as required.
 \end{proof}
@@ -282,7 +284,7 @@ The chain rule and \autoref{lem:comparison} give
   &=\muti{B}{C\emid U}-\muti{A}{C\emid U}\\
   &\ge(1-\qI)\muti{B}{C\emid U}
   +\tsent{C\emid U}
-  \bigl[\qI\muti{B}{C'}-\muti{A}{C'}\bigr].
+  \sparen{\qI\muti{B}{C'}-\muti{A}{C'}}.
 \end{align*}
 Substituting this into the preceding identity and applying
 \autoref{lem:conditioning-gain} gives \eqref{eq:gap-first}.
@@ -295,7 +297,7 @@ If $\tsent{C\emid U}>0$, then
   \label{eq:gap-second}
   \qent{C}-\muti{C}{X}
   &\ge\tsent{C\emid U}\muti{A}{B\emid C'}
-  -\left[\frac{(1-\qI)c(\mu)}{\ln2}+\qJ\right]\tsmuti{C}{U}.
+  -\sparen{\frac{(1-\qI)c(\mu)}{\ln2}+\qJ}\tsmuti{C}{U}.
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -306,7 +308,7 @@ $\muti{C}{X}=\muti{C}{U}+\muti{A}{C\emid U}$ gives
   &\ge\qI\ent{C}-\qJ\tsent{C}
   -\muti{C}{U}-\tsent{C\emid U}\muti{A}{C'}\\
   &=\tsent{C\emid U}\muti{A}{B\emid C'}
-  +\qI\bigl[\ent{C\emid U}-\tsent{C\emid U}\bigr]\\
+  +\qI\sparen{\ent{C\emid U}-\tsent{C\emid U}}\\
   &\quad-(1-\qI)\muti{C}{U}-\qJ\tsmuti{C}{U}.
 \end{align*}
 Here we used $\sI=\muti{A}{B}$ and
@@ -319,20 +321,21 @@ For $0<p<1$, we use the shorthand
 \begin{equation*}
   \alpha_p=\frac{\qJ\ln2}{1-\qI}.
 \end{equation*}
-The following fact about the unbiased chain $A-B-C'$ is the
-remaining ingredient. We state it here and prove it in
+We need the following fact about the Markov chain $A-B-C'$
+of three unbiased bits. We state it here and prove it in
 \autoref{sec:3bit}.
 
 \begin{lemma}
 \label{lem:three-bit}
 Let $C'$ be an unbiased bit obtained from $B$ using private
-randomness. If $0<\qI<1$ and $\tsmuti{B}{C'}>0$, then
+randomness. If $0<\qI<1$ and $\tsmuti{B}{C'}>0$, then for
+every $0<d\le1/2$,
 \begin{align*}
   \frac{\sI-\muti{A}{C'}}
-  {2(1+\alpha_p)}
+  {2(1+\alpha_p-d/4)}
   +
-  \frac{2\nparen{\qI\muti{B}{C'}-\muti{A}{C'}}}
-  {\sqrt{\tsmuti{B}{C'}}}
+  \frac{\qI\muti{B}{C'}-\muti{A}{C'}}
+  {d\sqrt{\tsmuti{B}{C'}}}
   \ge\qJ.
 \end{align*}
 \end{lemma}
@@ -350,12 +353,12 @@ Then $\tsent{C\emid U}>0$:
 otherwise $C$ would be determined by $U$ and hence independent of
 $B$. By \autoref{lem:comparison}, there is an unbiased bit $C'$
 obtained from $B$ alone and satisfying \eqref{eq:comparison-match}.
-Let us write
+Let $d\in(0,1/2]$ satisfy $d^2=\tsmuti{C}{B}$, and set
 \begin{equation*}
   \lambda=
   \frac{\tsmuti{C}{B}}
   {2\tsent{C}\,\tsent{C\emid U}
-  \left(c(\mu)+\alpha_p\right)}.
+  \nparen{c(\mu)+\alpha_p}}.
 \end{equation*}
 All factors are positive. When we multiply \eqref{eq:gap-second} by
 $\lambda$ and add it to \eqref{eq:gap-first},
@@ -363,33 +366,33 @@ the terms involving $\tsmuti{C}{U}$ cancel, giving
 \begin{equation}
   \label{eq:gap-combined}
   \begin{aligned}
-    &(1+\lambda)\bigl[\qent{C}-\muti{C}{X}\bigr]\\
-    &\quad\ge\qent{C\emid B}-\muti{C}{X\emid B}
-    -\qJ\tsmuti{C}{B}\\
-    &\qquad+\tsent{C\emid U}
-    \nparen{\qI\muti{B}{C'}-\muti{A}{C'}}
-    +\lambda\tsent{C\emid U}\muti{A}{B\emid C'}.
+    (1+\lambda)\nparen{\qent{C}-\muti{C}{X}}\ge\Delta
+    &+\tsent{C\emid U}
+    \nparen{\qI\muti{B}{C'}-\muti{A}{C'}}\\
+    &+\lambda\tsent{C\emid U}\muti{A}{B\emid C'}
+    -\qJ\tsmuti{C}{B}.
   \end{aligned}
 \end{equation}
 
-By \autoref{lem:comparison-correlation} and the choice of coordinate,
+By \autoref{lem:comparison-correlation},
 \begin{equation*}
-  \frac{\tsmuti{C}{B}}{\tsent{C\emid U}}
-  \le\sqrt{\tsmuti{C}{B}\,\tsmuti{C'}{B}}
-  \le\frac12\sqrt{\tsmuti{C'}{B}}.
+  \frac{\tsent{C\emid U}}{\tsmuti{C}{B}}
+  \ge\frac1{d\sqrt{\tsmuti{B}{C'}}}.
 \end{equation*}
-Also, \autoref{lem:biased-comparison} and $0<\tsent{C}\le1$ give
+Since $B$ is unbiased, $d\le2\min\{\mu,1-\mu\}$.
+Complementing $C$ if necessary, assume $\mu\ge1/2$, so
+$\mu\le1-d/2$. Using $\ln x\le(x-x^{-1})/2$ for $x\ge1$ gives
 \begin{equation*}
-  \tsent{C}\left(c(\mu)+\alpha_p\right)
-  \le1+\tsent{C}\alpha_p
-  \le1+\alpha_p.
+  \tsent{C}\,c(\mu)
+  =\frac{\mu\ln(1/\mu)}{1-\mu}
+  \le\frac{1+\mu}{2}\le1-\frac d4.
 \end{equation*}
-Consequently,
+Consequently, using $\tsent{C}\le1$,
 \begin{equation*}
   \frac{\lambda\tsent{C\emid U}}{\tsmuti{C}{B}}
   =\frac1{2\tsent{C}
-  \left(c(\mu)+\alpha_p\right)}
-  \ge\frac1{2(1+\alpha_p)}.
+  \nparen{c(\mu)+\alpha_p}}
+  \ge\frac1{2(1+\alpha_p-d/4)}.
 \end{equation*}
 The two information quantities multiplied by these coefficients
 are nonnegative. For the first, the binary divergence series gives
@@ -403,13 +406,309 @@ Applying \autoref{lem:three-bit}, we therefore obtain
   \muti{A}{B\emid C'}\ge\qJ.
 \end{align*}
 Thus the last three terms in \eqref{eq:gap-combined} have
-nonnegative sum. Dividing by $1+\lambda$ proves the lemma.
+nonnegative sum, so
+$\qent{C}-\muti{C}{X}\ge\Delta/(1+\lambda)$, as required.
 \end{proof}
 
 \subsection{The three-bit lemma}
 \label{sec:3bit}
+In this section we study the Markov chain $A-B-C$ of three
+unbiased bits. The joint law is determined by two parameters:
+the correlations $\rho$ of $A,B$ and $\sigma$ of $B,C$.
+These satisfy $\rho^2=\tsmuti{A}{B}$ and $\sigma^2=\tsmuti{B}{C}$.
+Assume $\rho^2\neq 1$, $\sigma\neq 0$ and fix a $d\in (0,1/2]$.
+\input{figures/three-bit-chain}
+To prove \autoref{lem:three-bit}, we expand the binary divergence
+$\kldivb{x}{1/2}$ in a Taylor series about $x=1/2$. Writing
+$t=2x-1$ for the bias, we define
+\begin{equation*}
+  f(t)=\kldivb{(1+t)/2}{1/2},\qquad
+  \alpha=\frac{(\rho^2-f(\rho))\ln2}{1-\rho^2}.
+\end{equation*}
+Then $\muti{A}{B}=f(\rho)$, $\muti{B}{C}=f(\sigma)$,
+and $\muti{A}{C}=f(\rho\sigma)$, so it suffices to prove
+\begin{equation}
+  \label{eq:three-bit-scalar-target}
+  \frac{f(\rho)-f(\rho\sigma)}{2(1+\alpha-d/4)}
+  +\frac{\rho^2 f(\sigma)-f(\rho\sigma)}{d\abs{\sigma}}
+  \ge\rho^2-f(\rho).
+\end{equation}
+When $\rho=0$, both sides vanish. Since $f$ is even, it suffices
+to prove the strict inequality for $\rho,\sigma>0$.
+We expand in $\rho^2$ and prove positivity of every coefficient.
+For $N\ge1$, define the divergence tails
+\begin{align*}
+  b_N&=\sum_{k>N}\frac1{2k(2k-1)}
+      =\int_0^1\frac{x^{2N}}{1+x}\,\mathrm dx,\\
+  s_N(\sigma)&=\sum_{k>N}\frac{\sigma^{2k}}{2k(2k-1)}
+      =\int_0^\sigma\frac{(\sigma-x)x^{2N}}{1-x^2}\,\mathrm dx.
+\end{align*}
+Set $b_0=1-d/4$ as a separate convention, and write
+\begin{align*}
+  B_N&=\sum_{i=0}^{N-1}b_i b_{N-i},
+  &G_N(\sigma)&=\sum_{i=0}^{N-1}b_i s_{N-i}(\sigma),\\
+  e_N&=\frac12\sum_{k=1}^N\frac1{2k-1},
+  &C_N(\sigma)&=\sum_{k=1}^N\frac{1-\sigma^{2k}}{2k(2k-1)}.
+\end{align*}
+The first ingredient compares the divergence tails in two ways.
+\begin{lemma}
+\label{lem:scalar-tail-order}
+For $0<\sigma<1$ and $N\ge1$,
+\begin{equation}
+  \label{eq:scalar-convolution-order}
+  G_N(\sigma)\ge B_N\frac{s_N(\sigma)}{b_N}.
+\end{equation}
+For $N\ge2$, we also have
+\begin{equation}
+  \label{eq:scalar-rescaled-order}
+  \frac{s_N(\sigma)}{\sigma b_N}\ge\frac{s_2(\sigma^{N/2})}{\sigma^{N/2} b_2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+First, $s_j(\sigma)/b_j$ is the expectation of the decreasing function
+$(\sigma-x)_+/(1-x)$ under the probability density proportional to
+$x^{2j}/(1+x)$ on $(0,1)$. Increasing $j$ tilts this density by an
+increasing function, so $s_j(\sigma)/b_j$ decreases with $j$.
+For $1\le j\le N$, therefore,
+$s_j(\sigma)\ge b_j s_N(\sigma)/b_N$; summing proves
+\eqref{eq:scalar-convolution-order}.
+Here is the elementary order principle used in this argument.
+If $Z,Z'$ are independent with the same distribution, then
+\begin{equation*}
+  \operatorname{Cov}(f(Z),g(Z))
+  =\frac12\E\sparen{(f(Z)-f(Z'))(g(Z)-g(Z'))}.
+\end{equation*}
+It is nonnegative when both functions increase and nonpositive when
+one increases and the other decreases. Applying this identity to a
+density ratio gives the stated comparison of expectations.
+For the second comparison, let us fix $a\ge0$ and write
+\begin{equation*}
+  M_N(a)=\frac{s_N(e^{-a/N})}{e^{-a/N}b_N}.
+\end{equation*}
+Changing variables in the two tail integrals gives
+\begin{equation}
+  \label{eq:scalar-tail-kernel}
+  M_N(a)=e^{-2a}\E_{\pi_N}
+  \sparen{\frac{\sinh(z/N)}{\sinh((z+a)/N)}},
+  \qquad
+  \pi_N(\mathrm{d}z)\ \propto
+  \frac{e^{-2z}}{1+e^{z/N}}\,\mathrm{d}z,
+  \quad z>0.
+\end{equation}
+The quotient inside the expectation increases with $z$ because
+$\coth$ decreases. It also increases with $N$, since
+$x\coth x$ increases for $x>0$:
+its derivative has the sign of $\sinh x\cosh x-x>0$.
+Moreover, for $K>N$ the density ratio $\pi_K/\pi_N$ increases with
+$z$, as its logarithmic derivative is
+\begin{equation*}
+  \frac{N^{-1}}{1+e^{-z/N}}
+  -\frac{K^{-1}}{1+e^{-z/K}}>0.
+\end{equation*}
+The order principle and then the pointwise comparison of quotients
+show that $M_N(a)$ increases with $N$.
+Taking $a=-N\ln \sigma$ gives
+$e^{-a/N}=\sigma$ and $e^{-a/2}=\sigma^{N/2}$, proving
+\eqref{eq:scalar-rescaled-order}.
+All the densities are integrable; at $a=0$ the quotient in
+\eqref{eq:scalar-tail-kernel} equals one.
+\end{proof}
 
-In this subsection, let $A-B-C$ be an unbiased
-binary Markov chain with $0<\tsmuti{A}{B}<1$ and
-$\tsmuti{B}{C}>0$.
-\input{scalar}
+We will use the elementary bounds
+\begin{equation*}
+  \frac{11}{16}<\ln2<\frac{25}{36}.
+\end{equation*}
+Both follow from
+$\ln2=2\sum_{j\ge0}[(2j+1)3^{2j+1}]^{-1}$:
+keep its first two terms for the lower bound, and replace
+$2j+1$ by $3$ for $j\ge1$ for the upper bound.
+The next lemma bounds the two coefficient sums.
+\begin{lemma}\label{lem:scalar-moments}
+For $N\ge2$, $0\le \sigma\le1$, and $x=1-\sigma^{2N}$,
+\begin{equation*}
+ \frac{B_N}{2e_Nb_N}\le\frac{11}{10}-\frac d5,
+ \qquad
+ \frac{C_N(\sigma)}{2e_Nb_N}\ge2x+\frac23x^2.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+The tail integral, using $1+x\le2$ and $1+x\ge2\sqrt{x}$, gives
+$1/(4N+2)\le b_N\le1/(4N+1)$. These bounds imply
+$b_i b_j\le b_{i+j}(b_i+b_j)$ for positive $i,j$.
+Also $\sum_{i=1}^{N-1}b_i=e_N+Nb_N-\ln2$.
+Thus
+\begin{equation*}
+ \frac{B_N}{2e_Nb_N}
+ \le1+\frac{Nb_N-(\ln2-1/2)-d/8}{e_N}
+ \le\frac{35}{32}-\frac{3d}{16}
+ \le\frac{11}{10}-\frac d5.
+\end{equation*}
+For the middle inequality use $Nb_N\le1/4$, $\ln2>11/16$,
+$e_N\ge2/3$, and $d\le1/2$. The resulting upper numerator
+$1/16-d/8$ is nonnegative, so using $e_N\ge2/3$ preserves
+the direction of the estimate.
+
+For the second claim, use the first two terms of
+$1-(1-x)^{k/N}$, the identity
+$\sum_{k=1}^N k/[2(2k-1)]=N/4+e_N/2$,
+and $b_N\le1/(4N+1)$. With $s=1/N$, these give
+\begin{equation*}
+ \frac{C_N(\sigma)}{2e_Nb_N}
+ \ge\frac{4+s}{2}\sparen{x+
+ \nparen{\frac12-\frac s4-\frac1{8e_N}}x^2}.
+\end{equation*}
+Since $x\ge x^2$, it suffices that
+\begin{equation*}
+ \frac s2+\frac{4+s}{2}
+ \nparen{\frac12-\frac s4-\frac1{8e_N}}\ge\frac23.
+\end{equation*}
+At $N=2$, the left side is $43/64>2/3$.
+For $N\ge3$, use $e_N\ge23/30$ and $s\le1/3$ to bound it below by
+\begin{equation*}
+ \frac{31}{46}+\frac{31s}{184}-\frac{s^2}{8}
+ \ge\frac{31}{46}>\frac23.
+\end{equation*}
+\end{proof}
+
+\begin{lemma}\label{lem:scalar-fixed-function}
+For $0<w<1$, writing $x=1-w^4$,
+\begin{equation*}
+ 2x+\frac23x^2+36\frac{s_2(w)}w-2>0.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+Keeping just the terms of $s_2$ indexed by $3\le k\le7$
+bounds the left side below by the rational polynomial
+\begin{equation*}
+ P(w)=\frac23-\frac{10}{3}w^4+\frac23w^8
+       +36\sum_{k=3}^7\frac{w^{2k-1}}{2k(2k-1)}.
+\end{equation*}
+The ratio
+\begin{equation*}
+ \frac{P'(w)}{w^3}
+ =-\frac{40}{3}+\frac{16}{3}w^4
+   +18\sum_{k=3}^7\frac{w^{2k-5}}k
+\end{equation*}
+is strictly increasing. Also $P'''(w)>0$ for $w\ge4/5$:
+the polynomial part contributes $16w(14w^4-5)>0$, and all
+tail terms contribute positively. Direct rational arithmetic gives
+\begin{equation*}
+ P'(4/5)<0,\quad P''(4/5)>18,\quad
+ P(5/6)>1/128,\quad \abs{P'(5/6)}<1/4.
+\end{equation*}
+Taylor's formula therefore gives, for $4/5\le w<1$,
+\begin{equation*}
+ P(w)\ge P(5/6)+P'(5/6)(w-5/6)+9(w-5/6)^2
+ >\frac1{128}-\frac1{576}>0.
+\end{equation*}
+On $(0,4/5]$, monotonicity of $P'(w)/w^3$ makes $P$
+decreasing, so $P(w)\ge P(4/5)>0$ there too.
+\end{proof}
+
+\begin{lemma}\label{lem:scalar-coefficients}
+For every $N\ge1$ and $0<\sigma\le1$,
+\begin{equation*}
+ C_N(\sigma)+\frac{2G_N(\sigma)}{d\sigma}-2B_N>0.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+First suppose $N\ge2$ and $\sigma<1$.
+By \autoref{lem:scalar-tail-order}, the expression is at least
+\begin{equation*}
+ C_N(\sigma)+B_N\sparen{\frac{2s_N(\sigma)}{d\sigma b_N}-2}.
+\end{equation*}
+If the bracket is nonnegative, we are done. Otherwise apply
+\autoref{lem:scalar-moments}, remembering that an upper bound on $B_N$
+gives a lower bound after multiplication by this negative bracket.
+Put $w=\sigma^{N/2}$ and $x=1-w^4$.
+Since $b_2=\ln2-7/12<1/9$, \autoref{lem:scalar-tail-order} shows that the
+expression, divided by $2e_Nb_N$, is at least
+\begin{equation}\label{eq:scalar-coefficient-lower}
+ 2x+\frac23x^2+
+ \nparen{\frac{11}{10}-\frac d5}
+ \sparen{\frac{18s_2(w)}{dw}-2}.
+\end{equation}
+If $s_2(w)/w\ge1/198$, this expression is decreasing in
+$d\in(0,1/2]$: its derivative is
+\begin{equation*}
+ -\frac{99}{5d^2}\frac{s_2(w)}w+\frac25\le0.
+\end{equation*}
+Its value is therefore at least its value at $d=1/2$, which is
+positive by \autoref{lem:scalar-fixed-function}.
+
+Suppose instead that $s_2(w)/w<1/198$. The first two tail terms
+at $w=2/3$ already exceed $1/198$, so $w<2/3$.
+If $w\le3/5$, then $x\ge6/7$, and dropping the positive terms
+in the expansion of \eqref{eq:scalar-coefficient-lower} gives the lower bound
+\begin{equation*}
+ 2x+\frac23x^2-\frac{11}{5}
+ \ge\frac{108}{49}-\frac{11}{5}>0.
+\end{equation*}
+For $3/5<w<2/3$, we have $x>4/5$ and
+$s_2(w)/w>w^5/30>1/400$. By AM--GM,
+\begin{equation*}
+ \frac{99}{5d}\frac{s_2(w)}w+\frac{2d}{5}
+ \ge\sqrt{\frac{792}{25}\frac{s_2(w)}w}>\frac7{25}.
+\end{equation*}
+Also $-(18/5)s_2(w)/w>-1/55$.
+Expanding \eqref{eq:scalar-coefficient-lower} now gives the strict lower bound
+\begin{equation*}
+ 2-\frac{11}{5}+\frac7{25}-\frac1{55}>0.
+\end{equation*}
+
+At $\sigma=1$, we have $C_N(1)=0$ and $G_N(1)=B_N$, giving
+$(2/d-2)B_N>0$ for every $N$.
+
+For $N=1$ and $\sigma<1$, the coefficient is
+\begin{equation*}
+ \frac{1-\sigma^2}{2}+\nparen{1-\frac d4}
+ \sparen{\frac{2s_1(\sigma)}{d\sigma}-2b_1}.
+\end{equation*}
+If the bracket is nonnegative this is positive. Otherwise,
+using $1-d/4\le1$ and $2/d\ge4$, it is at least
+$(1-\sigma^2)/2+4s_1(\sigma)/\sigma-2b_1$. Now
+$b_1<7/36$ and the first two tail terms bound this below by
+\begin{equation*}
+ Z(\sigma)=\frac19-\frac{\sigma^2}{2}+\frac{\sigma^3}{3}+\frac{2\sigma^5}{15}>0.
+\end{equation*}
+Indeed, $Z'(\sigma)/\sigma=-1+\sigma+2\sigma^3/3$ increases and is negative at
+$2/3$, whereas $Z''>1$ on $[2/3,1]$.
+At $a=3/4$, $Z(a)=49/23040>1/512$ and
+$Z'(a)=3/128<1/32$. Taylor's formula gives
+$Z(\sigma)>1/512-1/2048>0$ on $[2/3,1]$, and monotonicity
+gives positivity on the remaining interval.
+\end{proof}
+
+\begingroup
+\newtheorem*{restatedthreebitlemma}{Lemma~\ref{lem:three-bit}}
+\begin{restatedthreebitlemma}[restated]
+Let $A-B-C$ be a Markov chain of unbiased bits with
+$\tsmuti{A}{B}<1$ and $\tsmuti{B}{C}>0$. For every $0<d\le1/2$,
+\begin{equation*}
+  \frac{\muti{A}{B\emid C}}
+  {2\nparen{1-\frac d4+
+    \frac{\nparen{\tsmuti{A}{B}-\muti{A}{B}}\ln2}
+    {\tsent{A\emid B}}}}
+  +\frac{\tsmuti{A}{B}\muti{B}{C}-\muti{A}{C}}
+  {d\sqrt{\tsmuti{B}{C}}}
+  \ge\tsmuti{A}{B}-\muti{A}{B}.
+\end{equation*}
+\end{restatedthreebitlemma}
+\endgroup
+\begin{proof}
+The divergence-tail definitions give the absolutely convergent expansions
+\begin{align*}
+ \alpha&=\sum_{N\ge1}b_N\rho^{2N},\\
+ \frac{\ln2}{1-\rho^2}\sparen{\rho^2 f(\sigma)-f(\rho\sigma)}
+ &=\sum_{N\ge1}s_N(\sigma)\rho^{2N},\\
+ \frac{\ln2}{1-\rho^2}\sparen{f(\rho)-f(\rho\sigma)}
+ &=\sum_{N\ge1}C_N(\sigma)\rho^{2N}.
+\end{align*}
+Multiplying \eqref{eq:three-bit-scalar-target}, after moving its right side to the left,
+by $2(1-d/4+\alpha)\ln2/(1-\rho^2)$ gives
+\begin{equation*}
+ \sum_{N\ge1}
+ \sparen{C_N(\sigma)+\frac{2G_N(\sigma)}{d\sigma}-2B_N}\rho^{2N}>0
+\end{equation*}
+by \autoref{lem:scalar-coefficients}.
+\end{proof}
