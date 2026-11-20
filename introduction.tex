@@ -2,7 +2,7 @@
 % !TEX TS-program = pdfLaTeX
 \section{Introduction}
 \label{sec:introduction}
-Let $X$ be distributed uniformly on $\cube$ and let $Y$
+Let $X$ be distributed uniformly on $\cube$ and $Y$
 be obtained by flipping each coordinate of $X$ with
 probability $p$, independently.
 In \cite{KumarC2013,CourtadeK2014}, Courtade and Kumar ask:
@@ -11,18 +11,19 @@ $X$?
 They conjecture that taking $C=Y_i$ for some $i\in[n]$
 maximizes the information conveyed about $X$. In particular,
 their Conjecture 1 states that 
-\begin{equation}
+\begin{align}
 \label{eq:ck}\tag{(CK)}
 \muti{C}{X}\le\muti{Y_1}{X} = 1 - \entb{p}.
-\end{equation}
+\end{align}
 They further remark that, despite its resemblance to a
 simple homework exercise, the statement appears to
 involve substantial depth. Indeed, even after extensive
 efforts and partial progress
-\cite{AnantharamBCJN2017,Arikan2009,BarnesO2020,ChenN2024,
-FischerKRSS2004,JavanmardW2026,KindlerOW2015,LiM2021,
-OrdentlichSW2015,ParnasRS2002,PichlerMP2016,Samorodnitsky2015,
-Samorodnitsky2016,Sarbu2017,Sarbu2017b,YangW2018,Yu2024},
+\cite{AnantharamBCJN2017,AnantharamGKN2013,Arikan2009,BarnesO2020,
+CalmonMMV+2017,ChenN2024,DurcikIRX2026,EldanMR2023,
+FischerKRSS2004,HanOS2016,JavanmardW2026,KindlerOW2015,LiM2021,
+OrdentlichSW2015,ParnasRS2002,PichlerPM2018,Samorodnitsky2015,
+Samorodnitsky2016,Sarbu2017,YangW2018,Yu2023,Yu2024},
 a full resolution of the conjecture remained elusive.
 
 \input{figures/q-square}
@@ -59,9 +60,11 @@ Courtade and Kumar's \cite{CourtadeK2014} Conjecture~2
 concerns the stronger upper bound $\sI\ent{C}$ at the upper-left
 corner. This bound was later shown to be too strong in
 general \cite{ChandarT2014,KindlerOW2015}.
-Our refinement $\qent{C}$ subtracts a Tsallis correction
+As shown in \autoref{fig:progressive-entropy}, our refinement
+$\qent{C}$ subtracts a Tsallis correction
 $(\qI-\sI)\,\tsent{C}$ from the strong data-processing bound
 and sits between the two.
+\input{figures/progressive-entropy}
 
 \subsection{Concurrent work}
 \label{sec:concurrent}
@@ -104,7 +107,7 @@ function of $Y_\circ$ with $\mu=\E\sparen{C_\circ}$.
 Let $T_\mu$ be the indicator of
 $Y_{\circ,1}\le \mu$, so that $\E\sparen{T_\mu}=\mu$. In
 \autoref{lem:ck+vscontinuous} we show that
-$\qent{C_\circ} < \muti{T_\mu}{X_\circ}$ for $0<\mu<1$,
+$\qent{T_\mu} < \muti{T_\mu}{X_\circ}$ for $0<\mu<1$,
 $\mu\ne1/2$, and $0<p<1/2$, which shows that $\qent{C_\circ}$
 is too strong for the continuous problem. We conjecture that
 the threshold functions maximize mutual information at
