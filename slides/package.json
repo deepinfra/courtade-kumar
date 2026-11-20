@@ -1,0 +1,23 @@
+{
+  "name": "courtade-kumar-slides",
+  "private": true,
+  "type": "module",
+  "description": "Standalone Courtade–Kumar web slides",
+  "dependencies": {
+    "fitty": "2.4.2"
+  },
+  "devDependencies": {
+    "@kimlikdao/kdts": "0.2.2",
+    "@types/bun": "^1.4.4",
+    "@types/html-minifier-terser": "^7.0.2",
+    "html-minifier-terser": "^7.2.0",
+    "typescript": "^7.0.2"
+  },
+  "scripts": {
+    "build": "bun tools/build.ts",
+    "start": "bun tools/server.ts --build",
+    "serve": "bun tools/server.ts",
+    "check": "tsc --noEmit",
+    "test": "bun test"
+  }
+}

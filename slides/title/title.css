@@ -1,0 +1,15 @@
+.reveal .slides > .title-slide {
+  padding-top: 200px;
+}
+
+.reveal .title-slide h1 {
+  font-size: 52px;
+  line-height: 1.25;
+}
+
+.title-authors {
+  display: flex;
+  gap: 70px;
+  margin-top: 60px;
+  font-size: 28px;
+}

@@ -1,0 +1,171 @@
+.labf {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.lacolon {
+  margin: 0 0.167em;
+}
+
+.laover {
+  position: relative;
+  display: inline-block;
+  min-width: .5em;
+  text-align: center;
+}
+
+.laover::before {
+  content: "";
+  position: absolute;
+  top: -.12em;
+  left: 50%;
+  width: .5em;
+  border-top: .045em solid currentColor;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.lafrac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.08em;
+  font-size: 0.78em;
+  line-height: 1.05;
+  vertical-align: middle;
+}
+
+.lafrac-num {
+  min-width: 0.8em;
+  padding: 0 0.16em 0.08em;
+  border-bottom: 0.05em solid currentColor;
+  text-align: center;
+}
+
+.lafrac-den {
+  padding: 0.08em 0.16em 0;
+  text-align: center;
+}
+
+.laroman i {
+  font-style: normal;
+}
+
+.lasup,
+.lasub {
+  font-size: 75%;
+  margin: 0 0.05em;
+  vertical-align: baseline;
+}
+
+.lasup {
+  position: relative;
+  top: -0.55em;
+}
+
+.lasub {
+  position: relative;
+  bottom: -0.2em;
+}
+
+.lasupsub {
+  font-size: 75%;
+  margin: 0 0.05em;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  bottom: 0.2em;
+}
+
+.lassup {
+  font-size: 100%;
+  vertical-align: top;
+  line-height: 0.9;
+}
+
+.lassub {
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.law {
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.laeq {
+  font-size: 118%;
+  transform: scale(1.45, 1);
+  display: inline-block;
+  position: relative;
+  top: 0.1em;
+}
+
+.lato {
+  display: inline-block;
+  transform: scale(1.2, 1);
+}
+
+.lain {
+  vertical-align: baseline;
+  font-size: 120%;
+  margin: 0 -0.1em;
+}
+
+.ladiv {
+  display: inline-block;
+  transform: scale(1, 1.4);
+  margin: 0 -0.15em;
+}
+
+.lamns {
+  margin: 0 -0.15em;
+  position: relative;
+  top: 0.05em;
+  font-size: 120%;
+}
+
+.laasx {
+  font-size: 150%;
+  position: relative;
+  top: 0.34em;
+}
+
+.lasl,
+.lasr,
+.lapl,
+.lapr,
+.laal,
+.laar,
+.lacl,
+.lacr {
+  font-size: 118%;
+  position: relative;
+  top: 0.07em;
+}
+
+.lasl {
+  margin-right: -0.02em;
+}
+
+.lasr {
+  margin-left: -0.05em;
+}
+
+.lapl {
+  margin: 0 0.02em;
+}
+
+.lapr {
+  margin: 0 0.02em;
+}
+
+.laeqni {
+  display: inline-block;
+}
+
+.laeqn {
+  text-align: center;
+  margin: 1em auto;
+}

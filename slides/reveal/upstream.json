@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/hakimel/reveal.js",
+  "version": "6.0.2",
+  "source": "https://github.com/hakimel/reveal.js/tree/6.0.2",
+  "archiveSha256": "441971008b214586af6feeb4d1125ece8f9f9a3803bad9069cdbfa0498576ccf",
+  "changes": [
+    "JavaScript source files renamed to TypeScript with temporary @ts-nocheck directives.",
+    "Public declarations moved to types.d.ts and constructor typing connected in index.ts.",
+    "Version constant kept locally instead of reading the upstream package.json.",
+    "PDF print controller and its engine integration removed; isPrintView returns false.",
+    "Stock dist/reveal.css copied directly; plugins and upstream build tooling omitted."
+  ]
+}

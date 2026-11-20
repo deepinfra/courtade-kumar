@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "gt";
+  src: url("gt300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gt";
+  src: url("gt300i.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "gt";
+  src: url("gt400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gt";
+  src: url("gt700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gt";
+  src: url("gt600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gt";
+  src: url("gt600i.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+}
