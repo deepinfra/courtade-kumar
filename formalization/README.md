@@ -1,8 +1,10 @@
 # Lean formalization of the latest manuscript
 
 **Status: the latest stronger main theorem is proved and has passed the full
-Lean build, exact completion challenge, and transitive axiom audit.** Additional
-paper-level statements and the continuous-threshold appendix are being completed.
+Lean build, exact completion challenge, and transitive axiom audit.** The
+continuous-threshold appendix and the literal finite-law auxiliary statements
+are also proved. The preliminary results are being extended to the manuscript's
+full arbitrary-observation scope.
 
 This project follows *On the most informative Boolean function under noise*,
 by Dimiter Kramer and Mert Saglam, at repository commit
@@ -58,7 +60,7 @@ passes**, with status `LATEST_MAIN_THEOREM_KERNEL_CHECKED`.
 Earlier partial checkpoints and failed intermediate gate records are retained
 as history; they are superseded by the successful `main-theorem` report.
 The report also keeps `all_paper_results_verified` false: the main theorem
-alone would not certify every appendix result.
+alone would not certify every auxiliary statement at its full stated scope.
 
 Reports are written to `verification/latest/` by default; `--output` selects
 a separate checkpoint. Each run invalidates any old result before checking,
@@ -78,6 +80,15 @@ three-bit scalar inequality, both information-gap estimates, and the final
 cube induction. The proof includes zero-mass fibres, zero information,
 degenerate outputs, base dimensions, and all noise endpoints.
 
+The `paper-checkpoint1` gate also includes the quantitative induction inequality
+with its nonnegative multiplier, the actual private-randomness comparison bit,
+the universal statement for every matching bit, and the literal three-bit
+information inequality. The continuous-threshold appendix now uses an actual
+Lebesgue probability measure on `[0,1]` and the actual resampling Markov kernel.
+Its information is evaluated from the posterior entropy integral; strictness,
+all equality cases, and invariance under independent extra observed coordinates
+are proved.
+
 The scalar rescaling proof uses finite geometric inequalities and an integral
 covariance comparison in place of the manuscript's hyperbolic-integral route.
 It proves the same actual infinite-series inequality, with all convergence
@@ -85,7 +96,13 @@ and endpoint obligations discharged.
 
 The finite probability layer makes all zero-mass conventions explicit. Its
 results cover the finite observations needed by the Boolean-cube theorem.
-They are not represented as proofs for arbitrary measurable observation spaces.
+`CK/PosteriorMeasure.lean` additionally proves the basic entropy, variance,
+Shannon/Tsallis and sharp bias bounds for arbitrary probability spaces and actual
+conditional expectations, with integrability derived from measurability and
+boundedness. `CK/FiniteKernel.lean` supplies measurable conditional finite laws
+over arbitrary observation spaces. The remaining conditional comparison,
+conditioning-gain, and general chain/data-processing bridges are tracked in
+the crosswalk; the finite-law versions are already proved.
 The continuous maximization statement in the introduction is a **conjecture**;
 formalizing the paper does not mean claiming that conjecture has been proved.
 
@@ -114,6 +131,11 @@ target is complete.
   the successful full main-theorem gate, including the unchanged input hashes.
 - [`verification/main-theorem/completion.log`](verification/main-theorem/completion.log):
   acceptance of the frozen exact target and its permitted transitive axioms.
+- [`verification/paper-checkpoint1/result.json`](verification/paper-checkpoint1/result.json):
+  the full gate including the additional paper statements and continuous model.
+- [`verification/independent_main/Audit.lean`](verification/independent_main/Audit.lean):
+  an independent raw finite-sum restatement of the main theorem, with enforced
+  transitive axiom checks and a successful fresh run recorded alongside it.
 - [`AGENTS.md`](AGENTS.md): the proof-development contract.
 
 The manuscript is not edited by this project. Changes live on a dedicated

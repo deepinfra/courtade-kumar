@@ -3,15 +3,26 @@
 ## Conclusion and scope
 
 The independently stated main target agrees with the stronger theorem in the
-November 20 manuscript. At the review update of 2026-11-23 02:14 UTC, the compiled theorem
-`Spec.latest_of_threeBit` reduces the exact complete main target to the single
-independently stated analytic proposition `Spec.ThreeBitTarget`. All finite-law
-comparison, sharp bias, conditional-channel, good-coordinate, base-case and
-dimension-induction dependencies have been discharged. The scalar prerequisite
-was still being completed at this checkpoint, so this update does **not** claim
-a closed proof of the main target. The current full-gate report must determine
-whether a subsequent run has discharged that prerequisite. Every-result
-completion remains distinct from main-theorem completion.
+November 20 manuscript. At the review update of 2026-11-23 02:22 UTC, the exact latest main theorem
+has passed the full completion gate. `CourtadeKumar.latestPaper` has type
+`Spec.LatestPaperTarget` with no scalar, probabilistic, or analytic premise.
+The full gate reports `LATEST_MAIN_THEOREM_KERNEL_CHECKED`, checks every
+project module in its recorded snapshot, and reports no changed input hashes
+or unexpected axioms. The scalar prerequisite has been proved as
+`Spec.threeBit` and supplied to the complete cube induction.
+
+An additional independent check restated the result directly in raw finite
+sums, with the indicator, product channel, entropy normalization, and both
+inequalities expanded rather than hidden behind `LatestPaperTarget`.
+`IndependentReview.rawFiniteSumTarget` compiled, and enforced transitive axiom
+checks for it, `latestPaper`, `threeBit`, and `classicalCourtadeKumar` all
+accepted exactly the permitted set. Evidence is in
+`verification/independent_main/Audit.lean`, `audit.log`, and `result.json`.
+
+This establishes the main theorem, not an automatic assertion that every
+auxiliary statement in the paper has been formalized in its most general
+wording. The continuous threshold and general-observation scope are tracked
+separately.
 
 This review concerns the manuscript at repository commit
 `45ad4866a41e04722f2cfcef4129a1050e59d3ca` and the new `formalization/` project.
@@ -46,10 +57,10 @@ The function output is deterministic. This agrees with the manuscript's
 main proof, whose one-coordinate base case lists constants, the coordinate,
 and its negation. Randomized comparison bits are represented by their BSC correlation parameter.
 The formal library now proves the parameter matching, profile information
-identities, conditional comparison, and correlation bound. A separate explicit
-probability-space realization of a comparison bit is not needed for the cube
-proof, but is relevant if every auxiliary lemma is required in the paper's
-random-variable wording.
+identities, conditional comparison, and correlation bound. The explicit probability-space realization has also been supplied in
+`RandomizedComparator.lean`: an independent-noise extension preserves the old
+marginal, gives the intended conditional channel, proves unbiasedness and
+information identities, and realizes the conditional comparison conclusions.
 
 ### Analytic subtargets
 
@@ -76,12 +87,12 @@ Jensen extension.
 | Sharp bias comparison | `shannonInformation_le_biasCoefficient` and `quadratic_mul_biasCoefficient` | Derived from the actual binary-divergence Taylor integral and sharp endpoint coefficient |
 | Profile comparison | `pointwiseComparison`, `comparisonMap_concave`, `binaryProfile_average_comparison` | Actual matching map and actual profile, with constant conditional bits included |
 | Conditional comparison | `conditional_comparison` | Literal conditional laws and Markov probability factorization; no information inequality supplied as a premise |
-| Induction step | `induction_step_of_threeBit` | Sole analytic prerequisite is the explicit `ThreeBitTarget`; all probability and bias bounds discharged |
+| Induction step | `induction_step_of_threeBit`, with proved `Spec.threeBit` supplied in the final theorem | Every analytic and probabilistic prerequisite is discharged in `latestPaper` |
 | Degenerate cases | `QI=0 ⇒ SI=0`, `v=0 ⇒ b=0`, direct `p=0,1` cases, direct correlation-zero case | These close the domains excluded by the nondegenerate scalar inequality |
-| Cube induction | `latest_of_threeBit : ThreeBitTarget → LatestPaperTarget` | Every finite-law assumption is discharged by the actual product law, with no extra hypotheses on the Boolean function |
-| Scalar analysis | All-index coefficient bounds, endpoint sums, tail rescaling and mean identities | Final Jensen/three-bit assembly was still in progress at this checkpoint |
-| Continuous threshold appendix | Exact scalar formula and derivative proof identified | Strict comparison, equality classification and continuous threshold semantics remain separate obligations |
-| Full theorem | Exact independent proposition and completion challenge | Main completion requires a proof of the scalar prerequisite and a fresh successful full gate |
+| Cube induction | `latest_of_threeBit`, instantiated by `Spec.threeBit` | No extra hypothesis on dimension, Boolean function, bias, or noise beyond the independent specification |
+| Scalar analysis | `Spec.threeBit : ThreeBitTarget`, with the tail series, rescaling, means and countable Jensen assembled | The strict comparison includes `σ=1`; the induction handles `σ=0` and noise endpoints separately |
+| Continuous threshold appendix | `ThresholdSeparation.lean` proves the exact scalar formula, actual derivatives/Taylor integral, strict separation and equality classification | Uniform-resampling conditional-kernel semantics are being supplied separately |
+| Full theorem | `CourtadeKumar.latestPaper : Spec.LatestPaperTarget` | Full main gate passed; independent expanded-sum statement and axiom audit also passed |
 
 Conditional algebra lemmas are useful progress, but should be reported with
 their premises. In particular, `classical_of_latest` is only the logical
@@ -224,23 +235,34 @@ mathlib precompiled artifacts. Mathlib was not independently rebuilt or
 replayed from source in this review. This review also does not certify future
 edits absent another fresh build, source check, and axiom audit.
 
-## 6. Concrete remaining frontier at this checkpoint
+## 6. Main verification evidence and remaining paper scope
 
-The main-theorem frontier is now the final scalar three-bit assembly. The
-comparison function and all finite-law induction connections described in the
-initial review have been completed and compiled. The comparison-map proof uses
-the decreasing derivative ratio `ρ L(ρt)/L(t)`, where
-`L(t)=log(1+t)−log(1−t)`. Its supporting-line proof covers the information
-endpoints without differentiating an inverse at those endpoints.
+The recorded main-theorem gate built `CKLatest` in 60.806 seconds, audited its
+project declarations in 6.294 seconds, and accepted the exact completion term
+in 3.634 seconds. Its snapshot includes 742 theorem declarations and 855 safe
+declarations; 206 unsafe compiler implementation artifacts were explicitly
+listed and excluded as roots. The source-module coverage, paper hashes,
+specification hashes and before/after source hashes all matched. These counts
+include generated and helper declarations; they do not count paper lemmas.
 
-After the scalar target is discharged, the exact main theorem should be built
-and audited through the unchanged completion gate. Separate all-paper tasks
-include the continuous threshold separation and equality classification,
-explicit probability-space realization of comparison bits if required in the
-paper's wording, and any intended extension from finite observations to the
-paper's unrestricted observed random variables. The continuous maximization
-conjecture must remain marked as a conjecture and excluded from proof claims.
+The independent raw finite-sum target check completed in 10.558 seconds and
+recorded unchanged source hashes for `Spec`, `Latest`, `CubeInduction`,
+`ScalarThreeBit` and its own audit source. Every checked target had only
+`propext`, `Classical.choice`, and `Quot.sound` as transitive axioms. Inspection
+of `Latest.lean` confirms that `Spec.latest_of_threeBit Spec.threeBit` supplies
+the actual scalar theorem, rather than assuming it.
 
-This document contains a chronological review update: future success must be
-supported by its own fresh result JSON and source hashes. It does not predict
-or certify the result of a future gate run.
+The comparison-map proof uses the decreasing derivative ratio
+`ρ L(ρt)/L(t)`, with `L(t)=log(1+t)−log(1−t)`. Supporting lines cover the
+information endpoints. The continuous-threshold scalar proof separately
+cancels the entropy singularities into a smooth logarithmic expression,
+proves its actual second derivative and Taylor integral on the closed noise
+interval, and deduces strict comparison and all stated equality cases.
+
+The explicit randomized comparison-bit realization has been compiled in
+`RandomizedComparator.lean`. At this review checkpoint the remaining scope
+checks concern the literal uniform-resampling threshold semantics and the
+extension of auxiliary observed-variable lemmas beyond finite laws. The
+continuous maximization conjecture remains excluded from proof claims.
+Subsequent full-gate snapshots must include newly promoted auxiliary files;
+the initial main gate should not be represented as having audited later edits.

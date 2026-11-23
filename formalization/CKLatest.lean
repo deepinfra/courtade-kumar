@@ -1,5 +1,6 @@
 import CK.BiasCoefficient
 import CK.BiasDivergence
+import CK.BinaryDivergenceBounds
 import CK.BinaryProfileSemantics
 import CK.Channel
 import CK.ChannelEndpoints
@@ -14,6 +15,7 @@ import CK.CubeSplit
 import CK.Disintegration
 import CK.Entropy
 import CK.EntropyChain
+import CK.FiniteKernel
 import CK.FiniteProbability
 import CK.GapAlgebra
 import CK.GapBounds
@@ -24,8 +26,12 @@ import CK.Latest
 import CK.MapLaws
 import CK.Markov
 import CK.Matching
+import CK.MatchingComparator
+import CK.PosteriorMeasure
 import CK.ProfileSeries
 import CK.ProfileWeights
+import CK.QuantitativeInduction
+import CK.RandomizedComparator
 import CK.ScalarAssembly
 import CK.ScalarCertificates
 import CK.ScalarCovariance
@@ -43,3 +49,7 @@ import CK.ScalarTails
 import CK.ScalarThreeBit
 import CK.Shannon
 import CK.Spec
+import CK.ThreeBitSemantics
+import CK.ThresholdModel
+import CK.ThresholdSeparation
+import CK.TsallisProperties
