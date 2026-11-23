@@ -1,0 +1,11 @@
+⚠ [2373/2388] Replayed CK.ScalarMeans
+warning: ././././CK/ScalarMeans.lean:229:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2374/2388] Replayed CK.ScalarEndpoints
+warning: ././././CK/ScalarEndpoints.lean:45:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././CK/ScalarEndpoints.lean:46:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [2386/2388] Built CK.ComparisonConcavity
+✔ [2387/2388] Built CKLatest
+Build completed successfully.

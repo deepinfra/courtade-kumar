@@ -1,0 +1,80 @@
+{
+  "timestamp_utc": "2026-11-23T01:52:25.392027+00:00",
+  "mode": "partial",
+  "status": "PARTIAL_KERNEL_CHECKED_FULL_TARGET_OPEN",
+  "latest_main_theorem_verified": false,
+  "all_paper_results_verified": false,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "steps": {
+    "lean_version": {
+      "command": [
+        "/workspace/scratch/dc873e97f1fc/lean-runtime/lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "returncode": 0,
+      "seconds": 0.62,
+      "log": "verification/checkpoint-1/lean-version.log"
+    },
+    "build": {
+      "command": [
+        "/workspace/scratch/dc873e97f1fc/lean-runtime/lake",
+        "build",
+        "CKLatest"
+      ],
+      "returncode": 0,
+      "seconds": 6.319,
+      "log": "verification/checkpoint-1/build.log"
+    },
+    "axioms": {
+      "command": [
+        "/workspace/scratch/dc873e97f1fc/lean-runtime/lake",
+        "env",
+        "lean",
+        "scripts/AxiomAudit.lean"
+      ],
+      "returncode": 0,
+      "seconds": 88.211,
+      "log": "verification/checkpoint-1/axioms.log"
+    },
+    "completion": {
+      "command": [
+        "/workspace/scratch/dc873e97f1fc/lean-runtime/lake",
+        "env",
+        "lean",
+        "scripts/CompletionGate.lean"
+      ],
+      "returncode": 1,
+      "seconds": 2.07,
+      "log": "verification/checkpoint-1/completion.log"
+    }
+  },
+  "paper_commit": "45ad4866a41e04722f2cfcef4129a1050e59d3ca",
+  "paper_hash_mismatches": [],
+  "specification_hash_mismatches": [],
+  "source_hashes": {
+    "CK/BiasCoefficient.lean": "c7f9d6cd57fb0f699395b6e2fab958d78f9b8193ccc8bf065b3aeba4f457063f",
+    "CK/Channel.lean": "e2cbf356febd44778bbd229f47bfbb8a2f97662dde185a5f89a053b99a75dffc",
+    "CK/Comparison.lean": "47048264e8344d0237c0e756dbe2135b5b1d4b5711315018656c786c5cc14289",
+    "CK/Conditioning.lean": "18b015e6ba7fa2e36a45e614f3e62860f7698093cad8a51d15ff5cab5dfd2220",
+    "CK/CubeCoordinate.lean": "f731ecf4bc44bcbc48c806f031e0a62c5531f619569078f8ffc23b694ae1ce26",
+    "CK/Entropy.lean": "c61d50650a30e7a68993d60d47b3db5eab670be7dba471522f1156445925e13b",
+    "CK/FiniteProbability.lean": "3d1467f478ebe9168dc330eaadaecc3fafab98d82b2494e4485e3d09a402b5e6",
+    "CK/GapAlgebra.lean": "48bf081af64f3aa55292c0d2c75615fc6a0984ed2989090f66c49e016708de98",
+    "CK/GoodCoordinate.lean": "32eb5b5c19bb4651993fc3cbee18233189929495cfdbe778f3b9103a3c3ad628",
+    "CK/ScalarCertificates.lean": "7ff3f4eab4940bac50094f256007a3f1a94c186acf67c85f4c2ccf496a23c572",
+    "CK/ScalarSeries.lean": "e1a850a21c477abd55b79615a6ad96cd0e295defb966c125ba199dee1ad5c093",
+    "CK/ScalarTails.lean": "bd3716f47c8a9f1f4cfc2e19dd8db88cb3f1d1cb2b060ea500a3525617fe3ba9",
+    "CK/Shannon.lean": "444e766d46c5ac46fa9a0c7e99c47a05046c0654847a9b86b86c46d12cafc266",
+    "CK/Spec.lean": "082eeb735bd1d381a9dd4a8ab57dda0714552cac0aa50cf8ff655259062d9f07",
+    "CKLatest.lean": "133ccf4604c77dee836d522765fc665ba7df4ec93d20d13ae4c959abb9185f7a"
+  },
+  "forbidden_tokens": [],
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "audited_theorem_count": 255
+}

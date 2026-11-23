@@ -1,0 +1,13 @@
+{
+  "purpose": "Frozen mathematical target, pinned compiler/dependency configuration, exact completion challenge, and reviewed verification implementation. Changes require explicit review and a documented reason.",
+  "sha256": {
+    "CK/Spec.lean": "082eeb735bd1d381a9dd4a8ab57dda0714552cac0aa50cf8ff655259062d9f07",
+    "lean-toolchain": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea",
+    "lakefile.toml": "0cf63cda2ee79535260a2d3b518a8ba52ba6aa44dd521550ea447275f2efbb3d",
+    "scripts/CompletionGate.lean": "d225191ef465f385c727a6c46e85f0b5557853ace285d901e72af96d27331c1d",
+    "scripts/AxiomAudit.lean": "7d35fcf3b8040475406d5d04670140a791bc4f88a7edc12a8b42120544da88e2",
+    "scripts/verify.py": "70cec30f5d3b54b5b2b935ad94a3813969c0967794feb93945075aa1728106e3",
+    "lake-manifest.json": "12e349eff3c48cacd8ff54318536cc1fb3a36108c0b79c8817bcf31a2922761e"
+  },
+  "bootstrap_note": "Verification hardening added module-provenance selection, private helper coverage, shared transitive traversal, recursive source hashing, fail-closed initial status, and before/after input equality. The mathematical specification and completion challenge are unchanged. Imported-module coverage is also checked against the recursive source inventory."
+}

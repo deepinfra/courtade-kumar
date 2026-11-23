@@ -1,0 +1,12 @@
+✔ [2380/2385] Built CK.ProfileWeights
+✔ [2381/2385] Built CK.EntropyChain
+⚠ [2382/2385] Built CK.ScalarMeans
+warning: ././././CK/ScalarMeans.lean:229:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2383/2385] Built CK.ScalarEndpoints
+warning: ././././CK/ScalarEndpoints.lean:45:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././CK/ScalarEndpoints.lean:46:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [2384/2385] Built CKLatest
+Build completed successfully.

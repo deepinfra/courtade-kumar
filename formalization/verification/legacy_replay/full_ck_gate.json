@@ -1,0 +1,12 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    "/workspace/scratch/dc873e97f1fc/ck-legacy-replay/lean-formalization/gate/lean/.lake/build/lib/lean/F2CompletionGate.olean",
+    "F2CompletionGate.lean"
+  ],
+  "returncode": 0,
+  "seconds": 3.783
+}
