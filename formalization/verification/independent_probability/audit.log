@@ -1,0 +1,24 @@
+'CourtadeKumar.Posterior.conditional_jensen_concave' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Posterior.conditional_pinsker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Posterior.posterior_sufficiency_of_markov' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Posterior.information_data_processing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Posterior.binary_information_data_processing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.KernelInformation.conditionalKernel_expect_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.KernelInformation.conditionalKernel_bit_unbiased' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CourtadeKumar.Threshold.progressiveEntropy_eq_kernelInformation_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CourtadeKumar.FiniteLaw.every_matching_comparator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.FiniteLaw.quantitative_induction_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.Posterior.conditional_jensen_concave
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.Posterior.conditional_pinsker
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.Posterior.posterior_sufficiency_of_markov
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.Posterior.information_data_processing
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.Posterior.binary_information_data_processing
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.KernelInformation.conditionalKernel_expect_ae
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.KernelInformation.conditionalKernel_bit_unbiased
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.Threshold.progressiveEntropy_eq_kernelInformation_iff
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.FiniteLaw.every_matching_comparator
+INDEPENDENT_PROBABILITY_AXIOMS_PASSED CourtadeKumar.FiniteLaw.quantitative_induction_step

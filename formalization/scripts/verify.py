@@ -93,6 +93,8 @@ def run(command: list[str], output: Path, timeout: int) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["partial", "full"], default="full")
+    parser.add_argument("--scope", choices=["main", "paper"], default="main",
+                        help="paper additionally requires reviewed coverage of every active named lemma")
     parser.add_argument("--lake", default=os.environ.get("CK_LAKE", "lake"))
     parser.add_argument("--timeout", type=int, default=1800)
     parser.add_argument("--output", default="verification/latest")
@@ -102,6 +104,7 @@ def main() -> int:
     result: dict = {
         "timestamp_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "mode": args.mode,
+        "scope": args.scope,
         "status": "NOT_VERIFIED",
         "latest_main_theorem_verified": False,
         "all_paper_results_verified": False,
@@ -140,10 +143,12 @@ def main() -> int:
                 if changed:
                     status, code = "INPUT_CHANGED_DURING_RUN", 1
                     result["latest_main_theorem_verified"] = False
+                    result["all_paper_results_verified"] = False
             except (OSError, ValueError) as exc:
                 result["final_snapshot_error"] = str(exc)
                 status, code = "INPUT_CHANGED_DURING_RUN", 1
                 result["latest_main_theorem_verified"] = False
+                result["all_paper_results_verified"] = False
         result["status"] = status
         write_report()
         print(json.dumps({"status": status, "report": str(report),
@@ -239,6 +244,44 @@ def main() -> int:
         output / "completion.log", args.timeout)
     if result["steps"]["completion"]["returncode"] == 0:
         result["latest_main_theorem_verified"] = True
+        if args.scope == "paper":
+            obligations = json.loads((ROOT / "paper-obligations.json").read_text())
+            items = obligations["obligations"]
+            ids = [item["id"] for item in items]
+            if not items or len(ids) != len(set(ids)):
+                return save("PAPER_OBLIGATION_LEDGER_INVALID", 1)
+            active_labels: set[str] = set()
+            for name in paper_files:
+                if not name.endswith(".tex"):
+                    continue
+                source = (REPO / name).read_text()
+                source = re.sub(r"\\iffalse\b.*?\\fi\b", "", source, flags=re.S)
+                source = re.sub(r"(?<!\\)%[^\n]*", "", source)
+                for _, body in re.findall(
+                        r"\\begin\{(theorem|lemma|proposition|corollary)\}"
+                        r"(?:\[[^\]]*\])?(.*?)\\end\{\1\}", source, flags=re.S):
+                    label = re.search(r"\\label\{([^}]+)\}", body)
+                    if label:
+                        active_labels.add(label.group(1))
+            result["active_paper_theorem_labels"] = sorted(active_labels)
+            result["uncovered_paper_labels"] = sorted(active_labels - set(ids))
+            result["open_paper_obligations"] = [item["id"] for item in items
+                                                  if item.get("status") != "proved"]
+            required_roots = sorted({root for item in items for root in item["proof_roots"]})
+            result["required_paper_proof_roots"] = required_roots
+            result["unaudited_paper_roots"] = sorted(set(required_roots) - set(audited_names))
+            result["paper_scope_review_complete"] = obligations.get("scope_review_complete") is True
+            if (not required_roots or any(not item["proof_roots"] for item in items)
+                    or result["uncovered_paper_labels"] or result["open_paper_obligations"]
+                    or result["unaudited_paper_roots"] or not result["paper_scope_review_complete"]):
+                return save("MAIN_CHECKED_PAPER_SCOPE_INCOMPLETE", 2)
+            result["steps"]["paper_completion"] = run(
+                [args.lake, "env", "lean", "scripts/PaperCompletionGate.lean"],
+                output / "paper-completion.log", args.timeout)
+            if result["steps"]["paper_completion"]["returncode"] != 0:
+                return save("PAPER_COMPLETION_CHALLENGE_FAILED", 1)
+            result["all_paper_results_verified"] = True
+            return save("ALL_ACTIVE_PAPER_RESULTS_KERNEL_CHECKED", 0)
         return save("LATEST_MAIN_THEOREM_KERNEL_CHECKED", 0)
     return save("PARTIAL_KERNEL_CHECKED_FULL_TARGET_OPEN", 0 if args.mode == "partial" else 2)
 

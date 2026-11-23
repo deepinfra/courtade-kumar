@@ -6,8 +6,11 @@
     "lakefile.toml": "0cf63cda2ee79535260a2d3b518a8ba52ba6aa44dd521550ea447275f2efbb3d",
     "scripts/CompletionGate.lean": "d225191ef465f385c727a6c46e85f0b5557853ace285d901e72af96d27331c1d",
     "scripts/AxiomAudit.lean": "7d35fcf3b8040475406d5d04670140a791bc4f88a7edc12a8b42120544da88e2",
-    "scripts/verify.py": "70cec30f5d3b54b5b2b935ad94a3813969c0967794feb93945075aa1728106e3",
-    "lake-manifest.json": "12e349eff3c48cacd8ff54318536cc1fb3a36108c0b79c8817bcf31a2922761e"
+    "scripts/verify.py": "0ad99e837e62b21dbaa46e103be70e7827e3be06b621ae66010071de4c8c9a1d",
+    "lake-manifest.json": "12e349eff3c48cacd8ff54318536cc1fb3a36108c0b79c8817bcf31a2922761e",
+    "scripts/PaperCompletionGate.lean": "0fea005d88863c416ccd805566d4ac11f389d800b308d737724c53c922702b8d",
+    "paper-obligations.json": "83da61e2828038da8b309a4b04848c2a0cd4dedadec48beb8c2b477eaa20c34e"
   },
-  "bootstrap_note": "Verification hardening added module-provenance selection, private helper coverage, shared transitive traversal, recursive source hashing, fail-closed initial status, and before/after input equality. The mathematical specification and completion challenge are unchanged. Imported-module coverage is also checked against the recursive source inventory."
+  "bootstrap_note": "Verification hardening added module-provenance selection, private helper coverage, shared transitive traversal, recursive source hashing, fail-closed initial status, and before/after input equality. The mathematical specification and completion challenge are unchanged. Imported-module coverage is also checked against the recursive source inventory.",
+  "paper_scope_review_note": "Added optional --scope paper without changing CK/Spec.lean or scripts/CompletionGate.lean. The reviewed ledger and additional exact statement challenges are hash-pinned and participate in before/after snapshots. Paper mode requires every active named manuscript label and every declared proof root to be covered by the successful full transitive theorem audit, then checks the exact additional targets. Reviewed by separate probability and scalar workstreams."
 }

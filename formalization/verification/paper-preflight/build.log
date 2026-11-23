@@ -1,0 +1,83 @@
+ℹ [2365/2521] Replayed CK.BiasDivergence
+info: ././././CK/BiasDivergence.lean:104:2: Try this: ring_nf
+⚠ [2377/2521] Replayed CK.ScalarMeans
+warning: ././././CK/ScalarMeans.lean:229:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2378/2521] Replayed CK.ScalarEndpoints
+warning: ././././CK/ScalarEndpoints.lean:45:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././CK/ScalarEndpoints.lean:46:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [2389/2521] Replayed CK.ChannelEndpoints
+info: ././././CK/ChannelEndpoints.lean:180:45: Try this: ring_nf
+info: ././././CK/ChannelEndpoints.lean:180:45: Try this: ring_nf
+warning: ././././CK/ChannelEndpoints.lean:180:41: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2477/2521] Replayed CK.ConditionalKernel
+warning: ././././CK/ConditionalKernel.lean:29:4: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././CK/ConditionalKernel.lean:53:0: automatically included section variable(s) unused in theorem 'CourtadeKumar.KernelInformation.integrable_finite_observable':
+  [StandardBorelSpace Γ]
+  [Nonempty Γ]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [StandardBorelSpace Γ] [Nonempty Γ] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2487/2521] Replayed CK.RandomizedComparator
+warning: ././././CK/RandomizedComparator.lean:188:34: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: ././././CK/RandomizedComparator.lean:201:4: Try this: ring_nf
+⚠ [2490/2521] Replayed CK.PosteriorMeasure
+warning: ././././CK/PosteriorMeasure.lean:129:8: automatically included section variable(s) unused in theorem '_private.CK.PosteriorMeasure.0.CourtadeKumar.Posterior.natural_entropy_gap':
+  [IsProbabilityMeasure ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [IsProbabilityMeasure ν] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2491/2521] Replayed CK.KernelConditioning
+warning: ././././CK/KernelConditioning.lean:13:0: automatically included section variable(s) unused in theorem 'CourtadeKumar.KernelInformation.integral_cauchy_div':
+  [IsProbabilityMeasure ν]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [IsProbabilityMeasure ν] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2495/2521] Replayed CK.ScalarJensen
+warning: ././././CK/ScalarJensen.lean:49:13: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+info: ././././CK/ScalarJensen.lean:107:6: Try this: ring_nf
+warning: ././././CK/ScalarJensen.lean:112:13: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+info: ././././CK/ScalarJensen.lean:137:2: Try this: ring_nf
+⚠ [2496/2521] Replayed CK.ScalarIntegral
+warning: ././././CK/ScalarIntegral.lean:35:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2499/2521] Replayed CK.ScalarRescaling
+warning: ././././CK/ScalarRescaling.lean:201:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: ././././CK/ScalarRescaling.lean:203:45: unused variable `hj`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././CK/ScalarRescaling.lean:213:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2500/2521] Replayed CK.ScalarGaps
+warning: ././././CK/ScalarGaps.lean:22:8: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+⚠ [2501/2521] Replayed CK.ScalarSecondGap
+warning: ././././CK/ScalarSecondGap.lean:29:8: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+warning: ././././CK/ScalarSecondGap.lean:72:15: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+⚠ [2509/2521] Replayed CK.ObservationConditioning
+warning: ././././CK/ObservationConditioning.lean:23:8: automatically included section variable(s) unused in theorem '_private.CK.ObservationConditioning.0.CourtadeKumar.KernelInformation.finiteLaw_eq_of_mass':
+  [MeasurableSpace Γ]
+  [MeasurableSingletonClass Γ]
+  [StandardBorelSpace Γ]
+  [Nonempty Γ]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Γ] [MeasurableSingletonClass Γ] [StandardBorelSpace Γ] [Nonempty Γ] in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2512/2521] Replayed CK.PosteriorMarkov
+warning: ././././CK/PosteriorMarkov.lean:30:8: automatically included section variable(s) unused in theorem '_private.CK.PosteriorMarkov.0.CourtadeKumar.Posterior.join_generate_intersections':
+  m₀
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit m₀ in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ././././CK/PosteriorMarkov.lean:44:8: automatically included section variable(s) unused in theorem '_private.CK.PosteriorMarkov.0.CourtadeKumar.Posterior.piSystem_intersections':
+  m₀
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit m₀ in theorem ...
+note: this linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [2519/2521] Built CK.ThreeBitRestatement
+✔ [2520/2521] Built CKLatest
+Build completed successfully.

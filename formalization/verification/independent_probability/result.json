@@ -1,0 +1,22 @@
+{
+  "status": "PRINCIPAL_GENERAL_PROBABILITY_AXIOMS_CHECKED",
+  "timestamp_utc": "2026-11-23T02:38:16.131575+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 17.017,
+  "source_hashes": {
+    "CK/PosteriorMeasure.lean": "d0ea365b2703f706133dd9f565e22849a705049701d5984e20d8a0547916cf56",
+    "CK/PosteriorChain.lean": "7f206976df75a359abaee8d6ecac864a647c59bd88d1b28b9b1cfec27d84d5da",
+    "CK/PosteriorMarkov.lean": "b48941c050e6075be9f1f5bfae4ebd6d6fd597f5dea0ffd1e4b07b2982044d42",
+    "CK/ConditionalKernel.lean": "3ddb49c8c6e1c25f24375268012dce7a788b3f69d1fe54524f25e247efac527f",
+    "CK/FiniteKernel.lean": "198ca1912407d99b45b861c6787a4de7d9cae4c64fce3013b5343a9ee9bdf7f0",
+    "CK/ThresholdModel.lean": "bfcc09d6bf3343e4b816350921a4b2fd234d956a0f2b29aa1026737c465ea2bf",
+    "CK/ThresholdSeparation.lean": "f92d3b1eee82bba2f5b495747c33dfdacb5a9d438fb01d4d2d6c9cbce6456c17",
+    "CK/MatchingComparator.lean": "2c7b8178d5b7dda2288ca469c3bd8e24b3a0836d1479248a3cf2636a83940020",
+    "CK/RandomizedComparator.lean": "2f8f7dfad134feb1b19d1c769042df22af709e105daf2080df17d92e2795013c",
+    "CK/QuantitativeInduction.lean": "601e1bc295e33ccc34397ac8cb472818bdfa14e7232a4a6dfaf77e3072dfd804",
+    "verification/independent_probability/Audit.lean": "8d62b17269fdb2585ec1d5db1fd05bb7c0494d32c732b13b604519221d635c6e"
+  },
+  "changed_source_hashes": [],
+  "audit_roots": 10,
+  "all_paper_results_verified": false
+}

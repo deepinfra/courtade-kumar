@@ -7,6 +7,8 @@ import CK.ChannelEndpoints
 import CK.Comparison
 import CK.ComparisonAveraging
 import CK.ComparisonConcavity
+import CK.ComparisonMeasure
+import CK.ConditionalKernel
 import CK.Conditioning
 import CK.CubeCoordinate
 import CK.CubeInduction
@@ -15,6 +17,7 @@ import CK.CubeSplit
 import CK.Disintegration
 import CK.Entropy
 import CK.EntropyChain
+import CK.EntropyEquality
 import CK.FiniteKernel
 import CK.FiniteProbability
 import CK.GapAlgebra
@@ -22,11 +25,21 @@ import CK.GapBounds
 import CK.GoodCoordinate
 import CK.InductionStep
 import CK.InformationChain
+import CK.KernelComparison
+import CK.KernelConditioning
+import CK.KernelInformationBasic
+import CK.KernelInformationChain
+import CK.KernelMatchingComparator
+import CK.KernelRandomization
 import CK.Latest
 import CK.MapLaws
 import CK.Markov
 import CK.Matching
 import CK.MatchingComparator
+import CK.ObservationComparison
+import CK.ObservationConditioning
+import CK.PosteriorChain
+import CK.PosteriorMarkov
 import CK.PosteriorMeasure
 import CK.ProfileSeries
 import CK.ProfileWeights
@@ -49,6 +62,7 @@ import CK.ScalarTails
 import CK.ScalarThreeBit
 import CK.Shannon
 import CK.Spec
+import CK.ThreeBitRestatement
 import CK.ThreeBitSemantics
 import CK.ThresholdModel
 import CK.ThresholdSeparation

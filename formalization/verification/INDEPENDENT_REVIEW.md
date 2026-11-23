@@ -22,7 +22,9 @@ accepted exactly the permitted set. Evidence is in
 This establishes the main theorem, not an automatic assertion that every
 auxiliary statement in the paper has been formalized in its most general
 wording. The continuous threshold and general-observation scope are tracked
-separately.
+separately. The auxiliary update below records the additional checked work
+through 2026-11-23 02:40 UTC; it does not retroactively add those modules to the
+earlier main-theorem snapshot.
 
 This review concerns the manuscript at repository commit
 `45ad4866a41e04722f2cfcef4129a1050e59d3ca` and the new `formalization/` project.
@@ -83,7 +85,7 @@ Jensen extension.
 | Product binary symmetric channel | `jointLaw`, exact information/specification bridge, coordinate product factorization, conditional restrictions | Literal finite product-channel model, including zero channel probabilities |
 | `Q(C) ≤ Ip` | `progressiveBound_le_capacity`, full probability/noise interval | Complete right-hand inequality |
 | Good-coordinate lemma | `good_coordinate` and `jointLaw_good_coordinate` | Actual independent uniform cube coordinates; dimensions 0 and 1 use separate exact bases |
-| Quadratic and Shannon information | Null-safe finite laws, chain rules, symmetry, covariance, independence criterion, conditioning gain | Finite observations suffice for the main theorem; arbitrary measurable observations remain a wider scope |
+| Quadratic and Shannon information | Null-safe finite laws; `PosteriorMeasure`, `PosteriorChain`, and `PosteriorMarkov` extend entropy bounds, chains, conditional Pinsker and data processing to actual conditional expectations | Arbitrary probability spaces and observation sigma-algebras are covered by the event-factorization form; the direct mathlib `CondIndepFun` wrapper inherits its standard-Borel source assumption |
 | Sharp bias comparison | `shannonInformation_le_biasCoefficient` and `quadratic_mul_biasCoefficient` | Derived from the actual binary-divergence Taylor integral and sharp endpoint coefficient |
 | Profile comparison | `pointwiseComparison`, `comparisonMap_concave`, `binaryProfile_average_comparison` | Actual matching map and actual profile, with constant conditional bits included |
 | Conditional comparison | `conditional_comparison` | Literal conditional laws and Markov probability factorization; no information inequality supplied as a premise |
@@ -91,7 +93,7 @@ Jensen extension.
 | Degenerate cases | `QI=0 ⇒ SI=0`, `v=0 ⇒ b=0`, direct `p=0,1` cases, direct correlation-zero case | These close the domains excluded by the nondegenerate scalar inequality |
 | Cube induction | `latest_of_threeBit`, instantiated by `Spec.threeBit` | No extra hypothesis on dimension, Boolean function, bias, or noise beyond the independent specification |
 | Scalar analysis | `Spec.threeBit : ThreeBitTarget`, with the tail series, rescaling, means and countable Jensen assembled | The strict comparison includes `σ=1`; the induction handles `σ=0` and noise endpoints separately |
-| Continuous threshold appendix | `ThresholdSeparation.lean` proves the exact scalar formula, actual derivatives/Taylor integral, strict separation and equality classification | Uniform-resampling conditional-kernel semantics are being supplied separately |
+| Continuous threshold appendix | `ThresholdSeparation.lean` proves the exact scalar formula, actual derivatives/Taylor integral, strict separation and equality classification; `ThresholdModel.lean` supplies the actual uniform-resampling kernel and entropy integral | Includes arbitrary additional independent observed coordinates; the continuous optimization conjecture remains excluded |
 | Full theorem | `CourtadeKumar.latestPaper : Spec.LatestPaperTarget` | Full main gate passed; independent expanded-sum statement and axiom audit also passed |
 
 Conditional algebra lemmas are useful progress, but should be reported with
@@ -260,9 +262,129 @@ proves its actual second derivative and Taylor integral on the closed noise
 interval, and deduces strict comparison and all stated equality cases.
 
 The explicit randomized comparison-bit realization has been compiled in
-`RandomizedComparator.lean`. At this review checkpoint the remaining scope
-checks concern the literal uniform-resampling threshold semantics and the
-extension of auxiliary observed-variable lemmas beyond finite laws. The
-continuous maximization conjecture remains excluded from proof claims.
+`RandomizedComparator.lean`. At the earlier main-gate checkpoint the remaining
+scope checks concerned the literal uniform-resampling threshold semantics and
+the extension of auxiliary observed-variable lemmas beyond finite laws. Those
+subsequent developments are reviewed below. The continuous maximization
+conjecture remains excluded from proof claims.
 Subsequent full-gate snapshots must include newly promoted auxiliary files;
 the initial main gate should not be represented as having audited later edits.
+
+## 7. Auxiliary scope review through 02:40 UTC
+
+The actual continuous threshold model is now supplied. `uniformUnit` is
+Lebesgue measure restricted to `[0,1]`, proved to be a probability measure.
+`resamplingKernel` is the mixture `ρ δ_x + (1−ρ) uniformUnit`. The threshold
+posterior is its actual mass of `(-∞,μ]`, its mean and entropy integral are
+evaluated, and `kernelInformation_eq` identifies the scalar information used
+in the calculus proof. The inequality, strict interior comparison, complete
+equality classification, and closed-noise endpoint identities therefore hold
+for this literal continuous resampling model. The product-observation wrapper
+proves that adding independent observed coordinates leaves the information
+unchanged.
+
+The quantitative induction theorem supplies `∃ λ ≥ 0, Δ/(1+λ) ≤ g` without
+assuming `Δ≥0`. Its endpoint and zero-information branches choose a concrete
+valid multiplier, and the nondegenerate branch supplies the paper's multiplier
+from proved bounds. The scalar prerequisite is the proved `Spec.threeBit`.
+This establishes the literal quantitative claim in addition to the implication
+`Δ≥0 → g≥0` used to close the main induction.
+
+The randomized comparison construction preserves the original finite marginal
+and uses independent bit noise. `MatchingComparator.every_matching_comparator`
+also proves the manuscript's universal clause. The requirement that the signed
+conditional `A–B` correlation equal its unconditional value is faithful to
+joint independence of `(A,B)` and `U`: with unbiased conditional marginals,
+that correlation determines all four joint cell probabilities. A fixed absolute
+correlation alone would allow signs to cancel across observations and would
+not justify the same unconditional comparator. The arbitrary-observation
+construction uses the same fixed-channel principle with measurable finite
+kernels and almost-everywhere hypotheses.
+
+`PosteriorMeasure` proves posterior bounds, the variance identity, Shannon and
+quadratic comparisons, and the sharp bias bound on arbitrary probability
+spaces. `PosteriorChain` defines conditional entropy using actual conditional
+expectation, proves chain rules on joined sigma-algebras, proves conditional
+Jensen by disintegrating the real posterior, and derives conditional Pinsker,
+nonnegativity, the upper entropy bound, the unbiased reverse bound, and the
+squared posterior-update identity. These statements have no finite observation
+or finite-support assumption.
+
+`PosteriorMarkov` derives posterior sufficiency from conditional factorization
+against every measurable event of the last observation. Its pi-system proof
+extends equality of set integrals from intersections to the full joined
+sigma-algebra, after which uniqueness of conditional expectation applies.
+Both Shannon and quadratic data processing follow. The hypothesis is the
+conditional-independence event criterion for a binary input; neither posterior
+sufficiency nor an information inequality is supplied as a premise. A direct
+wrapper from mathlib's `CondIndepFun` is also proved. Mathlib places a
+standard-Borel assumption on the original space in that definition; the
+underlying event-factorization theorem has no such assumption.
+
+`ConditionalKernel` constructs a genuine finite conditional law from
+`condDistrib`. Every finite moment is identified with its actual conditional
+expectation. Averaging conditional laws recovers the original observable
+integral, and genuine independence makes the conditional observable moments
+constant almost everywhere. `ObservationComparison` derives the required
+fixed conditional channel from actual joint independence, and its four-cell
+conditional-probability equations express private randomness given `(B,U)`
+without assuming an information comparison. The finite conditional laws then
+satisfy the Markov factorization needed by the comparison proof.
+
+`ThreeBitRestatement.three_bit_information_restated` additionally includes
+zero first-channel correlation and uses the literal conditional-information
+numerator and conditional-quadratic-entropy denominator in the later
+restatement. Its `q=0` case is proved directly; its positive case follows from
+the strict actual three-bit theorem.
+
+An independent transitive audit of ten principal auxiliary declarations passed
+in 17.017 seconds at 02:38:16 UTC, with unchanged recorded source hashes and
+only `propext`, `Classical.choice`, and `Quot.sound`. Evidence is in
+`verification/independent_probability/`. It covers conditional Jensen,
+conditional Pinsker, both data-processing APIs, the actual conditional-kernel
+bridge, threshold equality classification, the universal finite comparator,
+and the quantitative induction theorem. That ten-root snapshot predates the
+later restatement and later arbitrary-observation wrappers, which must appear
+in the final full gate.
+
+## 8. Frozen paper-wide gate review
+
+The reviewed `--scope paper` path preserves the independent main target and
+requires a reviewed obligation ledger, every referenced proof root among the
+audited theorem declarations, no open obligations, coverage of active named
+theorem/lemma labels, and additional exact statement challenges. It scans every
+manifested TeX file, removes the inactive `iffalse` block, and finds labels
+inside the named theorem environments. For this frozen manuscript there are
+15 active named theorem/lemma labels. The two inactive lemmas and the explicit
+continuous optimization conjecture are correctly excluded. The later
+three-bit restatement is additionally represented in the ledger.
+
+The obligation ledger and `scripts/PaperCompletionGate.lean` are now included
+in the trusted manifest and therefore in the before/after hash check. The extra
+challenge includes exact arbitrary-observation conditional Pinsker, conditional
+chain, data processing, and actual conditional-law comparator statements, in
+addition to main/scalar/threshold challenges. The original main-theorem
+success remains a separate status. A missing proof root, a source change during
+the run, an undeclared axiom, or a failed exact challenge prevents paper-wide
+success.
+
+The checked ledger contains 17 obligations and 54 distinct required proof
+roots, covering the 15 active named results and the two additional series
+reductions. The source-to-statement review checks the actual hypotheses,
+normalization, parameter domains, null cases, and quantifiers; theorem-name
+presence alone would not establish that correspondence. The paper-wide scope
+is all active named theorem and lemma conclusions, plus the listed series
+reductions. It permits alternate proofs of the same conclusions and does not
+claim that every displayed intermediate calculation follows the manuscript's
+identical derivation.
+
+The final frozen full paper gate has now passed with status
+`ALL_ACTIVE_PAPER_RESULTS_KERNEL_CHECKED`; both the main-theorem and paper-wide
+verification flags are true. `verification/final-paper/result.json` records
+69 `CK` modules, 1,016 audited theorem declarations, 1,173 safe declarations,
+and 223 explicitly excluded compiler implementation artifacts. All 54 required
+proof roots were audited, all 15 active named theorem/lemma labels were covered,
+every exact completion challenge passed, and no input hash changed during the
+run. This supports completion of the reviewed paper-wide scope stated above.
+The pinned Lean compiler and official mathlib precompiled artifacts remain
+within the stated trust boundary.
