@@ -1,0 +1,11 @@
+{
+  "returncode": 0,
+  "seconds": 4.044,
+  "roots_source": "ExtendedAxiomAudit.lean",
+  "roots_source_sha256": "f48920c56f015d9def67d4f15359d2dfec1a46a9d9804fa86f69b692c3edda06",
+  "audit_source_sha256": "9502978e8ce7def5cbd4e7c72d1036cecd888afa881b10a9fd5bdb00a9b8940c",
+  "method": "Standard Lean.CollectAxioms.collect with one shared visited-state across exactly the 611 frozen audit commands (606 distinct names); establishes per-root permitted-axiom upper bound, not minimal per-root axiom lists.",
+  "literal_repeated_collection_run": "COMPLETED with exit 0 in 273.315 seconds before attempted interruption",
+  "audit_root_commands": 611,
+  "distinct_root_names": 606
+}

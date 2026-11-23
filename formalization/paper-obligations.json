@@ -1,0 +1,195 @@
+{
+  "scope": "All active named theorem/lemma conclusions of the pinned manuscript, plus the main scalar series reductions. Alternate proofs of the same claims are permitted; this is not a claim that every displayed intermediate calculation follows the identical route.",
+  "scope_review_complete": true,
+  "review_note": "Two separate source-to-statement reviews confirmed all 15 active named theorem/lemma labels at their stated scope. See PAPER_CROSSWALK.md and verification/PAPER_SCOPE_REVIEW.md. Correspondence is explicitly reviewed; the gate does not claim automatic TeX-to-Lean equivalence.",
+  "excluded": [
+    {
+      "label": "conj:continuous",
+      "reason": "Explicit conjecture, not a claimed theorem."
+    },
+    {
+      "labels": [
+        "lem:quad-pythagoras",
+        "lem:quad-properties"
+      ],
+      "reason": "Inactive source inside the manuscript iff false block."
+    }
+  ],
+  "obligations": [
+    {
+      "id": "thm:ck+",
+      "description": "Exact stronger Boolean-cube theorem, every n and p in [0,1].",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.latestPaper",
+        "CourtadeKumar.classicalCourtadeKumar"
+      ]
+    },
+    {
+      "id": "lem:ck+to_ck",
+      "description": "The progressive cap for every bit mean and closed noise interval.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.progressiveEntropy_le_noiseInformation",
+        "CourtadeKumar.Spec.progressiveBound_le_capacity"
+      ]
+    },
+    {
+      "id": "lem:good-coordinate",
+      "description": "The actual uniform Boolean cube and a coordinate with quadratic information at most 1/4.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Spec.good_coordinate"
+      ]
+    },
+    {
+      "id": "lem:ind-step",
+      "description": "Literal quantitative multiplier witness; no assumption that the conditional gap is nonnegative.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.FiniteLaw.quantitative_induction_step",
+        "CourtadeKumar.Spec.cube_induction_step_of_threeBit"
+      ]
+    },
+    {
+      "id": "lem:comparison",
+      "description": "Existence and every-matching-bit clauses, arbitrary measurable observations and genuine conditional probability laws.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.KernelInformation.FiniteKernel.conditional_comparison_realized",
+        "CourtadeKumar.KernelInformation.FiniteKernel.every_matching_comparator",
+        "CourtadeKumar.KernelInformation.observation_comparison_realized"
+      ]
+    },
+    {
+      "id": "lem:comparison-correlation",
+      "description": "Correlation bound for every matching comparator under arbitrary measurable observation laws.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.KernelInformation.FiniteKernel.every_matching_comparator",
+        "CourtadeKumar.KernelInformation.FiniteKernel.conditional_comparison"
+      ]
+    },
+    {
+      "id": "lem:conditioning-gain",
+      "description": "Actual arbitrary-observation conditioning gain from independence and genuine conditional distributions.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.KernelInformation.FiniteKernel.conditioning_gain",
+        "CourtadeKumar.KernelInformation.conditioning_gain_of_independent"
+      ]
+    },
+    {
+      "id": "lem:gap-first",
+      "description": "First actual information-gap estimate, with matching/comparison supplied by proved comparison theorems.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.FiniteLaw.gap_first_of_comparison",
+        "CourtadeKumar.FiniteLaw.conditioning_gain_joint",
+        "CourtadeKumar.FiniteLaw.conditional_comparison"
+      ]
+    },
+    {
+      "id": "lem:gap-second",
+      "description": "Second actual information-gap estimate, with bias and matching supplied by proved comparison theorems.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.FiniteLaw.gap_second_of_comparison_and_bias",
+        "CourtadeKumar.FiniteLaw.shannonInformation_le_biasCoefficient",
+        "CourtadeKumar.FiniteLaw.conditional_comparison"
+      ]
+    },
+    {
+      "id": "lem:three-bit",
+      "description": "The exact strict scalar theorem and the literal actual three-unbiased-bit information form.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Spec.threeBit",
+        "CourtadeKumar.FiniteLaw.three_bit_information",
+        "CourtadeKumar.FiniteLaw.three_bit_information_restated"
+      ]
+    },
+    {
+      "id": "lem:tsallis-properties",
+      "description": "All six clauses; arbitrary measurable observations for conditioning, chain, data processing and Shannon comparisons.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Posterior.conditional_entropy_sandwich",
+        "CourtadeKumar.Posterior.informationGiven_bounds",
+        "CourtadeKumar.Posterior.quadraticInformationGiven_le_entropy",
+        "CourtadeKumar.Posterior.conditional_quadratic_chain",
+        "CourtadeKumar.Posterior.information_data_processing",
+        "CourtadeKumar.Posterior.conditional_pinsker",
+        "CourtadeKumar.Posterior.informationGiven_unbiased",
+        "CourtadeKumar.FiniteLaw.binary_quadratic_symmetry",
+        "CourtadeKumar.FiniteLaw.quadraticInformation_eq_bitCorrelation",
+        "CourtadeKumar.KernelInformation.quadratic_conditioning_of_independent",
+        "CourtadeKumar.noiseGap_bounds"
+      ]
+    },
+    {
+      "id": "lem:biased-comparison",
+      "description": "Sharp biased bound for actual conditional expectations on arbitrary probability spaces, and entropy-times-coefficient bound.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Posterior.conditional_information_bias_bound",
+        "CourtadeKumar.quadratic_mul_biasCoefficient"
+      ]
+    },
+    {
+      "id": "lem:binary-divergence-comparison",
+      "description": "Conventional Bernoulli KL formula and both exact base-two bounds.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.binaryDivergenceNats_eq_kl",
+        "CourtadeKumar.binaryDivergenceBits_bounds"
+      ]
+    },
+    {
+      "id": "lem:ck+vscontinuous",
+      "description": "Actual uniform Lebesgue resampling kernel; inequality, strictness, all equality cases and independent extra coordinates.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Threshold.progressiveEntropy_le_kernelInformation",
+        "CourtadeKumar.Threshold.progressiveEntropy_lt_kernelInformation",
+        "CourtadeKumar.Threshold.progressiveEntropy_eq_kernelInformation_iff",
+        "CourtadeKumar.Threshold.progressiveEntropy_eq_kernelInformation_endpoints",
+        "CourtadeKumar.Threshold.kernelInformationWithObservation_eq"
+      ]
+    },
+    {
+      "id": "lem:comparison-calculus",
+      "description": "Actual increasing concave comparison map, pointwise domination and correlation lower profile.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Spec.comparisonMap_concave",
+        "CourtadeKumar.Spec.comparisonMap_monotone",
+        "CourtadeKumar.Spec.comparisonMap_divergence",
+        "CourtadeKumar.Spec.pointwiseComparison",
+        "CourtadeKumar.Spec.binaryProfile_closed_domain"
+      ]
+    },
+    {
+      "id": "eq:binary-divergence-series",
+      "description": "Convergent actual series on the full closed interval; sharp equality classification.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Spec.hasSum_divergence_closed",
+        "CourtadeKumar.Spec.divergence_eq_square_iff",
+        "CourtadeKumar.quadraticEntropy_eq_entropyBits_iff"
+      ]
+    },
+    {
+      "id": "eq:scalar-rescaled-order",
+      "description": "Actual infinite tails for every positive index and the complete common-exponent argument.",
+      "status": "proved",
+      "proof_roots": [
+        "CourtadeKumar.Scalar.tail_rescaling",
+        "CourtadeKumar.Scalar.means_order",
+        "CourtadeKumar.Scalar.first_gap_jensen",
+        "CourtadeKumar.Scalar.second_gap_jensen",
+        "CourtadeKumar.Scalar.tail_series_barrier"
+      ]
+    }
+  ]
+}

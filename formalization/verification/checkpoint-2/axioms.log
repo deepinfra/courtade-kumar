@@ -1,0 +1,765 @@
+CK_THEOREM CourtadeKumar.FiniteLaw.binary_quadratic_symmetry TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.a_succ_difference TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Function.update._at.CourtadeKumar.Spec.flipCoordinate._elambda_1._spec_2
+CK_THEOREM CourtadeKumar.FiniteLaw.conditional_mixture_gap_comparison TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.agreementMass._rarg._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.progressiveEntropy._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn_quadraticEntropy_tower TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.log_two_pos TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.prod._at.CourtadeKumar.Spec.channel._spec_2
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_binEntropy TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.quadraticEntropy_le_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.mixture._elambda_1._spec_1._cstage2
+CK_THEOREM CourtadeKumar.Scalar.a._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.progressiveEntropy_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_log_two_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_le_quadratic_upper TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficient_convolution_strict TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_eq_zero_of_mass_eq_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._cstage1
+CK_THEOREM CourtadeKumar.Scalar.b_integral._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.quadraticEntropy_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._rarg._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyCurvatureCorrection_concave TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_2._cstage2
+CK_THEOREM CourtadeKumar.divergenceNats_scaling TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.square_small_of_abs_le_half TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.agreementMass._spec_1._rarg._closed_1._cstage2
+CK_THEOREM CourtadeKumar.Spec.flipCoordinate._proof_4 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficient_convolution_strict._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.shannonInformation_le_quadraticInformation_of_unbiased TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.agreementMass._spec_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.binary_quadratic_covariance TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.large_index_arithmetic TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.reweight._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.prod._at.CourtadeKumar.Spec.channel._spec_1
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.b_succ._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._cstage1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_6._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_eq_variance TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.progressiveBound._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._elambda_1._cstage1
+CK_THEOREM CourtadeKumar.FiniteLaw.bitValue_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.matched_correlation_bound TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_eq_expect TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.progressiveBound_le_capacity TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.bit._cstage1
+CK_THEOREM CourtadeKumar.Spec.entropy.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_4
+CK_THEOREM CourtadeKumar.noiseGap.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._elambda_1
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionalMean_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Fintype.piFinset._at.CourtadeKumar.Spec.outputPosterior._spec_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMass._cstage1
+CK_THEOREM CourtadeKumar.FiniteLaw.shannonInformation_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_2
+CK_THEOREM CourtadeKumar.Scalar.s_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.uniformCube._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.mixture._elambda_1._spec_1._rarg._cstage2
+CK_THEOREM CourtadeKumar.Scalar.coefficientDeficit_log_two_pos_small TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitCovariance._rarg._lambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.sum._at.CourtadeKumar.FiniteLaw.expect._spec_2._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.noiseCorrelationSq._closed_1._cstage2
+CK_THEOREM CourtadeKumar.Scalar.large_index_log_two TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.uniformCube_expect_average TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_mul_eq_zero_of_expect_eq_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadratic_gap_le_shannonGap TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditional_entropy_sandwich TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMoment._rarg._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.Spec.divergence_strictMonoOn TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.shannonInformation.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weightRatio._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weightRatio_strictMono._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.binaryProfile_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.binary_weighted_variance TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mixture._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.flipCoordinate._elambda_1._cstage1
+CK_THEOREM CourtadeKumar.Scalar.coefficientDeficit_pos_small TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_complement TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.uniformCube_pair_flip_second TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_5._rarg._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionalMean_le_one TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.binary_covariance_identity TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.sum._at.CourtadeKumar.FiniteLaw.expect._spec_2._closed_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_3._cstage2
+CK_THEOREM CourtadeKumar.Scalar.convolution_mono_le_eight._proof_5 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.divergence.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weighted_tail_le_quarter TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Nat.cast._at.CourtadeKumar.quadraticEntropy._spec_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_mixture_gap TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.divergence_eq_divergenceNats TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.noiseCorrelationSq._cstage1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._lambda_1._closed_1._cstage2
+CK_THEOREM CourtadeKumar.Spec.divergence_le_square TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_le_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats_even TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_3._rarg._cstage2
+CK_THEOREM CourtadeKumar.quadratic_le_entropyBits TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.alphaCoefficient_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_6
+CK_THEOREM CourtadeKumar.FiniteLaw.mk.inj TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.biasCoefficientUpper._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.agreementMass._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn_mean_of_independentUnbiasedBit TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_3._lambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.flipCoordinate._cstage1
+CK_THEOREM CourtadeKumar.Scalar.sum_b_range TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.divergence_even TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_bitValue_mul TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._elambda_1._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMoment._cstage1
+CK_THEOREM CourtadeKumar.four_cell_good_coordinate TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_3
+CK_THEOREM CourtadeKumar.FiniteLaw.mixture_fibreMass TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_log_two_pos TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.rationalDeficit._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.tangent_minorant TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.a.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.exists_pointwise_matching_parameter TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.outputPosterior_mem TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.s_one_lower TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.flipCoordinate._elambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_5._cstage2
+CK_THEOREM CourtadeKumar.Spec.divergence_scaling TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.average_outputPosterior TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._elambda_1._rarg._lambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.Spec.outputPosterior._spec_5._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.channel._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.divergenceNats_scaling_interior._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.rationalDeficit.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e_gt_of_nine_le TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.variance_identity TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.rationalDeficit_margins TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.average_mono TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.mixture._elambda_1._spec_2._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_mul_reweight TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.tail_integral_step._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.expect._spec_1._cstage2
+CK_THEOREM CourtadeKumar.Spec.binaryProfile_le_quadratic TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.quadraticEntropy_eq_one_sub_sq TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.Spec.outputPosterior._spec_5
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_1
+CK_THEOREM CourtadeKumar.Scalar.tail_barrier TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Function.update._at.CourtadeKumar.Spec.flipCoordinate._elambda_1._spec_1._cstage2
+CK_THEOREM CourtadeKumar.quadraticEntropy_complement TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.bit._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMass_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_const_mul TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyCurvatureCorrection_second TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.reweight.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficientDeficit_one TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._cstage2
+CK_THEOREM CourtadeKumar.Spec.continuous_divergence TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.rationalDeficit_le TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.good_coordinate_of_uniform_pair TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weighted_tail_lower TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mixture_quadratic_entropy_le TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.independentUnbiasedBit._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Function.update._at.CourtadeKumar.Spec.flipCoordinate._elambda_1._spec_1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_5
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.fibreMoment._spec_1
+CK_THEOREM CourtadeKumar.entropyBits._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.bias_coefficient TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.divergence_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_half TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.barrier_gt_seven_eighteenths TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_2._cstage2
+CK_THEOREM CourtadeKumar.Spec.flipCoordinate_same TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.comparison_coefficient_mul TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.quadratic_mul_biasCoefficient TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.gapMultiplier_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.exists_good_coordinate TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_reweight TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.b_succ._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._lambda_1._closed_2._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_mul_const TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionalQuadraticEntropy.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.progressiveEntropy_complement_noise TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionalQuadraticEntropy_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadratic_gap TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mass_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.fibreMass._spec_1._rarg._cstage2
+CK_THEOREM CourtadeKumar.Scalar.weightRatio_strictMono TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e_monotone TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_mono TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.average_const TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadratic_conditioning TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficient_convolution TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.induction_gap_from_coefficients TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_sub TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._closed_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.binary_quadraticInformation TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.fibreMass._spec_1
+CK_THEOREM CourtadeKumar.quadraticEntropy.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.agreementMass._spec_1
+CK_THEOREM CourtadeKumar.FiniteLaw.mean_of_independentUnbiasedBit TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mass_mul_conditionalMean TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.tail_integral_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.average_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.exists_good_coordinate._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyBits_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.binaryProfile_domain TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.combine_gap_bounds TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.hasSum_divergenceNats TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.bitCovariance_eq_zero_of_entropy_eq_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.progressiveEntropy_le_noiseInformation TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.shannonGap_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.uniformCube._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.quadratic_mul_biasCoefficientUpper TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMass_second_pair TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitCovariance._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.Pi.cons._at.CourtadeKumar.Spec.outputPosterior._spec_4._cstage2
+CK_THEOREM CourtadeKumar.Spec.channel_column_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMass._rarg._cstage2
+CK_THEOREM CourtadeKumar.Scalar.rationalDeficit._proof_4 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_le_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._elambda_1._rarg._cstage2
+CK_THEOREM CourtadeKumar.Scalar.b_nonneg_le_eight TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.agreementMass._cstage1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._elambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.fibreMoment._spec_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.channel._cstage1
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_mono TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Fintype.piFinset._at.CourtadeKumar.Spec.outputPosterior._spec_1._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.noiseGap_bounds TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitCovariance._cstage2
+CK_THEOREM CourtadeKumar.singleCrossing_tsum_nonpos TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyCurvatureCorrection_deriv TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.progressiveEntropy_half TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditioning_gain TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.flipCoordinate._cstage2
+CK_THEOREM CourtadeKumar.induction_gap_nondegenerate TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMoment._cstage2
+CK_THEOREM CourtadeKumar.gapMultiplier._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_3._closed_2._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.Spec.outputPosterior._spec_5._rarg._cstage2
+CK_THEOREM CourtadeKumar.Spec.uniformCube_outputMean TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.classical_of_latest TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.reweight._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.biasCoefficientUpper_pos TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.convolution_mono_le_eight TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_mixture TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.partialSum.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats_scaling_interior TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficientDeficit.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.bit.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.covariance_div_le_information TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.b_succ TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.outputMean_mem TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weighted_tail_le_quarter._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficient_convolution_strict._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.uniformCube._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.convolution_upper TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_2._rarg._closed_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_3
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_3._closed_1._cstage2
+CK_THEOREM CourtadeKumar.four_cell_abs_bound TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.pi._at.CourtadeKumar.Spec.outputPosterior._spec_3._lambda_2._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitCovariance._cstage1
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_add TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.eq_of_mass_eq TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitCovariance._rarg._lambda_2._cstage2
+CK_THEOREM CourtadeKumar.noiseCorrelationSq_complement TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.biasCoefficient_pos TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.comparison_coefficient TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.divergence_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.good_coordinate TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.sum._at.CourtadeKumar.Spec.outputPosterior._spec_6._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._cstage1
+CK_THEOREM CourtadeKumar.Spec.bool_channel_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._elambda_1
+CK_THEOREM CourtadeKumar.Scalar.rationalDeficit._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.channel_row_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.quadraticEntropy._cstage1
+CK_THEOREM CourtadeKumar.Scalar.a_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.flipCoordinate_other TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.channel._closed_1._cstage2
+CK_THEOREM CourtadeKumar.Scalar.barrier._proof_6 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.progressiveEntropy_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_1._rarg._lambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.Pi.cons._at.CourtadeKumar.Spec.outputPosterior._spec_4._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.noiseCorrelationSq._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.mixture_conditionOn TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_eq_agreement TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mk.sizeOf_spec TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn_shannonEntropy_tower TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionalShannonEntropy.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mixture._proof_4 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.Scalar.convolution_upper._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._elambda_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.sum._at.CourtadeKumar.FiniteLaw.expect._spec_2
+CK_THEOREM CourtadeKumar.FiniteLaw.atom_le_fibreMass TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMass.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.entropyCurvatureCorrection._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditional_mixture_gap_comparison._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.mixture._elambda_1._cstage1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitValue._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Function.update._at.CourtadeKumar.Spec.flipCoordinate._elambda_1._spec_2._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Nat.cast._at.CourtadeKumar.quadraticEntropy._spec_1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.agreementMass._spec_1._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.prod._at.CourtadeKumar.Spec.channel._spec_2._cstage2
+CK_THEOREM CourtadeKumar.entropyCurvatureCorrection.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMass_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.information_mixture_gain_comparison TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weighted_tail_le_quarter._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditional_mixture_gap_comparison._proof_4 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.summable_s TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.continuous_divergenceNats TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.quadraticEntropy._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.tail_integrable TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.uniformCube_pair_mass TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mass_mul_conditionOn_expect TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e_monotone._proof_5 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.agreementMass._rarg._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_le_entropy TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.summable_a TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_4._cstage2
+CK_THEOREM CourtadeKumar.Scalar.tail_integral_eq TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.expect._spec_1._rarg._cstage2
+CK_THEOREM CourtadeKumar.Spec.existsUnique_matching_parameter TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_bitValue TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.barrier_gt_log_target TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.tangent_remainder TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_6._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.prod._at.CourtadeKumar.Spec.channel._spec_2._closed_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn_mean_tower TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.matched_correlation_bound._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.bit_le_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.flipCoordinate._elambda_1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.mixture._elambda_1._spec_2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Fintype.piFinset._at.CourtadeKumar.Spec.outputPosterior._spec_1
+CK_THEOREM CourtadeKumar.Scalar.tail_series_barrier TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.gapMultiplier_times_v TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibre_mixture_gap_comparison TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficient_convolution._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.gapMultiplier_cancels TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_4._rarg._cstage2
+CK_THEOREM CourtadeKumar.Spec.channel_symm TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.noiseInformation.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_const TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_const._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mixture_fibreMoment TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Function.update._at.CourtadeKumar.Spec.flipCoordinate._elambda_1._spec_2._rarg._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.bitCovariance_symm TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.bit_entropy_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.exists_good_coordinate._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mass_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_le_shannonInformation TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_2
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn_expect_of_pos TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_integral TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e_nine_gt TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.shannonGap.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.bitCovariance_mixture TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.mixture._elambda_1._spec_1
+CK_THEOREM CourtadeKumar.Scalar.log_two_interval TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMass._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.total_expectation TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mk.injEq TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.a_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.partial_succ TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.summable_scaled_a TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.bit_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.mass_mul_conditionOn_mass TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_sum TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.atom_eq_zero_of_fibreMass_eq_zero TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.Pi.cons._at.CourtadeKumar.Spec.outputPosterior._spec_4
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMass_first_pair TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._cstage1
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.prod._at.CourtadeKumar.Spec.channel._spec_1._rarg._cstage2
+CK_THEOREM CourtadeKumar.gap_nonneg_of_conditional TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_2._rarg._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.bitValue.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditioning_gain_joint TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.conditionOn_mass_of_pos TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.barrier._proof_5 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.a_le_inv_square TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.convolution.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_first_pair TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMass_eq_expect TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats_upper TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.average._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMass._rarg._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_second_pair TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Function.update._at.CourtadeKumar.Spec.flipCoordinate._elambda_1._spec_1._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.mixture._elambda_1._spec_2._rarg._cstage2
+CK_THEOREM CourtadeKumar.Spec.uniformCube_pair_flip_first TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.e_nine_exact TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats_lower TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.noiseInformation_complement TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.quadraticEntropy._cstage2
+CK_THEOREM _private.CK.InformationChain.0.CourtadeKumar.FiniteLaw.conditioning_gain_algebra TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_3._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.bitValue._cstage1
+CK_THEOREM CourtadeKumar.Spec.channel_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM _private.CK.FiniteProbability.0._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.fibreMoment_le_mass TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.expect_div_const TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.bitValue_le_one TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.channel._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.sum._at.CourtadeKumar.Spec.outputPosterior._spec_6
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Multiset.sum._at.CourtadeKumar.Spec.outputPosterior._spec_6._closed_1._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._rarg._lambda_1._cstage2
+CK_THEOREM CourtadeKumar.progressiveEntropy.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.quadratic_jensen TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.expect._spec_1
+CK_THEOREM CourtadeKumar.FiniteLaw.posterior_mixture_mean TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.coefficient_convolution._proof_3 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.barrier_lower TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.fibreMass._spec_1._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.quadraticInformation_eq_zero_iff TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.map._rarg._cstage2
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Fintype.piFinset._at.CourtadeKumar.Spec.outputPosterior._spec_1._closed_1._cstage2
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.tail_integral_step TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.shannonInformation_mixture_gap TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.Spec.outputPosterior._lambda_2._cstage2
+CK_THEOREM CourtadeKumar.FiniteLaw.binary_moment_difference TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.flipCoordinate.eq_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.sum._at.CourtadeKumar.FiniteLaw.fibreMoment._spec_1._rarg._cstage2
+CK_THEOREM CourtadeKumar.Spec.binaryProfile_le_variance TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT Finset.prod._at.CourtadeKumar.Spec.channel._spec_1._cstage2
+CK_THEOREM CourtadeKumar.Spec.divergence_nonneg TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.expect._at.CourtadeKumar.FiniteLaw.bitCovariance._spec_1._rarg._cstage2
+CK_THEOREM _private.CK.ScalarTails.0.CourtadeKumar.Scalar.e_succ TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.b_log_two_nonneg._proof_1 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_EXCLUDED_UNSAFE_COMPILER_ARTIFACT CourtadeKumar.FiniteLaw.fibreMoment._rarg._cstage2
+CK_THEOREM CourtadeKumar.Scalar.weightRatio_eq TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weightRatio_succ_gt TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.FiniteLaw.cauchy_div TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Spec.divergence_abs TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.divergenceNats_closed TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_THEOREM CourtadeKumar.Scalar.weighted_tail_le_quarter._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext,
+ Classical.choice,
+ Quot.sound]
+CK_THEOREM CourtadeKumar.biasCoefficient._proof_2 TRANSITIVE_AXIOMS_SUBSET_OF [propext, Classical.choice, Quot.sound]
+CK_AUDIT_DECLARATIONS 388
+CK_AUDIT_THEOREMS 320
+CK_AUDIT_UNSAFE_COMPILER_ARTIFACTS 138
+CK_AUDIT_TRANSITIVE_AXIOM_UNION [propext, Quot.sound, Classical.choice]
+CK_LATEST_TARGET_DECLARED false
+def CourtadeKumar.Spec.LatestPaperTarget : Prop :=
+∀ (n : ℕ) (f : CourtadeKumar.Spec.Cube n → Bool) (p : ℝ),
+  0 ≤ p →
+    p ≤ 1 →
+      CourtadeKumar.Spec.mutualInformation f p ≤
+          CourtadeKumar.Spec.progressiveBound p (CourtadeKumar.Spec.outputMean f) ∧
+        CourtadeKumar.Spec.progressiveBound p (CourtadeKumar.Spec.outputMean f) ≤ 1 - CourtadeKumar.Spec.entropy p
+def CourtadeKumar.Spec.ClassicalTarget : Prop :=
+∀ (n : ℕ) (f : CourtadeKumar.Spec.Cube n → Bool) (p : ℝ),
+  0 ≤ p → p ≤ 1 → CourtadeKumar.Spec.mutualInformation f p ≤ 1 - CourtadeKumar.Spec.entropy p
+def CourtadeKumar.Spec.ThreeBitTarget : Prop :=
+∀ (ρ σ : ℝ),
+  0 < ρ →
+    ρ < 1 →
+      0 < σ →
+        σ ≤ 1 →
+          ρ ^ 2 - CourtadeKumar.Spec.divergence ρ <
+            (CourtadeKumar.Spec.divergence ρ - CourtadeKumar.Spec.divergence (ρ * σ)) /
+                (2 * (1 + (ρ ^ 2 - CourtadeKumar.Spec.divergence ρ) * Real.log 2 / (1 - ρ ^ 2))) +
+              2 * (ρ ^ 2 * CourtadeKumar.Spec.divergence σ - CourtadeKumar.Spec.divergence (ρ * σ)) / σ

@@ -1,0 +1,32 @@
+{
+  "timestamp_utc": "2026-11-23T02:22:41.090180+00:00",
+  "status": "RAW_TARGET_AND_TRANSITIVE_AXIOMS_CHECKED",
+  "returncode": 0,
+  "seconds": 10.558,
+  "source_hashes_before": {
+    "CK/Spec.lean": "082eeb735bd1d381a9dd4a8ab57dda0714552cac0aa50cf8ff655259062d9f07",
+    "CK/Latest.lean": "e47f5d50d0f892d1c44c8f4f9f478ec5fd88f4e65675d35ba6be61873f3cd725",
+    "CK/CubeInduction.lean": "af0f63a244c5f2c04da642beb5e7a163a654d6739c86c9f3f0bcd86d30664d38",
+    "CK/ScalarThreeBit.lean": "35b424db64fe994d0fd9b53eaabb4ff0bd9918ab91e2d9282167e7844a85f68b",
+    "verification/independent_main/Audit.lean": "ab8787cf61780745348f41e32f0acf4fa35acddf1ee62546eae336aef8587cd6"
+  },
+  "source_hashes_after": {
+    "CK/Spec.lean": "082eeb735bd1d381a9dd4a8ab57dda0714552cac0aa50cf8ff655259062d9f07",
+    "CK/Latest.lean": "e47f5d50d0f892d1c44c8f4f9f478ec5fd88f4e65675d35ba6be61873f3cd725",
+    "CK/CubeInduction.lean": "af0f63a244c5f2c04da642beb5e7a163a654d6739c86c9f3f0bcd86d30664d38",
+    "CK/ScalarThreeBit.lean": "35b424db64fe994d0fd9b53eaabb4ff0bd9918ab91e2d9282167e7844a85f68b",
+    "verification/independent_main/Audit.lean": "ab8787cf61780745348f41e32f0acf4fa35acddf1ee62546eae336aef8587cd6"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "checked_roots": [
+    "IndependentReview.rawFiniteSumTarget",
+    "CourtadeKumar.latestPaper",
+    "CourtadeKumar.Spec.threeBit",
+    "CourtadeKumar.classicalCourtadeKumar"
+  ],
+  "scope": "Independent explicit finite-sum restatement of latestPaper, with enforced transitive axiom checks; not an all-library or all-paper completion gate."
+}

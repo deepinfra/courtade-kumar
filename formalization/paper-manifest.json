@@ -1,0 +1,124 @@
+{
+  "repository": "https://github.com/deepinfra/courtade-kumar",
+  "source_branch": "main",
+  "repository_commit": "45ad4866a41e04722f2cfcef4129a1050e59d3ca",
+  "latest_manuscript_commit": "0eb4756ce4ebd6daa803d77035cc6a60bfd70e5a",
+  "manuscript_commit_date": "2026-11-20T17:19:45Z",
+  "title": "On the most informative Boolean function under noise",
+  "authors": [
+    "Dimiter Kramer",
+    "Mert Saglam"
+  ],
+  "files": [
+    {
+      "path": "courtade-kumar.tex",
+      "sha256": "d82718809e0f15917b3714f36bf5d3b08e20fa2ca4dbbdf3aae0c1faec00d1a2",
+      "git_blob": "a78a02a623785ec7709d64b615a98afe72c31e06",
+      "bytes": 2304
+    },
+    {
+      "path": "courtade-kumar.pdf",
+      "sha256": "910ecf54838e0790af22fcb81dea07bd7d1ca6606a1646bfdd5beb70242990aa",
+      "git_blob": "00673574bffd243da9159c358497117b716a3561",
+      "bytes": 478613
+    },
+    {
+      "path": "introduction.tex",
+      "sha256": "54e147b31046ff419c94393433fc33774a6861c5836106a352a9458e806adea3",
+      "git_blob": "944f74fb03edcd978deb2664be4b792e31971909",
+      "bytes": 7706
+    },
+    {
+      "path": "preliminaries.tex",
+      "sha256": "6505af981181183c2d459d94f9b0930b934298d8b2cf162b26f2e6972571b2b6",
+      "git_blob": "10a091390deda094af10f784f1bebf688e42a842",
+      "bytes": 2993
+    },
+    {
+      "path": "proof.tex",
+      "sha256": "b2d5a5db5e144173e6880eedf4469c6f0d29f490b5bd477d706a324bd8592c02",
+      "git_blob": "ab08ae73f27603024c1ecbb7943e17fc66b492d2",
+      "bytes": 19426
+    },
+    {
+      "path": "remaining-proofs.tex",
+      "sha256": "a88e8d66a7ea1be3bb36d808774e441b41ba6d662ffd2d6f58c936af1a3672e2",
+      "git_blob": "6bf2217620d7ad824566c0e6f880f743cf543572",
+      "bytes": 5237
+    },
+    {
+      "path": "information.tex",
+      "sha256": "243cb579574ad7159c2c421c93bd83e765071e2e970dc7e57fb3604287c5e2a8",
+      "git_blob": "848368b1f485760f24e6fa2b3a6a70c4154e0c48",
+      "bytes": 9801
+    },
+    {
+      "path": "abstract.tex",
+      "sha256": "8f0be941bf2b3d202ed412669810111ac08abf2032dccd6d18a3374b9a7836ed",
+      "git_blob": "ab85e234d7a1c933a1af1b510f134e583c0dcfa5",
+      "bytes": 564
+    },
+    {
+      "path": "definitions/abstract.tex",
+      "sha256": "78f66a7436d69623ebbf53379fa9c6f79d6072b4ba8f10cabe865a7afc48ad66",
+      "git_blob": "366dd1a6c35fa9c27e0a134e5c750d1a00ede586",
+      "bytes": 182
+    },
+    {
+      "path": "definitions/arxiv.tex",
+      "sha256": "e48e968fa99011616c18eebaca011a8a17dfc4f71578a3eb3c1e66734ebc482b",
+      "git_blob": "74c0dfc27a54d72474a35c33943b3a598e95dda6",
+      "bytes": 274
+    },
+    {
+      "path": "definitions/communication.tex",
+      "sha256": "e26ff9a98a2620949bb1bcbce9d22c69f1ccb12f8fedfec33c014d15f21e5e76",
+      "git_blob": "a0bb8e27c9d8cd29ea172e85d26b4ee7e9ddf3f0",
+      "bytes": 270
+    },
+    {
+      "path": "definitions/entropy.tex",
+      "sha256": "1c989af83acb5fab3c581f8e2a69a42adc05154df7ee0afabba134bd150cec7d",
+      "git_blob": "54ce4d28fccc1d854278e1d1157587df1f907eb3",
+      "bytes": 1381
+    },
+    {
+      "path": "definitions/fields.tex",
+      "sha256": "dcc19483108c8a0f7bf10e19f55c274ceb1cb36b26ae90ab8fb070b253431e8a",
+      "git_blob": "45275712ccae84dad91e2a44abfdd35cae0093ae",
+      "bytes": 291
+    },
+    {
+      "path": "definitions/linearalgebra.tex",
+      "sha256": "00d1568a2223316b714309789070fc414925bf7b623440478b6b0c1a2ecd4a75",
+      "git_blob": "034b64abec96d5b3b5d1926eacbf17394a279726",
+      "bytes": 382
+    },
+    {
+      "path": "definitions/math.tex",
+      "sha256": "7e4a864eba08cf1ae7297411ce8e43628fce499fbac7cd095fb144e9f86c929b",
+      "git_blob": "9ba7fe8f24b13521442cdaf7a8744f21e13b1992",
+      "bytes": 1013
+    },
+    {
+      "path": "definitions/probability.tex",
+      "sha256": "ca70a6be1bded55685661b5f6a48578bb54e371e1b810114222b7b12f87061f4",
+      "git_blob": "cbc907aa78841fdf2d604e70f4a0fe654c334d1a",
+      "bytes": 299
+    },
+    {
+      "path": "definitions/theoremlike.tex",
+      "sha256": "27ca8768d71115a290dc71a918f7604513bc80cbff2eecaecdd8291748ca6751",
+      "git_blob": "72bbb8d8304d4c998332f07e11b13570246f93df",
+      "bytes": 1619
+    }
+  ],
+  "lean_toolchain": "leanprover/lean4:v4.19.0",
+  "mathlib_commit": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "legacy_branch_commit": "a42afce1b0d2c2c2f05d5845478faa1570c14e63",
+  "scope": "Latest manuscript, including the stronger progressive-entropy bound. Prior Fourier-route formalization is separate.",
+  "submodules": {
+    "definitions": "80deb0715a8c5dceff7b8783803c946355d35ed0",
+    "references": "40ea21efface7cd191142b1291d546734db1f6ce"
+  }
+}

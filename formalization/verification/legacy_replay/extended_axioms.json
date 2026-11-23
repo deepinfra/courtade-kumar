@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/workspace/scratch/dc873e97f1fc/lean-runtime/lean",
+    "ExtendedAxiomAudit.lean"
+  ],
+  "returncode": 0,
+  "seconds": 273.315,
+  "declarations": 611,
+  "axioms_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_axioms": [],
+  "parsing_note": "Handles Lean declaration names containing apostrophes and pretty-printer line wrapping.",
+  "distinct_declarations": 606
+}

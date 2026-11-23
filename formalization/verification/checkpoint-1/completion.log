@@ -1,0 +1,2 @@
+scripts/CompletionGate.lean:9:50: error: unknown identifier 'CourtadeKumar.latestPaper'
+scripts/CompletionGate.lean:11:14: error: unknown constant 'CourtadeKumar.latestPaper'

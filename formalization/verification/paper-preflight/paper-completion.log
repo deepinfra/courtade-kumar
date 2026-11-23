@@ -1,0 +1,22 @@
+'CourtadeKumar.latestPaper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Spec.threeBit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Threshold.progressiveEntropy_eq_kernelInformation_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CourtadeKumar.Posterior.information_data_processing' depends on axioms: [propext, Classical.choice, Quot.sound]
+scripts/PaperCompletionGate.lean:49:2: error: synthesized type class instance is not definitionally equal to expression inferred by typing rules, synthesized
+  m₂
+inferred
+  m₀
+scripts/PaperCompletionGate.lean:55:2: error: type mismatch
+  conditional_quadratic_chain m n k f
+has type
+  quadraticInformationGiven ?m.2415 m (n ⊔ k) f =
+    quadraticInformationGiven ?m.2415 m n f + quadraticInformationGiven ?m.2415 (m ⊔ n) k f : Prop
+but is expected to have type
+  quadraticInformationGiven ν m (n ⊔ k) f =
+    quadraticInformationGiven ν m n f + quadraticInformationGiven ν (m ⊔ n) k f : Prop
+scripts/PaperCompletionGate.lean:65:2: error: synthesized type class instance is not definitionally equal to expression inferred by typing rules, synthesized
+  n
+inferred
+  m₀

@@ -1,0 +1,10 @@
+'IndependentReview.rawFiniteSumTarget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.latestPaper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.Spec.threeBit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CourtadeKumar.classicalCourtadeKumar' depends on axioms: [propext, Classical.choice, Quot.sound]
+CourtadeKumar.latestPaper : CourtadeKumar.Spec.LatestPaperTarget
+CourtadeKumar.Spec.LatestPaperTarget : Prop
+INDEPENDENT_AXIOMS_PASSED IndependentReview.rawFiniteSumTarget
+INDEPENDENT_AXIOMS_PASSED CourtadeKumar.latestPaper
+INDEPENDENT_AXIOMS_PASSED CourtadeKumar.Spec.threeBit
+INDEPENDENT_AXIOMS_PASSED CourtadeKumar.classicalCourtadeKumar
