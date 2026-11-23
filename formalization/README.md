@@ -1,6 +1,8 @@
 # Lean formalization of the latest manuscript
 
-**Status: active development; the latest stronger main theorem is not yet proved.**
+**Status: the latest stronger main theorem is proved and has passed the full
+Lean build, exact completion challenge, and transitive axiom audit.** Additional
+paper-level statements and the continuous-threshold appendix are being completed.
 
 This project follows *On the most informative Boolean function under noise*,
 by Dimiter Kramer and Mert Saglam, at repository commit
@@ -9,10 +11,10 @@ The latest manuscript-changing commit is
 `0eb4756ce4ebd6daa803d77035cc6a60bfd70e5a`; the later main commit adds slides.
 The source and PDF are the unchanged files in the parent directory.
 
-## Exact goal
+## Proved main theorem
 
 For every dimension, every Boolean function, and every BSC parameter
-`0 ≤ p ≤ 1`, prove both inequalities
+`0 ≤ p ≤ 1`, the development proves both inequalities
 
 \[
 I(f(Y);X)\le Q(f(Y))\le 1-H(p),\qquad
@@ -24,8 +26,9 @@ where `q=(1−2p)²`, `I_p=1−H(p)`, `μ=P(C=1)`, and entropy is in **bits**.
 [`CK/Spec.lean`](CK/Spec.lean) independently spells out the finite uniform
 cube, product channel, posterior, information, and the exact proposition
 `CourtadeKumar.Spec.LatestPaperTarget`. It does not assume an information
-inequality. The final theorem must be named `CourtadeKumar.latestPaper` and
-inhabit precisely that proposition. The classical cap and three-bit scalar
+inequality. [`CK/Latest.lean`](CK/Latest.lean) proves
+`CourtadeKumar.latestPaper : CourtadeKumar.Spec.LatestPaperTarget`.
+The classical cap and three-bit scalar
 target are separate propositions, so proving one cannot silently satisfy another.
 
 ## Build and verify
@@ -50,9 +53,10 @@ Source-level placeholders, custom axioms, unsafe code, and `native_decide`
 are rejected. Compiler-generated unsafe implementation artifacts are listed
 separately; they are not admitted as proof dependencies.
 
-Both modes actually attempt the exact completion challenge. **Full mode
-currently exits with code 2 because the latest main theorem is absent.**
-A successful partial build must not be described as a complete formalization.
+Both modes actually attempt the exact completion challenge. **Full mode now
+passes**, with status `LATEST_MAIN_THEOREM_KERNEL_CHECKED`.
+Earlier partial checkpoints and failed intermediate gate records are retained
+as history; they are superseded by the successful `main-theorem` report.
 The report also keeps `all_paper_results_verified` false: the main theorem
 alone would not certify every appendix result.
 
@@ -68,10 +72,16 @@ See [`PAPER_CROSSWALK.md`](PAPER_CROSSWALK.md) for the correspondence to manuscr
 labels, theorem names, and the scope of each result. The completed development
 includes the cap `Q(C) ≤ I_p`, the good coordinate on the actual Boolean cube,
 finite probability and posterior laws, Shannon/Tsallis estimates, the strengthened
-conditioning gain, complete pointwise comparison, comparison-map concavity,
-and substantial scalar-series arguments. Conditional comparison, the complete
-three-bit argument, probabilistic gap assembly, and final cube induction are
-still being connected.
+conditioning gain, complete pointwise and conditional comparison,
+comparison-map concavity, the sharp biased divergence estimate, the complete
+three-bit scalar inequality, both information-gap estimates, and the final
+cube induction. The proof includes zero-mass fibres, zero information,
+degenerate outputs, base dimensions, and all noise endpoints.
+
+The scalar rescaling proof uses finite geometric inequalities and an integral
+covariance comparison in place of the manuscript's hyperbolic-integral route.
+It proves the same actual infinite-series inequality, with all convergence
+and endpoint obligations discharged.
 
 The finite probability layer makes all zero-mass conventions explicit. Its
 results cover the finite observations needed by the Boolean-cube theorem.
@@ -100,9 +110,10 @@ target is complete.
   upstream commits.
 - [`specification-manifest.json`](specification-manifest.json): frozen target,
   compiler/dependency configuration, and reviewed gates.
-- [`verification/checkpoint-5/result.json`](verification/checkpoint-5/result.json):
-  a completed build and audit, followed by the deliberately unsatisfied full
-  completion challenge (exit 2); subsequent proofs require a later run.
+- [`verification/main-theorem/result.json`](verification/main-theorem/result.json):
+  the successful full main-theorem gate, including the unchanged input hashes.
+- [`verification/main-theorem/completion.log`](verification/main-theorem/completion.log):
+  acceptance of the frozen exact target and its permitted transitive axioms.
 - [`AGENTS.md`](AGENTS.md): the proof-development contract.
 
 The manuscript is not edited by this project. Changes live on a dedicated

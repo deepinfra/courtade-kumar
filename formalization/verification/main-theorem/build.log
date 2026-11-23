@@ -1,0 +1,51 @@
+⚠ [2374/2396] Replayed CK.ScalarMeans
+warning: ././././CK/ScalarMeans.lean:229:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [2375/2396] Replayed CK.ScalarEndpoints
+warning: ././././CK/ScalarEndpoints.lean:45:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: ././././CK/ScalarEndpoints.lean:46:6: try 'simp' instead of 'simpa'
+note: this linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [2388/2410] Built CK.MapLaws
+✔ [2389/2410] Built CK.ScalarParameters
+✔ [2390/2410] Built CK.ScalarCovariance
+⚠ [2391/2410] Built CK.ChannelEndpoints
+info: ././././CK/ChannelEndpoints.lean:180:45: Try this: ring_nf
+info: ././././CK/ChannelEndpoints.lean:180:45: Try this: ring_nf
+warning: ././././CK/ChannelEndpoints.lean:180:41: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [2392/2410] Built CK.ComparisonAveraging
+✔ [2393/2410] Built CK.GapBounds
+⚠ [2394/2410] Built CK.ScalarIntegral
+warning: ././././CK/ScalarIntegral.lean:35:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ℹ [2395/2410] Built CK.BiasDivergence
+info: ././././CK/BiasDivergence.lean:104:2: Try this: ring_nf
+✔ [2396/2410] Built CK.CubeSplit
+✔ [2397/2410] Built CK.BinaryProfileSemantics
+⚠ [2398/2410] Built CK.ScalarRescaling
+warning: ././././CK/ScalarRescaling.lean:201:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: ././././CK/ScalarRescaling.lean:203:45: unused variable `hj`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+warning: ././././CK/ScalarRescaling.lean:213:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+note: this linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [2399/2410] Built CK.CubeMarkov
+✔ [2400/2410] Built CK.InductionStep
+✔ [2401/2410] Built CK.CubeInduction
+⚠ [2402/2410] Built CK.ScalarGaps
+warning: ././././CK/ScalarGaps.lean:22:8: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+⚠ [2403/2410] Built CK.ScalarJensen
+warning: ././././CK/ScalarJensen.lean:49:13: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+info: ././././CK/ScalarJensen.lean:107:6: Try this: ring_nf
+warning: ././././CK/ScalarJensen.lean:112:13: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+info: ././././CK/ScalarJensen.lean:137:2: Try this: ring_nf
+✔ [2404/2410] Built CK.ScalarFirstGap
+⚠ [2405/2410] Built CK.ScalarSecondGap
+warning: ././././CK/ScalarSecondGap.lean:29:8: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+warning: ././././CK/ScalarSecondGap.lean:72:15: `tsum_le_tsum` has been deprecated: use `Summable.tsum_le_tsum` instead
+✔ [2406/2410] Built CK.ScalarAssembly
+✔ [2407/2410] Built CK.ScalarThreeBit
+✔ [2408/2410] Built CK.Latest
+✔ [2409/2410] Built CKLatest
+Build completed successfully.

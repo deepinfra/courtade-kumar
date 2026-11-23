@@ -3,11 +3,15 @@
 ## Conclusion and scope
 
 The independently stated main target agrees with the stronger theorem in the
-November 20 manuscript. The current checked library establishes substantial
-parts of its proof, including the entire right-hand inequality
-`Q(C) ≤ 1 − h(p)`. It does **not yet establish** the left-hand inequality
-`I(C;X) ≤ Q(C)`, the main target, or every result in the paper. A successful
-partial build must therefore remain a partial verification result.
+November 20 manuscript. At the review update of 2026-11-23 02:14 UTC, the compiled theorem
+`Spec.latest_of_threeBit` reduces the exact complete main target to the single
+independently stated analytic proposition `Spec.ThreeBitTarget`. All finite-law
+comparison, sharp bias, conditional-channel, good-coordinate, base-case and
+dimension-induction dependencies have been discharged. The scalar prerequisite
+was still being completed at this checkpoint, so this update does **not** claim
+a closed proof of the main target. The current full-gate report must determine
+whether a subsequent run has discharged that prerequisite. Every-result
+completion remains distinct from main-theorem completion.
 
 This review concerns the manuscript at repository commit
 `45ad4866a41e04722f2cfcef4129a1050e59d3ca` and the new `formalization/` project.
@@ -40,8 +44,12 @@ main theorem are required. The target is not just the classical cap.
 
 The function output is deterministic. This agrees with the manuscript's
 main proof, whose one-coordinate base case lists constants, the coordinate,
-and its negation. Randomized comparison bits are separate constructions in
-the argument; their existence and information identities still require proof.
+and its negation. Randomized comparison bits are represented by their BSC correlation parameter.
+The formal library now proves the parameter matching, profile information
+identities, conditional comparison, and correlation bound. A separate explicit
+probability-space realization of a comparison bit is not needed for the cube
+proof, but is relevant if every auxiliary lemma is required in the paper's
+random-variable wording.
 
 ### Analytic subtargets
 
@@ -61,18 +69,19 @@ Jensen extension.
 
 | Manuscript component | Current formal content | Remaining qualification |
 |---|---|---|
-| Product binary symmetric channel | Row and column sums, symmetry, nonnegative masses, posterior range, uniform-law preservation | These finite semantics are correct; the induction still needs its conditional-channel decomposition |
-| `Q(C) ≤ Ip` | `progressiveBound_le_capacity`, with all probability/noise hypotheses discharged | This is the right-hand half of the main theorem |
-| Good-coordinate lemma | `Spec.good_coordinate`, including explicit cube-coordinate independence and agreement with `Spec.average` | The lemma itself is established on the actual Boolean cube |
-| Quadratic information | Finite laws, null-fibre handling, total expectation, variance formula, nonnegativity, covariance identities | General arbitrary-random-variable formulations in the paper are not supplied by a finite-law library alone |
-| Quadratic conditioning | `FiniteLaw.quadratic_conditioning` under explicit finite-mixture independence | Correct finite form; the full Shannon conditioning-gain argument still needs chain-rule/semantic assembly |
-| Shannon–quadratic comparisons | Strong concavity, Jensen comparisons, Pinsker normalization and unbiased reverse comparison | This does not yet prove the separate bias-sensitive upper comparison |
-| Bias coefficient | Positivity and `T(C)c(μ)≤1` | `I(C;U)≤c(μ)T(C;U)/ln 2` is a separate analytic obligation |
-| Induction cancellation | `induction_gap_nondegenerate` verifies the coefficient algebra | First and second information-gap bounds and the three-bit inequality are explicit premises, not discharged conclusions |
-| Scalar coefficient estimate | All-index convolution bound and strictness for indices at least two | These are genuine quantified results, not just numerical samples |
-| Final scalar barrier | Strict bound for the actual convergent tail series | Tail rescaling, mean/Jensen reductions, and the link to the three-bit target remain separate obligations |
-| Comparison construction | Bounds on the explicit profile and a series single-crossing principle; additional matching work is in progress | The weighted-profile domination, comparison-map concavity, and conditional randomized-bit construction must be assembled |
-| Full theorem | Exact independent proposition and completion challenge | No proof of `LatestPaperTarget` was present at the reviewed checkpoint |
+| Product binary symmetric channel | `jointLaw`, exact information/specification bridge, coordinate product factorization, conditional restrictions | Literal finite product-channel model, including zero channel probabilities |
+| `Q(C) ≤ Ip` | `progressiveBound_le_capacity`, full probability/noise interval | Complete right-hand inequality |
+| Good-coordinate lemma | `good_coordinate` and `jointLaw_good_coordinate` | Actual independent uniform cube coordinates; dimensions 0 and 1 use separate exact bases |
+| Quadratic and Shannon information | Null-safe finite laws, chain rules, symmetry, covariance, independence criterion, conditioning gain | Finite observations suffice for the main theorem; arbitrary measurable observations remain a wider scope |
+| Sharp bias comparison | `shannonInformation_le_biasCoefficient` and `quadratic_mul_biasCoefficient` | Derived from the actual binary-divergence Taylor integral and sharp endpoint coefficient |
+| Profile comparison | `pointwiseComparison`, `comparisonMap_concave`, `binaryProfile_average_comparison` | Actual matching map and actual profile, with constant conditional bits included |
+| Conditional comparison | `conditional_comparison` | Literal conditional laws and Markov probability factorization; no information inequality supplied as a premise |
+| Induction step | `induction_step_of_threeBit` | Sole analytic prerequisite is the explicit `ThreeBitTarget`; all probability and bias bounds discharged |
+| Degenerate cases | `QI=0 ⇒ SI=0`, `v=0 ⇒ b=0`, direct `p=0,1` cases, direct correlation-zero case | These close the domains excluded by the nondegenerate scalar inequality |
+| Cube induction | `latest_of_threeBit : ThreeBitTarget → LatestPaperTarget` | Every finite-law assumption is discharged by the actual product law, with no extra hypotheses on the Boolean function |
+| Scalar analysis | All-index coefficient bounds, endpoint sums, tail rescaling and mean identities | Final Jensen/three-bit assembly was still in progress at this checkpoint |
+| Continuous threshold appendix | Exact scalar formula and derivative proof identified | Strict comparison, equality classification and continuous threshold semantics remain separate obligations |
+| Full theorem | Exact independent proposition and completion challenge | Main completion requires a proof of the scalar prerequisite and a fresh successful full gate |
 
 Conditional algebra lemmas are useful progress, but should be reported with
 their premises. In particular, `classical_of_latest` is only the logical
@@ -163,12 +172,28 @@ and communicated for correction:
 5. The manuscript manifest omitted included mathematical macro files under
    `definitions/`.
 
-These are provenance and fail-closed-verification concerns, not evidence that
-any currently checked mathematical theorem is false. Final verification
-should pin the audit, recursively account for source files, mark a run as
-unverified before starting, recheck the source snapshot at the end, and include
-the mathematical TeX inputs. The final gate and manifest revisions must be
-consulted to determine which listed corrections have been incorporated.
+These were provenance and fail-closed-verification concerns, not evidence that
+any mathematical theorem was false. Inspection of the current `verify.py`,
+`AxiomAudit.lean`, and `specification-manifest.json` confirms corrections 1–4:
+the audit and gate are hash-pinned; source discovery is recursive; every run
+first replaces its report with `RUNNING_NOT_VERIFIED`; and both successful and
+failed completed runs recheck all input hashes. The paper manifest now also
+includes mathematical macro inputs. In addition, the gate compares the exact
+set of imported audited project modules against the recursive source inventory,
+so an unimported new source module cannot escape the audit. The audit includes
+private helpers by defining module and checks the cumulative transitive axiom
+union after every safe root. The completion challenge still demands a term of
+the unchanged `Spec.LatestPaperTarget`.
+
+A code-review pass through `CubeInduction.lean`, `CubeMarkov.lean`, and
+`InductionStep.lean` found no new mathematical premise concealed in the cube
+reduction. In particular, the induction hypothesis is applied to the two
+literal coordinate restrictions; the chosen coordinate satisfies the actual
+quarter-information bound; local and global Markov facts are proved from the
+product density; negative channel correlation is handled by its absolute
+value; and the scalar parameter satisfies its strict positivity hypotheses
+only in the branch where those hypotheses are proved. This review is not a
+substitute for the final build and axiom audit.
 
 ### Compiler-generated unsafe artifacts
 
@@ -199,19 +224,23 @@ mathlib precompiled artifacts. Mathlib was not independently rebuilt or
 replayed from source in this review. This review also does not certify future
 edits absent another fresh build, source check, and axiom audit.
 
-## 6. Concrete next frontier
+## 6. Concrete remaining frontier at this checkpoint
 
-The next major comparison obligation is a concave map `Fρ` on `[0,1]` with
-`Fρ(f(t))=f(ρt)`, followed by the weighted Jensen construction and its zero-mass
-cases. A promising derivative proof avoids termwise differentiation of an
-infinite double series: with `L(t)=log(1+t)−log(1−t)`, the derivative ratio is
-`ρ L(ρt)/L(t)`. Its monotonicity follows from the fact that
-`(1−t²)L(t)/t` decreases on `(0,1)`, using `L(t)≥2t`. Supporting-line
-inequalities can then prove concavity without demanding inverse-function
-calculus at the endpoints.
+The main-theorem frontier is now the final scalar three-bit assembly. The
+comparison function and all finite-law induction connections described in the
+initial review have been completed and compiled. The comparison-map proof uses
+the decreasing derivative ratio `ρ L(ρt)/L(t)`, where
+`L(t)=log(1+t)−log(1−t)`. Its supporting-line proof covers the information
+endpoints without differentiating an inverse at those endpoints.
 
-In parallel, finish the tail-rescaling inequality and the Jensen/mean bridge
-for the actual scalar series. Then discharge the bias-sensitive information
-upper bound, the Shannon gap identities, and the finite conditional-channel
-induction. These connections, rather than more isolated numerical checks,
-are what turn the checked components into a proof of the latest target.
+After the scalar target is discharged, the exact main theorem should be built
+and audited through the unchanged completion gate. Separate all-paper tasks
+include the continuous threshold separation and equality classification,
+explicit probability-space realization of comparison bits if required in the
+paper's wording, and any intended extension from finite observations to the
+paper's unrestricted observed random variables. The continuous maximization
+conjecture must remain marked as a conjecture and excluded from proof claims.
+
+This document contains a chronological review update: future success must be
+supported by its own fresh result JSON and source hashes. It does not predict
+or certify the result of a future gate run.
